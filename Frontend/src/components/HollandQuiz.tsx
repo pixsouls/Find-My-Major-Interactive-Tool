@@ -9,11 +9,11 @@ export default function HollandQuiz() {
   const [scores, setScores] = useState<Record<RiasecType, number>>({
     R: 0, I: 0, A: 0, S: 0, E: 0, C: 0
   });
-  const [showResults, setShowResults] = useState(false);
+  const [showResults, setShowResults] = useState(false);  
   const [isCheckpoint, setIsCheckpoint] = useState(false);
 
   const currentQuestion = questions[currentIndex];
-  const questionsUntilCheckpoint = 6;
+  const questionsUntilCheckpoint = 2;
 
   // For checkpoint screen, show previous checkpoint numbers (e.g., 6/6)
   const displayIndex = isCheckpoint ? currentIndex : currentIndex + 1;
@@ -40,7 +40,7 @@ export default function HollandQuiz() {
     }
 
     // Check if we hit a checkpoint (every 6 questions)
-    if (nextIndex % 6 === 0) {
+    if (nextIndex % questionsUntilCheckpoint === 0) {
       setCurrentIndex(nextIndex);
       setIsCheckpoint(true);
     } else {
