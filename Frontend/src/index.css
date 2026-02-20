@@ -3,9 +3,9 @@
   --bg-card: #ffffff;
   --bg-input: #ffffff;
   --border-color: #333333;
-  --accent-primary: #00ffcc;
+  --accent-primary: #d50032;
   --accent-secondary: #0088ff;
-  --text-main: #ffffff;
+  --text-main: #000000;
   --text-dim: #888888;
 
   --msu-blue: #0054a6;
@@ -53,7 +53,7 @@ body::before {
   content: "";
   position: fixed;
   bottom: -10px;
-  left: 0px;
+  left: -20px;
 
   width: 160px;
   height: 80px;
