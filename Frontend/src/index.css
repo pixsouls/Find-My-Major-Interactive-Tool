@@ -3,10 +3,14 @@
   --bg-card: #ffffff;
   --bg-input: #ffffff;
   --border-color: #333333;
-  --accent-primary: #002F4E;
-  --accent-secondary: #C8102E;
-  --text-main: #000000;
-  --text-dim: #444444;
+  --accent-primary: #00ffcc;
+  --accent-secondary: #0088ff;
+  --text-main: #ffffff;
+  --text-dim: #888888;
+
+  --msu-blue: #0054a6;
+  --msu-blue-dark: #003a70;
+  --msu-red: #d50032;
 }
 
 * {
