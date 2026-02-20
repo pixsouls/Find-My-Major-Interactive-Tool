@@ -79,3 +79,26 @@
   background: rgba(255, 255, 255, 0.05);
   border-color: var(--text-muted);
 }
+
+/* MSU Denver styling for the "Explore Majors" button */
+.secondary-btn.explore-majors-btn {
+  background: var(--msu-blue);
+  border: 1px solid var(--msu-blue-dark);
+  color: #fff;
+}
+
+.secondary-btn.explore-majors-btn:hover {
+  background: var(--msu-red);
+  border-color: var(--msu-red);
+  transform: translateY(-2px);
+}
+
+.secondary-btn.explore-majors-btn:active {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
+
+.secondary-btn.explore-majors-btn:focus-visible {
+  outline: 2px solid var(--msu-red);
+  outline-offset: 2px;
+}

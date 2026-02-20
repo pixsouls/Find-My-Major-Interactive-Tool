@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { questions, options, type RiasecType } from '../data/types';
+import ExploreMajors from './ExploreMajors';
 import QuizCheckpoint from './QuizCheckpoint';
 import { QuizQuestion } from './QuizQuestion';
 import './HollandQuiz.css';
@@ -11,6 +12,7 @@ export default function HollandQuiz() {
   });
   const [showResults, setShowResults] = useState(false);  
   const [isCheckpoint, setIsCheckpoint] = useState(false);
+  const [showExploreMajors, setShowExploreMajors] = useState(false);
 
   const currentQuestion = questions[currentIndex];
   const questionsUntilCheckpoint = 2;
@@ -50,6 +52,14 @@ export default function HollandQuiz() {
 
   const handleContinue = () => {
     setIsCheckpoint(false);
+  };
+
+  const handleExploreMajors = () => {
+    setShowExploreMajors(true);
+  };
+
+  const handleBackFromExplore = () => {
+    setShowExploreMajors(false);
   };
 
   if (showResults) {
@@ -101,11 +111,13 @@ export default function HollandQuiz() {
       {/* Main Content Area */}
       <div className="mod-card">
         <div className="card-main">
-          {isCheckpoint ? (
+          {showExploreMajors ? (
+            <ExploreMajors scores={scores} onBack={handleBackFromExplore} />
+          ) : isCheckpoint ? (
             <QuizCheckpoint
               scores={scores}
               onContinue={handleContinue}
-              onExplore={() => console.log("Exploring with scores:", scores)}
+              onExplore={handleExploreMajors}
             />
           ) : (
             <QuizQuestion
