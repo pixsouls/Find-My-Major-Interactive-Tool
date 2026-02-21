@@ -1,74 +1,210 @@
+/* ===== Global App Styling ===== */
 .app-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f8fafc;
-  color: #1e293b;
+  background: linear-gradient(135deg, #f4f7fb, #ffffff);
   font-family: system-ui, -apple-system, sans-serif;
+  color: #1e293b;
 }
 
+/* ===== Header ===== */
 .app-header {
-  padding: 3rem 1rem;
+  padding: 2.5rem 1rem 1.5rem;
   text-align: center;
 }
 
 .app-title {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   margin: 0;
-  color: #2563eb;
+  color: #00447C; /* MSU Navy */
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
+/* ===== Main Layout ===== */
 .app-main {
   flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 1rem;
 }
 
-/* Quiz Card Styling */
+/* ===== Quiz Card ===== */
 .quiz-card {
   background: white;
   width: 100%;
-  max-width: 500px;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
+  max-width: 600px;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 68, 124, 0.15);
+  border-top: 6px solid #D11242; /* MSU Red Accent */
+  transition: 0.3s ease;
 }
 
+/* ===== Progress Bar ===== */
 .progress-container {
   width: 100%;
-  background-color: #e2e8f0;
-  height: 8px;
-  border-radius: 4px;
+  background-color: #e5e7eb;
+  height: 10px;
+  border-radius: 5px;
   margin-bottom: 2rem;
   overflow: hidden;
 }
 
-.progress-bar {
+.progress-bar,
+[class*="progress"] > div,
+[class*="Progress"] > div,
+.MuiLinearProgress-bar {
   height: 100%;
-  background-color: #16c943;
+  background-color: #D11242 !important;
   transition: width 0.4s ease;
 }
 
+/* ===== Question Text ===== */
+.question-text {
+  margin: 1rem 0 2rem 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  color: #00447C;
+}
+
+/* ===== Options ===== */
 .options-list {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
+  gap: 1rem;
 }
 
 .option-btn {
   padding: 1rem;
-  border: none;
-  border-radius: 8px;
-  color: white;
+  border-radius: 10px;
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  transition: transform 0.1s;
+  border: 2px solid #00447C;
+  background-color: white;
+  color: #00447C;
+  transition: all 0.2s ease;
 }
 
+/* Hover effect */
 .option-btn:hover {
-  filter: brightness(1.1);
-  transform: translateY(-1px);
+  background-color: #00447C;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Active click effect */
+.option-btn:active {
+  transform: scale(0.98);
+}
+
+/* ===== Checkpoint Section ===== */
+.checkpoint-container {
+  background-color: #00447C;
+  color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.checkpoint-question {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.checkpoint-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.checkpoint-btn-yes {
+  background-color: #D11242;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.checkpoint-btn-no {
+  background-color: white;
+  color: #00447C;
+  border: 2px solid white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.checkpoint-btn-yes:hover {
+  background-color: #a50f33;
+}
+
+.checkpoint-btn-no:hover {
+  background-color: #ffffffdd;
+}
+
+/* ===== Results ===== */
+.results-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 68, 124, 0.1);
+  border-left: 6px solid #00447C;
+}
+
+.holland-code {
+  color: #D11242;
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.career-list {
+  list-style: none;
+  padding: 0;
+}
+
+.career-list li {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #00447C;
+  font-weight: 500;
+}
+
+.major-link {
+  color: #D11242;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.major-link:hover {
+  color: #00447C;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .quiz-card {
+    padding: 2rem;
+  }
+
+  .question-text {
+    font-size: 1.3rem;
+  }
+
+  .checkpoint-buttons {
+    flex-direction: column;
+  }
 }
