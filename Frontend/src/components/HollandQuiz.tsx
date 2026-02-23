@@ -78,8 +78,17 @@ export default function HollandQuiz() {
 
   const handleContinue = () => {
     setIsCheckpoint(false);
-  };
+    
+    const nextQuestion = selectNextQuestion(questions, askedQuestionIds, scores);
+    
+    if (!nextQuestion) {
+      setShowResults(true);
+      return;
+    }
 
+    setCurrentQuestion(nextQuestion);
+  };
+  
   const handleExploreMajors = () => {
     setShowExploreMajors(true);
   };

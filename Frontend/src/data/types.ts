@@ -25,7 +25,19 @@ export const questions: Question[] = [
   { id: 10, text: "I enjoy helping people solve their problems.", type: "S" },
   { id: 11, text: "I like persuading others to my point of view.", type: "E" },
   { id: 12, text: "I enjoy following clear procedures.", type: "C" },
-];  
+  { id: 13, text: "I like working outdoors with plants or animals.", type: "R" },
+  { id: 14, text: "I enjoy analyzing data and finding patterns.", type: "I" },
+  { id: 15, text: "I like writing stories or poetry.", type: "A" },
+  { id: 16, text: "I enjoy counseling or mentoring others.", type: "S" },
+  { id: 17, text: "I like negotiating deals or contracts.", type: "E" },
+  { id: 18, text: "I enjoy working with numbers and spreadsheets.", type: "C" },
+  { id: 19, text: "I like fixing mechanical or electrical problems.", type: "R" },
+  { id: 20, text: "I enjoy conducting experiments or research.", type: "I" },
+  { id: 21, text: "I like designing websites or graphics.", type: "A" },
+  { id: 22, text: "I enjoy volunteering for community causes.", type: "S" },
+  { id: 23, text: "I like managing projects and delegating tasks.", type: "E" },
+  { id: 24, text: "I enjoy proofreading and checking for accuracy.", type: "C" },
+];
 
 // 2. Apply the interface here
 export const options: Option[] = [
