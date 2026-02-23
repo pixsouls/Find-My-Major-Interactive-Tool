@@ -15,6 +15,7 @@ export default function HollandQuiz() {
   const [showResults, setShowResults] = useState(false);
   const [isCheckpoint, setIsCheckpoint] = useState(false);
   const [showExploreMajors, setShowExploreMajors] = useState(false);
+  const [questionCount, setQuestionCount] = useState(0);
 
   const questionsUntilCheckpoint = 12;
   
