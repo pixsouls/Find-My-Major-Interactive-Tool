@@ -1,0 +1,50 @@
+/* Full page layout */
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 110px); /* accounts for header padding */
+}
+
+/* Card styling */
+.welcome-card {
+  background: rgba(0, 0, 0, 0.9); /* semi-transparent dark card */
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff; /* global text color inside the card */
+  max-width: 500px;
+  width: 90%;
+}
+
+/* Title */
+.welcome-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #fff; /* change to white for readability */
+}
+
+/* Subtitle */
+.welcome-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #ddd; /* light gray for subtle contrast */
+  line-height: 1.6;
+}
+
+/* Button */
+.welcome-button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #4e73df;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.welcome-button:hover {
+  background-color: #2e59d9;
+  transform: translateY(-2px);
+}
