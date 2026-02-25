@@ -48,6 +48,14 @@ export default function HollandQuiz() {
     }
   };
 
+  // Back button
+  const handleBack = () => {
+    if (currentIndex === 0) return; // Can't go back from the first question
+    const prevIndex = currentIndex - 1;
+    setCurrentIndex(prevIndex);
+    setIsCheckpoint(false); // Going back should exit checkpoint if we were in it
+  };
+
   const handleContinue = () => {
     setIsCheckpoint(false);
   };
@@ -108,11 +116,18 @@ export default function HollandQuiz() {
               onExplore={() => console.log("Exploring with scores:", scores)}
             />
           ) : (
+            <>
             <QuizQuestion
               question={currentQuestion}
               options={options}
               onAnswer={handleAnswer}
             />
+            {currentIndex > 0 && (
+              <button className="back-button" onClick={handleBack}>
+                &larr; Back
+              </button>
+            )}  
+          </>
           )}
         </div>
       </div>
