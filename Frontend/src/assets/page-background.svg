@@ -3,12 +3,12 @@
   <!-- Bottom half: MSU blue -->
   <rect width="100" height="100" fill="#0054a6" />
 
-  <!-- Top half: light gray, with curved bottom edge -->
+  <!-- Top area: white, smooth curved split -->
   <path
     d="M 0 0
        H 100
        V 58
-       C 75 38, 25 38, 0 58
+       C 75 44, 25 44, 0 58
        Z"
     fill="#ffffff"
   />
