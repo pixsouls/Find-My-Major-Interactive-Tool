@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { questions, options, type RiasecType } from '../data/types';
 import ExploreMajors from './ExploreMajors';
 import QuizCheckpoint from './QuizCheckpoint';
