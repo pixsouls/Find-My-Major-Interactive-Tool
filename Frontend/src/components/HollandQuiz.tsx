@@ -13,7 +13,7 @@ export default function HollandQuiz() {
   const [isCheckpoint, setIsCheckpoint] = useState(false);
 
   const currentQuestion = questions[currentIndex];
-  const questionsUntilCheckpoint = 2;
+  const questionsUntilCheckpoint = 6;
 
   // For checkpoint screen, show previous checkpoint numbers (e.g., 6/6)
   const displayIndex = isCheckpoint ? currentIndex : currentIndex + 1;
