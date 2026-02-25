@@ -53,7 +53,7 @@ export const questions: Question[] = [
   { id: 33, text: "I often think of unique or unconventional solutions.", type: "A" },
   { id: 34, text: "I thrive in roles where I can connect with others and assist them.", type: "S" },
   { id: 35, text: "I am willing to take risks to achieve a desired outcome.", type: "E" },
-  { id: 36, text: "I have set high standards for the work I produce.", type: "C" },
+  { id: 36, text: "I have set high standards for the work I produce.", type: "C" }
 ];  
 
 // 2. Apply the interface here
