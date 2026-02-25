@@ -15,7 +15,9 @@
   --quiz-button-blue: #007aff;
 
   --page-photo-opacity: 0.18;
-  --page-photo: url('/denver.png');
+  --page-photo: url('/msu.jpeg');
+
+  --footer-height: 56px;
 }
 
 * {
@@ -62,14 +64,6 @@ body::after {
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
-  -webkit-mask-image: url('./assets/page-top-mask.svg');
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: cover;
-  mask-image: url('./assets/page-top-mask.svg');
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: cover;
 }
 
 h1, h2, h3, h4, h5, h6, p {
