@@ -58,9 +58,9 @@ export const questions: Question[] = [
 
 // 2. Apply the interface here
 export const options: Option[] = [
-  { label: 'Strongly Disagree', value: 1, color: '#ef4444' },
-  { label: 'Disagree', value: 2, color: '#f87171' },
-  { label: 'Neutral', value: 3, color: '#94a3b8' },
-  { label: 'Agree', value: 4, color: '#4ade80' },
-  { label: 'Strongly Agree', value: 5, color: '#22c55e' },
+  { label: 'Strongly Disagree', value: 1, color: '#002e57' },
+  { label: 'Disagree', value: 2, color: '#002e57' },
+  { label: 'Neutral', value: 3, color: '#002e57' },
+  { label: 'Agree', value: 4, color: '#002e57' },
+  { label: 'Strongly Agree', value: 5, color: '#002e57' },
 ];
