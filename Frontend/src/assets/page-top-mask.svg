@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+  <!-- Mask: white = show, black = hide -->
+  <rect width="100" height="100" fill="#000" />
+  <path
+    d="M 0 0
+       H 100
+       V 58
+       C 75 38, 25 38, 0 58
+       Z"
+    fill="#fff"
+  />
+</svg>
