@@ -119,7 +119,7 @@ export default function HollandQuiz() {
         
         <div className="mod-card" style={{ borderRadius: '12px' }}>
           <h2>Evaluation Complete</h2>
-          <p>Primary Archetype: <strong style={{ color: 'var(--accent-primary)' }}>{topTrait}</strong></p>
+          <p>Primary Archetype: <strong style={{ color: 'var(--msu-red)' }}>{topTrait}</strong></p>
         </div>
       </div>
     );
