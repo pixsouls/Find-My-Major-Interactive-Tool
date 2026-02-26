@@ -17,7 +17,6 @@ export const QuizQuestion = ({ question, options, onAnswer }: Props) => {
           <button
             key={opt.value}
             className="option-btn"
-            style={{ backgroundColor: opt.color }}
             onClick={() => onAnswer(opt.value)}
           >
             {opt.label}

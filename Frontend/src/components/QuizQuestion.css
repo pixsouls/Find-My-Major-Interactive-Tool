@@ -4,7 +4,7 @@
 .quiz-question-inner {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem; /* Reduced from 1rem */
+  gap: 0.5rem; 
   width: 100%;
 }
 
@@ -24,28 +24,35 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 100%; /* Fixed your "10 0%" typo */
+  width: 100%; 
 }
 
 /* Option Buttons */
 .option-btn {
   padding: 0.75rem;
   border-radius: 8px;
-  border: none;
+  background: var(--quiz-button-blue);
+  border: 1px solid var(--quiz-button-blue);
   color: white;
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
   text-align: center;
-  transition: transform 0.1s ease, filter 0.2s ease;
+  transition: transform 0.1s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .option-btn:hover {
-  filter: brightness(1.1);
+  background: var(--msu-red);
+  border-color: var(--msu-red);
   transform: translateY(-2px);
 }
 
 .option-btn:active {
   transform: translateY(0);
   filter: brightness(0.95);
+}
+
+.option-btn:focus-visible {
+  outline: 2px solid var(--msu-red);
+  outline-offset: 2px;
 }

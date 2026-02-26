@@ -7,6 +7,17 @@
   --accent-secondary: #0088ff;
   --text-main: #ffffff;
   --text-dim: #888888;
+
+  --msu-blue: #0054a6;
+  --msu-blue-dark: #003a70;
+  --msu-red: #d50032;
+
+  --quiz-button-blue: #007aff;
+
+  --page-photo-opacity: 0.18;
+  --page-photo: url('/msu.jpeg');
+
+  --footer-height: 56px;
 }
 
 * {
@@ -23,41 +34,43 @@ html, body, #root {
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  color: var(--text-main);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
-  color: var(--text-main);
+  position: relative;
+  isolation: isolate;
   padding-top: 110px; /* keeps your header spacing */
-  
-  /* Global background image with dark overlay */
-  background: 
-    linear-gradient(rgba(15, 15, 15, 0.3), rgba(15, 15, 15, 0.3)),
-    url('./assets/msu.png'); /* adjust path if needed */
-  background-size: cover;
-  background-position: center;
+  background-color: transparent;
+}
+
+/* ===== BASE SVG BACKGROUND ===== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background-image: url('./assets/page-background.svg');
   background-repeat: no-repeat;
-  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
 }
 
-/* Dark transparent overlay */
-.overlay {
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.5); /* controls fade darkness */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
-  padding: 0;
-}
-
-/* ===== TOP STRIPE ===== */
+/* ===== PAGE PHOTO OVERLAY ===== */
 body::after {
-  content: "";
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: var(--page-photo-opacity);
+  background-image: var(--page-photo);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+/* ===== MSU HEADER STRIPE ===== */
+.header-stripe {
   position: fixed;
   top: 0;
   left: 0;
@@ -68,9 +81,8 @@ body::after {
   z-index: 999;
 }
 
-/* ===== MSU LOGO (TOP LEFT) ===== */
-body::before {
-  content: "";
+/* ===== MSU LOGO ===== */
+.msu-logo {
   position: fixed;
   top: 15px;
   left: 30px;
@@ -81,4 +93,9 @@ body::before {
   background-size: contain;
   background-position: center;
   z-index: 1000;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
 }

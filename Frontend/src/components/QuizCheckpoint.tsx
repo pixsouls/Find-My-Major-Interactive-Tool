@@ -37,16 +37,14 @@ export default function QuizCheckpoint({ scores, onContinue, onExplore }: QuizCh
 
       <div className="checkpoint-actions">
         <button
-            className="secondary-btn"
-            onClick={onExplore}
-            style={{ background: 'blue', color: 'white', padding: '10px' }}
+          className="secondary-btn explore-majors-btn"
+          onClick={onExplore}
         >
             EXPLORE MAJORS
         </button>
         <button
             className="primary-btn"
             onClick={onContinue}
-            style={{ background: 'green', color: 'white', padding: '10px' }}
         >
             CONTINUE QUIZ
         </button>

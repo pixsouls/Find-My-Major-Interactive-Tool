@@ -1,39 +1,61 @@
-/* Full page layout */
+/* Centered full page */
 .welcome-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 110px); /* accounts for header padding */
+  min-height: calc(100vh - 110px);
+  padding: 2rem;
 }
 
-/* Card styling */
+/* Single Card */
 .welcome-card {
-  background: rgba(0, 0, 0, 0.9); /* semi-transparent dark card */
-  padding: 2rem;
-  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 2.5rem;
+  border-radius: 14px;
   text-align: center;
-  color: #fff; /* global text color inside the card */
-  max-width: 500px;
-  width: 90%;
+  color: #fff;
+  max-width: 700px;
+  width: 95%;
+  animation: fadeIn 0.6s ease forwards;
 }
 
 /* Title */
 .welcome-title {
-  font-size: 2.5rem;
+  font-size: 2.7rem;
   margin-bottom: 1rem;
-  color: #fff; /* change to white for readability */
 }
 
-/* Subtitle */
+/* Intro Subtitle */
 .welcome-subtitle {
   font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: #ddd; /* light gray for subtle contrast */
+  margin-bottom: 1.5rem;
+  color: #ddd;
   line-height: 1.6;
+}
+
+/* Divider line */
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 2rem 0;
+}
+
+/* Section Title */
+.info-title {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+/* Description */
+.info-text {
+  color: #ddd;
+  line-height: 1.7;
+  margin-bottom: 1rem;
 }
 
 /* Button */
 .welcome-button {
+  margin-top: 2rem;
   padding: 0.8rem 2rem;
   font-size: 1rem;
   border: none;
@@ -47,4 +69,16 @@
 .welcome-button:hover {
   background-color: #2e59d9;
   transform: translateY(-2px);
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
