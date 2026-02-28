@@ -21,7 +21,7 @@
 
 /* Title */
 .welcome-title {
-  font-size: 2.7rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
 
@@ -60,7 +60,7 @@
   font-size: 1rem;
   border: none;
   border-radius: 8px;
-  background-color: #4e73df;
+  background-color: #2563eb;
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -69,6 +69,53 @@
 .welcome-button:hover {
   background-color: #2e59d9;
   transform: translateY(-2px);
+}
+
+/* Learn More Button */
+.learn-more-button {
+  background: none;
+  border: none;
+  color: #4e73df;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding: 0;
+}
+
+.learn-more-button:hover {
+  text-decoration: underline;
+}
+
+.learn-more-button-inline {
+  background: none;
+  border: none;
+  color: #4e73df;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0;
+  margin-left: 0.5rem; /* small space after the sentence */
+  font-size: 1rem;
+}
+
+.learn-more-button-inline:hover {
+  text-decoration: underline;
+}
+
+/* Expanded Section */
+.expanded-section {
+  margin-bottom: 1rem;
+}
+
+/* Holland List */
+.holland-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+.holland-list li {
+  margin-bottom: 0.5rem;
+  color: #ddd;
 }
 
 /* Fade animation */
@@ -81,4 +128,5 @@
     opacity: 1;
     transform: translateY(0);
   }
+  
 }
