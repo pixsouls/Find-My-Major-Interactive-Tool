@@ -5,6 +5,7 @@
   background-color: #f8fafc;
   color: #1e293b;
   font-family: system-ui, -apple-system, sans-serif;
+  overflow: hidden;
 }
 
 .app-header {
