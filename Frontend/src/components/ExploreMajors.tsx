@@ -37,8 +37,7 @@ export default function ExploreMajors({ scores, onBack }: ExploreMajorsProps) {
   return (
     <div className="explore-majors">
       <div className="explore-header">
-        <span className="type-tag">EXPLORE</span>
-        <h2>Explore Majors</h2>
+        <span className="type-tag">EXPLORE YOUR PATH</span>
         <p className="explore-subtitle">
           Based on your current answers, your top traits are{' '}
           <strong>{topTraits.map(t => traitNames[t]).join(' · ')}</strong>.
