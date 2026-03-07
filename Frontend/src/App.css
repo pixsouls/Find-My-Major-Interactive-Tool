@@ -2,9 +2,10 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #00447C; /* Blue page background */
+  background-color: #f8fafc;
   color: #1e293b;
   font-family: system-ui, -apple-system, sans-serif;
+  overflow: hidden;
 }
 
 .app-header {
@@ -15,7 +16,7 @@
 .app-title {
   font-size: 2.5rem;
   margin: 0;
-  color: white;
+  color: #2563eb;
 }
 
 .app-main {
@@ -32,7 +33,7 @@
   max-width: 500px;
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   border: 1px solid #e2e8f0;
 }
 
@@ -47,7 +48,7 @@
 
 .progress-bar {
   height: 100%;
-  background-color: #16c943;
+  background-color: #d50032;
   transition: width 0.4s ease;
 }
 
@@ -73,14 +74,16 @@
   transform: translateY(-1px);
 }
 
-/* Make ALL answer options blue */
+.app-shell {
+  min-height: 100vh;
+  padding-bottom: var(--footer-height);
+  display: flex;
+  flex-direction: column;
+}
 
-.option-btn,
-.option-btn.strongly-disagree,
-.option-btn.disagree,
-.option-btn.neutral,
-.option-btn.agree,
-.option-btn.strongly-agree {
-  background-color: #00447C !important;
-  color: white;
+.app-content {
+  flex: 1;
+  display: flex;
+  align-items: start;
+  justify-content: center;
 }
