@@ -77,6 +77,12 @@ export default function HollandQuiz() {
   };
 
   const handleContinue = () => {
+
+    if (questionCount >= 36){
+      setShowResults(true);
+      return;
+    }
+
     setIsCheckpoint(false);
     
     const nextQuestion = selectNextQuestion(questions, askedQuestionIds, scores);
@@ -153,6 +159,7 @@ export default function HollandQuiz() {
               scores={scores}
               onContinue={handleContinue}
               onExplore={handleExploreMajors}
+              isFinalCheckpoint={questionCount === 36}
             />
           ) : (
             <QuizQuestion 

@@ -5,9 +5,10 @@ interface QuizCheckpointProps {
   scores: Record<RiasecType, number>;
   onContinue: () => void;
   onExplore: () => void;
+  isFinalCheckpoint: boolean; // Final Checkpoint
 }
 
-export default function QuizCheckpoint({ scores, onContinue, onExplore }: QuizCheckpointProps) {
+export default function QuizCheckpoint({ scores, onContinue, onExplore, isFinalCheckpoint }: QuizCheckpointProps) {
   // Find the current highest scoring trait
   const leadingTrait = Object.entries(scores).reduce((a, b) => (a[1] > b[1] ? a : b))[0] as RiasecType;
 
@@ -42,13 +43,23 @@ export default function QuizCheckpoint({ scores, onContinue, onExplore }: QuizCh
         >
             EXPLORE MAJORS
         </button>
+
+        {isFinalCheckpoint ? ( 
+        <button
+          className="primary-btn"
+          onClick={onContinue}
+        >
+          SHOW QUIZ RESULTS
+        </button>
+      ) : (
         <button
             className="primary-btn"
             onClick={onContinue}
         >
             CONTINUE QUIZ
         </button>
-        </div>
+        )}
+      </div>
     </div>
   );
 }
