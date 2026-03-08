@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HollandQuiz from './components/HollandQuiz';
 import Welcome from "./components/Welcome";
 import FooterBar from "./components/FooterBar";
+import SavedResults from "./components/SavedResults"; 
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/quiz" element={<HollandQuiz />} />
+            <Route path="/results/:id" element={<SavedResults />} />  {/* ← ADD THIS ROUTE */}
           </Routes>
         </main>
 
@@ -31,4 +33,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;   
