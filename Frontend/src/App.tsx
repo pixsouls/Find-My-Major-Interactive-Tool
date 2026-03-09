@@ -19,7 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/quiz" element={<HollandQuiz />} />
-            <Route path="/results/:id" element={<SavedResults />} />  {/* ← ADD THIS ROUTE */}
+            <Route path="/results" element={<SavedResults />} /> 
           </Routes>
         </main>
 

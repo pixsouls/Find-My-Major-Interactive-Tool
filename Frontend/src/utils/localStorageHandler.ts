@@ -14,9 +14,12 @@ export function saveScores(scores: Record<RiasecType, number>): void {
 }
 
 // load holland scores
-export function loadScores(): Record<RiasecType,number> | null {
+export function loadScores(): Record<RiasecType, number> | null {
   const data = localStorage.getItem(STORAGE_KEYS.QUIZ_SCORES);
-  return data ? JSON.parse(data) : null;
+  console.log('🔍 loadScores - raw data from localStorage:', data);
+  const parsed = data ? JSON.parse(data) : null;
+  console.log('🔍 loadScores - parsed data:', parsed);
+  return parsed;
 }
 
 // Delete all data
