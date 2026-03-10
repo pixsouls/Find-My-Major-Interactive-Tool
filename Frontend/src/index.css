@@ -11,6 +11,13 @@
   --msu-blue: #0054a6;
   --msu-blue-dark: #003a70;
   --msu-red: #d50032;
+
+  --quiz-button-blue: #007aff;
+
+  --page-photo-opacity: 0.18;
+  --page-photo: url('/msu.jpeg');
+
+  --footer-height: 56px;
 }
 
 * {
@@ -27,11 +34,37 @@ html, body, #root {
 }
 
 body {
-  background-color: #002F4E;
+  background-color: transparent;
   color: var(--text-main);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  isolation: isolate;
 } 
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image: url('./assets/page-background.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: var(--page-photo-opacity);
+  background-image: var(--page-photo);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
 
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
