@@ -19,6 +19,13 @@ export default function HollandQuiz() {
 
   const questionsUntilCheckpoint = 12;
   
+  // email
+  const [email, setEmail] = useState('');
+  const [emailSent, setEmailSent] = useState(false);
+
+  const currentQuestion = questions[currentIndex];
+  const questionsUntilCheckpoint = 6;
+
   // For checkpoint screen, show previous checkpoint numbers (e.g., 6/6)
   const displayIndex = isCheckpoint ? questionCount : questionCount + 1;
   const displayCheckpoint = isCheckpoint 
@@ -97,6 +104,29 @@ export default function HollandQuiz() {
     setShowExploreMajors(false);
   };
 
+  // email 
+  const sendEmail = async (topTrait: string) => {
+    try {
+      const response = await fetch('http://localhost:5000/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: email,
+          subject: 'Your Holland Code Results',
+          text: `Your top trait is ${topTrait}.`
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
+      alert('Email sent successfully!');
+      setEmailSent(false);
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+  };
+
   if (showResults) {
     const topTrait = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
     
@@ -120,6 +150,60 @@ export default function HollandQuiz() {
         <div className="mod-card" style={{ borderRadius: '12px' }}>
           <h2>Evaluation Complete</h2>
           <p>Primary Archetype: <strong style={{ color: 'var(--msu-red)' }}>{topTrait}</strong></p>
+          <p>Primary Archetype: <strong style={{ color: 'var(--accent-primary)' }}>{topTrait}</strong></p>
+
+          {/* email */}
+          {!emailSent && (
+            <button
+              onClick={() => setEmailSent(true)}
+              style={{
+             marginTop: "15px",
+                padding: "10px",
+                width: "100%",
+                borderRadius: "6px",
+                backgroundColor: "var(--accent-primary)",
+                color: "white",
+                border: "none",
+                cursor: "pointer"
+              }}
+            >
+              Save Results
+            </button>
+          )}
+
+          {emailSent && (
+            <div className="email-section" style={{ marginTop: "15px" }}>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                style={{
+                  padding: '8px',
+                  borderRadius: '4px',
+                  border: '1px solid #ccc',
+                  marginRight: '8px',
+                  width: '250px'
+                }}
+              />
+
+              <button 
+                onClick={() => sendEmail(topTrait)}
+                style={{
+                  marginTop: "10px",
+                  padding: "10px",
+                  width: "100%",
+                  borderRadius: "6px",
+                  backgroundColor: "var(--accent-primary)",
+                  color: "white",
+                  border: "none",
+                  cursor: "pointer"
+                }}
+              >
+                Send Results
+              </button>
+            </div>
+          )}
         </div>
       </div>
     );
