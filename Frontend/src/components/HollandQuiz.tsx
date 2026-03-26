@@ -5,6 +5,7 @@ import QuizCheckpoint from './QuizCheckpoint';
 import { QuizQuestion } from './QuizQuestion';
 import { selectNextQuestion } from '../algorithms/questionSelector';
 import './HollandQuiz.css';
+import './Email.css';
 
 export default function HollandQuiz() {
   const [currentQuestion, setCurrentQuestion] = useState(questions[0]); // Start with first question
@@ -17,15 +18,12 @@ export default function HollandQuiz() {
   const [showExploreMajors, setShowExploreMajors] = useState(false);
   const [questionCount, setQuestionCount] = useState(0);
 
+  // Email state
+  const [emailSent, setEmailSent] = useState(false);
+  const [email, setEmail] = useState('');
+
   const questionsUntilCheckpoint = 12;
   
-  // email
-  const [email, setEmail] = useState('');
-  const [emailSent, setEmailSent] = useState(false);
-
-  const currentQuestion = questions[currentIndex];
-  const questionsUntilCheckpoint = 6;
-
   // For checkpoint screen, show previous checkpoint numbers (e.g., 6/6)
   const displayIndex = isCheckpoint ? questionCount : questionCount + 1;
   const displayCheckpoint = isCheckpoint 
@@ -112,7 +110,7 @@ export default function HollandQuiz() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           to: email,
-          subject: 'Your Holland Code Results',
+          subject: 'Find My Major Result',
           text: `Your top trait is ${topTrait}.`
         })
       });
@@ -122,6 +120,7 @@ export default function HollandQuiz() {
       }
       alert('Email sent successfully!');
       setEmailSent(false);
+      setEmail('');
     } catch (error) {
       console.error('Error sending email:', error);
     }
@@ -150,56 +149,26 @@ export default function HollandQuiz() {
         <div className="mod-card" style={{ borderRadius: '12px' }}>
           <h2>Evaluation Complete</h2>
           <p>Primary Archetype: <strong style={{ color: 'var(--msu-red)' }}>{topTrait}</strong></p>
-          <p>Primary Archetype: <strong style={{ color: 'var(--accent-primary)' }}>{topTrait}</strong></p>
 
           {/* email */}
           {!emailSent && (
-            <button
-              onClick={() => setEmailSent(true)}
-              style={{
-             marginTop: "15px",
-                padding: "10px",
-                width: "100%",
-                borderRadius: "6px",
-                backgroundColor: "var(--accent-primary)",
-                color: "white",
-                border: "none",
-                cursor: "pointer"
-              }}
-            >
+            <button className="save-results-button" onClick={() => setEmailSent(true)}>
               Save Results
             </button>
           )}
 
           {emailSent && (
-            <div className="email-section" style={{ marginTop: "15px" }}>
+            <div className="email-section">
               <input
                 type="email"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{
-                  padding: '8px',
-                  borderRadius: '4px',
-                  border: '1px solid #ccc',
-                  marginRight: '8px',
-                  width: '250px'
-                }}
+                className="email-input"
               />
 
-              <button 
-                onClick={() => sendEmail(topTrait)}
-                style={{
-                  marginTop: "10px",
-                  padding: "10px",
-                  width: "100%",
-                  borderRadius: "6px",
-                  backgroundColor: "var(--accent-primary)",
-                  color: "white",
-                  border: "none",
-                  cursor: "pointer"
-                }}
-              >
+              <button className="email-button"
+                onClick={() => sendEmail(topTrait)}>
                 Send Results
               </button>
             </div>
@@ -233,11 +202,37 @@ export default function HollandQuiz() {
           {showExploreMajors ? (
             <ExploreMajors scores={scores} onBack={handleBackFromExplore} />
           ) : isCheckpoint ? (
+            <>
             <QuizCheckpoint
               scores={scores}
               onContinue={handleContinue}
               onExplore={handleExploreMajors}
             />
+
+            {/* email button for every checkpoint */}
+            {!emailSent && (
+              <button className="save-results-button"
+                onClick={() => setEmailSent(true)}>
+                Save Results
+              </button>
+            )}
+
+            {emailSent && (
+              <div className="email-section">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="email-input"/>
+                <button className="email-button"
+                  onClick={() => sendEmail(Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0])}>
+                  Send Results
+                </button>
+              </div>
+            )}
+            </>
+
           ) : (
             <QuizQuestion 
               question={currentQuestion} 
