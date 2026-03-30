@@ -4,7 +4,7 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3000; // Can be changed to whatever you need in dev
 
 app.use(cors());
 
@@ -25,4 +25,9 @@ app.get('/api/majors', (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
+});
+
+// Ping route for testing
+app.get('/ping', (req, res) => {
+  res.json({ message: 'pong' });
 });
