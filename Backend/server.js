@@ -83,12 +83,16 @@ app.post('/api/careers', (req, res) => {
     LIMIT 50
   `;
 
+  
+
   db.all(query, [], (err, rows) => {
     if (err) return res.status(500).json({ error: err.message });
     if (rows.length === 0) return res.status(404).json({ error: 'No careers found' });
+    console.log(rows);
     res.json(rows);
   });
 });
+
 
 // Start server
 app.listen(PORT, () => {
