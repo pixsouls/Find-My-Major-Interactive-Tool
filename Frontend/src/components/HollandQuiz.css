@@ -1,14 +1,13 @@
 /* src/components/HollandQuiz.css */
 
-
+/* Main container - fills viewport with dark background */
+/* Main container - centered content with dark background */
 .holland-quiz-container {
   width: 80vw;
   max-width: 600px;
   margin: 0 auto;
   padding: 2rem 1rem;
   display: flex;
-  justify-content: center;
-  /* align-items: start; */
   flex-direction: column;
   gap: 0;
 }
@@ -19,7 +18,7 @@
   border: 1px solid var(--border-color);
   border-bottom: none;
   padding: 1rem 1.5rem;
-  border-radius: 8px 8px 0 0;
+  border-radius: 12px 12px 0 0;
 }
 
 .stat {
@@ -48,7 +47,6 @@
 
 .progress-fill {
   height: 100%;
-  border-radius: 4px;
   background: var(--accent-primary);
   transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 0 10px var(--accent-primary);
@@ -58,8 +56,6 @@
 .mod-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
   padding: 1.5rem 1rem;
   text-align: center;
   display: flex;
@@ -67,9 +63,6 @@
   justify-content: flex-start;
   max-height: calc(100vh - 7rem); /* More flexible using rem units */
   overflow-y: auto;
-  border-radius: 0 0 12px 12px;
-
-  position: relative; 
 }
 
 /* Card inner content wrapper */
@@ -89,4 +82,3 @@
   font-size: 0.8rem;
   letter-spacing: 1px;
 }
-

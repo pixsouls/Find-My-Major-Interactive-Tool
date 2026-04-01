@@ -8,10 +8,8 @@ interface QuizCheckpointProps {
 }
 
 export default function QuizCheckpoint({ scores, onContinue, onExplore }: QuizCheckpointProps) {
-  // Find the current highest scoring trait
   const leadingTrait = Object.entries(scores).reduce((a, b) => (a[1] > b[1] ? a : b))[0] as RiasecType;
 
-  // Map the single letter to the full name
   const traitNames: Record<RiasecType, string> = {
     R: 'Realistic',
     I: 'Investigative',
@@ -22,15 +20,26 @@ export default function QuizCheckpoint({ scores, onContinue, onExplore }: QuizCh
   };
 
   return (
-    <div className="checkpoint-card">
-      <div className="checkpoint-header">
-        <span className="type-tag">CHECKPOINT</span>
-        <h2>Progress Report</h2>
-      </div>
+    <section
+      className="checkpoint-card"
+      aria-labelledby="checkpoint-title"
+      aria-live="polite"
+    >
+      <header className="checkpoint-header">
+        <span className="type-tag" aria-hidden="true">CHECKPOINT</span>
+        <h2 id="checkpoint-title">Progress Report</h2>
+      </header>
 
       <div className="results-preview">
-        <p>Based on your progress, you're showing a strong affinity for:</p>
-        <div className="leading-badge">
+        <p id="checkpoint-description">
+          Based on your progress, you're showing a strong affinity for:
+        </p>
+
+        <div
+          className="leading-badge"
+          role="status"
+          aria-describedby="checkpoint-description"
+        >
           {traitNames[leadingTrait]}
         </div>
       </div>
@@ -39,16 +48,19 @@ export default function QuizCheckpoint({ scores, onContinue, onExplore }: QuizCh
         <button
           className="secondary-btn explore-majors-btn"
           onClick={onExplore}
+          aria-label="Explore majors based on your current results"
         >
-            EXPLORE MAJORS
+          Explore Majors
         </button>
+
         <button
-            className="primary-btn"
-            onClick={onContinue}
+          className="primary-btn"
+          onClick={onContinue}
+          aria-label="Continue to the next quiz questions"
         >
-            CONTINUE QUIZ
+          Continue Quiz
         </button>
-        </div>
-    </div>
+      </div>
+    </section>
   );
 }
