@@ -67,6 +67,9 @@
   justify-content: flex-start;
   max-height: calc(100vh - 7rem); /* More flexible using rem units */
   overflow-y: auto;
+  border-radius: 0 0 12px 12px;
+
+  position: relative; 
 }
 
 /* Card inner content wrapper */

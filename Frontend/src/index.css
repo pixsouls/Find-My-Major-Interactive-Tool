@@ -1,29 +1,18 @@
 /* src/index.css */
 :root {
-  --bg-card: #fbfbfb;
-  --bg-input: #cccccc;
-  --border-color: #c0c0c0;
-  --accent-primary: #0fc050;
-  --accent-secondary: #0088ff;
-  --text-main: #30416d;
-  --text-dim: #4f4f4f;
-
-  --msu-blue: #0054a6;
-  --msu-blue-dark: #003a70;
-  --msu-red: #d50032;
-
-  --quiz-button-blue: #007aff;
-
-  --page-photo-opacity: 0.18;
-  --page-photo: url('/msu.jpeg');
-
-  --footer-height: 56px;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --border-color: #333333;
+  --accent-primary: #002F4E;
+  --accent-secondary: #C8102E;
+  --text-main: #000000;
+  --text-dim: #444444;
 }
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box  ;
 }
 
 html, body, #root {
@@ -31,63 +20,44 @@ html, body, #root {
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* removes scroll bar */
 }
 
 body {
+  background-color: #002F4E;
   color: var(--text-main);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
-  position: relative;
-  isolation: isolate;
-  padding-top: 110px; /* keeps your header spacing */
-  background-color: transparent;
-}
-
-/* BASE SVG BACKGROUND */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -3;
-  background-image: url('./assets/page-background.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-/* PAGE PHOTO OVERLAY */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
-  opacity: var(--page-photo-opacity);
-  background-image: var(--page-photo);
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
-}
-
-/* MSU HEADER STRIPE */
-.header-stripe {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(to right, #ffffff, #f3f3f3);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  z-index: 999;
-
-  display: flex;
-  justify-content: center;   /* horizontal center */
-  align-items: center;       /* vertical center */
-  position: fixed;
-}
+} 
 
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
   padding: 0;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #fcfcfc; /* Light footer stripe */
+  z-index: 999;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  bottom: -10px;
+  left: 0px;
+
+  width: 160px;
+  height: 80px;
+
+  background-image: url("/msu-logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  z-index: 1000;
 }
