@@ -26,38 +26,46 @@ export default function QuizCheckpoint({ scores, onContinue, onExplore, isFinalC
     <div className="checkpoint-card">
       <div className="checkpoint-header">
         <span className="type-tag">CHECKPOINT</span>
-        <h2>Progress Report</h2>
+        <h2>{isFinalCheckpoint ? "Assessment Complete" : "Progress Report"}</h2>
       </div>
 
       <div className="results-preview">
-        <p>Based on your progress, you're showing a strong affinity for:</p>
-        <div className="leading-badge">
-          {traitNames[leadingTrait]}
-        </div>
+        {isFinalCheckpoint ? (
+          <p>You’ve successfully completed the assessment! Click below to view your full results.</p>
+        ) : (
+          <>
+            <p>Based on your progress, you're showing a strong affinity for:</p>
+            <div className="leading-badge">
+              {traitNames[leadingTrait]}
+            </div>
+          </>
+        )}
       </div>
 
       <div className="checkpoint-actions">
-        <button
-          className="secondary-btn explore-majors-btn"
-          onClick={onExplore}
-        >
+        {!isFinalCheckpoint && ( // only show during mid checkpoints
+          <button
+            className="secondary-btn explore-majors-btn"
+            onClick={onExplore}
+          >
             EXPLORE MAJORS
-        </button>
+          </button>
+        )}
 
         {isFinalCheckpoint ? ( 
-        <button
-          className="primary-btn"
-          onClick={onContinue}
-        >
-          SHOW QUIZ RESULTS
-        </button>
-      ) : (
-        <button
+          <button
             className="primary-btn"
             onClick={onContinue}
-        >
+          >
+            VIEW FULL RESULTS
+          </button>
+        ) : (
+          <button
+            className="primary-btn"
+            onClick={onContinue}
+          >
             CONTINUE QUIZ
-        </button>
+          </button>
         )}
       </div>
     </div>
