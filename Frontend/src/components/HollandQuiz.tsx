@@ -6,6 +6,16 @@ import { QuizQuestion } from './QuizQuestion';
 import { selectNextQuestion } from '../algorithms/questionSelector';
 import './HollandQuiz.css';
 
+type QuizSnapshot = {
+  currentQuestion: (typeof questions)[number];
+  askedQuestionIds: number[];
+  scores: Record<RiasecType, number>;
+  showResults: boolean;
+  isCheckpoint: boolean;
+  showExploreMajors: boolean;
+  questionCount: number;
+};
+
 export default function HollandQuiz() {
   const [currentQuestion, setCurrentQuestion] = useState(questions[0]); // Start with first question
   const [askedQuestionIds, setAskedQuestionIds] = useState<number[]>([]);
@@ -16,6 +26,7 @@ export default function HollandQuiz() {
   const [isCheckpoint, setIsCheckpoint] = useState(false);
   const [showExploreMajors, setShowExploreMajors] = useState(false);
   const [questionCount, setQuestionCount] = useState(0);
+  const [history, setHistory] = useState<QuizSnapshot[]>([]);
 
   const questionsUntilCheckpoint = 12;
   
@@ -28,7 +39,53 @@ export default function HollandQuiz() {
   // Progress bar should show completed questions out of checkpoint
   const progressPercentage = (questionCount / displayCheckpoint) * 100;
 
+  const canGoBack = history.length > 0 && !showExploreMajors;
+
+  const handleRestart = () => {
+    setHistory([]);
+    setCurrentQuestion(questions[0]);
+    setAskedQuestionIds([]);
+    setScores({ R: 0, I: 0, A: 0, S: 0, E: 0, C: 0 });
+    setShowResults(false);
+    setIsCheckpoint(false);
+    setShowExploreMajors(false);
+    setQuestionCount(0);
+  };
+
+  const handleBack = () => {
+    setHistory((prev) => {
+      if (prev.length === 0) return prev;
+
+      const snapshot = prev[prev.length - 1];
+
+      setCurrentQuestion(snapshot.currentQuestion);
+      setAskedQuestionIds(snapshot.askedQuestionIds);
+      setScores(snapshot.scores);
+      setShowResults(snapshot.showResults);
+      setIsCheckpoint(snapshot.isCheckpoint);
+      setShowExploreMajors(snapshot.showExploreMajors);
+      setQuestionCount(snapshot.questionCount);
+
+      return prev.slice(0, -1);
+    });
+  };
+
+  const pushSnapshot = () => {
+    const snapshot: QuizSnapshot = {
+      currentQuestion,
+      askedQuestionIds,
+      scores,
+      showResults,
+      isCheckpoint,
+      showExploreMajors,
+      questionCount
+    };
+    setHistory((prev) => [...prev, snapshot]);
+  };
+
   const handleAnswer = (weight: number) => {
+    pushSnapshot();
+
     const weightMap: Record<number, number> = {
       1: -2,  // Strongly Disagree
       2: -1,  // Disagree
@@ -77,6 +134,8 @@ export default function HollandQuiz() {
   };
 
   const handleContinue = () => {
+    pushSnapshot();
+
     setIsCheckpoint(false);
     
     const nextQuestion = selectNextQuestion(questions, askedQuestionIds, scores);
@@ -105,6 +164,15 @@ export default function HollandQuiz() {
         {/* Progress Header */}
         <div className="canvas-header">
           <div className="stat">
+            <button
+              type="button"
+              className="quiz-back-btn"
+              onClick={handleBack}
+              disabled={!canGoBack}
+              aria-label="Go back to the previous step"
+            >
+              Back
+            </button>
             <span className="label">
               QUESTION {questionCount} / {questionCount}
             </span>
@@ -114,12 +182,22 @@ export default function HollandQuiz() {
                 style={{ width: '100%' }} 
               />
             </div>
+
+            <button
+              type="button"
+              className="quiz-restart-btn"
+              onClick={handleRestart}
+              aria-label="Restart the quiz"
+              title="Restart"
+            >
+              <span aria-hidden="true">↺</span>
+            </button>
           </div>
         </div>
         
         <div className="mod-card" style={{ borderRadius: '12px' }}>
           <h2>Evaluation Complete</h2>
-          <p>Primary Archetype: <strong style={{ color: 'var(--msu-red)' }}>{topTrait}</strong></p>
+          <p>Primary Archetype: <strong style={{ color: 'var(--accent-primary)' }}>{topTrait}</strong></p>
         </div>
       </div>
     );
@@ -131,6 +209,15 @@ export default function HollandQuiz() {
       {/* Progress Header */}
       <div className="canvas-header">
         <div className="stat">
+          <button
+            type="button"
+            className="quiz-back-btn"
+            onClick={handleBack}
+            disabled={!canGoBack}
+            aria-label="Go back to the previous question"
+          >
+            Back
+          </button>
           <span className="label">
             QUESTION {displayIndex} / {displayCheckpoint}
           </span>
@@ -140,6 +227,16 @@ export default function HollandQuiz() {
               style={{ width: `${progressPercentage}%` }} 
             />
           </div>
+
+          <button
+            type="button"
+            className="quiz-restart-btn"
+            onClick={handleRestart}
+            aria-label="Restart the quiz"
+            title="Restart"
+          >
+            <span aria-hidden="true">↺</span>
+          </button>
         </div>
       </div>
 

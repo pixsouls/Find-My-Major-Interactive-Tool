@@ -1,14 +1,13 @@
 /* src/components/HollandQuiz.css */
 
-
+/* Main container - fills viewport with dark background */
+/* Main container - centered content with dark background */
 .holland-quiz-container {
   width: 80vw;
   max-width: 600px;
   margin: 0 auto;
   padding: 2rem 1rem;
   display: flex;
-  justify-content: center;
-  /* align-items: start; */
   flex-direction: column;
   gap: 0;
 }
@@ -19,7 +18,7 @@
   border: 1px solid var(--border-color);
   border-bottom: none;
   padding: 1rem 1.5rem;
-  border-radius: 8px 8px 0 0;
+  border-radius: 12px 12px 0 0;
 }
 
 .stat {
@@ -27,6 +26,60 @@
   align-items: center;
   gap: 12px;
   width: 100%;
+}
+
+.quiz-back-btn {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 8px;
+  padding: 0.45rem 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.quiz-restart-btn {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 999px;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  cursor: pointer;
+  flex: 0 0 auto;
+  line-height: 1;
+}
+
+.quiz-restart-btn:hover {
+  border-color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.quiz-restart-btn:focus-visible {
+  outline: 2px solid var(--msu-red);
+  outline-offset: 2px;
+}
+
+.quiz-back-btn:hover:enabled {
+  border-color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.quiz-back-btn:focus-visible {
+  outline: 2px solid var(--msu-red);
+  outline-offset: 2px;
+}
+
+.quiz-back-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .label {
@@ -48,7 +101,6 @@
 
 .progress-fill {
   height: 100%;
-  border-radius: 4px;
   background: var(--accent-primary);
   transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 0 10px var(--accent-primary);
@@ -58,8 +110,6 @@
 .mod-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
   padding: 1.5rem 1rem;
   text-align: center;
   display: flex;
@@ -86,4 +136,3 @@
   font-size: 0.8rem;
   letter-spacing: 1px;
 }
-

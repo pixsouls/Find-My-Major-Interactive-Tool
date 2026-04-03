@@ -31,28 +31,26 @@
 .option-btn {
   padding: 0.75rem;
   border-radius: 8px;
-  background: var(--msu-blue-dark);
-  border: 1px solid var(--msu-blue-dark);
-  color: var(--text-main);
+  background: var(--quiz-button-blue);
+  border: 1px solid var(--quiz-button-blue);
+  color: white;
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
   text-align: center;
-  transition: transform 0.1s ease, background 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.1s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .option-btn:hover {
-  border-color: var(--msu-blue);
-  background: var(--bg-card);
-  color: var(--text-main);
-  border: 1px solid var(--msu-blue-dark);
+  background: var(--msu-red);
+  border-color: var(--msu-red);
   transform: translateY(-2px);
 }
 
-/* .option-btn:active {
+.option-btn:active {
   transform: translateY(0);
   filter: brightness(0.95);
-} */
+}
 
 .option-btn:focus-visible {
   outline: 2px solid var(--msu-red);

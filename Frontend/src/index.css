@@ -1,12 +1,12 @@
 /* src/index.css */
 :root {
-  --bg-card: #fbfbfb;
-  --bg-input: #cccccc;
-  --border-color: #c0c0c0;
-  --accent-primary: #0fc050;
+  --bg-card: #1a1a1a;
+  --bg-input: #2a2a2a;
+  --border-color: #333333;
+  --accent-primary: #00ffcc;
   --accent-secondary: #0088ff;
-  --text-main: #30416d;
-  --text-dim: #4f4f4f;
+  --text-main: #ffffff;
+  --text-dim: #888888;
 
   --msu-blue: #0054a6;
   --msu-blue-dark: #003a70;
@@ -23,7 +23,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box  ;
 }
 
 html, body, #root {
@@ -35,56 +35,36 @@ html, body, #root {
 }
 
 body {
+  background-color: transparent;
   color: var(--text-main);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   position: relative;
   isolation: isolate;
-  padding-top: 110px; /* keeps your header spacing */
-  background-color: transparent;
-}
+} 
 
-/* BASE SVG BACKGROUND */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: -3;
+  z-index: -2;
   background-image: url('./assets/page-background.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-/* PAGE PHOTO OVERLAY */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: -1;
   pointer-events: none;
   opacity: var(--page-photo-opacity);
   background-image: var(--page-photo);
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
-}
-
-/* MSU HEADER STRIPE */
-.header-stripe {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(to right, #ffffff, #f3f3f3);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  z-index: 999;
-
-  display: flex;
-  justify-content: center;   /* horizontal center */
-  align-items: center;       /* vertical center */
-  position: fixed;
 }
 
 h1, h2, h3, h4, h5, h6, p {
