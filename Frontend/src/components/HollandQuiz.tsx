@@ -41,6 +41,17 @@ export default function HollandQuiz() {
 
   const canGoBack = history.length > 0 && !showExploreMajors;
 
+  const handleRestart = () => {
+    setHistory([]);
+    setCurrentQuestion(questions[0]);
+    setAskedQuestionIds([]);
+    setScores({ R: 0, I: 0, A: 0, S: 0, E: 0, C: 0 });
+    setShowResults(false);
+    setIsCheckpoint(false);
+    setShowExploreMajors(false);
+    setQuestionCount(0);
+  };
+
   const handleBack = () => {
     setHistory((prev) => {
       if (prev.length === 0) return prev;
@@ -171,6 +182,16 @@ export default function HollandQuiz() {
                 style={{ width: '100%' }} 
               />
             </div>
+
+            <button
+              type="button"
+              className="quiz-restart-btn"
+              onClick={handleRestart}
+              aria-label="Restart the quiz"
+              title="Restart"
+            >
+              <span aria-hidden="true">↺</span>
+            </button>
           </div>
         </div>
         
@@ -206,6 +227,16 @@ export default function HollandQuiz() {
               style={{ width: `${progressPercentage}%` }} 
             />
           </div>
+
+          <button
+            type="button"
+            className="quiz-restart-btn"
+            onClick={handleRestart}
+            aria-label="Restart the quiz"
+            title="Restart"
+          >
+            <span aria-hidden="true">↺</span>
+          </button>
         </div>
       </div>
 
