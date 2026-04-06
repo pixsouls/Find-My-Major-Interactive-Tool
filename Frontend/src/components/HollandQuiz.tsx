@@ -156,6 +156,30 @@ export default function HollandQuiz() {
     setShowExploreMajors(false);
   };
 
+  // email 
+  const sendEmail = async (topTrait: string) => {
+    try {
+      const response = await fetch('http://localhost:5000/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: email,
+          subject: 'Find My Major Result',
+          text: `Your top trait is ${topTrait}.`
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
+      alert('Email sent successfully!');
+      setEmailSent(false);
+      setEmail('');
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+  };
+
   if (showResults) {
     const topTrait = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
     
@@ -246,11 +270,37 @@ export default function HollandQuiz() {
           {showExploreMajors ? (
             <ExploreMajors scores={scores} onBack={handleBackFromExplore} />
           ) : isCheckpoint ? (
+            <>
             <QuizCheckpoint
               scores={scores}
               onContinue={handleContinue}
               onExplore={handleExploreMajors}
             />
+
+            {/* email button for every checkpoint */}
+            {!emailSent && (
+              <button className="save-results-button"
+                onClick={() => setEmailSent(true)}>
+                Save Results
+              </button>
+            )}
+
+            {emailSent && (
+              <div className="email-section">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="email-input"/>
+                <button className="email-button"
+                  onClick={() => sendEmail(Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0])}>
+                  Send Results
+                </button>
+              </div>
+            )}
+            </>
+
           ) : (
             <QuizQuestion 
               question={currentQuestion} 

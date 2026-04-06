@@ -5,11 +5,14 @@ interface QuizCheckpointProps {
   scores: Record<RiasecType, number>;
   onContinue: () => void;
   onExplore: () => void;
+  isFinalCheckpoint: boolean; // Final Checkpoint
 }
 
-export default function QuizCheckpoint({ scores, onContinue, onExplore }: QuizCheckpointProps) {
+export default function QuizCheckpoint({ scores, onContinue, onExplore, isFinalCheckpoint }: QuizCheckpointProps) {
+  // Find the current highest scoring trait
   const leadingTrait = Object.entries(scores).reduce((a, b) => (a[1] > b[1] ? a : b))[0] as RiasecType;
 
+  // Map the single letter to the full name
   const traitNames: Record<RiasecType, string> = {
     R: 'Realistic',
     I: 'Investigative',
@@ -20,26 +23,15 @@ export default function QuizCheckpoint({ scores, onContinue, onExplore }: QuizCh
   };
 
   return (
-    <section
-      className="checkpoint-card"
-      aria-labelledby="checkpoint-title"
-      aria-live="polite"
-    >
-      <header className="checkpoint-header">
-        <span className="type-tag" aria-hidden="true">CHECKPOINT</span>
-        <h2 id="checkpoint-title">Progress Report</h2>
-      </header>
+    <div className="checkpoint-card">
+      <div className="checkpoint-header">
+        <span className="type-tag">CHECKPOINT</span>
+        <h2>Progress Report</h2>
+      </div>
 
       <div className="results-preview">
-        <p id="checkpoint-description">
-          Based on your progress, you're showing a strong affinity for:
-        </p>
-
-        <div
-          className="leading-badge"
-          role="status"
-          aria-describedby="checkpoint-description"
-        >
+        <p>Based on your progress, you're showing a strong affinity for:</p>
+        <div className="leading-badge">
           {traitNames[leadingTrait]}
         </div>
       </div>
@@ -48,19 +40,26 @@ export default function QuizCheckpoint({ scores, onContinue, onExplore }: QuizCh
         <button
           className="secondary-btn explore-majors-btn"
           onClick={onExplore}
-          aria-label="Explore majors based on your current results"
         >
-          Explore Majors
+            EXPLORE MAJORS
         </button>
 
+        {isFinalCheckpoint ? ( 
         <button
           className="primary-btn"
           onClick={onContinue}
-          aria-label="Continue to the next quiz questions"
         >
-          Continue Quiz
+          SHOW QUIZ RESULTS
         </button>
+      ) : (
+        <button
+            className="primary-btn"
+            onClick={onContinue}
+        >
+            CONTINUE QUIZ
+        </button>
+        )}
       </div>
-    </section>
+    </div>
   );
 }
