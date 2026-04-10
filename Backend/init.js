@@ -1,6 +1,3 @@
-//
-// THIS FILE IS FOR SETTING UP THE DATA BASE WITH THE DATA IN /Backend/raw/
-//
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');

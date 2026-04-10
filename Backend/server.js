@@ -1,15 +1,19 @@
 import express from 'express';
 import cors from 'cors';
-import sqlite3 from 'sqlite3'
+import sqlite3 from 'sqlite3';
 import path from 'path';
 import { fileURLToPath } from 'url';
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import emailRouter from './utils/email.js';
+import dotenv from 'dotenv';
 
+dotenv.config();
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
-app.use(express.json()); // Needed to parse JSON request bodies
+app.use(express.json());
 
 // RIASEC element_id mappings
 const RIASEC = {
@@ -48,7 +52,6 @@ app.get('/ping', (req, res) => {
 app.get('/api/jobs/:soc_code', (req, res) => {
   const { soc_code } = req.params;
   console.log(`/api/jobs called with: ${soc_code}`);
-
   db.all(
     'SELECT * FROM interests WHERE onetsoc_code = ?',
     [soc_code],
@@ -62,16 +65,14 @@ app.get('/api/jobs/:soc_code', (req, res) => {
 
 // Get career recommendations from RIASEC scores
 app.post('/api/careers', (req, res) => {
-  const scores = req.body; // e.g. { R: 5, I: 6, A: 1, S: 2, E: 1, C: 3 }
+  const scores = req.body;
   console.log(`/api/careers called with scores:`, scores);
 
-  // Validate all keys are valid RIASEC letters
   const VALID_RIASEC = ['R', 'I', 'A', 'S', 'E', 'C'];
   if (!Object.keys(scores).every(k => VALID_RIASEC.includes(k))) {
     return res.status(400).json({ error: 'Invalid RIASEC scores' });
   }
 
-  // Sort by score descending, take top 2
   const [first, second] = Object.entries(scores)
     .sort((a, b) => b[1] - a[1])
     .map(([key]) => key);
@@ -85,8 +86,6 @@ app.post('/api/careers', (req, res) => {
     LIMIT 50
   `;
 
-  
-
   db.all(query, [], (err, rows) => {
     if (err) return res.status(500).json({ error: err.message });
     if (rows.length === 0) return res.status(404).json({ error: 'No careers found' });
@@ -95,6 +94,8 @@ app.post('/api/careers', (req, res) => {
   });
 });
 
+// Email routes
+app.use('/api/email', emailRouter);
 
 // Start server
 app.listen(PORT, () => {
