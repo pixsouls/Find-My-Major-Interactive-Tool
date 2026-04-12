@@ -8,7 +8,7 @@
 
 .checkpoint-header .type-tag {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: .7rem;
   font-weight: 900;
   letter-spacing: 2px;
   color: var(--accent-secondary);
