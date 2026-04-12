@@ -92,6 +92,21 @@ app.post('/api/careers', (req, res) => {
     console.log(rows);
     res.json(rows);
   });
+
+  query = `
+  INSERT OR IGNORE INTO F2Collected (onetsoc_code, title, R, I, A, S, E, C)
+  SELECT onetsoc_code, title, R, I, A, S, E, C
+  FROM AdaptedCareers
+  ORDER BY ${first} DESC, ${second} DESC
+  LIMIT 50
+  `;
+
+  db.all(query, [], (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+    if (rows.length === 0) return res.status(404).json({ error: 'No careers found' });
+    console.log(rows);
+    res.json(rows);
+  });
 });
 
 // Email routes
