@@ -1,18 +1,33 @@
 interface MajorCardProps {
   title: string;
   description: string;
-  onClick?: () => void;
+  onClick: () => void;
+  onRemove: () => void;
 }
 
 export default function MajorCard({
   title,
   description,
   onClick,
+  onRemove,
 }: MajorCardProps) {
   return (
     <div className="major-card" onClick={onClick}>
-      <h3 className="major-title">{title}</h3>
-      <p className="major-description">{description}</p>
+
+      {/* REMOVE BUTTON */}
+      <button
+        className="remove-btn"
+        onClick={(e) => {
+          e.stopPropagation();
+          onRemove();
+        }}
+      >
+        ×
+      </button>
+
+      <h3>{title}</h3>
+      <p>{description}</p>
+
     </div>
   );
 }

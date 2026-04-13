@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./ResultsPage.css";
 import MajorCard from "./MajorCard";
 
@@ -8,11 +9,12 @@ interface ResultsPageProps {
   questionCount: number;
 }
 
+type Major = { title: string; description: string };
+
 export default function ResultsPage({
   scores,
   questionCount,
 }: ResultsPageProps) {
-
   const sortedTraits = Object.entries(scores)
     .sort((a, b) => b[1] - a[1]) as [RiasecType, number][];
 
@@ -30,7 +32,7 @@ export default function ResultsPage({
     C: "Conventional",
   };
 
-  const traitToMajors: Record<RiasecType, { title: string; description: string }[]> = {
+  const traitToMajors: Record<RiasecType, Major[]> = {
     R: [
       { title: "Engineering", description: "Build and design real-world systems." },
       { title: "Construction", description: "Hands-on physical building work." },
@@ -57,72 +59,114 @@ export default function ResultsPage({
     ],
   };
 
-  const recommendedMajors = topTraits.flatMap(([t]) => traitToMajors[t]);
+  const allMajors = topTraits.flatMap(([t]) => traitToMajors[t]);
+
+  const [visibleMajors, setVisibleMajors] = useState<Major[]>(allMajors);
+
+  const [lastRemoved, setLastRemoved] = useState<{
+    major: Major;
+    index: number;
+  } | null>(null);
+
+  const removeMajor = (index: number) => {
+    setVisibleMajors((prev) => {
+      const removed = prev[index];
+
+      setLastRemoved({
+        major: removed,
+        index,
+      });
+
+      return prev.filter((_, i) => i !== index);
+    });
+  };
+
+  const undoRemove = () => {
+    if (!lastRemoved) return;
+
+    setVisibleMajors((prev) => {
+      const updated = [...prev];
+      updated.splice(lastRemoved.index, 0, lastRemoved.major);
+      return updated;
+    });
+
+    setLastRemoved(null);
+  };
 
   return (
     <div className="results-page">
 
-        {/* HERO / REVEAL */}
-        <div className="results-hero">
-            <div className="fade-in">
-
-                <p className="small-text highlight">
-                    Assessment Complete
-                </p>
-
-                <h1 className="headline">
-                    Your Career Profile
-                </h1>
-
-                <p className="subtext">
-                    Based on {questionCount} questions
-                </p>
-
-            </div>
+      {/* HERO */}
+      <div className="results-hero">
+        <div>
+          <p className="small-text highlight">Assessment Complete</p>
+          <h1 className="headline">Your Career Profile</h1>
+          <p className="subtext">Based on {questionCount} questions</p>
+        </div>
 
         <div className="holland-reveal-card">
-            <p className="label">Your Holland Code</p>
-            <h2 className="holland-code">{hollandCode}</h2>
-            <p className="primary">
-                Primary: {traitLabels[topTrait]} ({topTrait})
-            </p>
+          <p className="label">Your Holland Code</p>
+          <h2 className="holland-code">{hollandCode}</h2>
+          <p className="primary">
+            {traitLabels[topTrait]} ({topTrait})
+          </p>
         </div>
       </div>
 
-      {/* TRAITS */}
-      <div className="results-card">
-        <h2>Your Top Traits</h2>
+      {/* DASHBOARD */}
+      <div className="dashboard-grid">
 
-        <div className="trait-bars">
-          {topTraits.map(([trait, score]) => (
-            <div key={trait} className="trait-row">
-              <span>{traitLabels[trait]}</span>
-              <div className="bar">
-                <div
-                  className="fill"
-                  style={{ width: `${(score / 20) * 100}%` }}
-                />
+        {/* LEFT */}
+        <div className="left-panel">
+          <div className="results-card">
+            <h2>Your Top Traits</h2>
+
+            {topTraits.map(([trait, score]) => (
+              <div key={trait} className="trait-row">
+                <span>{traitLabels[trait]}</span>
+                <div className="bar">
+                  <div
+                    className="fill"
+                    style={{ width: `${(score / 20) * 100}%` }}
+                  />
+                </div>
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT */}
+        <div className="right-panel">
+          <div className="results-card">
+            <h2>Recommended Majors</h2>
+
+            <div className="majors-grid">
+              {visibleMajors.map((m, i) => (
+                <MajorCard
+                  key={`${m.title}-${i}`}
+                  title={m.title}
+                  description={m.description}
+                  onClick={() => console.log(m.title)}
+                  onRemove={() => removeMajor(i)}
+                />
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
 
-      {/* MAJORS */}
-      <div className="results-card">
-        <h2>Recommended Majors for You</h2>
+{/* UNDO TOAST */}
+{lastRemoved && (
+  <div className="undo-toast">
+    <div className="undo-text">
+      {lastRemoved.major.title} removed
+    </div>
 
-        <div className="majors-grid">
-          {recommendedMajors.map((m, i) => (
-            <MajorCard
-              key={i}
-              title={m.title}
-              description={m.description}
-              onClick={() => console.log(m.title)}
-            />
-          ))}
-        </div>
-      </div>
+    <button onClick={undoRemove} className="undo-btn">
+      Undo
+    </button>
+  </div>
+)}
 
     </div>
   );
