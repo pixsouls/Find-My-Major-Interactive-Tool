@@ -5,6 +5,7 @@ import QuizCheckpoint from './QuizCheckpoint';
 import { QuizQuestion } from './QuizQuestion';
 import { selectNextQuestion } from '../algorithms/questionSelector';
 import './HollandQuiz.css';
+import ResultsPage from "./ResultsPage";
 
 export default function HollandQuiz() {
   const [currentQuestion, setCurrentQuestion] = useState(questions[0]); // Start with first question
@@ -104,32 +105,13 @@ export default function HollandQuiz() {
   };
 
   if (showResults) {
-    const topTrait = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
-    
-    return (
-      <div className="holland-quiz-container results-view">
-        {/* Progress Header */}
-        <div className="canvas-header">
-          <div className="stat">
-            <span className="label">
-              QUESTION {questionCount} / {questionCount}
-            </span>
-            <div className="progress-track">
-              <div 
-                className="progress-fill" 
-                style={{ width: '100%' }} 
-              />
-            </div>
-          </div>
-        </div>
-        
-        <div className="mod-card" style={{ borderRadius: '12px' }}>
-          <h2>Evaluation Complete</h2>
-          <p>Primary Archetype: <strong style={{ color: 'var(--msu-red)' }}>{topTrait}</strong></p>
-        </div>
-      </div>
-    );
-  }
+  return (
+    <ResultsPage 
+      scores={scores} 
+      questionCount={questionCount} 
+    />
+  );
+}
 
   return (
     <div className="holland-quiz-container">
