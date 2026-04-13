@@ -28,6 +28,10 @@ export default function HollandQuiz() {
   const [questionCount, setQuestionCount] = useState(0);
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
 
+  // Email state
+  const [emailSent, setEmailSent] = useState(false);
+  const [email, setEmail] = useState('');
+
   const questionsUntilCheckpoint = 12;
   
   // For checkpoint screen, show previous checkpoint numbers (e.g., 6/6)
