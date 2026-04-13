@@ -1,12 +1,3 @@
-/*! START TRANSACTION */;
-CREATE TABLE occupation_data (
-  onetsoc_code CHARACTER(10) NOT NULL,
-  title CHARACTER VARYING(150) NOT NULL,
-  description CHARACTER VARYING(1000) NOT NULL,
-  PRIMARY KEY (onetsoc_code));
-/*! COMMIT */;
-/*! START TRANSACTION */;
-
 INSERT INTO occupation_data (onetsoc_code, title, description) VALUES ('11-1011.00', 'Chief Executives', 'Determine and formulate policies and provide overall direction of companies or private and public sector organizations within guidelines set up by a board of directors or similar governing body. Plan, direct, or coordinate operational activities at the highest level of management with the help of subordinate executives and staff managers.');
 INSERT INTO occupation_data (onetsoc_code, title, description) VALUES ('11-1011.03', 'Chief Sustainability Officers', 'Communicate and coordinate with management, shareholders, customers, and employees to address sustainability issues. Enact or oversee a corporate sustainability strategy.');
 INSERT INTO occupation_data (onetsoc_code, title, description) VALUES ('11-1021.00', 'General and Operations Managers', 'Plan, direct, or coordinate the operations of public or private sector organizations, overseeing multiple departments or locations. Duties and responsibilities include formulating policies, managing daily operations, and planning the use of materials and human resources, but are too diverse and general in nature to be classified in any one functional area of management or administration, such as personnel, purchasing, or administrative services. Usually manage through subordinate supervisors. Excludes First-Line Supervisors.');
