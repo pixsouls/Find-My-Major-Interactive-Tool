@@ -76,8 +76,8 @@
 }
 
 .explore-actions .secondary-btn.msu-action-btn:hover {
-  background: var(--msu-blue-dark);
-  border-color: var(--msu-blue-dark);
+  background: var(--msu-red);
+  border-color: var(--msu-red);
   transform: translateY(-2px);
 }
 

@@ -5,7 +5,6 @@
   background-color: #f8fafc;
   color: #1e293b;
   font-family: system-ui, -apple-system, sans-serif;
-  overflow: hidden;
 }
 
 .app-header {
@@ -48,7 +47,7 @@
 
 .progress-bar {
   height: 100%;
-  background-color: #d50032;
+  background-color: #16c943;
   transition: width 0.4s ease;
 }
 
@@ -84,6 +83,6 @@
 .app-content {
   flex: 1;
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: center;
 }

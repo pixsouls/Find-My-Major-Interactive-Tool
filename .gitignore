@@ -205,3 +205,7 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# DATABASE
+Backend/test.db
+Backend/test.db-journal
