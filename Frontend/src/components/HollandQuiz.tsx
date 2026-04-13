@@ -7,7 +7,7 @@ import { selectNextQuestion } from '../algorithms/questionSelector';
 import './HollandQuiz.css';
 
 export default function HollandQuiz() {
-  const [currentQuestion, setCurrentQuestion] = useState(questions[0]); // Start with first question
+  const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
   const [askedQuestionIds, setAskedQuestionIds] = useState<number[]>([]);
   const [scores, setScores] = useState<Record<RiasecType, number>>({
     R: 0, I: 0, A: 0, S: 0, E: 0, C: 0
@@ -18,57 +18,39 @@ export default function HollandQuiz() {
   const [questionCount, setQuestionCount] = useState(0);
 
   const questionsUntilCheckpoint = 12;
-  
-  // For checkpoint screen, show previous checkpoint numbers (e.g., 6/6)
+
   const displayIndex = isCheckpoint ? questionCount : questionCount + 1;
   const displayCheckpoint = isCheckpoint 
     ? Math.floor(questionCount / questionsUntilCheckpoint) * questionsUntilCheckpoint
     : Math.ceil((questionCount + 1) / questionsUntilCheckpoint) * questionsUntilCheckpoint;
-  
-  // Progress bar should show completed questions out of checkpoint
+
   const progressPercentage = (questionCount / displayCheckpoint) * 100;
 
   const handleAnswer = (weight: number) => {
     const weightMap: Record<number, number> = {
-      1: -2,  // Strongly Disagree
-      2: -1,  // Disagree
-      3: 0,   // Neutral
-      4: 1,   // Agree
-      5: 2    // Strongly Agree
+      1: -2, 2: -1, 3: 0, 4: 1, 5: 2
     };
-    // Update scores
+
     const newScores = {
       ...scores,
       [currentQuestion.type]: scores[currentQuestion.type] + weightMap[weight]
     };
     setScores(newScores);
 
-    // DEBUG: Print formatted scores
-    const sortedScores = Object.entries(newScores)
-      .sort((a, b) => b[1] - a[1])
-      .map(([type, score]) => `${type}: ${score}`)
-      .join(', ');
-    console.log(`📊 Scores (Highest→Lowest): ${sortedScores}`);
-
-    // Mark this question as asked
     const newAskedIds = [...askedQuestionIds, currentQuestion.id];
     setAskedQuestionIds(newAskedIds);
 
-    // Increment question count
     const newCount = questionCount + 1;
     setQuestionCount(newCount);
 
-    // Check if we hit a checkpoint (every 6 questions)
     if (newCount % questionsUntilCheckpoint === 0) {
       setIsCheckpoint(true);
       return;
     }
 
-    // Get next question using algorithm
     const nextQuestion = selectNextQuestion(questions, newAskedIds, newScores);
-    
+
     if (!nextQuestion) {
-      // No more questions available
       setShowResults(true);
       return;
     }
@@ -78,9 +60,9 @@ export default function HollandQuiz() {
 
   const handleContinue = () => {
     setIsCheckpoint(false);
-    
+
     const nextQuestion = selectNextQuestion(questions, askedQuestionIds, scores);
-    
+
     if (!nextQuestion) {
       setShowResults(true);
       return;
@@ -88,7 +70,7 @@ export default function HollandQuiz() {
 
     setCurrentQuestion(nextQuestion);
   };
-  
+
   const handleExploreMajors = () => {
     setShowExploreMajors(true);
   };
@@ -99,70 +81,90 @@ export default function HollandQuiz() {
 
   if (showResults) {
     const topTrait = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
-    
+
     return (
-      <div className="holland-quiz-container results-view">
-        {/* Progress Header */}
-        <div className="canvas-header">
+      <main
+        className="holland-quiz-container results-view"
+        aria-labelledby="results-title"
+      >
+        <header className="canvas-header">
           <div className="stat">
             <span className="label">
               QUESTION {questionCount} / {questionCount}
             </span>
-            <div className="progress-track">
-              <div 
-                className="progress-fill" 
-                style={{ width: '100%' }} 
-              />
+
+            <div
+              className="progress-track"
+              role="progressbar"
+              aria-valuenow={100}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label="Quiz progress"
+            >
+              <div className="progress-fill" style={{ width: '100%' }} />
             </div>
           </div>
-        </div>
-        
-        <div className="mod-card" style={{ borderRadius: '12px' }}>
-          <h2>Evaluation Complete</h2>
-          <p>Primary Archetype: <strong style={{ color: 'var(--accent-primary)' }}>{topTrait}</strong></p>
-        </div>
-      </div>
+        </header>
+
+        <section className="mod-card">
+          <h2 id="results-title">Evaluation Complete</h2>
+          <p>
+            Primary Archetype:{' '}
+            <strong>{topTrait}</strong>
+          </p>
+        </section>
+      </main>
     );
   }
 
   return (
-    <div className="holland-quiz-container">
-      
+    <main
+      className="holland-quiz-container"
+      aria-live="polite"
+    >
       {/* Progress Header */}
-      <div className="canvas-header">
+      <header className="canvas-header">
         <div className="stat">
           <span className="label">
             QUESTION {displayIndex} / {displayCheckpoint}
           </span>
-          <div className="progress-track">
-            <div 
-              className="progress-fill" 
-              style={{ width: `${progressPercentage}%` }} 
+
+          <div
+            className="progress-track"
+            role="progressbar"
+            aria-valuenow={Math.round(progressPercentage)}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="Quiz progress"
+          >
+            <div
+              className="progress-fill"
+              style={{ width: `${progressPercentage}%` }}
             />
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Main Content Area */}
-      <div className="mod-card">
+      {/* Main Content */}
+      <section className="mod-card">
         <div className="card-main">
           {showExploreMajors ? (
             <ExploreMajors scores={scores} onBack={handleBackFromExplore} />
-          ) : isCheckpoint ? (
-            <QuizCheckpoint
-              scores={scores}
-              onContinue={handleContinue}
-              onExplore={handleExploreMajors}
-            />
+) : isCheckpoint ? (
+  <QuizCheckpoint
+    scores={scores}
+    onContinue={handleContinue}
+    onExplore={handleExploreMajors}
+  />
           ) : (
-            <QuizQuestion 
-              question={currentQuestion} 
+            <QuizQuestion
+              question={currentQuestion}
               options={options}
-              onAnswer={handleAnswer} 
+              onAnswer={handleAnswer}
             />
           )}
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
