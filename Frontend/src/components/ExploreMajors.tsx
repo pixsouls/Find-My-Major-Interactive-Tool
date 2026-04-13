@@ -35,34 +35,56 @@ export default function ExploreMajors({ scores, onBack }: ExploreMajorsProps) {
   const topTraits = getTopTraits(scores, 3);
 
   return (
-    <div className="explore-majors">
-      <div className="explore-header">
-        <span className="type-tag">EXPLORE</span>
-        <h2>Explore Majors</h2>
+    <section
+      className="explore-majors"
+      aria-labelledby="explore-title"
+      aria-live="polite"
+    >
+      <header className="explore-header">
+        <span className="type-tag" aria-hidden="true">EXPLORE</span>
+
+        <h2 id="explore-title">Explore Majors</h2>
+
         <p className="explore-subtitle">
           Based on your current answers, your top traits are{' '}
           <strong>{topTraits.map(t => traitNames[t]).join(' · ')}</strong>.
         </p>
-      </div>
+      </header>
 
-      <div className="explore-content">
+      <section
+        className="explore-content"
+        aria-label="Recommended majors by personality type"
+      >
         {topTraits.map(trait => (
-          <div key={trait} className="trait-block">
-            <h3 className="trait-title">{traitNames[trait]}</h3>
+          <section
+            key={trait}
+            className="trait-block"
+            aria-labelledby={`trait-${trait}`}
+          >
+            <h3 id={`trait-${trait}`} className="trait-title">
+              {traitNames[trait]}
+            </h3>
+
             <ul className="major-list">
               {majorsByTrait[trait].map(major => (
-                <li key={major} className="major-item">{major}</li>
+                <li key={major} className="major-item">
+                  {major}
+                </li>
               ))}
             </ul>
-          </div>
+          </section>
         ))}
-      </div>
+      </section>
 
       <div className="explore-actions">
-        <button className="secondary-btn msu-action-btn" onClick={onBack}>
-          BACK
+        <button
+          className="secondary-btn msu-action-btn"
+          onClick={onBack}
+          aria-label="Go back to quiz"
+        >
+          Back
         </button>
       </div>
-    </div>
+    </section>
   );
 }
