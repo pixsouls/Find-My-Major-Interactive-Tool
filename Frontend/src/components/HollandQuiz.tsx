@@ -17,7 +17,7 @@ type QuizSnapshot = {
 };
 
 export default function HollandQuiz() {
-  const [currentQuestion, setCurrentQuestion] = useState(questions[0]); // Start with first question
+  const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
   const [askedQuestionIds, setAskedQuestionIds] = useState<number[]>([]);
   const [scores, setScores] = useState<Record<RiasecType, number>>({
     R: 0, I: 0, A: 0, S: 0, E: 0, C: 0
@@ -33,14 +33,12 @@ export default function HollandQuiz() {
   const [email, setEmail] = useState('');
 
   const questionsUntilCheckpoint = 12;
-  
-  // For checkpoint screen, show previous checkpoint numbers (e.g., 6/6)
+
   const displayIndex = isCheckpoint ? questionCount : questionCount + 1;
-  const displayCheckpoint = isCheckpoint 
+  const displayCheckpoint = isCheckpoint
     ? Math.floor(questionCount / questionsUntilCheckpoint) * questionsUntilCheckpoint
     : Math.ceil((questionCount + 1) / questionsUntilCheckpoint) * questionsUntilCheckpoint;
-  
-  // Progress bar should show completed questions out of checkpoint
+
   const progressPercentage = (questionCount / displayCheckpoint) * 100;
 
   const canGoBack = history.length > 0 && !showExploreMajors;
@@ -91,45 +89,39 @@ export default function HollandQuiz() {
     pushSnapshot();
 
     const weightMap: Record<number, number> = {
-      1: -2,  // Strongly Disagree
-      2: -1,  // Disagree
-      3: 0,   // Neutral
-      4: 1,   // Agree
-      5: 2    // Strongly Agree
+      1: -2,
+      2: -1,
+      3: 0,
+      4: 1,
+      5: 2
     };
-    // Update scores
+
     const newScores = {
       ...scores,
       [currentQuestion.type]: scores[currentQuestion.type] + weightMap[weight]
     };
     setScores(newScores);
 
-    // DEBUG: Print formatted scores
     const sortedScores = Object.entries(newScores)
       .sort((a, b) => b[1] - a[1])
       .map(([type, score]) => `${type}: ${score}`)
       .join(', ');
     console.log(`📊 Scores (Highest→Lowest): ${sortedScores}`);
 
-    // Mark this question as asked
     const newAskedIds = [...askedQuestionIds, currentQuestion.id];
     setAskedQuestionIds(newAskedIds);
 
-    // Increment question count
     const newCount = questionCount + 1;
     setQuestionCount(newCount);
 
-    // Check if we hit a checkpoint (every 6 questions)
     if (newCount % questionsUntilCheckpoint === 0) {
       setIsCheckpoint(true);
       return;
     }
 
-    // Get next question using algorithm
     const nextQuestion = selectNextQuestion(questions, newAskedIds, newScores);
-    
+
     if (!nextQuestion) {
-      // No more questions available
       setShowResults(true);
       return;
     }
@@ -141,9 +133,9 @@ export default function HollandQuiz() {
     pushSnapshot();
 
     setIsCheckpoint(false);
-    
+
     const nextQuestion = selectNextQuestion(questions, askedQuestionIds, scores);
-    
+
     if (!nextQuestion) {
       setShowResults(true);
       return;
@@ -151,7 +143,7 @@ export default function HollandQuiz() {
 
     setCurrentQuestion(nextQuestion);
   };
-  
+
   const handleExploreMajors = () => {
     setShowExploreMajors(true);
   };
@@ -160,7 +152,6 @@ export default function HollandQuiz() {
     setShowExploreMajors(false);
   };
 
-  // email 
   const sendEmail = async (topTrait: string) => {
     try {
       const response = await fetch('http://localhost:5000/api/send-email', {
@@ -186,11 +177,10 @@ export default function HollandQuiz() {
 
   if (showResults) {
     const topTrait = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
-    
+
     return (
-      <div className="holland-quiz-container results-view">
-        {/* Progress Header */}
-        <div className="canvas-header">
+      <main className="holland-quiz-container results-view" aria-labelledby="results-title">
+        <nav className="canvas-header" aria-label="Quiz progress">
           <div className="stat">
             <button
               type="button"
@@ -201,16 +191,19 @@ export default function HollandQuiz() {
             >
               Back
             </button>
-            <span className="label">
+            <span className="label" aria-live="polite" aria-atomic="true">
               QUESTION {questionCount} / {questionCount}
             </span>
-            <div className="progress-track">
-              <div 
-                className="progress-fill" 
-                style={{ width: '100%' }} 
-              />
+            <div
+              className="progress-track"
+              role="progressbar"
+              aria-valuenow={100}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label="Quiz completion progress"
+            >
+              <div className="progress-fill" style={{ width: '100%' }} />
             </div>
-
             <button
               type="button"
               className="quiz-restart-btn"
@@ -221,21 +214,24 @@ export default function HollandQuiz() {
               <span aria-hidden="true">↺</span>
             </button>
           </div>
-        </div>
-        
-        <div className="mod-card" style={{ borderRadius: '12px' }}>
-          <h2>Evaluation Complete</h2>
-          <p>Primary Archetype: <strong style={{ color: 'var(--accent-primary)' }}>{topTrait}</strong></p>
-        </div>
-      </div>
+        </nav>
+
+        <section className="mod-card" style={{ borderRadius: '12px' }}>
+          <h2 id="results-title">Evaluation Complete</h2>
+          <p>
+            Primary Archetype:{' '}
+            <strong style={{ color: 'var(--accent-primary)' }} aria-label={`Your primary archetype is ${topTrait}`}>
+              {topTrait}
+            </strong>
+          </p>
+        </section>
+      </main>
     );
   }
 
   return (
-    <div className="holland-quiz-container">
-      
-      {/* Progress Header */}
-      <div className="canvas-header">
+    <main className="holland-quiz-container" aria-label="Holland RIASEC Quiz">
+      <nav className="canvas-header" aria-label="Quiz progress">
         <div className="stat">
           <button
             type="button"
@@ -246,16 +242,19 @@ export default function HollandQuiz() {
           >
             Back
           </button>
-          <span className="label">
+          <span className="label" aria-live="polite" aria-atomic="true">
             QUESTION {displayIndex} / {displayCheckpoint}
           </span>
-          <div className="progress-track">
-            <div 
-              className="progress-fill" 
-              style={{ width: `${progressPercentage}%` }} 
-            />
+          <div
+            className="progress-track"
+            role="progressbar"
+            aria-valuenow={Math.round(progressPercentage)}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label={`Quiz progress: question ${displayIndex} of ${displayCheckpoint}`}
+          >
+            <div className="progress-fill" style={{ width: `${progressPercentage}%` }} />
           </div>
-
           <button
             type="button"
             className="quiz-restart-btn"
@@ -266,54 +265,61 @@ export default function HollandQuiz() {
             <span aria-hidden="true">↺</span>
           </button>
         </div>
-      </div>
+      </nav>
 
-      {/* Main Content Area */}
       <div className="mod-card">
-        <div className="card-main">
+        <div className="card-main" aria-live="polite" aria-atomic="false">
           {showExploreMajors ? (
             <ExploreMajors scores={scores} onBack={handleBackFromExplore} />
           ) : isCheckpoint ? (
             <>
-            <QuizCheckpoint
-              scores={scores}
-              onContinue={handleContinue}
-              onExplore={handleExploreMajors}
-            />
+              <QuizCheckpoint
+                scores={scores}
+                onContinue={handleContinue}
+                onExplore={handleExploreMajors}
+                isFinalCheckpoint={false}
+              />
 
-            {/* email button for every checkpoint */}
-            {!emailSent && (
-              <button className="save-results-button"
-                onClick={() => setEmailSent(true)}>
-                Save Results
-              </button>
-            )}
-
-            {emailSent && (
-              <div className="email-section">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="email-input"/>
-                <button className="email-button"
-                  onClick={() => sendEmail(Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0])}>
-                  Send Results
+              {!emailSent && (
+                <button
+                  className="save-results-button"
+                  onClick={() => setEmailSent(true)}
+                  aria-label="Save your current results by email"
+                >
+                  Save Results
                 </button>
-              </div>
-            )}
-            </>
+              )}
 
+              {emailSent && (
+                <div className="email-section" role="form" aria-label="Email results form">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="email-input"
+                    aria-label="Email address"
+                    aria-required="true"
+                  />
+                  <button
+                    className="email-button"
+                    onClick={() => sendEmail(Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0])}
+                    aria-label="Send results to your email"
+                  >
+                    Send Results
+                  </button>
+                </div>
+              )}
+            </>
           ) : (
-            <QuizQuestion 
-              question={currentQuestion} 
+            <QuizQuestion
+              question={currentQuestion}
               options={options}
-              onAnswer={handleAnswer} 
+              onAnswer={handleAnswer}
             />
           )}
         </div>
       </div>
-    </div>
+    </main>
   );
 }
