@@ -7,6 +7,9 @@ type RiasecType = "R" | "I" | "A" | "S" | "E" | "C";
 interface ResultsPageProps {
   scores: Record<RiasecType, number>;
   questionCount: number;
+  onRestart: () => void;
+  onBack: () => void;
+  canGoBack: boolean;
 }
 
 type Major = { title: string; description: string };
@@ -14,6 +17,9 @@ type Major = { title: string; description: string };
 export default function ResultsPage({
   scores,
   questionCount,
+  onRestart,
+  onBack,
+  canGoBack
 }: ResultsPageProps) {
   const sortedTraits = Object.entries(scores)
     .sort((a, b) => b[1] - a[1]) as [RiasecType, number][];
@@ -95,6 +101,24 @@ export default function ResultsPage({
 
   return (
     <div className="results-page">
+
+      {/* HEADER CONTROLS */}
+      <div className="results-header">
+        <button
+          className="results-back-btn"
+          onClick={onBack}
+          disabled={!canGoBack}
+      >
+        Back
+      </button>
+
+      <button
+        className="results-restart-btn"
+        onClick={onRestart}
+      >
+        ↺ 
+      </button>
+    </div>
 
       {/* HERO */}
       <div className="results-hero">

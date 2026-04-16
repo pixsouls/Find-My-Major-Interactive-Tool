@@ -5,6 +5,7 @@ import QuizCheckpoint from './QuizCheckpoint';
 import { QuizQuestion } from './QuizQuestion';
 import { selectNextQuestion } from '../algorithms/questionSelector';
 import './HollandQuiz.css';
+import ResultsPage from "./ResultsPage";
 
 type QuizSnapshot = {
   currentQuestion: (typeof questions)[number];
@@ -175,59 +176,18 @@ export default function HollandQuiz() {
     }
   };
 
+  // Updated to use ResultsPage like RJ branch
   if (showResults) {
-    const topTrait = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
-
-    return (
-      <main className="holland-quiz-container results-view" aria-labelledby="results-title">
-        <nav className="canvas-header" aria-label="Quiz progress">
-          <div className="stat">
-            <button
-              type="button"
-              className="quiz-back-btn"
-              onClick={handleBack}
-              disabled={!canGoBack}
-              aria-label="Go back to the previous step"
-            >
-              Back
-            </button>
-            <span className="label" aria-live="polite" aria-atomic="true">
-              QUESTION {questionCount} / {questionCount}
-            </span>
-            <div
-              className="progress-track"
-              role="progressbar"
-              aria-valuenow={100}
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-label="Quiz completion progress"
-            >
-              <div className="progress-fill" style={{ width: '100%' }} />
-            </div>
-            <button
-              type="button"
-              className="quiz-restart-btn"
-              onClick={handleRestart}
-              aria-label="Restart the quiz"
-              title="Restart"
-            >
-              <span aria-hidden="true">↺</span>
-            </button>
-          </div>
-        </nav>
-
-        <section className="mod-card" style={{ borderRadius: '12px' }}>
-          <h2 id="results-title">Evaluation Complete</h2>
-          <p>
-            Primary Archetype:{' '}
-            <strong style={{ color: 'var(--accent-primary)' }} aria-label={`Your primary archetype is ${topTrait}`}>
-              {topTrait}
-            </strong>
-          </p>
-        </section>
-      </main>
-    );
-  }
+  return (
+    <ResultsPage
+      scores={scores}
+      questionCount={questionCount}
+      onRestart={handleRestart}
+      onBack={handleBack}
+      canGoBack={canGoBack}
+    />
+  );
+}
 
   return (
     <main className="holland-quiz-container" aria-label="Holland RIASEC Quiz">
@@ -255,6 +215,7 @@ export default function HollandQuiz() {
           >
             <div className="progress-fill" style={{ width: `${progressPercentage}%` }} />
           </div>
+
           <button
             type="button"
             className="quiz-restart-btn"
