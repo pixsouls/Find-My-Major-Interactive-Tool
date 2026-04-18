@@ -13,6 +13,7 @@ type QuizSnapshot = {
   scores: Record<RiasecType, number>;
   showResults: boolean;
   isCheckpoint: boolean;
+  isFinalCheckpoint: boolean;
   showExploreMajors: boolean;
   questionCount: number;
 };
@@ -25,6 +26,7 @@ export default function HollandQuiz() {
   });
   const [showResults, setShowResults] = useState(false);
   const [isCheckpoint, setIsCheckpoint] = useState(false);
+  const [isFinalCheckpoint, setIsFinalCheckpoint] = useState(false);
   const [showExploreMajors, setShowExploreMajors] = useState(false);
   const [questionCount, setQuestionCount] = useState(0);
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
@@ -51,6 +53,7 @@ export default function HollandQuiz() {
     setScores({ R: 0, I: 0, A: 0, S: 0, E: 0, C: 0 });
     setShowResults(false);
     setIsCheckpoint(false);
+    setIsFinalCheckpoint(false);
     setShowExploreMajors(false);
     setQuestionCount(0);
   };
@@ -66,6 +69,7 @@ export default function HollandQuiz() {
       setScores(snapshot.scores);
       setShowResults(snapshot.showResults);
       setIsCheckpoint(snapshot.isCheckpoint);
+      setIsFinalCheckpoint(snapshot.isFinalCheckpoint);
       setShowExploreMajors(snapshot.showExploreMajors);
       setQuestionCount(snapshot.questionCount);
 
@@ -80,6 +84,7 @@ export default function HollandQuiz() {
       scores,
       showResults,
       isCheckpoint,
+      isFinalCheckpoint,
       showExploreMajors,
       questionCount
     };
@@ -116,6 +121,8 @@ export default function HollandQuiz() {
     setQuestionCount(newCount);
 
     if (newCount % questionsUntilCheckpoint === 0) {
+      const nextQuestion = selectNextQuestion(questions, newAskedIds, newScores);
+      setIsFinalCheckpoint(!nextQuestion);
       setIsCheckpoint(true);
       return;
     }
@@ -134,6 +141,7 @@ export default function HollandQuiz() {
     pushSnapshot();
 
     setIsCheckpoint(false);
+    setIsFinalCheckpoint(false);
 
     const nextQuestion = selectNextQuestion(questions, askedQuestionIds, scores);
 
@@ -146,7 +154,7 @@ export default function HollandQuiz() {
   };
 
   const handleExploreMajors = () => {
-    setShowExploreMajors(true);
+    setShowResults(true);
   };
 
   const handleBackFromExplore = () => {
@@ -176,18 +184,17 @@ export default function HollandQuiz() {
     }
   };
 
-  // Updated to use ResultsPage like RJ branch
   if (showResults) {
-  return (
-    <ResultsPage
-      scores={scores}
-      questionCount={questionCount}
-      onRestart={handleRestart}
-      onBack={handleBack}
-      canGoBack={canGoBack}
-    />
-  );
-}
+    return (
+      <ResultsPage
+        scores={scores}
+        questionCount={questionCount}
+        onRestart={handleRestart}
+        onBack={handleBack}
+        canGoBack={canGoBack}
+      />
+    );
+  }
 
   return (
     <main className="holland-quiz-container" aria-label="Holland RIASEC Quiz">
@@ -215,7 +222,6 @@ export default function HollandQuiz() {
           >
             <div className="progress-fill" style={{ width: `${progressPercentage}%` }} />
           </div>
-
           <button
             type="button"
             className="quiz-restart-btn"
@@ -238,7 +244,8 @@ export default function HollandQuiz() {
                 scores={scores}
                 onContinue={handleContinue}
                 onExplore={handleExploreMajors}
-                isFinalCheckpoint={false}
+                onViewResults={() => setShowResults(true)}
+                isFinalCheckpoint={isFinalCheckpoint}
               />
 
               {!emailSent && (

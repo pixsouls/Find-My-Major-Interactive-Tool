@@ -5,13 +5,12 @@ interface QuizCheckpointProps {
   scores: Record<RiasecType, number>;
   onContinue: () => void;
   onExplore: () => void;
+  onViewResults: () => void;
   isFinalCheckpoint: boolean;
 }
 
-export default function QuizCheckpoint({ scores, onContinue, onExplore, isFinalCheckpoint }: QuizCheckpointProps) {
-  // Find the current highest scoring trait
+export default function QuizCheckpoint({ scores, onContinue, onExplore, onViewResults, isFinalCheckpoint }: QuizCheckpointProps) {
   const leadingTrait = Object.entries(scores).reduce((a, b) => (a[1] > b[1] ? a : b))[0] as RiasecType;
-  // Map the single letter to the full name
   const traitNames: Record<RiasecType, string> = {
     R: 'Realistic',
     I: 'Investigative',
@@ -60,7 +59,7 @@ export default function QuizCheckpoint({ scores, onContinue, onExplore, isFinalC
         {isFinalCheckpoint ? (
           <button
             className="primary-btn"
-            onClick={onContinue}
+            onClick={onViewResults}
             aria-label="View your full results"
           >
             VIEW FULL RESULTS

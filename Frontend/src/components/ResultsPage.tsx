@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./ResultsPage.css";
 import MajorCard from "./MajorCard";
+import { getCareers, type Career } from "../utils/api";
 
 type RiasecType = "R" | "I" | "A" | "S" | "E" | "C";
 
@@ -12,7 +13,7 @@ interface ResultsPageProps {
   canGoBack: boolean;
 }
 
-type Major = { title: string; description: string };
+const DISPLAY_COUNT = 10;
 
 export default function ResultsPage({
   scores,
@@ -26,7 +27,6 @@ export default function ResultsPage({
 
   const topTraits = sortedTraits.slice(0, 3);
   const topTrait = topTraits[0][0];
-
   const hollandCode = topTraits.map(([t]) => t).join("");
 
   const traitLabels: Record<RiasecType, string> = {
@@ -38,61 +38,51 @@ export default function ResultsPage({
     C: "Conventional",
   };
 
-  const traitToMajors: Record<RiasecType, Major[]> = {
-    R: [
-      { title: "Engineering", description: "Build and design real-world systems." },
-      { title: "Construction", description: "Hands-on physical building work." },
-    ],
-    I: [
-      { title: "Computer Science", description: "AI, programming, and systems thinking." },
-      { title: "Biology", description: "Study life and living systems." },
-    ],
-    A: [
-      { title: "Graphic Design", description: "Visual storytelling and digital art." },
-      { title: "Music", description: "Creative expression through sound." },
-    ],
-    S: [
-      { title: "Nursing", description: "Care for and help others directly." },
-      { title: "Psychology", description: "Understand human behavior and mind." },
-    ],
-    E: [
-      { title: "Business", description: "Lead, manage, and build organizations." },
-      { title: "Marketing", description: "Influence audiences and markets." },
-    ],
-    C: [
-      { title: "Accounting", description: "Structure, numbers, and financial systems." },
-      { title: "Information Systems", description: "Organize tech + business data." },
-    ],
-  };
-
-  const allMajors = topTraits.flatMap(([t]) => traitToMajors[t]);
-
-  const [visibleMajors, setVisibleMajors] = useState<Major[]>(allMajors);
-
+  const [allCareers, setAllCareers] = useState<Career[]>([]);
+  const [visibleCareers, setVisibleCareers] = useState<Career[]>([]);
+  const [careersLoading, setCareersLoading] = useState(true);
+  const [careersError, setCareersError] = useState<string | null>(null);
   const [lastRemoved, setLastRemoved] = useState<{
-    major: Major;
+    career: Career;
     index: number;
+    hadReplacement: boolean;
   } | null>(null);
 
-  const removeMajor = (index: number) => {
-    setVisibleMajors((prev) => {
+  useEffect(() => {
+    getCareers(scores)
+      .then((data) => {
+        setAllCareers(data);
+        setVisibleCareers(data.slice(0, DISPLAY_COUNT));
+      })
+      .catch((err) => {
+        setCareersError(err.message);
+      })
+      .finally(() => {
+        setCareersLoading(false);
+      });
+  }, []);
+
+  const removeCareer = (index: number) => {
+    setVisibleCareers((prev) => {
       const removed = prev[index];
 
-      setLastRemoved({
-        major: removed,
-        index,
-      });
+      const nextCareer = allCareers.find(
+        (c) => !prev.includes(c) && c.onetsoc_code !== removed.onetsoc_code
+      );
 
-      return prev.filter((_, i) => i !== index);
+      setLastRemoved({ career: removed, index, hadReplacement: !!nextCareer });
+
+      const updated = prev.filter((_, i) => i !== index);
+      return nextCareer ? [...updated, nextCareer] : updated;
     });
   };
 
   const undoRemove = () => {
     if (!lastRemoved) return;
 
-    setVisibleMajors((prev) => {
-      const updated = [...prev];
-      updated.splice(lastRemoved.index, 0, lastRemoved.major);
+    setVisibleCareers((prev) => {
+      const updated = lastRemoved.hadReplacement ? prev.slice(0, -1) : [...prev];
+      updated.splice(lastRemoved.index, 0, lastRemoved.career);
       return updated;
     });
 
@@ -108,17 +98,18 @@ export default function ResultsPage({
           className="results-back-btn"
           onClick={onBack}
           disabled={!canGoBack}
-      >
-        Back
-      </button>
-
-      <button
-        className="results-restart-btn"
-        onClick={onRestart}
-      >
-        ↺ 
-      </button>
-    </div>
+          aria-label="Go back to the previous step"
+        >
+          Back
+        </button>
+        <button
+          className="results-restart-btn"
+          onClick={onRestart}
+          aria-label="Restart the quiz"
+        >
+          ↺
+        </button>
+      </div>
 
       {/* HERO */}
       <div className="results-hero">
@@ -144,7 +135,6 @@ export default function ResultsPage({
         <div className="left-panel">
           <div className="results-card">
             <h2>Your Top Traits</h2>
-
             {topTraits.map(([trait, score]) => (
               <div key={trait} className="trait-row">
                 <span>{traitLabels[trait]}</span>
@@ -162,35 +152,50 @@ export default function ResultsPage({
         {/* RIGHT */}
         <div className="right-panel">
           <div className="results-card">
-            <h2>Recommended Majors</h2>
+            <h2>Recommended Careers</h2>
 
-            <div className="majors-grid">
-              {visibleMajors.map((m, i) => (
-                <MajorCard
-                  key={`${m.title}-${i}`}
-                  title={m.title}
-                  description={m.description}
-                  onClick={() => console.log(m.title)}
-                  onRemove={() => removeMajor(i)}
-                />
-              ))}
-            </div>
+            {careersLoading && (
+              <p className="careers-status">Loading careers...</p>
+            )}
+
+            {careersError && (
+              <p className="careers-status careers-error">
+                Failed to load careers: {careersError}
+              </p>
+            )}
+
+            {!careersLoading && !careersError && visibleCareers.length === 0 && (
+              <p className="careers-status">No careers found.</p>
+            )}
+
+            {!careersLoading && !careersError && visibleCareers.length > 0 && (
+              <div className="majors-grid">
+                {visibleCareers.map((career, i) => (
+                  <MajorCard
+                    key={`${career.onetsoc_code}-${i}`}
+                    title={career.title}
+                    description={career.onetsoc_code}
+                    onClick={() => console.log(career.title)}
+                    onRemove={() => removeCareer(i)}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
 
-{/* UNDO TOAST */}
-{lastRemoved && (
-  <div className="undo-toast">
-    <div className="undo-text">
-      {lastRemoved.major.title} removed
-    </div>
-
-    <button onClick={undoRemove} className="undo-btn">
-      Undo
-    </button>
-  </div>
-)}
+      {/* UNDO TOAST */}
+      {lastRemoved && (
+        <div className="undo-toast">
+          <div className="undo-text">
+            {lastRemoved.career.title} removed
+          </div>
+          <button onClick={undoRemove} className="undo-btn">
+            Undo
+          </button>
+        </div>
+      )}
 
     </div>
   );
