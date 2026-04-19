@@ -87,13 +87,13 @@ app.post('/api/careers', (req, res) => {
   LIMIT 50
   `;
 
-  // const insertQuery = `
-  //   INSERT OR IGNORE INTO F2Collected (onetsoc_code, title, R, I, A, S, E, C)
-  //   SELECT onetsoc_code, title, R, I, A, S, E, C
-  //   FROM AdaptedCareers
-  //   ORDER BY ${first} DESC, ${second} DESC
-  //   LIMIT 50
-  // `;
+  const insertQuery = `
+    INSERT OR IGNORE INTO F2Collected (onetsoc_code, title, R, I, A, S, E, C)
+    SELECT onetsoc_code, title, R, I, A, S, E, C
+    FROM AdaptedCareers
+    ORDER BY ${first} DESC, ${second} DESC
+    LIMIT 50
+  `;
 
   // Run INSERT first, then SELECT and send response
   db.run(insertQuery, [], (err) => {
