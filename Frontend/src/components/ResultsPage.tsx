@@ -194,7 +194,7 @@ export default function ResultsPage({
                   <MajorCard
                     key={`${career.onetsoc_code}`}
                     title={career.title}
-                    description={career.onetsoc_code}
+                    description={career.description}
                     onClick={() => console.log(career.title)}
                     onRemove={() => removeCareer(i)}
                   />

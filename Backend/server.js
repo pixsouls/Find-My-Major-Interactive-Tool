@@ -80,19 +80,20 @@ app.post('/api/careers', (req, res) => {
   console.log(`Top RIASEC: ${first}, ${second}`);
 
   const selectQuery = `
-    SELECT onetsoc_code, title, ${first}, ${second}
-    FROM AdaptedCareers
-    ORDER BY ${first} DESC, ${second} DESC
-    LIMIT 50
+  SELECT a.onetsoc_code, a.title, a.${first}, a.${second}, o.description
+  FROM AdaptedCareers a
+  JOIN occupation_data o ON a.onetsoc_code = o.onetsoc_code
+  ORDER BY a.${first} DESC, a.${second} DESC
+  LIMIT 50
   `;
 
-  const insertQuery = `
-    INSERT OR IGNORE INTO F2Collected (onetsoc_code, title, R, I, A, S, E, C)
-    SELECT onetsoc_code, title, R, I, A, S, E, C
-    FROM AdaptedCareers
-    ORDER BY ${first} DESC, ${second} DESC
-    LIMIT 50
-  `;
+  // const insertQuery = `
+  //   INSERT OR IGNORE INTO F2Collected (onetsoc_code, title, R, I, A, S, E, C)
+  //   SELECT onetsoc_code, title, R, I, A, S, E, C
+  //   FROM AdaptedCareers
+  //   ORDER BY ${first} DESC, ${second} DESC
+  //   LIMIT 50
+  // `;
 
   // Run INSERT first, then SELECT and send response
   db.run(insertQuery, [], (err) => {

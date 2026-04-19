@@ -14,7 +14,8 @@ export interface RIASECScores {
 export interface Career {
   onetsoc_code: string;
   title: string;
-  [key: string]: string | number; // for the two dynamic RIASEC columns returned
+  description: string;
+  [key: string]: string | number;
 }
 
 export async function getCareers(scores: RIASECScores): Promise<Career[]> {
