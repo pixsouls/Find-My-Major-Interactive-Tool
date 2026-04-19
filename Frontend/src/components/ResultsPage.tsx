@@ -10,6 +10,7 @@ interface ResultsPageProps {
   questionCount: number;
   onRestart: () => void;
   onBack: () => void;
+  onContinue: () => void;  // make sure this is here
   canGoBack: boolean;
 }
 
@@ -20,6 +21,7 @@ export default function ResultsPage({
   questionCount,
   onRestart,
   onBack,
+  onContinue,
   canGoBack
 }: ResultsPageProps) {
   const sortedTraits = Object.entries(scores)
@@ -42,6 +44,7 @@ export default function ResultsPage({
   const [visibleCareers, setVisibleCareers] = useState<Career[]>([]);
   const [careersLoading, setCareersLoading] = useState(true);
   const [careersError, setCareersError] = useState<string | null>(null);
+  const [selectedCareer, setSelectedCareer] = useState<Career | null>(null);
   const [lastRemoved, setLastRemoved] = useState<{
     career: Career;
     index: number;
@@ -78,6 +81,10 @@ export default function ResultsPage({
 
       if (nextCareer) {
         usedCodes.current.add(nextCareer.onetsoc_code);
+      }
+
+      if (selectedCareer?.onetsoc_code === removed.onetsoc_code) {
+        setSelectedCareer(null);
       }
 
       setLastRemoved({
@@ -167,6 +174,36 @@ export default function ResultsPage({
               </div>
             ))}
           </div>
+
+          <div className="results-card">
+            <h2>Career Information</h2>
+            {selectedCareer ? (
+              <ul className="career-info-list">
+                <li>
+                  <strong>Title</strong>
+                  <p className="career-info-title">{selectedCareer.title}</p>
+                </li>
+                <li>
+                  <strong>Description</strong>
+                  <p className="career-info-description">{selectedCareer.description}</p>
+                </li>
+                <li>
+                  <strong>ONET Code</strong>
+                  <p className="career-info-code">{selectedCareer.onetsoc_code}</p>
+                </li>
+              </ul>
+            ) : (
+              <p className="career-info-empty">Select a career to see more information.</p>
+            )}
+          </div>
+
+          <button
+            className="results-continue-btn"
+            onClick={onContinue}
+            aria-label="Continue the quiz from where you left off"
+          >
+            Continue Quiz
+          </button>
         </div>
 
         {/* RIGHT */}
@@ -195,7 +232,7 @@ export default function ResultsPage({
                     key={`${career.onetsoc_code}`}
                     title={career.title}
                     description={career.description}
-                    onClick={() => console.log(career.title)}
+                    onClick={() => setSelectedCareer(career)}
                     onRemove={() => removeCareer(i)}
                   />
                 ))}

@@ -153,6 +153,11 @@ export default function HollandQuiz() {
     setCurrentQuestion(nextQuestion);
   };
 
+  const handleContinueFromResults = () => {
+    setShowResults(false);
+    handleContinue();
+  };
+
   const handleExploreMajors = () => {
     setShowResults(true);
   };
@@ -191,6 +196,7 @@ export default function HollandQuiz() {
         questionCount={questionCount}
         onRestart={handleRestart}
         onBack={handleBack}
+        onContinue={handleContinueFromResults}
         canGoBack={canGoBack}
       />
     );
