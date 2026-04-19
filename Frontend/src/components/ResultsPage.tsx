@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./ResultsPage.css";
 import MajorCard from "./MajorCard";
 import { getCareers, type Career } from "../utils/api";
@@ -46,13 +46,19 @@ export default function ResultsPage({
     career: Career;
     index: number;
     hadReplacement: boolean;
+    replacementCode: string | null;
   } | null>(null);
+
+  // tracks every career that has ever been visible, so they never recycle
+  const usedCodes = useRef<Set<string>>(new Set());
 
   useEffect(() => {
     getCareers(scores)
       .then((data) => {
         setAllCareers(data);
-        setVisibleCareers(data.slice(0, DISPLAY_COUNT));
+        const initial = data.slice(0, DISPLAY_COUNT);
+        initial.forEach(c => usedCodes.current.add(c.onetsoc_code));
+        setVisibleCareers(initial);
       })
       .catch((err) => {
         setCareersError(err.message);
@@ -67,10 +73,19 @@ export default function ResultsPage({
       const removed = prev[index];
 
       const nextCareer = allCareers.find(
-        (c) => !prev.includes(c) && c.onetsoc_code !== removed.onetsoc_code
+        (c) => !usedCodes.current.has(c.onetsoc_code)
       );
 
-      setLastRemoved({ career: removed, index, hadReplacement: !!nextCareer });
+      if (nextCareer) {
+        usedCodes.current.add(nextCareer.onetsoc_code);
+      }
+
+      setLastRemoved({
+        career: removed,
+        index,
+        hadReplacement: !!nextCareer,
+        replacementCode: nextCareer?.onetsoc_code ?? null
+      });
 
       const updated = prev.filter((_, i) => i !== index);
       return nextCareer ? [...updated, nextCareer] : updated;
@@ -79,6 +94,11 @@ export default function ResultsPage({
 
   const undoRemove = () => {
     if (!lastRemoved) return;
+
+    // remove the replacement from usedCodes so it can appear again later
+    if (lastRemoved.replacementCode) {
+      usedCodes.current.delete(lastRemoved.replacementCode);
+    }
 
     setVisibleCareers((prev) => {
       const updated = lastRemoved.hadReplacement ? prev.slice(0, -1) : [...prev];
@@ -172,7 +192,7 @@ export default function ResultsPage({
               <div className="majors-grid">
                 {visibleCareers.map((career, i) => (
                   <MajorCard
-                    key={`${career.onetsoc_code}-${i}`}
+                    key={`${career.onetsoc_code}`}
                     title={career.title}
                     description={career.onetsoc_code}
                     onClick={() => console.log(career.title)}

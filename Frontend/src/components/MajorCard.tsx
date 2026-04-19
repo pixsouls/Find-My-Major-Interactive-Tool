@@ -13,21 +13,20 @@ export default function MajorCard({
 }: MajorCardProps) {
   return (
     <div className="major-card" onClick={onClick}>
-
-      {/* REMOVE BUTTON */}
+      <div className="major-card-text">
+        <span className="major-card-title">{title}</span>
+        <span className="major-card-description">{description}</span>
+      </div>
       <button
         className="remove-btn"
         onClick={(e) => {
           e.stopPropagation();
           onRemove();
         }}
+        aria-label={`Remove ${title}`}
       >
         ×
       </button>
-
-      <h3>{title}</h3>
-      <p>{description}</p>
-
     </div>
   );
 }
