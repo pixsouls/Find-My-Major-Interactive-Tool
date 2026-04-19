@@ -53,7 +53,21 @@ export const questions: Question[] = [
   { id: 33, text: "I often think of unique or unconventional solutions.", type: "A" },
   { id: 34, text: "I thrive in roles where I can connect with others and assist them.", type: "S" },
   { id: 35, text: "I am willing to take risks to achieve a desired outcome.", type: "E" },
-  { id: 36, text: "I have set high standards for the work I produce.", type: "C" }
+  { id: 36, text: "I have set high standards for the work I produce.", type: "C" },
+
+  { id: 37, text: "I enjoy working with animals, plants, or nature.", type: "R" },
+  { id: 39, text: "I enjoy conducting experiments to test my theories.", type: "I" },
+  { id: 41, text: "I enjoy visiting museums, galleries, or attending performances.", type: "A" },
+  { id: 43, text: "I feel fulfillment when I support someone through a difficult time.", type: "S" },
+  { id: 45, text: "I enjoy negotiating or finding deals that benefit everyone.", type: "E" },
+  { id: 47, text: "I prefer having a consistent daily routine over spontaneous changes.", type: "C" },
+
+  { id: 38, text: "I like assembling or taking apart mechanical or electronic devices.", type: "R" },
+  { id: 40, text: "I am drawn to puzzles, riddles, or strategic games.", type: "I" },
+  { id: 42, text: "I like using visuals, metaphors, or storytelling to explain things.", type: "A" },
+  { id: 44, text: "I naturally notice when someone around me is struggling.", type: "S" },
+  { id: 46, text: "I feel motivated by recognition and achieving measurable success.", type: "E" },
+  { id: 48, text: "I take pride in keeping my workspace neat and well-organized.", type: "C" },
 ];
 
 // 2. Apply the interface here
