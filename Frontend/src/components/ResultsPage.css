@@ -167,6 +167,10 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   font-size: 13px;
   color: var(--text-main);
+  height: 72px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .major-card:hover {
@@ -186,11 +190,17 @@
   font-weight: 600;
   font-size: 13px;
   color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .major-card-description {
   font-size: 12px;
   color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .remove-btn {
