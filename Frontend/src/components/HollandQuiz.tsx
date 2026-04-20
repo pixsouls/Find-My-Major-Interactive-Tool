@@ -280,7 +280,7 @@ export default function HollandQuiz() {
               onContinue={handleContinue}
               onExplore={handleExploreMajors}
             />
-
+            
             {/* email button for every checkpoint */}
             {!emailSent && (
               <button className="save-results-button"
