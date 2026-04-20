@@ -79,33 +79,32 @@ app.post('/api/careers', (req, res) => {
 
   console.log(`Top RIASEC: ${first}, ${second}`);
 
-  const query = `
-    SELECT onetsoc_code, title, ${first}, ${second}
+  const selectQuery = `
+  SELECT a.onetsoc_code, a.title, a.${first}, a.${second}, o.description
+  FROM AdaptedCareers a
+  JOIN occupation_data o ON a.onetsoc_code = o.onetsoc_code
+  ORDER BY a.${first} DESC, a.${second} DESC
+  LIMIT 50
+  `;
+
+  const insertQuery = `
+    INSERT OR IGNORE INTO F2Collected (onetsoc_code, title, R, I, A, S, E, C)
+    SELECT onetsoc_code, title, R, I, A, S, E, C
     FROM AdaptedCareers
     ORDER BY ${first} DESC, ${second} DESC
     LIMIT 50
   `;
 
-  db.all(query, [], (err, rows) => {
-    if (err) return res.status(500).json({ error: err.message });
-    if (rows.length === 0) return res.status(404).json({ error: 'No careers found' });
-    console.log(rows);
-    res.json(rows);
-  });
+  // Run INSERT first, then SELECT and send response
+  db.run(insertQuery, [], (err) => {
+    if (err) console.error('F2Collected insert error:', err.message);
 
-  query = `
-  INSERT OR IGNORE INTO F2Collected (onetsoc_code, title, R, I, A, S, E, C)
-  SELECT onetsoc_code, title, R, I, A, S, E, C
-  FROM AdaptedCareers
-  ORDER BY ${first} DESC, ${second} DESC
-  LIMIT 50
-  `;
-
-  db.all(query, [], (err, rows) => {
-    if (err) return res.status(500).json({ error: err.message });
-    if (rows.length === 0) return res.status(404).json({ error: 'No careers found' });
-    console.log(rows);
-    res.json(rows);
+    db.all(selectQuery, [], (err, rows) => {
+      if (err) return res.status(500).json({ error: err.message });
+      if (rows.length === 0) return res.status(404).json({ error: 'No careers found' });
+      console.log(rows);
+      res.json(rows);
+    });
   });
 });
 

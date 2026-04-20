@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  animation: slideIn 0.3s ease forwards;
 }
 
 /* Header & Progress Area */
