@@ -1,6 +1,7 @@
 // api/careers.ts
 
-const API_URL = 'http://localhost:3000';
+// import from you .env virtual enviroment.
+const API_URL = import.meta.env.VITE_API_URL;
 
 export interface RIASECScores {
   R?: number;
