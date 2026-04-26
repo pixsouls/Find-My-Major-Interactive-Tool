@@ -96,15 +96,11 @@ app.post('/api/careers', (req, res) => {
   `;
 
   // Run INSERT first, then SELECT and send response
-  db.run(insertQuery, [], (err) => {
-    if (err) console.error('F2Collected insert error:', err.message);
-
-    db.all(selectQuery, [], (err, rows) => {
-      if (err) return res.status(500).json({ error: err.message });
-      if (rows.length === 0) return res.status(404).json({ error: 'No careers found' });
-      console.log(rows);
-      res.json(rows);
-    });
+  db.all(selectQuery, [], (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+    if (rows.length === 0) return res.status(404).json({ error: 'No careers found' });
+    console.log(rows);
+    res.json(rows);
   });
 });
 
