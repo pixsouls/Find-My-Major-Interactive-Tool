@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.post('/careers', async (req, res) => {
   const { R = 0, I = 0, A = 0, S = 0, E = 0, C = 0 } = req.body;
-
   try {
     const result = await db.execute({
       sql: `SELECT onetsoc_code, title, R, I, A, S, E, C
@@ -14,7 +13,6 @@ router.post('/careers', async (req, res) => {
             LIMIT 10`,
       args: [R, I, A, S, E, C],
     });
-
     res.json(result.rows);
   } catch (err) {
     console.error(err);
