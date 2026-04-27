@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "./ResultsPage.css";
 import MajorCard from "./MajorCard";
 import { getCareers, type Career } from "../utils/api";
+import "./Email.css";
 
 type RiasecType = "R" | "I" | "A" | "S" | "E" | "C";
 
@@ -12,6 +13,7 @@ interface ResultsPageProps {
   onBack: () => void;
   onContinue: () => void;  // make sure this is here
   canGoBack: boolean;
+  sendEmail: (email: string, topTraits: string[], careers: { title: string; description: string; code: string }[]) => Promise<void>;
 }
 
 const DISPLAY_COUNT = 10;
@@ -22,7 +24,8 @@ export default function ResultsPage({
   onRestart,
   onBack,
   onContinue,
-  canGoBack
+  canGoBack,
+  sendEmail
 }: ResultsPageProps) {
   const sortedTraits = Object.entries(scores)
     .sort((a, b) => b[1] - a[1]) as [RiasecType, number][];
@@ -39,6 +42,10 @@ export default function ResultsPage({
     E: "Enterprising",
     C: "Conventional",
   };
+
+  //email
+  const [emailSent, setEmailSent] = useState(false);
+  const [email, setEmail] = useState('');
 
   const [allCareers, setAllCareers] = useState<Career[]>([]);
   const [visibleCareers, setVisibleCareers] = useState<Career[]>([]);
@@ -114,6 +121,46 @@ export default function ResultsPage({
     });
 
     setLastRemoved(null);
+  };
+
+  //email handler
+  const handleEmail = async () => {
+    if (!email){
+      alert('Please enter a valid email address.');
+      return;
+    }
+      //del
+    if (!sendEmail) {
+      console.error("sendEmail function is not provided");
+      return;
+    }
+
+    const traitList = topTraits.map(
+      ([t]) => `${traitLabels[t]} (${t})`
+    );
+
+    const careerData = visibleCareers
+    .filter(c => c.title && c.description && c.onetsoc_code)
+    .slice(0, 5)
+    .map(c => ({
+      title: c.title,
+      description: c.description,
+      code: c.onetsoc_code
+    }));
+
+    console.log("sending email with data:", email, traitList, careerData);
+
+    try {
+    await sendEmail(email, traitList, careerData);
+
+    setEmail("");
+    setEmailSent(false);
+
+    alert("Email sent successfully!");
+    } catch (err) {
+      console.error("EMAIL FAILED:", err);
+      alert("Email failed. Check console.");
+    }
   };
 
   return (
@@ -236,6 +283,34 @@ export default function ResultsPage({
                     onRemove={() => removeCareer(i)}
                   />
                 ))}
+              </div>
+            )}
+          </div>
+
+          {/* EMAIL */}
+          <div className="email-container">
+            {!emailSent ? (
+              <button
+                className="email-button"
+                onClick={() => setEmailSent(true)}
+              >
+                Save results
+              </button>
+            ) : (
+              <div className="email-section">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="email-input"
+                />
+                <button
+                  className="email-button"
+                  onClick={handleEmail}
+                >
+                  Send Results
+                </button>
               </div>
             )}
           </div>

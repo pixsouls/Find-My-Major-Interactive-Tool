@@ -31,9 +31,7 @@ export default function HollandQuiz() {
   const [questionCount, setQuestionCount] = useState(0);
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
 
-  // Email state
-  const [emailSent, setEmailSent] = useState(false);
-  const [email, setEmail] = useState('');
+
 
   const questionsUntilCheckpoint = 12;
 
@@ -166,15 +164,27 @@ export default function HollandQuiz() {
     setShowExploreMajors(false);
   };
 
-  const sendEmail = async (topTrait: string) => {
+  const sendEmail = async (email: string, topTraits: string[], careers: { title: string; description: string; code: string }[]) => {
     try {
-      const response = await fetch('http://localhost:5000/api/send-email', {
+      const response = await fetch('http://localhost:3000/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           to: email,
-          subject: 'Find My Major Result',
-          text: `Your top trait is ${topTrait}.`
+          subject: 'Find My Major Results',
+          text: `
+          Your Top Traits
+          ----------------
+          ${topTraits.map((t, i) => `${i + 1}. ${t}`).join("\n")}
+
+          Recommended Careers
+          -------------------
+          ${careers.slice(0, 5).map((c, i) => `
+          ${i + 1}. ${c.title}
+          ONET Code: ${c.code}
+          ${c.description}
+          `).join("\n")}
+          `
         })
       });
 
@@ -182,8 +192,6 @@ export default function HollandQuiz() {
         throw new Error('Failed to send email');
       }
       alert('Email sent successfully!');
-      setEmailSent(false);
-      setEmail('');
     } catch (error) {
       console.error('Error sending email:', error);
     }
@@ -198,6 +206,7 @@ export default function HollandQuiz() {
         onBack={handleBack}
         onContinue={handleContinueFromResults}
         canGoBack={canGoBack}
+        sendEmail={sendEmail}
       />
     );
   }
@@ -253,37 +262,6 @@ export default function HollandQuiz() {
                 onViewResults={() => setShowResults(true)}
                 isFinalCheckpoint={isFinalCheckpoint}
               />
-
-              {!emailSent && (
-                <button
-                  className="save-results-button"
-                  onClick={() => setEmailSent(true)}
-                  aria-label="Save your current results by email"
-                >
-                  Save Results
-                </button>
-              )}
-
-              {emailSent && (
-                <div className="email-section" role="form" aria-label="Email results form">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="email-input"
-                    aria-label="Email address"
-                    aria-required="true"
-                  />
-                  <button
-                    className="email-button"
-                    onClick={() => sendEmail(Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0])}
-                    aria-label="Send results to your email"
-                  >
-                    Send Results
-                  </button>
-                </div>
-              )}
             </>
           ) : (
             <QuizQuestion
