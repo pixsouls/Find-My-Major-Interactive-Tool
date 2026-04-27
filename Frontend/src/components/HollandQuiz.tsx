@@ -169,7 +169,7 @@ export default function HollandQuiz() {
 
   const sendEmail = async (topTrait: string) => {
     try {
-      const response = await fetch(`${VITE_API_URL}/api/send-email`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
