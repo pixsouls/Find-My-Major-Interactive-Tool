@@ -1,5 +1,6 @@
 import { type RiasecType } from '../data/types';
 import './QuizCheckpoint.css';
+import './Email.css';
 
 interface QuizCheckpointProps {
   scores: Record<RiasecType, number>;

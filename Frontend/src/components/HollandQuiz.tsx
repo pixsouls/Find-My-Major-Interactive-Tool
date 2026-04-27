@@ -18,6 +18,7 @@ type QuizSnapshot = {
   questionCount: number;
 };
 
+
 export default function HollandQuiz() {
   const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
   const [askedQuestionIds, setAskedQuestionIds] = useState<number[]>([]);
@@ -168,7 +169,7 @@ export default function HollandQuiz() {
 
   const sendEmail = async (topTrait: string) => {
     try {
-      const response = await fetch('http://localhost:5000/api/send-email', {
+      const response = await fetch(`${VITE_API_URL}/api/send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
