@@ -209,3 +209,6 @@ __marimo__/
 # DATABASE
 Backend/test.db
 Backend/test.db-journal
+
+# DO NOT UPLOAD NODE MODULES - OWEN
+node_modules

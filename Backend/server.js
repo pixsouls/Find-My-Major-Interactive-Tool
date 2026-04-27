@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import sqlite3 from 'sqlite3';
+import pg from 'pg';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import emailRouter from './utils/email.js';
@@ -15,7 +15,6 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// RIASEC element_id mappings
 const RIASEC = {
   R: '1.B.1.a',
   I: '1.B.1.b',
@@ -37,34 +36,36 @@ function toElementId(key) {
   return id;
 }
 
-// Connect to DB
-const db = new sqlite3.Database(path.join(__dirname, 'test.db'), sqlite3.OPEN_READONLY, (err) => {
-  if (err) return console.error(err.message);
+const db = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+});
+
+db.connect((err) => {
+  if (err) return console.error('Database connection error:', err.message);
   console.log('Connected to database.');
 });
 
-// Ping route for testing
 app.get('/ping', (req, res) => {
   res.json({ message: 'pong' });
 });
 
-// Get all interests for a specific SOC code
-app.get('/api/jobs/:soc_code', (req, res) => {
+app.get('/api/jobs/:soc_code', async (req, res) => {
   const { soc_code } = req.params;
   console.log(`/api/jobs called with: ${soc_code}`);
-  db.all(
-    'SELECT * FROM interests WHERE onetsoc_code = ?',
-    [soc_code],
-    (err, rows) => {
-      if (err) return res.status(500).json({ error: err.message });
-      if (rows.length === 0) return res.status(404).json({ error: 'No jobs found' });
-      res.json(rows);
-    }
-  );
+  try {
+    const result = await db.query(
+      'SELECT * FROM interests WHERE onetsoc_code = $1',
+      [soc_code]
+    );
+    if (result.rows.length === 0) return res.status(404).json({ error: 'No jobs found' });
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
-// Get career recommendations from RIASEC scores
-app.post('/api/careers', (req, res) => {
+app.post('/api/careers', async (req, res) => {
   const scores = req.body;
   console.log(`/api/careers called with scores:`, scores);
 
@@ -80,38 +81,35 @@ app.post('/api/careers', (req, res) => {
   console.log(`Top RIASEC: ${first}, ${second}`);
 
   const selectQuery = `
-  SELECT a.onetsoc_code, a.title, a.${first}, a.${second}, o.description
-  FROM AdaptedCareers a
-  JOIN occupation_data o ON a.onetsoc_code = o.onetsoc_code
-  ORDER BY a.${first} DESC, a.${second} DESC
-  LIMIT 50
-  `;
-
-  const insertQuery = `
-    INSERT OR IGNORE INTO F2Collected (onetsoc_code, title, R, I, A, S, E, C)
-    SELECT onetsoc_code, title, R, I, A, S, E, C
-    FROM AdaptedCareers
-    ORDER BY ${first} DESC, ${second} DESC
+    SELECT a.onetsoc_code, a.title, a."${first}", a."${second}", o.description
+    FROM "AdaptedCareers" a
+    JOIN occupation_data o ON a.onetsoc_code = o.onetsoc_code
+    ORDER BY a."${first}" DESC, a."${second}" DESC
     LIMIT 50
   `;
 
-  // Run INSERT first, then SELECT and send response
-  db.run(insertQuery, [], (err) => {
-    if (err) console.error('F2Collected insert error:', err.message);
+  const insertQuery = `
+    INSERT INTO "F2Collected" (onetsoc_code, title, "R", "I", "A", "S", "E", "C")
+    SELECT onetsoc_code, title, "R", "I", "A", "S", "E", "C"
+    FROM "AdaptedCareers"
+    ORDER BY "${first}" DESC, "${second}" DESC
+    LIMIT 50
+    ON CONFLICT DO NOTHING
+  `;
 
-    db.all(selectQuery, [], (err, rows) => {
-      if (err) return res.status(500).json({ error: err.message });
-      if (rows.length === 0) return res.status(404).json({ error: 'No careers found' });
-      console.log(rows);
-      res.json(rows);
-    });
-  });
+  try {
+    await db.query(insertQuery);
+    const result = await db.query(selectQuery);
+    if (result.rows.length === 0) return res.status(404).json({ error: 'No careers found' });
+    console.log(result.rows);
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
-// Email routes
 app.use('/api/email', emailRouter);
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
