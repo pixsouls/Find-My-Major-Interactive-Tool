@@ -27,7 +27,6 @@ export default function ResultsPage({
   questionCount,
   onRestart,
   onBack,
-  onContinue,
   canGoBack,
   email,
   setEmail,
