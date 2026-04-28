@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "./ResultsPage.css";
 import MajorCard from "./MajorCard";
 import { getCareers, type Career } from "../utils/api";
+import "./Email.css";
 
 type RiasecType = "R" | "I" | "A" | "S" | "E" | "C";
 
@@ -10,8 +11,13 @@ interface ResultsPageProps {
   questionCount: number;
   onRestart: () => void;
   onBack: () => void;
-  onContinue: () => void;  // make sure this is here
+  onContinue: () => void;
   canGoBack: boolean;
+  email: string;
+  setEmail: (email: string) => void;
+  emailSent: boolean;
+  setEmailSent: (value: boolean) => void;
+  sendEmail: (topTrait: string) => void;
 }
 
 const DISPLAY_COUNT = 10;
@@ -22,8 +28,14 @@ export default function ResultsPage({
   onRestart,
   onBack,
   onContinue,
-  canGoBack
+  canGoBack,
+  email,
+  setEmail,
+  emailSent,
+  setEmailSent,
+  sendEmail
 }: ResultsPageProps) {
+
   const sortedTraits = Object.entries(scores)
     .sort((a, b) => b[1] - a[1]) as [RiasecType, number][];
 
@@ -52,7 +64,6 @@ export default function ResultsPage({
     replacementCode: string | null;
   } | null>(null);
 
-  // tracks every career that has ever been visible, so they never recycle
   const usedCodes = useRef<Set<string>>(new Set());
 
   useEffect(() => {
@@ -102,7 +113,6 @@ export default function ResultsPage({
   const undoRemove = () => {
     if (!lastRemoved) return;
 
-    // remove the replacement from usedCodes so it can appear again later
     if (lastRemoved.replacementCode) {
       usedCodes.current.delete(lastRemoved.replacementCode);
     }
@@ -119,7 +129,6 @@ export default function ResultsPage({
   return (
     <div className="results-page">
 
-      {/* HEADER CONTROLS */}
       <div className="results-header">
         <button
           className="results-back-btn"
@@ -129,6 +138,7 @@ export default function ResultsPage({
         >
           Back
         </button>
+
         <button
           className="results-restart-btn"
           onClick={onRestart}
@@ -138,7 +148,6 @@ export default function ResultsPage({
         </button>
       </div>
 
-      {/* HERO */}
       <div className="results-hero">
         <div>
           <p className="small-text highlight">Assessment Complete</p>
@@ -155,11 +164,10 @@ export default function ResultsPage({
         </div>
       </div>
 
-      {/* DASHBOARD */}
       <div className="dashboard-grid">
 
-        {/* LEFT */}
         <div className="left-panel">
+
           <div className="results-card">
             <h2>Your Top Traits</h2>
             {topTraits.map(([trait, score]) => (
@@ -193,20 +201,59 @@ export default function ResultsPage({
                 </li>
               </ul>
             ) : (
-              <p className="career-info-empty">Select a career to see more information.</p>
+              <p className="career-info-empty">
+                Select a career to see more information.
+              </p>
             )}
           </div>
 
-          <button
-            className="results-continue-btn"
-            onClick={onContinue}
-            aria-label="Continue the quiz from where you left off"
+          {/* EMAIL FEATURE instead of Continue Quiz button */}
+          <div
+            className="email-save-card"
+            role="region"
+            aria-label="Save your quiz results by email"
           >
-            Continue Quiz
-          </button>
+            {!emailSent ? (
+              <button
+                className="email-button"
+                onClick={() => setEmailSent(true)}
+                aria-label="Save your results by entering your email"
+              >
+                Save Results
+              </button>
+            ) : (
+              <div
+                className="email-section"
+                role="form"
+                aria-label="Enter email to receive your results"
+              >
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="email-input"
+                  aria-label="Email address"
+                  aria-required="true"
+                />
+
+                <button
+                  className="email-button"
+                  onClick={() =>
+                    sendEmail(
+                      Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0]
+                    )
+                  }
+                  aria-label="Send your quiz results to your email"
+                >
+                  Send Results
+                </button>
+              </div>
+            )}
+          </div>
+
         </div>
 
-        {/* RIGHT */}
         <div className="right-panel">
           <div className="results-card">
             <h2>Recommended Careers</h2>
@@ -229,7 +276,7 @@ export default function ResultsPage({
               <div className="majors-grid">
                 {visibleCareers.map((career, i) => (
                   <MajorCard
-                    key={`${career.onetsoc_code}`}
+                    key={career.onetsoc_code}
                     title={career.title}
                     description={career.description}
                     onClick={() => setSelectedCareer(career)}
@@ -242,7 +289,6 @@ export default function ResultsPage({
         </div>
       </div>
 
-      {/* UNDO TOAST */}
       {lastRemoved && (
         <div className="undo-toast">
           <div className="undo-text">

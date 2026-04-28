@@ -199,6 +199,11 @@ export default function HollandQuiz() {
         onBack={handleBack}
         onContinue={handleContinueFromResults}
         canGoBack={canGoBack}
+        email={email}
+        setEmail={setEmail}
+        emailSent={emailSent}
+        setEmailSent={setEmailSent}
+        sendEmail={sendEmail}
       />
     );
   }
