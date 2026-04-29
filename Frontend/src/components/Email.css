@@ -1,33 +1,74 @@
+/* Email container */
 .email-section {
   margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
 }
 
+/* Input field */
 .email-input {
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  margin-bottom: 8px;
-  width: 250px;
-}
-
-.email-button {
-  margin-top: 10px;
   padding: 10px;
+  border-radius: 8px;
+
   width: 100%;
-  border-radius: 6px;
-  background-color: var(--msu-blue);
+  max-width: 320px;
+
+  background: var(--msu-blue-dark);
+  border: 1px solid var(--msu-blue-dark);
   color: white;
-  border: none;
-  cursor: pointer;
+
+  font-size: 0.9rem;
+
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
+.email-input:focus {
+  outline: none;
+  border-color: var(--quiz-button-blue);
+}
+
+/* Shared button style (matches quiz options) */
+.email-button,
 .save-results-button {
-  margin-top: 15px;
-  padding: 10px;
+  padding: 0.75rem;
   width: 100%;
-  border-radius: 6px;
-  background-color: var(--msu-blue);
+  max-width: 320px;
+
+  border-radius: 8px;
+
+  background: var(--msu-blue-dark);
+  border: 1px solid var(--msu-blue-dark);
+
   color: white;
-  border: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+
   cursor: pointer;
+  text-align: center;
+
+  transition: transform 0.1s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+/* Hover */
+.email-button:hover,
+.save-results-button:hover {
+  background: var(--quiz-button-blue);
+  border-color: var(--quiz-button-blue);
+  transform: translateY(-2px);
+}
+
+/* Active click */
+.email-button:active,
+.save-results-button:active {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
+
+/* Focus accessibility */
+.email-button:focus-visible,
+.save-results-button:focus-visible {
+  outline: 2px solid var(--quiz-button-blue);
+  outline-offset: 2px;
 }

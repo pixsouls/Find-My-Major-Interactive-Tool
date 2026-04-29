@@ -32,7 +32,8 @@ export default function ResultsPage({
   setEmail,
   emailSent,
   setEmailSent,
-  sendEmail
+  sendEmail,
+  onContinue
 }: ResultsPageProps) {
 
   const sortedTraits = Object.entries(scores)
@@ -41,6 +42,7 @@ export default function ResultsPage({
   const topTraits = sortedTraits.slice(0, 3);
   const topTrait = topTraits[0][0];
   const hollandCode = topTraits.map(([t]) => t).join("");
+  const isFromCheckpoint = questionCount < 48;
 
   const traitLabels: Record<RiasecType, string> = {
     R: "Realistic",
@@ -205,6 +207,18 @@ export default function ResultsPage({
               </p>
             )}
           </div>
+
+          {isFromCheckpoint && (
+            <div className="continue-wrapper">
+              <button
+                className="email-button"
+                onClick={onContinue}
+                aria-label="Continue the quiz"
+              >
+                Continue Quiz
+              </button>
+            </div>
+          )}
 
           {/* EMAIL FEATURE instead of Continue Quiz button */}
           <div

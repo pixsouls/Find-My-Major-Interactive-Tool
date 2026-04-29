@@ -1,3 +1,5 @@
+/* src/components/QuizCheckpoint.css */
+
 .checkpoint-card {
   display: flex;
   flex-direction: column;
@@ -6,6 +8,7 @@
   text-align: center;
 }
 
+/* Header tag */
 .checkpoint-header .type-tag {
   display: inline-block;
   font-size: 0.7rem;
@@ -24,92 +27,72 @@
   margin: 0;
 }
 
+/* Preview text */
 .results-preview p {
   color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1.5;
 }
 
+/* Leading badge */
 .leading-badge {
-  font-family: 'JetBrains Mono', monospace; /* Scientific look */
+  font-family: 'JetBrains Mono', monospace;
   font-size: 1.75rem;
   font-weight: 800;
   padding: 1.5rem;
   margin: 1rem 0;
-  background: rgba(0, 255, 204, 0.05); /* Slight tint of accent-primary */
+  background: rgba(0, 255, 204, 0.05);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
+/* Actions container */
 .checkpoint-actions {
   display: flex;
   gap: 12px;
   margin-top: 1rem;
 }
 
-.checkpoint-actions button {
-  flex: 1;
-  padding: 0.8rem;
-  border-radius: 6px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.primary-btn {
-  background: var(--quiz-button-blue);
-  color: #fff;
-  border: 1px solid var(--quiz-button-blue);
-}
-
-.primary-btn:hover {
-  background: var(--msu-red);
-  border-color: var(--msu-red);
-  transform: translateY(-2px);
-}
-
-.primary-btn:active {
-  transform: translateY(0);
-  filter: brightness(0.95);
-}
-
-.primary-btn:focus-visible {
-  outline: 2px solid var(--msu-red);
-  outline-offset: 2px;
-}
-
-.secondary-btn {
-  background: transparent;
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
-}
-
-.secondary-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--text-muted);
-}
-
-/* MSU Denver styling for the "Explore Majors" button */
+/* Base button style (MATCHES QuizQuestion option-btn) */
+.primary-btn,
 .secondary-btn.explore-majors-btn {
-  background: var(--quiz-button-blue);
-  border: 1px solid var(--quiz-button-blue);
-  color: #fff;
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 8px;
+
+  background: var(--msu-blue-dark);
+  border: 1px solid var(--msu-blue-dark);
+
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  text-align: center;
+
+  transition: transform 0.1s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
+/* Hover (MATCHES quiz options) */
+.primary-btn:hover,
 .secondary-btn.explore-majors-btn:hover {
-  background: var(--msu-red);
-  border-color: var(--msu-red);
+  background: var(--quiz-button-blue);
+  border-color: var(--quiz-button-blue);
   transform: translateY(-2px);
 }
 
+/* Active state */
+.primary-btn:active,
 .secondary-btn.explore-majors-btn:active {
   transform: translateY(0);
   filter: brightness(0.95);
 }
 
+/* Focus accessibility */
+.primary-btn:focus-visible,
 .secondary-btn.explore-majors-btn:focus-visible {
-  outline: 2px solid var(--msu-red);
+  outline: 2px solid var(--quiz-button-blue);
   outline-offset: 2px;
 }
