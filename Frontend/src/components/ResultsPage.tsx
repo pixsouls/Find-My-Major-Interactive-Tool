@@ -66,7 +66,14 @@ export default function ResultsPage({
   const usedCodes = useRef<Set<string>>(new Set());
 
   useEffect(() => {
-    getCareers(scores)
+    // generate or retrieve session ID
+    let sessionId = sessionStorage.getItem('sessionId');
+    if (!sessionId) {
+      sessionId = crypto.randomUUID();
+      sessionStorage.setItem('sessionId', sessionId);
+    }
+
+    getCareers(scores, sessionId)
       .then((data) => {
         setAllCareers(data);
         const initial = data.slice(0, DISPLAY_COUNT);
@@ -206,7 +213,6 @@ export default function ResultsPage({
             )}
           </div>
 
-          {/* EMAIL FEATURE instead of Continue Quiz button */}
           <div
             className="email-save-card"
             role="region"
@@ -235,7 +241,6 @@ export default function ResultsPage({
                   aria-label="Email address"
                   aria-required="true"
                 />
-
                 <button
                   className="email-button"
                   onClick={() =>

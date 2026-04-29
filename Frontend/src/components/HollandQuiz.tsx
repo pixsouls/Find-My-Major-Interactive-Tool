@@ -254,6 +254,7 @@ export default function HollandQuiz() {
             <>
               <QuizCheckpoint
                 scores={scores}
+                questionCount={questionCount}
                 onContinue={handleContinue}
                 onExplore={handleExploreMajors}
                 onViewResults={() => setShowResults(true)}
