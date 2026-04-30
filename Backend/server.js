@@ -89,20 +89,87 @@ app.post('/api/careers', async (req, res) => {
   `;
 
   const insertQuery = `
-    INSERT INTO "F2Collected" (onetsoc_code, title, "R", "I", "A", "S", "E", "C")
-    SELECT onetsoc_code, title, "R", "I", "A", "S", "E", "C"
-    FROM "AdaptedCareers"
-    ORDER BY "${first}" DESC, "${second}" DESC
-    LIMIT 50
-    ON CONFLICT DO NOTHING
+    INSERT INTO "F2Collected" (session_id, user_R, user_I, user_A, user_S, user_E, user_C)
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    ON CONFLICT (session_id) DO UPDATE SET
+      user_R = EXCLUDED.user_R,
+      user_I = EXCLUDED.user_I,
+      user_A = EXCLUDED.user_A,
+      user_S = EXCLUDED.user_S,
+      user_E = EXCLUDED.user_E,
+      user_C = EXCLUDED.user_C,
+      created_at = NOW()
   `;
 
   try {
-    await db.query(insertQuery);
+    await db.query(insertQuery, [
+      req.headers['x-session-id'] ?? 'anonymous',
+      scores.R ?? 0,
+      scores.I ?? 0,
+      scores.A ?? 0,
+      scores.S ?? 0,
+      scores.E ?? 0,
+      scores.C ?? 0
+    ]);
     const result = await db.query(selectQuery);
     if (result.rows.length === 0) return res.status(404).json({ error: 'No careers found' });
     console.log(result.rows);
     res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+app.get('/api/collected', async (req, res) => {
+  console.log('/api/collected called');
+  try {
+    const result = await db.query(`
+      SELECT session_id, user_R, user_I, user_A, user_S, user_E, user_C, questions_answered, created_at
+      FROM "F2Collected"
+      ORDER BY created_at DESC
+    `);
+    if (result.rows.length === 0) return res.status(404).json({ error: 'No data collected yet' });
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/api/scores', async (req, res) => {
+  const { scores, questionsAnswered } = req.body;
+  const sessionId = req.headers['x-session-id'] ?? 'anonymous';
+  console.log(`/api/scores called with session: ${sessionId}, questions: ${questionsAnswered}`);
+
+  const VALID_RIASEC = ['R', 'I', 'A', 'S', 'E', 'C'];
+  if (!scores || !Object.keys(scores).every(k => VALID_RIASEC.includes(k))) {
+    return res.status(400).json({ error: 'Invalid RIASEC scores' });
+  }
+
+  try {
+    await db.query(`
+      INSERT INTO "F2Collected" (session_id, user_R, user_I, user_A, user_S, user_E, user_C, questions_answered)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+      ON CONFLICT (session_id) DO UPDATE SET
+        user_R = CASE WHEN EXCLUDED.questions_answered > "F2Collected".questions_answered THEN EXCLUDED.user_R ELSE "F2Collected".user_R END,
+        user_I = CASE WHEN EXCLUDED.questions_answered > "F2Collected".questions_answered THEN EXCLUDED.user_I ELSE "F2Collected".user_I END,
+        user_A = CASE WHEN EXCLUDED.questions_answered > "F2Collected".questions_answered THEN EXCLUDED.user_A ELSE "F2Collected".user_A END,
+        user_S = CASE WHEN EXCLUDED.questions_answered > "F2Collected".questions_answered THEN EXCLUDED.user_S ELSE "F2Collected".user_S END,
+        user_E = CASE WHEN EXCLUDED.questions_answered > "F2Collected".questions_answered THEN EXCLUDED.user_E ELSE "F2Collected".user_E END,
+        user_C = CASE WHEN EXCLUDED.questions_answered > "F2Collected".questions_answered THEN EXCLUDED.user_C ELSE "F2Collected".user_C END,
+        questions_answered = GREATEST("F2Collected".questions_answered, EXCLUDED.questions_answered),
+        created_at = CASE WHEN EXCLUDED.questions_answered > "F2Collected".questions_answered THEN NOW() ELSE "F2Collected".created_at END
+    `, [
+      sessionId,
+      scores.R ?? 0,
+      scores.I ?? 0,
+      scores.A ?? 0,
+      scores.S ?? 0,
+      scores.E ?? 0,
+      scores.C ?? 0,
+      questionsAnswered ?? 0
+    ]);
+    res.json({ success: true });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

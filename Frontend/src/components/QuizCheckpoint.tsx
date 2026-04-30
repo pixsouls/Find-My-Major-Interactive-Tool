@@ -1,17 +1,21 @@
+import { useEffect } from 'react';
 import { type RiasecType } from '../data/types';
+import { saveScores } from '../utils/api';
 import './QuizCheckpoint.css';
 import './Email.css';
 
 interface QuizCheckpointProps {
   scores: Record<RiasecType, number>;
+  questionCount: number;  // add this
   onContinue: () => void;
   onExplore: () => void;
   onViewResults: () => void;
   isFinalCheckpoint: boolean;
 }
 
-export default function QuizCheckpoint({ scores, onContinue, onExplore, onViewResults, isFinalCheckpoint }: QuizCheckpointProps) {
+export default function QuizCheckpoint({ scores, questionCount, onContinue, onExplore, onViewResults, isFinalCheckpoint }: QuizCheckpointProps) {
   const leadingTrait = Object.entries(scores).reduce((a, b) => (a[1] > b[1] ? a : b))[0] as RiasecType;
+
   const traitNames: Record<RiasecType, string> = {
     R: 'Realistic',
     I: 'Investigative',
@@ -20,6 +24,11 @@ export default function QuizCheckpoint({ scores, onContinue, onExplore, onViewRe
     E: 'Enterprising',
     C: 'Conventional'
   };
+
+  useEffect(() => {
+    saveScores(scores, questionCount);
+  }, []);
+
 
   return (
     <section
