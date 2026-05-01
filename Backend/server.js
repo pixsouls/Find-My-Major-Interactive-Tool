@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import sqlite3 from 'sqlite3';
+import pg from 'pg';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import emailRouter from './utils/email.js';
@@ -15,7 +15,6 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// RIASEC element_id mappings
 const RIASEC = {
   R: '1.B.1.a',
   I: '1.B.1.b',
@@ -37,34 +36,36 @@ function toElementId(key) {
   return id;
 }
 
-// Connect to DB
-const db = new sqlite3.Database(path.join(__dirname, 'test.db'), sqlite3.OPEN_READONLY, (err) => {
-  if (err) return console.error(err.message);
+const db = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+});
+
+db.connect((err) => {
+  if (err) return console.error('Database connection error:', err.message);
   console.log('Connected to database.');
 });
 
-// Ping route for testing
 app.get('/ping', (req, res) => {
   res.json({ message: 'pong' });
 });
 
-// Get all interests for a specific SOC code
-app.get('/api/jobs/:soc_code', (req, res) => {
+app.get('/api/jobs/:soc_code', async (req, res) => {
   const { soc_code } = req.params;
   console.log(`/api/jobs called with: ${soc_code}`);
-  db.all(
-    'SELECT * FROM interests WHERE onetsoc_code = ?',
-    [soc_code],
-    (err, rows) => {
-      if (err) return res.status(500).json({ error: err.message });
-      if (rows.length === 0) return res.status(404).json({ error: 'No jobs found' });
-      res.json(rows);
-    }
-  );
+  try {
+    const result = await db.query(
+      'SELECT * FROM interests WHERE onetsoc_code = $1',
+      [soc_code]
+    );
+    if (result.rows.length === 0) return res.status(404).json({ error: 'No jobs found' });
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
-// Get career recommendations from RIASEC scores
-app.post('/api/careers', (req, res) => {
+app.post('/api/careers', async (req, res) => {
   const scores = req.body;
   console.log(`/api/careers called with scores:`, scores);
 
@@ -80,38 +81,133 @@ app.post('/api/careers', (req, res) => {
   console.log(`Top RIASEC: ${first}, ${second}`);
 
   const selectQuery = `
-  SELECT a.onetsoc_code, a.title, a.${first}, a.${second}, o.description
-  FROM AdaptedCareers a
-  JOIN occupation_data o ON a.onetsoc_code = o.onetsoc_code
-  ORDER BY a.${first} DESC, a.${second} DESC
+  SELECT 
+    o.onetsoc_code,
+    o.title,
+    o.description
+  FROM occupation_data o
   LIMIT 50
-  `;
+`;
 
   const insertQuery = `
-    INSERT OR IGNORE INTO F2Collected (onetsoc_code, title, R, I, A, S, E, C)
-    SELECT onetsoc_code, title, R, I, A, S, E, C
-    FROM AdaptedCareers
-    ORDER BY ${first} DESC, ${second} DESC
-    LIMIT 50
+    INSERT INTO "user_scores" (session_id, user_R, user_I, user_A, user_S, user_E, user_C)
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    ON CONFLICT (session_id) DO UPDATE SET
+      user_R = EXCLUDED.user_R,
+      user_I = EXCLUDED.user_I,
+      user_A = EXCLUDED.user_A,
+      user_S = EXCLUDED.user_S,
+      user_E = EXCLUDED.user_E,
+      user_C = EXCLUDED.user_C,
+      created_at = NOW()
   `;
 
-  // Run INSERT first, then SELECT and send response
-  db.run(insertQuery, [], (err) => {
-    if (err) console.error('F2Collected insert error:', err.message);
-
-    db.all(selectQuery, [], (err, rows) => {
-      if (err) return res.status(500).json({ error: err.message });
-      if (rows.length === 0) return res.status(404).json({ error: 'No careers found' });
-      console.log(rows);
-      res.json(rows);
-    });
-  });
+  try {
+    await db.query(insertQuery, [
+      req.headers['x-session-id'] ?? 'anonymous',
+      scores.R ?? 0,
+      scores.I ?? 0,
+      scores.A ?? 0,
+      scores.S ?? 0,
+      scores.E ?? 0,
+      scores.C ?? 0
+    ]);
+    const result = await db.query(selectQuery);
+    if (result.rows.length === 0) return res.status(404).json({ error: 'No careers found' });
+    console.log(result.rows);
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
-// Email routes
+app.post('/api/recommended-majors', async (req, res) => {
+  const { careerCodes } = req.body;
+
+  if (!Array.isArray(careerCodes) || careerCodes.length === 0) {
+    return res.status(400).json({ error: 'careerCodes must be a non-empty array' });
+  }
+
+  try {
+    const result = await db.query(
+      `
+      SELECT
+        o.onetsoc_code,
+        o.title AS career,
+        maj.major_name,
+        map.match_strength
+      FROM mapping map
+      JOIN majors maj ON maj.id = map.major_id
+      JOIN occupation_data o ON o.onetsoc_code = map.onetsoc_code
+      WHERE o.onetsoc_code = ANY($1)
+      ORDER BY map.match_strength DESC;
+      `,
+      [careerCodes]
+    );
+
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Error fetching recommended majors:', err.message);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/api/collected', async (req, res) => {
+  console.log('/api/collected called');
+  try {
+    const result = await db.query(`
+      SELECT session_id, user_R, user_I, user_A, user_S, user_E, user_C, questions_answered, created_at
+      FROM "user_scores"
+      ORDER BY created_at DESC
+    `);
+    if (result.rows.length === 0) return res.status(404).json({ error: 'No data collected yet' });
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/api/scores', async (req, res) => {
+  const { scores, questionsAnswered } = req.body;
+  const sessionId = req.headers['x-session-id'] ?? 'anonymous';
+  console.log(`/api/scores called with session: ${sessionId}, questions: ${questionsAnswered}`);
+
+  const VALID_RIASEC = ['R', 'I', 'A', 'S', 'E', 'C'];
+  if (!scores || !Object.keys(scores).every(k => VALID_RIASEC.includes(k))) {
+    return res.status(400).json({ error: 'Invalid RIASEC scores' });
+  }
+
+  try {
+    await db.query(`
+      INSERT INTO "user_scores" (session_id, user_R, user_I, user_A, user_S, user_E, user_C, questions_answered)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+      ON CONFLICT (session_id) DO UPDATE SET
+        user_R = CASE WHEN EXCLUDED.questions_answered > "user_scores".questions_answered THEN EXCLUDED.user_R ELSE "user_scores".user_R END,
+        user_I = CASE WHEN EXCLUDED.questions_answered > "user_scores".questions_answered THEN EXCLUDED.user_I ELSE "user_scores".user_I END,
+        user_A = CASE WHEN EXCLUDED.questions_answered > "user_scores".questions_answered THEN EXCLUDED.user_A ELSE "user_scores".user_A END,
+        user_S = CASE WHEN EXCLUDED.questions_answered > "user_scores".questions_answered THEN EXCLUDED.user_S ELSE "user_scores".user_S END,
+        user_E = CASE WHEN EXCLUDED.questions_answered > "user_scores".questions_answered THEN EXCLUDED.user_E ELSE "user_scores".user_E END,
+        user_C = CASE WHEN EXCLUDED.questions_answered > "user_scores".questions_answered THEN EXCLUDED.user_C ELSE "user_scores".user_C END,
+        questions_answered = GREATEST("user_scores".questions_answered, EXCLUDED.questions_answered),
+        created_at = CASE WHEN EXCLUDED.questions_answered > "user_scores".questions_answered THEN NOW() ELSE "user_scores".created_at END
+    `, [
+      sessionId,
+      scores.R ?? 0,
+      scores.I ?? 0,
+      scores.A ?? 0,
+      scores.S ?? 0,
+      scores.E ?? 0,
+      scores.C ?? 0,
+      questionsAnswered ?? 0
+    ]);
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.use('/api/email', emailRouter);
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

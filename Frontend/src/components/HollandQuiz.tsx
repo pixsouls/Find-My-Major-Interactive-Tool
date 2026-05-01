@@ -166,34 +166,119 @@ export default function HollandQuiz() {
 
   const sendEmail = async (email: string, topTraits: string[], careers: { title: string; description: string; code: string }[]) => {
     try {
-      const response = await fetch('http://localhost:3000/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const careerCodes = careers.map((career) => career.code);
+
+      const majorsResponse = await fetch("http://localhost:4000/api/recommended-majors", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ careerCodes }),
+      });
+
+      if (!majorsResponse.ok) {
+        throw new Error("Failed to load majors for email");
+      }
+
+      const majors = await majorsResponse.json();
+
+      const majorsByCareer: Record<string, string[]> = {};
+
+      majors.forEach((major: any) => {
+        if (!majorsByCareer[major.onetsoc_code]) {
+          majorsByCareer[major.onetsoc_code] = [];
+        }
+
+        if (!majorsByCareer[major.onetsoc_code].includes(major.major_name)) {
+          majorsByCareer[major.onetsoc_code].push(major.major_name);
+        }
+      });
+
+      const html = `
+        <div style="font-family: Arial, sans-serif; line-height: 1.5; color: #222;">
+          <h1 style="color: #2d3748;">Find My Major Results</h1>
+
+          <h2>Your Top Traits</h2>
+          <ol>
+            ${topTraits.map((trait) => `<li>${trait}</li>`).join("")}
+          </ol>
+
+          <h2>Recommended Careers</h2>
+
+          ${careers
+            .slice(0, 10)
+            .map((career, index) => {
+              const relatedMajors = majorsByCareer[career.code] || [];
+
+              return `
+                <div style="margin-bottom: 24px; padding: 16px; border: 1px solid #ddd; border-radius: 8px;">
+                  <h3>${index + 1}. ${career.title}</h3>
+                  <p><strong>ONET Code:</strong> ${career.code}</p>
+                  <p>${career.description}</p>
+
+                  <h4>Related Majors</h4>
+                  ${
+                    relatedMajors.length > 0
+                      ? `<ul>${relatedMajors
+                          .slice(0, 5)
+                          .map((major) => `<li>${major}</li>`)
+                          .join("")}</ul>`
+                      : `<p>No related majors found.</p>`
+                  }
+                </div>
+              `;
+            })
+            .join("")}
+        </div>
+      `;
+
+      const text = `
+Find My Major Results
+
+Your Top Traits
+${topTraits.map((t, i) => `${i + 1}. ${t}`).join("\n")}
+
+Recommended Careers
+${careers
+  .slice(0, 10)
+  .map((career, i) => {
+    const relatedMajors = majorsByCareer[career.code] || [];
+
+    return `
+${i + 1}. ${career.title}
+ONET Code: ${career.code}
+${career.description}
+
+Related Majors:
+${
+  relatedMajors.length > 0
+    ? relatedMajors.slice(0, 10).map((m) => `- ${m}`).join("\n")
+    : "- No related majors found"
+}
+`;
+  })
+  .join("\n")}
+`;
+
+      const response = await fetch("http://localhost:4000/api/email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           to: email,
-          subject: 'Find My Major Results',
-          text: `
-          Your Top Traits
-          ----------------
-          ${topTraits.map((t, i) => `${i + 1}. ${t}`).join("\n")}
-
-          Recommended Careers
-          -------------------
-          ${careers.slice(0, 5).map((c, i) => `
-          ${i + 1}. ${c.title}
-          ONET Code: ${c.code}
-          ${c.description}
-          `).join("\n")}
-          `
-        })
+          subject: "Find My Major Results",
+          text,
+          html,
+        }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to send email');
+        throw new Error("Failed to send email");
       }
-      alert('Email sent successfully!');
+
+      alert("Email sent successfully!");
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error("Error sending email:", error);
+      alert("Email failed. Check console.");
     }
   };
 

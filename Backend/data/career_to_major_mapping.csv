@@ -1,0 +1,3424 @@
+major_name,onetsoc_code,match_strength
+Business Administration,11-1011.00,0.98
+Management,11-1011.00,0.98
+Entrepreneurship,11-1011.00,0.88
+Environmental Sustainability,11-1011.03,0.98
+Business Administration,11-1011.03,0.77
+Environmental Engineering,11-1011.03,0.77
+Management,11-1021.00,0.98
+Business Administration,11-1021.00,0.91
+Human Resource Management,11-1021.00,0.89
+Political Science,11-1031.00,0.95
+Marketing,11-2011.00,0.96
+Business Intelligence,11-2011.00,0.80
+Business Administration,11-2011.00,0.72
+Communication Studies,11-2011.00,0.70
+Marketing,11-2021.00,0.96
+Business Intelligence,11-2021.00,0.80
+Business Administration,11-2021.00,0.72
+Communication Studies,11-2021.00,0.70
+Professional Selling,11-2022.00,0.98
+Entrepreneurship,11-2022.00,0.91
+Business Administration,11-2022.00,0.90
+Management,11-2022.00,0.90
+Operations Management,11-2022.00,0.82
+Public Relations,11-2032.00,0.98
+"Art History, Theory, and Criticism",11-2032.00,0.62
+Art,11-2032.00,0.62
+Business Administration,11-2033.00,0.98
+Management,11-2033.00,0.98
+Operations Management,11-2033.00,0.80
+Business Administration,11-3012.00,0.98
+Management,11-3012.00,0.92
+Operations Management,11-3012.00,0.80
+Business Administration,11-3013.00,0.98
+Management,11-3013.00,0.91
+Operations Management,11-3013.00,0.91
+Business Administration,11-3013.01,0.98
+Computer Security,11-3013.01,0.98
+Management,11-3013.01,0.98
+Operations Management,11-3013.01,0.80
+Computer Information Systems,11-3021.00,0.98
+Health Care Information Systems Major,11-3021.00,0.89
+Business Intelligence,11-3021.00,0.84
+Finance,11-3031.00,0.98
+Business Administration,11-3031.00,0.94
+Management,11-3031.00,0.94
+Accounting,11-3031.00,0.90
+Operations Management,11-3031.00,0.85
+Finance,11-3031.01,0.98
+Accounting,11-3031.01,0.65
+Aviation and Aerospace Management,11-3031.01,0.65
+Business Administration,11-3031.03,0.98
+Management,11-3031.03,0.91
+Operations Management,11-3031.03,0.91
+Advanced Manufacturing Sciences,11-3051.00,0.98
+Advanced Manufacturing Operations,11-3051.00,0.93
+Industrial Design,11-3051.00,0.85
+Chemistry,11-3051.01,0.98
+Biology,11-3051.01,0.76
+Nutrition Science,11-3051.01,0.76
+Business Administration,11-3051.02,0.98
+Management,11-3051.02,0.91
+Operations Management,11-3051.02,0.91
+Business Administration,11-3051.03,0.98
+Video Production,11-3051.03,0.98
+Film Studies and Production,11-3051.03,0.91
+Management,11-3051.03,0.91
+Media Production and Leadership,11-3051.03,0.91
+Operations Management,11-3051.03,0.91
+Business Administration,11-3051.04,0.98
+Management,11-3051.04,0.91
+Operations Management,11-3051.04,0.91
+Business Administration,11-3051.06,0.98
+Management,11-3051.06,0.91
+Operations Management,11-3051.06,0.91
+Business Administration,11-3061.00,0.98
+Management,11-3061.00,0.98
+Operations Management,11-3061.00,0.80
+Business Administration,11-3071.00,0.98
+Management,11-3071.00,0.98
+Operations Management,11-3071.00,0.98
+Political Science,11-3071.00,0.93
+International Business,11-3071.00,0.80
+Operations Management,11-3071.04,0.98
+Business Administration,11-3071.04,0.87
+Management,11-3071.04,0.87
+Business Administration,11-3111.00,0.98
+Management,11-3111.00,0.98
+Operations Management,11-3111.00,0.80
+Human Resource Management,11-3121.00,0.98
+Business Administration,11-3121.00,0.80
+Management,11-3121.00,0.80
+Human Resource Management,11-3131.00,0.98
+Business Administration,11-3131.00,0.91
+Human Development and Family Studies,11-3131.00,0.91
+Management,11-3131.00,0.91
+Operations Management,11-3131.00,0.77
+Business Administration,11-9013.00,0.98
+Management,11-9013.00,0.92
+Operations Management,11-9013.00,0.87
+Marketing,11-9013.00,0.84
+Construction Project Management,11-9021.00,0.98
+Civil Engineering Technology,11-9021.00,0.72
+Advanced Manufacturing Operations,11-9021.00,0.62
+Early Childhood Education,11-9031.00,0.98
+Human Development and Family Studies,11-9031.00,0.82
+Special Education,11-9031.00,0.70
+Early Childhood Education,11-9032.00,0.98
+Elementary Education,11-9032.00,0.98
+Art Education,11-9032.00,0.92
+K-12 Physical Education,11-9032.00,0.87
+Music Education,11-9032.00,0.87
+Special Education,11-9032.00,0.87
+Art Education,11-9033.00,0.98
+Early Childhood Education,11-9033.00,0.98
+Elementary Education,11-9033.00,0.98
+K-12 Physical Education,11-9033.00,0.91
+Music Education,11-9033.00,0.91
+Special Education,11-9033.00,0.91
+Art Education,11-9039.00,0.98
+Early Childhood Education,11-9039.00,0.98
+Elementary Education,11-9039.00,0.98
+K-12 Physical Education,11-9039.00,0.91
+Music Education,11-9039.00,0.91
+Special Education,11-9039.00,0.91
+Civil Engineering Technology,11-9041.00,0.98
+Computer Engineering,11-9041.00,0.98
+Electrical Engineering,11-9041.00,0.98
+Environmental Engineering,11-9041.00,0.98
+Mechanical Engineering Technology,11-9041.00,0.98
+Applied Geology,11-9041.00,0.78
+Applied Geology,11-9041.01,0.89
+Biochemistry,11-9041.01,0.89
+Biology,11-9041.01,0.89
+Chemistry,11-9041.01,0.89
+Data Science and Machine Learning,11-9041.01,0.89
+Environmental Science,11-9041.01,0.89
+Hospitality Leadership,11-9051.00,0.98
+Business Administration,11-9051.00,0.96
+Management,11-9051.00,0.96
+Brewery Operations,11-9051.00,0.79
+Business Administration,11-9071.00,0.98
+Management,11-9071.00,0.91
+Operations Management,11-9071.00,0.91
+Business Administration,11-9072.00,0.98
+Management,11-9072.00,0.91
+Operations Management,11-9072.00,0.91
+Business Administration,11-9081.00,0.98
+Management,11-9081.00,0.98
+Hospitality Leadership,11-9081.00,0.80
+Hotel Management,11-9081.00,0.80
+Health Care Management,11-9111.00,0.98
+Public Health,11-9111.00,0.96
+Health Care Professional Services,11-9111.00,0.89
+Integrative Health Care,11-9111.00,0.89
+Health Care Information Systems Major,11-9111.00,0.85
+Aging Services Leadership,11-9111.00,0.84
+Environmental Science,11-9121.00,0.98
+Mathematics,11-9121.00,0.79
+Statistical Science,11-9121.00,0.79
+Health Care Professional Services,11-9121.01,0.94
+Nursing,11-9121.01,0.94
+Biochemistry,11-9121.01,0.90
+Biology,11-9121.01,0.90
+Chemistry,11-9121.01,0.90
+Environmental Engineering,11-9121.02,0.94
+Industrial Design,11-9121.02,0.94
+Applied Geology,11-9121.02,0.72
+Business Administration,11-9131.00,0.98
+Management,11-9131.00,0.83
+Accounting,11-9131.00,0.68
+Real Estate,11-9141.00,0.98
+Business Administration,11-9141.00,0.77
+Management,11-9141.00,0.77
+Social Work,11-9151.00,0.98
+Human Services,11-9151.00,0.82
+Psychology Major,11-9151.00,0.78
+Fire and Emergency Response Administration,11-9161.00,0.96
+Public Health,11-9161.00,0.70
+Criminal Justice and Criminology,11-9161.00,0.68
+Business Administration,11-9171.00,0.98
+Management,11-9171.00,0.98
+Operations Management,11-9171.00,0.80
+Business Administration,11-9179.00,0.98
+Management,11-9179.00,0.98
+Operations Management,11-9179.00,0.80
+Public Health,11-9179.01,0.98
+Integrative Health Care,11-9179.01,0.86
+Exercise Science,11-9179.01,0.76
+Business Administration,11-9179.02,0.98
+Management,11-9179.02,0.98
+Operations Management,11-9179.02,0.87
+Finance,11-9179.02,0.80
+Business Administration,11-9199.00,0.98
+Management,11-9199.00,0.98
+Operations Management,11-9199.00,0.80
+Business Administration,11-9199.01,0.98
+Management,11-9199.01,0.98
+Video Production,11-9199.01,0.89
+Operations Management,11-9199.01,0.80
+Business Administration,11-9199.02,0.98
+Management,11-9199.02,0.98
+Operations Management,11-9199.02,0.80
+Business Administration,11-9199.08,0.98
+Management,11-9199.08,0.98
+Operations Management,11-9199.08,0.80
+Management,11-9199.09,0.98
+Business Administration,11-9199.09,0.89
+Operations Management,11-9199.09,0.84
+Business Administration,11-9199.10,0.98
+Environmental Engineering,11-9199.10,0.88
+Environmental Science,11-9199.10,0.88
+Environmental Sustainability,11-9199.10,0.88
+Management,11-9199.10,0.87
+Construction Project Management,11-9199.10,0.84
+Business Administration,11-9199.11,0.98
+Management,11-9199.11,0.98
+Operations Management,11-9199.11,0.80
+Special Education,11-9199.11,0.80
+Business Administration,13-1011.00,0.98
+International Business,13-1011.00,0.87
+Business Intelligence,13-1011.00,0.83
+Management,13-1011.00,0.83
+Construction Project Management,13-1021.00,0.90
+Real Estate,13-1021.00,0.90
+Event and Meeting Management,13-1022.00,0.98
+Professional Selling,13-1022.00,0.98
+Marketing,13-1022.00,0.83
+Operations Management,13-1022.00,0.83
+Advanced Manufacturing Sciences,13-1023.00,0.98
+Advanced Manufacturing Operations,13-1023.00,0.90
+Mechanical Engineering Technology,13-1023.00,0.90
+Physics,13-1023.00,0.78
+Finance,13-1031.00,0.94
+Accounting,13-1031.00,0.72
+Aviation and Aerospace Management,13-1031.00,0.72
+Finance,13-1032.00,0.94
+Real Estate,13-1032.00,0.94
+Accounting,13-1032.00,0.72
+Political Science,13-1041.00,0.90
+Environmental Engineering,13-1041.01,0.98
+Environmental Science,13-1041.01,0.87
+Environmental Sustainability,13-1041.01,0.87
+Political Science,13-1041.03,0.90
+Special Education,13-1041.03,0.90
+Political Science,13-1041.04,0.94
+Criminal Justice and Criminology,13-1041.04,0.72
+Fire and Emergency Response Administration,13-1041.04,0.72
+Philosophy,13-1041.06,0.90
+Special Education,13-1041.07,0.93
+Accounting,13-1041.07,0.80
+Advanced Manufacturing Sciences,13-1041.07,0.80
+Physics,13-1041.07,0.80
+Event and Meeting Management,13-1041.08,0.95
+International Business,13-1041.08,0.95
+Advanced Manufacturing Sciences,13-1041.08,0.75
+Electrical Engineering,13-1041.08,0.75
+Political Science,13-1041.08,0.75
+Real Estate,13-1041.08,0.75
+Construction Project Management,13-1051.00,0.98
+Advanced Manufacturing Operations,13-1051.00,0.83
+Advanced Manufacturing Sciences,13-1051.00,0.83
+Human Resource Management,13-1071.00,0.98
+Accounting,13-1071.00,0.62
+Aviation and Aerospace Management,13-1071.00,0.62
+Construction Project Management,13-1074.00,0.90
+Human Resource Management,13-1075.00,0.98
+Public Relations,13-1075.00,0.94
+Special Education,13-1075.00,0.79
+Human Resource Management,13-1081.00,0.90
+Computer Information Systems,13-1081.01,0.98
+Business Administration,13-1081.01,0.83
+Computer Engineering,13-1081.01,0.83
+Health Care Information Systems Major,13-1081.01,0.83
+Industrial Design,13-1081.01,0.83
+International Business,13-1081.01,0.83
+Operations Management,13-1081.02,0.98
+International Business,13-1081.02,0.76
+Accounting,13-1081.02,0.64
+Business Administration,13-1082.00,0.98
+Management,13-1082.00,0.98
+Operations Management,13-1082.00,0.87
+Accounting,13-1082.00,0.80
+Finance,13-1082.00,0.80
+Business Administration,13-1111.00,0.98
+Management,13-1111.00,0.91
+Operations Management,13-1111.00,0.91
+Event and Meeting Management,13-1121.00,0.98
+Brewery Operations,13-1121.00,0.61
+Business Administration,13-1121.00,0.61
+Finance,13-1131.00,0.94
+Industrial Design,13-1131.00,0.94
+Accounting,13-1131.00,0.72
+Special Education,13-1141.00,0.93
+Human Resource Management,13-1141.00,0.80
+Industrial Design,13-1151.00,0.94
+"Art History, Theory, and Criticism",13-1151.00,0.72
+Art,13-1151.00,0.72
+Marketing,13-1161.00,0.96
+Business Intelligence,13-1161.00,0.80
+Business Administration,13-1161.00,0.72
+Communication Studies,13-1161.00,0.70
+Marketing,13-1161.01,0.98
+Business Intelligence,13-1161.01,0.77
+Accounting,13-1161.01,0.65
+Business Administration,13-1199.00,0.98
+International Business,13-1199.00,0.92
+Business Intelligence,13-1199.00,0.87
+Business Administration,13-1199.04,0.98
+Event and Meeting Management,13-1199.04,0.95
+International Business,13-1199.04,0.93
+Business Intelligence,13-1199.04,0.87
+Environmental Sustainability,13-1199.05,0.98
+Environmental Engineering,13-1199.05,0.84
+Business Administration,13-1199.05,0.74
+Accounting,13-1199.06,0.98
+Business Administration,13-1199.06,0.91
+International Business,13-1199.06,0.91
+Marketing,13-1199.06,0.91
+Business Intelligence,13-1199.06,0.79
+Finance,13-1199.06,0.79
+Business Administration,13-1199.07,0.98
+Management,13-1199.07,0.98
+Operations Management,13-1199.07,0.87
+Industrial Design,13-1199.07,0.80
+Accounting,13-2011.00,0.98
+Finance,13-2011.00,0.75
+Business Administration,13-2011.00,0.70
+Business Administration,13-2022.00,0.98
+International Business,13-2022.00,0.98
+Business Intelligence,13-2022.00,0.91
+Real Estate,13-2022.00,0.88
+Real Estate,13-2023.00,0.98
+Accounting,13-2023.00,0.62
+Aviation and Aerospace Management,13-2023.00,0.62
+Accounting,13-2031.00,0.98
+Economics,13-2031.00,0.96
+Finance,13-2031.00,0.70
+Finance,13-2041.00,0.96
+Economics,13-2041.00,0.82
+Accounting,13-2041.00,0.78
+Business Administration,13-2041.00,0.70
+Finance,13-2051.00,0.98
+Business Intelligence,13-2051.00,0.83
+Accounting,13-2051.00,0.68
+Finance,13-2052.00,0.96
+Economics,13-2052.00,0.82
+Accounting,13-2052.00,0.78
+Business Administration,13-2052.00,0.70
+Finance,13-2053.00,0.94
+Accounting,13-2053.00,0.72
+Aviation and Aerospace Management,13-2053.00,0.72
+Finance,13-2054.00,0.98
+Economics,13-2054.00,0.83
+Accounting,13-2054.00,0.68
+Real Estate,13-2061.00,0.98
+Finance,13-2061.00,0.83
+Accounting,13-2061.00,0.63
+Finance,13-2071.00,0.98
+Accounting,13-2071.00,0.75
+Business Administration,13-2071.00,0.75
+Finance,13-2072.00,0.96
+Economics,13-2072.00,0.82
+Accounting,13-2072.00,0.78
+Business Administration,13-2072.00,0.70
+Accounting,13-2081.00,0.98
+Finance,13-2081.00,0.75
+Business Administration,13-2081.00,0.70
+Accounting,13-2082.00,0.98
+Finance,13-2082.00,0.75
+Business Administration,13-2082.00,0.70
+Finance,13-2099.00,0.94
+Accounting,13-2099.00,0.72
+Aviation and Aerospace Management,13-2099.00,0.72
+Finance,13-2099.01,0.98
+Business Administration,13-2099.01,0.83
+Management,13-2099.01,0.83
+Mathematics,13-2099.04,0.90
+Computer Information Systems,15-1211.00,0.98
+Computer Engineering,15-1211.00,0.94
+Computer Science,15-1211.00,0.88
+Business Administration,15-1211.00,0.82
+Health Care Information Systems Major,15-1211.01,0.98
+Health Care Management,15-1211.01,0.92
+Health Care Professional Services,15-1211.01,0.92
+Integrative Health Care,15-1211.01,0.92
+Public Health,15-1211.01,0.87
+Nursing,15-1211.01,0.84
+Cybersecurity,15-1212.00,0.98
+Computer Security,15-1212.00,0.96
+Computer Information Systems,15-1212.00,0.84
+Computer Science,15-1212.00,0.78
+Computer Engineering,15-1221.00,0.98
+Computer Information Systems,15-1221.00,0.93
+Computer Science,15-1221.00,0.84
+Computer Engineering,15-1231.00,0.98
+Computer Information Systems,15-1231.00,0.98
+Computer Science,15-1231.00,0.91
+Computer Security,15-1231.00,0.91
+Computer Engineering,15-1232.00,0.98
+Computer Information Systems,15-1232.00,0.84
+Computer Science,15-1232.00,0.84
+Computer Security,15-1241.00,0.98
+Computer Engineering,15-1241.00,0.95
+Computer Information Systems,15-1241.00,0.95
+Computer Science,15-1241.00,0.86
+Cybersecurity,15-1241.00,0.83
+Electrical Engineering,15-1241.01,0.98
+Civil Engineering Technology,15-1241.01,0.91
+Computer Engineering,15-1241.01,0.91
+Environmental Engineering,15-1241.01,0.91
+Mechanical Engineering Technology,15-1241.01,0.91
+Video Production,15-1241.01,0.88
+Business Administration,15-1242.00,0.98
+Management,15-1242.00,0.98
+Computer Information Systems,15-1242.00,0.88
+Computer Security,15-1242.00,0.88
+Business Intelligence,15-1242.00,0.86
+Operations Management,15-1242.00,0.83
+Business Intelligence,15-1243.00,0.98
+Computer Information Systems,15-1243.00,0.91
+Business Administration,15-1243.00,0.79
+Computer Engineering,15-1243.00,0.79
+Computer Security,15-1243.00,0.79
+Data Science and Machine Learning,15-1243.00,0.79
+Business Intelligence,15-1243.01,0.98
+Computer Information Systems,15-1243.01,0.98
+Health Care Information Systems Major,15-1243.01,0.98
+Data Science and Machine Learning,15-1243.01,0.83
+Industrial Design,15-1243.01,0.83
+Computer Engineering,15-1244.00,0.98
+Computer Information Systems,15-1244.00,0.93
+Computer Science,15-1244.00,0.93
+Computer Security,15-1244.00,0.84
+Computer Science,15-1251.00,0.98
+Computer Information Systems,15-1251.00,0.90
+Computer Engineering,15-1251.00,0.82
+Data Science and Machine Learning,15-1251.00,0.76
+Computer Science,15-1252.00,0.98
+Computer Information Systems,15-1252.00,0.90
+Computer Engineering,15-1252.00,0.82
+Data Science and Machine Learning,15-1252.00,0.76
+Computer Science,15-1253.00,0.98
+Computer Information Systems,15-1253.00,0.90
+Computer Engineering,15-1253.00,0.82
+Data Science and Machine Learning,15-1253.00,0.76
+Computer Science,15-1254.00,0.98
+Computer Information Systems,15-1254.00,0.90
+Computer Engineering,15-1254.00,0.82
+Data Science and Machine Learning,15-1254.00,0.76
+Communication Design,15-1255.00,0.98
+Computer Information Systems,15-1255.00,0.93
+Computer Science,15-1255.00,0.93
+Computer Engineering,15-1255.00,0.86
+Video Production,15-1255.01,0.98
+Film Studies and Production,15-1255.01,0.81
+Media Production and Leadership,15-1255.01,0.81
+Computer Engineering,15-1299.00,0.98
+Computer Information Systems,15-1299.00,0.98
+Computer Science,15-1299.00,0.98
+Computer Security,15-1299.00,0.98
+Computer Information Systems,15-1299.01,0.94
+Computer Science,15-1299.01,0.94
+Industrial Design,15-1299.01,0.94
+Computer Information Systems,15-1299.02,0.98
+Health Care Information Systems Major,15-1299.02,0.98
+Business Intelligence,15-1299.02,0.86
+Business Administration,15-1299.03,0.98
+Management,15-1299.03,0.98
+Operations Management,15-1299.03,0.87
+Computer Information Systems,15-1299.04,0.98
+Computer Engineering,15-1299.04,0.83
+Computer Security,15-1299.04,0.83
+Cybersecurity,15-1299.04,0.83
+Health Care Information Systems Major,15-1299.04,0.83
+Cybersecurity,15-1299.05,0.98
+Computer Security,15-1299.05,0.96
+Computer Information Systems,15-1299.05,0.84
+Computer Science,15-1299.05,0.78
+Criminal Justice and Criminology,15-1299.06,0.96
+Psychology Major,15-1299.06,0.70
+Political Science,15-1299.06,0.68
+Industrial Design,15-1299.07,0.94
+"Art History, Theory, and Criticism",15-1299.07,0.72
+Art,15-1299.07,0.72
+Computer Engineering,15-1299.08,0.98
+Computer Information Systems,15-1299.08,0.86
+Computer Science,15-1299.08,0.86
+Computer Security,15-1299.08,0.82
+Business Administration,15-1299.09,0.98
+Management,15-1299.09,0.87
+International Business,15-1299.09,0.84
+Business Intelligence,15-2011.00,0.94
+Finance,15-2011.00,0.94
+Accounting,15-2011.00,0.72
+Mathematics,15-2021.00,0.98
+Business Administration,15-2021.00,0.83
+Management,15-2021.00,0.83
+Mathematics,15-2031.00,0.98
+Computer Information Systems,15-2031.00,0.93
+Business Administration,15-2031.00,0.86
+Computer Engineering,15-2031.00,0.86
+Operations Management,15-2031.00,0.86
+Business Intelligence,15-2031.00,0.85
+Data Science and Machine Learning,15-2041.00,0.98
+Statistical Science,15-2041.00,0.94
+Computer Science,15-2041.00,0.86
+Business Intelligence,15-2041.00,0.82
+Mathematics,15-2041.00,0.78
+Data Science and Machine Learning,15-2041.01,0.98
+Statistical Science,15-2041.01,0.94
+Computer Science,15-2041.01,0.86
+Business Intelligence,15-2041.01,0.82
+Mathematics,15-2041.01,0.78
+Data Science and Machine Learning,15-2051.00,0.98
+Statistical Science,15-2051.00,0.94
+Computer Science,15-2051.00,0.86
+Business Intelligence,15-2051.00,0.82
+Mathematics,15-2051.00,0.78
+Business Intelligence,15-2051.01,0.98
+Business Administration,15-2051.01,0.81
+International Business,15-2051.01,0.81
+Health Care Information Systems Major,15-2051.02,0.98
+Business Administration,15-2051.02,0.96
+Management,15-2051.02,0.96
+Health Care Professional Services,15-2051.02,0.93
+Business Intelligence,15-2051.02,0.91
+Health Care Management,15-2051.02,0.86
+Physics,15-2099.00,0.90
+Biochemistry,15-2099.01,0.98
+Health Care Information Systems Major,15-2099.01,0.97
+Biology,15-2099.01,0.92
+Computer Information Systems,15-2099.01,0.92
+Business Intelligence,15-2099.01,0.86
+Industrial Design,17-1011.00,0.94
+"Art History, Theory, and Criticism",17-1011.00,0.72
+Art,17-1011.00,0.72
+Industrial Design,17-1012.00,0.98
+Advanced Manufacturing Operations,17-1012.00,0.79
+Advanced Manufacturing Sciences,17-1012.00,0.79
+Geography,17-1021.00,0.98
+Communication Design,17-1021.00,0.96
+Political Science,17-1021.00,0.90
+Social Work,17-1021.00,0.90
+Industrial Design,17-1021.00,0.78
+Philosophy,17-1021.00,0.78
+Civil Engineering Technology,17-1022.00,0.94
+Construction Project Management,17-1022.00,0.80
+Environmental Engineering,17-1022.00,0.72
+Civil Engineering Technology,17-1022.01,0.94
+Construction Project Management,17-1022.01,0.80
+Environmental Engineering,17-1022.01,0.72
+Aerospace Systems and Mission Design,17-2011.00,0.98
+Aviation and Aerospace Science,17-2011.00,0.94
+Aviation and Aerospace Management,17-2011.00,0.84
+Environmental Engineering,17-2021.00,0.98
+Electrical Engineering,17-2021.00,0.91
+Mechanical Engineering Technology,17-2021.00,0.91
+Biology,17-2021.00,0.90
+Environmental Science,17-2021.00,0.90
+Environmental Sustainability,17-2021.00,0.90
+Health Care Information Systems Major,17-2031.00,0.98
+Computer Information Systems,17-2031.00,0.91
+Business Intelligence,17-2031.00,0.86
+Biology,17-2031.00,0.83
+Health Care Professional Services,17-2031.00,0.83
+Integrative Health Care,17-2031.00,0.83
+Advanced Manufacturing Operations,17-2041.00,0.98
+Advanced Manufacturing Sciences,17-2041.00,0.98
+Mechanical Engineering Technology,17-2041.00,0.98
+Physics,17-2041.00,0.98
+Industrial Design,17-2041.00,0.96
+Civil Engineering Technology,17-2041.00,0.83
+Civil Engineering Technology,17-2051.00,0.94
+Construction Project Management,17-2051.00,0.80
+Environmental Engineering,17-2051.00,0.72
+Civil Engineering Technology,17-2051.01,0.98
+Construction Project Management,17-2051.01,0.98
+Computer Engineering,17-2051.01,0.83
+Electrical Engineering,17-2051.01,0.83
+Environmental Engineering,17-2051.01,0.83
+Industrial Design,17-2051.01,0.83
+Environmental Engineering,17-2051.02,0.98
+Environmental Science,17-2051.02,0.96
+Environmental Sustainability,17-2051.02,0.96
+Business Administration,17-2051.02,0.78
+Business Intelligence,17-2051.02,0.78
+Human Resource Management,17-2051.02,0.78
+Computer Engineering,17-2061.00,0.98
+Advanced Manufacturing Operations,17-2061.00,0.82
+Advanced Manufacturing Sciences,17-2061.00,0.82
+Industrial Design,17-2061.00,0.82
+Electrical Engineering,17-2071.00,0.96
+Computer Engineering,17-2071.00,0.80
+Physics,17-2071.00,0.70
+Electrical Engineering,17-2072.00,0.96
+Computer Engineering,17-2072.00,0.80
+Physics,17-2072.00,0.70
+Broadcast Journalism,17-2072.01,0.94
+Industrial Design,17-2072.01,0.94
+"Art History, Theory, and Criticism",17-2072.01,0.72
+Environmental Engineering,17-2081.00,0.98
+Environmental Science,17-2081.00,0.78
+Environmental Sustainability,17-2081.00,0.75
+Health Care Information Systems Major,17-2111.00,0.98
+Health Care Management,17-2111.00,0.98
+Health Care Professional Services,17-2111.00,0.98
+Integrative Health Care,17-2111.00,0.98
+Public Health,17-2111.00,0.98
+Chemistry,17-2111.00,0.93
+Fire and Emergency Response Administration,17-2111.02,0.98
+Industrial Design,17-2111.02,0.77
+Physics,17-2111.02,0.77
+Advanced Manufacturing Operations,17-2112.00,0.98
+Operations Management,17-2112.00,0.93
+Industrial Design,17-2112.00,0.91
+Advanced Manufacturing Sciences,17-2112.00,0.85
+"Art History, Theory, and Criticism",17-2112.01,0.94
+Industrial Design,17-2112.01,0.94
+Art,17-2112.01,0.72
+Event and Meeting Management,17-2112.02,0.98
+Industrial Design,17-2112.02,0.83
+"Art History, Theory, and Criticism",17-2112.02,0.68
+Industrial Design,17-2112.03,0.98
+Advanced Manufacturing Operations,17-2112.03,0.93
+Advanced Manufacturing Sciences,17-2112.03,0.93
+Industrial Design,17-2121.00,0.94
+"Art History, Theory, and Criticism",17-2121.00,0.72
+Art,17-2121.00,0.72
+Industrial Design,17-2131.00,0.94
+"Art History, Theory, and Criticism",17-2131.00,0.72
+Art,17-2131.00,0.72
+Mechanical Engineering Technology,17-2141.00,0.94
+Advanced Manufacturing Sciences,17-2141.00,0.78
+Physics,17-2141.00,0.70
+Industrial Design,17-2141.01,0.94
+"Art History, Theory, and Criticism",17-2141.01,0.72
+Art,17-2141.01,0.72
+Computer Engineering,17-2141.02,0.94
+Computer Information Systems,17-2141.02,0.94
+Computer Science,17-2141.02,0.94
+Computer Security,17-2141.02,0.94
+Industrial Design,17-2141.02,0.94
+Applied Geology,17-2151.00,0.98
+Construction Project Management,17-2151.00,0.98
+Industrial Design,17-2151.00,0.96
+Civil Engineering Technology,17-2151.00,0.83
+Music,17-2151.00,0.83
+Environmental Engineering,17-2161.00,0.98
+Physics,17-2161.00,0.90
+Applied Geology,17-2161.00,0.87
+Civil Engineering Technology,17-2161.00,0.79
+Computer Engineering,17-2161.00,0.79
+Electrical Engineering,17-2161.00,0.79
+Video Production,17-2171.00,0.95
+Advanced Manufacturing Operations,17-2171.00,0.75
+Advanced Manufacturing Sciences,17-2171.00,0.75
+Applied Geology,17-2171.00,0.75
+Film Studies and Production,17-2171.00,0.75
+Industrial Design,17-2171.00,0.75
+Business Administration,17-2199.00,0.90
+Management,17-2199.00,0.90
+Communication Studies,17-2199.00,0.90
+Construction Project Management,17-2199.03,0.98
+Electrical Engineering,17-2199.03,0.90
+Industrial Design,17-2199.03,0.89
+Advanced Manufacturing Sciences,17-2199.03,0.78
+Civil Engineering Technology,17-2199.03,0.78
+Mechanical Engineering Technology,17-2199.03,0.78
+Industrial Design,17-2199.05,0.98
+Advanced Manufacturing Operations,17-2199.05,0.79
+Advanced Manufacturing Sciences,17-2199.05,0.79
+Industrial Design,17-2199.06,0.94
+Applied Geology,17-2199.06,0.72
+"Art History, Theory, and Criticism",17-2199.06,0.72
+Industrial Design,17-2199.07,0.94
+"Art History, Theory, and Criticism",17-2199.07,0.72
+Art,17-2199.07,0.72
+Industrial Design,17-2199.08,0.94
+Applied Geology,17-2199.08,0.72
+"Art History, Theory, and Criticism",17-2199.08,0.72
+Computer Engineering,17-2199.09,0.98
+Electrical Engineering,17-2199.09,0.93
+Physics,17-2199.09,0.93
+Advanced Manufacturing Sciences,17-2199.09,0.86
+Video Production,17-2199.09,0.86
+Industrial Design,17-2199.09,0.85
+Industrial Design,17-2199.10,0.94
+"Art History, Theory, and Criticism",17-2199.10,0.72
+Art,17-2199.10,0.72
+Computer Engineering,17-2199.11,0.98
+Environmental Engineering,17-2199.11,0.91
+Industrial Design,17-2199.11,0.91
+Civil Engineering Technology,17-2199.11,0.86
+Civil Engineering Technology,17-3011.00,0.98
+Construction Project Management,17-3011.00,0.76
+Advanced Manufacturing Sciences,17-3011.00,0.69
+Electrical Engineering,17-3012.00,0.98
+Civil Engineering Technology,17-3012.00,0.77
+Computer Engineering,17-3012.00,0.77
+Mechanical Engineering Technology,17-3013.00,0.98
+Civil Engineering Technology,17-3013.00,0.81
+Computer Engineering,17-3013.00,0.73
+Civil Engineering Technology,17-3019.00,0.90
+Industrial Design,17-3019.00,0.90
+Aerospace Systems and Mission Design,17-3021.00,0.98
+Computer Engineering,17-3021.00,0.90
+Electrical Engineering,17-3021.00,0.90
+Mechanical Engineering Technology,17-3021.00,0.90
+Aviation and Aerospace Science,17-3021.00,0.86
+Civil Engineering Technology,17-3021.00,0.86
+Civil Engineering Technology,17-3022.00,0.94
+Construction Project Management,17-3022.00,0.80
+Environmental Engineering,17-3022.00,0.72
+Electrical Engineering,17-3023.00,0.98
+Mechanical Engineering Technology,17-3023.00,0.88
+Civil Engineering Technology,17-3023.00,0.85
+Mechanical Engineering Technology,17-3024.00,0.98
+Aerospace Systems and Mission Design,17-3024.00,0.86
+Electrical Engineering,17-3024.00,0.81
+Video Production,17-3024.01,0.95
+Advanced Manufacturing Operations,17-3024.01,0.75
+Advanced Manufacturing Sciences,17-3024.01,0.75
+Film Studies and Production,17-3024.01,0.75
+Media Production and Leadership,17-3024.01,0.75
+Environmental Engineering,17-3025.00,0.98
+Environmental Science,17-3025.00,0.78
+Environmental Sustainability,17-3025.00,0.75
+Advanced Manufacturing Operations,17-3026.00,0.98
+Advanced Manufacturing Sciences,17-3026.00,0.94
+Mechanical Engineering Technology,17-3026.00,0.91
+Civil Engineering Technology,17-3026.00,0.87
+Electrical Engineering,17-3026.00,0.87
+Computer Engineering,17-3026.00,0.83
+Advanced Manufacturing Sciences,17-3026.01,0.98
+Civil Engineering Technology,17-3026.01,0.95
+Electrical Engineering,17-3026.01,0.95
+Mechanical Engineering Technology,17-3026.01,0.95
+Advanced Manufacturing Operations,17-3026.01,0.92
+Computer Engineering,17-3026.01,0.89
+Mechanical Engineering Technology,17-3027.00,0.94
+Advanced Manufacturing Sciences,17-3027.00,0.78
+Physics,17-3027.00,0.70
+Civil Engineering Technology,17-3027.01,0.98
+Advanced Manufacturing Sciences,17-3027.01,0.87
+Electrical Engineering,17-3027.01,0.86
+Mechanical Engineering Technology,17-3027.01,0.86
+Computer Engineering,17-3027.01,0.82
+Environmental Engineering,17-3027.01,0.82
+Civil Engineering Technology,17-3028.00,0.98
+Computer Engineering,17-3028.00,0.98
+Electrical Engineering,17-3028.00,0.98
+Mechanical Engineering Technology,17-3028.00,0.98
+Physics,17-3028.00,0.98
+Advanced Manufacturing Operations,17-3028.00,0.83
+Civil Engineering Technology,17-3029.00,0.98
+Electrical Engineering,17-3029.00,0.92
+Mechanical Engineering Technology,17-3029.00,0.92
+Computer Engineering,17-3029.00,0.87
+Environmental Engineering,17-3029.00,0.87
+Special Education,17-3029.01,0.93
+Business Administration,17-3029.08,0.90
+Management,17-3029.08,0.90
+Communication Studies,17-3029.08,0.90
+Civil Engineering Technology,17-3031.00,0.94
+Construction Project Management,17-3031.00,0.80
+Environmental Engineering,17-3031.00,0.72
+Nutrition and Dietetics,19-1011.00,0.98
+Nutrition Science,19-1011.00,0.98
+Sport Nutrition,19-1011.00,0.98
+Lifestyle Medicine,19-1011.00,0.83
+Physics,19-1011.00,0.83
+Biochemistry,19-1011.00,0.80
+Chemistry,19-1012.00,0.98
+Physics,19-1012.00,0.96
+Advanced Manufacturing Sciences,19-1012.00,0.83
+Biochemistry,19-1012.00,0.83
+Civil Engineering Technology,19-1012.00,0.83
+Computer Engineering,19-1012.00,0.83
+Biochemistry,19-1013.00,0.94
+Biology,19-1013.00,0.94
+Business Administration,19-1013.00,0.94
+Chemistry,19-1013.00,0.94
+Management,19-1013.00,0.94
+Physics,19-1013.00,0.94
+Electrical Engineering,19-1021.00,0.98
+Mechanical Engineering Technology,19-1021.00,0.98
+Biochemistry,19-1021.00,0.83
+Chemistry,19-1021.00,0.83
+Applied Geology,19-1021.00,0.80
+Mathematics,19-1021.00,0.80
+Biology,19-1022.00,0.94
+Health Care Professional Services,19-1022.00,0.94
+Integrative Health Care,19-1022.00,0.94
+Public Health,19-1022.00,0.94
+Biology,19-1023.00,0.98
+Environmental Science,19-1023.00,0.93
+Environmental Engineering,19-1023.00,0.88
+Environmental Sustainability,19-1023.00,0.87
+Biochemistry,19-1029.00,0.90
+Biology,19-1029.00,0.90
+Physics,19-1029.00,0.90
+Biochemistry,19-1029.01,0.98
+Biology,19-1029.01,0.98
+Health Care Information Systems Major,19-1029.01,0.98
+Computer Information Systems,19-1029.01,0.93
+Computer Science,19-1029.01,0.86
+Chemistry,19-1029.01,0.85
+Biochemistry,19-1029.02,0.94
+Biology,19-1029.02,0.94
+Applied Geology,19-1029.02,0.72
+Biochemistry,19-1029.03,0.94
+Applied Geology,19-1029.03,0.72
+Biology,19-1029.03,0.72
+Biology,19-1029.04,0.94
+Applied Geology,19-1029.04,0.72
+Biochemistry,19-1029.04,0.72
+Biology,19-1031.00,0.98
+Environmental Science,19-1031.00,0.86
+Environmental Sustainability,19-1031.00,0.86
+Business Administration,19-1031.02,0.98
+Management,19-1031.02,0.98
+Biology,19-1031.02,0.86
+Environmental Science,19-1031.02,0.86
+Operations Management,19-1031.02,0.83
+Public Health,19-1031.03,0.90
+Public Relations,19-1031.03,0.90
+Environmental Science,19-1032.00,0.98
+Environmental Sustainability,19-1032.00,0.93
+Environmental Engineering,19-1032.00,0.88
+Biology,19-1032.00,0.82
+Public Health,19-1041.00,0.98
+Health Care Information Systems Major,19-1041.00,0.78
+Health Care Management,19-1041.00,0.78
+Health Care Professional Services,19-1041.00,0.78
+Integrative Health Care,19-1041.00,0.78
+Nutrition Science,19-1041.00,0.78
+Biochemistry,19-1042.00,0.98
+Health Care Professional Services,19-1042.00,0.94
+Public Health,19-1042.00,0.94
+Integrative Health Care,19-1042.00,0.87
+Biology,19-1099.00,0.98
+Physics,19-1099.00,0.71
+Physics,19-2011.00,0.94
+Applied Geology,19-2011.00,0.72
+Biochemistry,19-2011.00,0.72
+Physics,19-2012.00,0.94
+Applied Geology,19-2012.00,0.72
+Biochemistry,19-2012.00,0.72
+Meteorology,19-2021.00,0.98
+Aerospace Systems and Mission Design,19-2021.00,0.85
+Business Intelligence,19-2021.00,0.70
+Advanced Manufacturing Sciences,19-2031.00,0.95
+Chemistry,19-2031.00,0.95
+Mathematics,19-2031.00,0.75
+Operations Management,19-2031.00,0.75
+Statistical Science,19-2031.00,0.75
+Chemistry,19-2032.00,0.98
+Physics,19-2032.00,0.86
+Applied Geology,19-2032.00,0.64
+Environmental Science,19-2041.00,0.98
+Public Health,19-2041.00,0.98
+Environmental Engineering,19-2041.00,0.88
+Environmental Sustainability,19-2041.00,0.87
+Environmental Science,19-2041.01,0.98
+Environmental Sustainability,19-2041.01,0.98
+Meteorology,19-2041.01,0.98
+Mathematics,19-2041.01,0.85
+Applied Geology,19-2041.01,0.81
+Biology,19-2041.01,0.81
+Environmental Science,19-2041.02,0.98
+Environmental Sustainability,19-2041.02,0.98
+Environmental Engineering,19-2041.02,0.93
+Biology,19-2041.02,0.89
+Industrial Design,19-2041.03,0.98
+Advanced Manufacturing Operations,19-2041.03,0.93
+Advanced Manufacturing Sciences,19-2041.03,0.93
+Applied Geology,19-2042.00,0.98
+Environmental Engineering,19-2042.00,0.94
+Environmental Science,19-2042.00,0.85
+Environmental Sustainability,19-2042.00,0.85
+Physics,19-2042.00,0.85
+Applied Geology,19-2043.00,0.98
+Biochemistry,19-2043.00,0.68
+Biology,19-2043.00,0.68
+K-12 Physical Education,19-2099.00,0.98
+Physics,19-2099.00,0.72
+Business Administration,19-2099.01,0.94
+Business Intelligence,19-2099.01,0.94
+Human Resource Management,19-2099.01,0.94
+Management,19-2099.01,0.94
+Statistical Science,19-3011.00,0.94
+Applied Geology,19-3011.00,0.72
+Biochemistry,19-3011.00,0.72
+Environmental Sustainability,19-3011.01,0.98
+Environmental Engineering,19-3011.01,0.94
+Environmental Science,19-3011.01,0.93
+Civil Engineering Technology,19-3022.00,0.94
+Construction Project Management,19-3022.00,0.80
+Environmental Engineering,19-3022.00,0.72
+Human Resource Management,19-3032.00,0.98
+Marketing,19-3032.00,0.88
+Industrial Design,19-3032.00,0.86
+Health Care Professional Services,19-3033.00,0.98
+"Art History, Theory, and Criticism",19-3033.00,0.90
+Integrative Health Care,19-3033.00,0.90
+Industrial Design,19-3033.00,0.78
+Nursing,19-3033.00,0.78
+Psychology Major,19-3033.00,0.78
+Industrial Design,19-3034.00,0.94
+English,19-3034.00,0.90
+Art Education,19-3034.00,0.72
+Psychology Major,19-3039.00,0.90
+Health Care Professional Services,19-3039.02,0.94
+Human Services,19-3039.02,0.94
+Integrative Health Care,19-3039.02,0.94
+Biochemistry,19-3039.02,0.90
+Biology,19-3039.02,0.90
+Chemistry,19-3039.02,0.90
+Health Care Professional Services,19-3039.03,0.98
+Integrative Health Care,19-3039.03,0.83
+Nursing,19-3039.03,0.83
+Business Administration,19-3041.00,0.98
+International Business,19-3041.00,0.98
+Political Science,19-3041.00,0.98
+Business Intelligence,19-3041.00,0.83
+Human Resource Management,19-3041.00,0.83
+Human Services,19-3041.00,0.83
+Geography,19-3051.00,0.98
+Event and Meeting Management,19-3051.00,0.68
+K-12 Physical Education,19-3051.00,0.68
+History,19-3091.00,0.95
+Human Development and Family Studies,19-3091.00,0.95
+"Speech, Language, Hearing Sciences",19-3091.00,0.95
+Anthropology,19-3091.00,0.75
+"Art History, Theory, and Criticism",19-3091.00,0.75
+Human Resource Management,19-3091.00,0.75
+Political Science,19-3092.00,0.98
+Applied Geology,19-3092.00,0.83
+Environmental Science,19-3092.00,0.83
+Environmental Sustainability,19-3092.00,0.83
+Geography,19-3092.00,0.83
+Human Services,19-3092.00,0.83
+Film Studies and Production,19-3093.00,0.98
+History,19-3093.00,0.98
+Media Production and Leadership,19-3093.00,0.98
+"Art History, Theory, and Criticism",19-3093.00,0.83
+Broadcast Journalism,19-3093.00,0.83
+Political Science,19-3093.00,0.83
+Political Science,19-3094.00,0.98
+Public Health,19-3094.00,0.74
+Criminal Justice and Criminology,19-3094.00,0.64
+Social Work,19-3099.00,0.98
+Anthropology,19-3099.00,0.89
+Physics,19-3099.00,0.68
+Business Intelligence,19-3099.01,0.90
+Event and Meeting Management,19-3099.01,0.90
+Biology,19-4012.00,0.98
+Nutrition Science,19-4012.00,0.93
+Nutrition and Dietetics,19-4012.00,0.86
+Sport Nutrition,19-4012.00,0.86
+Chemistry,19-4012.00,0.85
+Business Intelligence,19-4012.01,0.98
+Business Administration,19-4012.01,0.76
+International Business,19-4012.01,0.76
+Chemistry,19-4013.00,0.98
+Mathematics,19-4013.00,0.76
+Physics,19-4013.00,0.76
+Biochemistry,19-4021.00,0.98
+Biology,19-4021.00,0.86
+Chemistry,19-4021.00,0.76
+Chemistry,19-4031.00,0.98
+Environmental Science,19-4031.00,0.80
+Environmental Sustainability,19-4031.00,0.80
+Environmental Science,19-4042.00,0.98
+Environmental Engineering,19-4042.00,0.95
+Environmental Sustainability,19-4042.00,0.87
+Public Health,19-4042.00,0.84
+Physics,19-4042.00,0.82
+Biology,19-4043.00,0.94
+Chemistry,19-4043.00,0.94
+Nutrition Science,19-4043.00,0.94
+Applied Geology,19-4044.00,0.94
+Biology,19-4044.00,0.94
+Chemistry,19-4044.00,0.94
+Environmental Engineering,19-4044.00,0.94
+Political Science,19-4044.00,0.94
+Public Health,19-4044.00,0.90
+Chemistry,19-4051.00,0.98
+Physics,19-4051.00,0.89
+Biology,19-4051.00,0.82
+Human Development and Family Studies,19-4051.02,0.90
+Human Resource Management,19-4051.02,0.90
+Human Services,19-4051.02,0.90
+Physics,19-4051.02,0.90
+Chemistry,19-4061.00,0.98
+Advanced Manufacturing Operations,19-4061.00,0.88
+Social Work,19-4061.00,0.86
+Biology,19-4061.00,0.82
+Physics,19-4061.00,0.82
+Biology,19-4071.00,0.98
+Environmental Science,19-4071.00,0.94
+Fire and Emergency Response Administration,19-4071.00,0.84
+Environmental Sustainability,19-4071.00,0.82
+Criminal Justice and Criminology,19-4092.00,0.96
+Psychology Major,19-4092.00,0.70
+Political Science,19-4092.00,0.68
+Advanced Manufacturing Sciences,19-4099.00,0.98
+K-12 Physical Education,19-4099.00,0.94
+Social Work,19-4099.00,0.94
+Advanced Manufacturing Operations,19-4099.01,0.98
+Brewery Operations,19-4099.01,0.98
+Chemistry,19-4099.01,0.98
+Advanced Manufacturing Sciences,19-4099.01,0.86
+Aerospace Systems and Mission Design,19-4099.03,0.94
+Aviation and Aerospace Science,19-4099.03,0.94
+Aviation and Aerospace Management,19-4099.03,0.72
+Public Health,19-5011.00,0.98
+Health Care Information Systems Major,19-5011.00,0.87
+Health Care Management,19-5011.00,0.87
+Health Care Professional Services,19-5011.00,0.87
+Integrative Health Care,19-5011.00,0.87
+Health Care Information Systems Major,19-5012.00,0.98
+Health Care Management,19-5012.00,0.98
+Health Care Professional Services,19-5012.00,0.98
+Integrative Health Care,19-5012.00,0.98
+Public Health,19-5012.00,0.98
+Biochemistry,19-5012.00,0.80
+Human Services,21-1011.00,0.98
+Psychology Major,21-1011.00,0.86
+Human Development and Family Studies,21-1011.00,0.76
+Art Education,21-1012.00,0.93
+Early Childhood Education,21-1012.00,0.93
+Elementary Education,21-1012.00,0.93
+Health Care Information Systems Major,21-1012.00,0.93
+Health Care Management,21-1012.00,0.93
+Health Care Professional Services,21-1012.00,0.93
+Human Development and Family Studies,21-1013.00,0.98
+Psychology Major,21-1013.00,0.77
+Africana Studies,21-1013.00,0.65
+Human Services,21-1014.00,0.98
+Psychology Major,21-1014.00,0.88
+Social Work,21-1014.00,0.84
+Public Health,21-1014.00,0.83
+Human Development and Family Studies,21-1014.00,0.82
+Industrial Design,21-1015.00,0.94
+"Art History, Theory, and Criticism",21-1015.00,0.72
+Art,21-1015.00,0.72
+Human Development and Family Studies,21-1019.00,0.90
+Human Services,21-1019.00,0.90
+Psychology Major,21-1019.00,0.90
+Social Work,21-1021.00,0.98
+Human Development and Family Studies,21-1021.00,0.91
+Human Services,21-1021.00,0.78
+Social Work,21-1022.00,0.98
+Health Care Professional Services,21-1022.00,0.91
+Integrative Health Care,21-1022.00,0.91
+Health Care Information Systems Major,21-1022.00,0.87
+Public Health,21-1022.00,0.86
+Health Care Management,21-1022.00,0.83
+Social Work,21-1023.00,0.98
+Human Services,21-1023.00,0.87
+Psychology Major,21-1023.00,0.80
+Social Work,21-1029.00,0.98
+Integrative Health Care,21-1091.00,0.98
+Lifestyle Medicine,21-1091.00,0.92
+Special Education,21-1091.00,0.88
+Art Education,21-1091.00,0.86
+Early Childhood Education,21-1091.00,0.86
+Elementary Education,21-1091.00,0.86
+Criminal Justice and Criminology,21-1092.00,0.96
+Psychology Major,21-1092.00,0.70
+Political Science,21-1092.00,0.68
+Human Services,21-1093.00,0.98
+Social Work,21-1093.00,0.98
+Human Development and Family Studies,21-1093.00,0.82
+Public Health,21-1094.00,0.98
+Health Care Professional Services,21-1094.00,0.87
+Integrative Health Care,21-1094.00,0.87
+Social Work,21-1094.00,0.86
+Health Care Information Systems Major,21-1094.00,0.82
+Health Care Management,21-1094.00,0.82
+Social Work,21-1099.00,0.98
+Africana Studies,21-1099.00,0.80
+Chicano Studies,21-1099.00,0.80
+Human Services,21-1099.00,0.80
+Sociology,21-1099.00,0.80
+Business Administration,21-2011.00,0.90
+Management,21-2011.00,0.90
+Communication Studies,21-2011.00,0.90
+Art Education,21-2021.00,0.98
+Early Childhood Education,21-2021.00,0.98
+Elementary Education,21-2021.00,0.98
+K-12 Physical Education,21-2021.00,0.91
+Music Education,21-2021.00,0.91
+Special Education,21-2021.00,0.91
+Social Work,21-2099.00,0.93
+Civil Engineering Technology,23-1011.00,0.98
+Criminal Justice and Criminology,23-1011.00,0.98
+Construction Project Management,23-1011.00,0.83
+Philosophy,23-1011.00,0.83
+Political Science,23-1011.00,0.83
+Philosophy,23-1012.00,0.94
+Political Science,23-1012.00,0.94
+Applied Geology,23-1012.00,0.72
+"Speech, Language, Hearing Sciences",23-1021.00,0.98
+Political Science,23-1021.00,0.88
+Human Services,23-1021.00,0.74
+Media Production and Leadership,23-1022.00,0.93
+Criminal Justice and Criminology,23-1023.00,0.98
+Civil Engineering Technology,23-1023.00,0.90
+Political Science,23-1023.00,0.90
+Construction Project Management,23-1023.00,0.78
+Applied Geology,23-2011.00,0.89
+Biochemistry,23-2011.00,0.89
+Biology,23-2011.00,0.89
+Chemistry,23-2011.00,0.89
+Data Science and Machine Learning,23-2011.00,0.89
+Environmental Science,23-2011.00,0.89
+Real Estate,23-2093.00,0.98
+Finance,23-2093.00,0.74
+History,23-2093.00,0.74
+Social Work,23-2099.00,0.93
+Philosophy,23-2099.00,0.80
+Business Administration,25-1011.00,0.98
+Human Resource Management,25-1011.00,0.95
+Mathematics,25-1011.00,0.89
+International Business,25-1011.00,0.88
+Business Intelligence,25-1011.00,0.84
+Computer Engineering,25-1021.00,0.98
+Computer Information Systems,25-1021.00,0.98
+Computer Science,25-1021.00,0.98
+Computer Security,25-1021.00,0.98
+Business Administration,25-1021.00,0.80
+Industrial Design,25-1021.00,0.80
+Statistical Science,25-1022.00,0.94
+Applied Geology,25-1022.00,0.72
+Biochemistry,25-1022.00,0.72
+Environmental Engineering,25-1031.00,0.98
+Environmental Science,25-1031.00,0.98
+Environmental Sustainability,25-1031.00,0.98
+Industrial Design,25-1031.00,0.90
+Applied Geology,25-1031.00,0.87
+Civil Engineering Technology,25-1032.00,0.98
+Electrical Engineering,25-1032.00,0.98
+Mechanical Engineering Technology,25-1032.00,0.98
+Computer Engineering,25-1032.00,0.87
+Environmental Engineering,25-1032.00,0.87
+Advanced Manufacturing Sciences,25-1032.00,0.84
+Business Administration,25-1041.00,0.94
+Environmental Science,25-1041.00,0.94
+Environmental Sustainability,25-1041.00,0.94
+Management,25-1041.00,0.94
+Biochemistry,25-1042.00,0.94
+Biology,25-1042.00,0.94
+Applied Geology,25-1042.00,0.72
+Environmental Science,25-1043.00,0.94
+Environmental Sustainability,25-1043.00,0.94
+Applied Geology,25-1043.00,0.72
+Chemistry,25-1051.00,0.98
+Physics,25-1051.00,0.98
+Applied Geology,25-1051.00,0.83
+Meteorology,25-1051.00,0.83
+Chemistry,25-1052.00,0.98
+Mathematics,25-1052.00,0.74
+Statistical Science,25-1052.00,0.74
+Environmental Science,25-1053.00,0.98
+Environmental Sustainability,25-1053.00,0.98
+Environmental Engineering,25-1053.00,0.93
+Physics,25-1054.00,0.98
+Applied Geology,25-1054.00,0.65
+Biochemistry,25-1054.00,0.65
+Applied Geology,25-1061.00,0.89
+Biochemistry,25-1061.00,0.89
+Biology,25-1061.00,0.89
+Chemistry,25-1061.00,0.89
+Data Science and Machine Learning,25-1061.00,0.89
+Environmental Science,25-1061.00,0.89
+Geography,25-1062.00,0.94
+Applied Geology,25-1062.00,0.72
+Biochemistry,25-1062.00,0.72
+Applied Geology,25-1063.00,0.89
+Biochemistry,25-1063.00,0.89
+Biology,25-1063.00,0.89
+Chemistry,25-1063.00,0.89
+Data Science and Machine Learning,25-1063.00,0.89
+Environmental Science,25-1063.00,0.89
+Geography,25-1064.00,0.98
+Applied Geology,25-1064.00,0.66
+Biochemistry,25-1064.00,0.66
+Political Science,25-1065.00,0.98
+Applied Geology,25-1065.00,0.65
+Biochemistry,25-1065.00,0.65
+Psychology Major,25-1066.00,0.98
+Health Care Professional Services,25-1066.00,0.77
+Nursing,25-1066.00,0.77
+Applied Geology,25-1067.00,0.89
+Biochemistry,25-1067.00,0.89
+Biology,25-1067.00,0.89
+Chemistry,25-1067.00,0.89
+Data Science and Machine Learning,25-1067.00,0.89
+Environmental Science,25-1067.00,0.89
+Social Work,25-1069.00,0.98
+Art Education,25-1069.00,0.72
+Early Childhood Education,25-1069.00,0.72
+Public Health,25-1071.00,0.98
+Health Care Professional Services,25-1071.00,0.87
+Health Care Management,25-1071.00,0.84
+Integrative Health Care,25-1071.00,0.84
+Nursing,25-1072.00,0.98
+Health Care Professional Services,25-1072.00,0.85
+Public Health,25-1072.00,0.80
+Health Care Management,25-1072.00,0.72
+Art Education,25-1081.00,0.98
+Early Childhood Education,25-1081.00,0.98
+Elementary Education,25-1081.00,0.98
+K-12 Physical Education,25-1081.00,0.92
+Music Education,25-1081.00,0.92
+Special Education,25-1081.00,0.92
+Applied Geology,25-1082.00,0.89
+Biochemistry,25-1082.00,0.89
+Biology,25-1082.00,0.89
+Chemistry,25-1082.00,0.89
+Data Science and Machine Learning,25-1082.00,0.89
+Environmental Science,25-1082.00,0.89
+Criminal Justice and Criminology,25-1111.00,0.98
+Political Science,25-1111.00,0.70
+Applied Geology,25-1111.00,0.62
+Political Science,25-1112.00,0.94
+Applied Geology,25-1112.00,0.72
+Biochemistry,25-1112.00,0.72
+Applied Geology,25-1113.00,0.89
+Biochemistry,25-1113.00,0.89
+Biology,25-1113.00,0.89
+Chemistry,25-1113.00,0.89
+Data Science and Machine Learning,25-1113.00,0.89
+Environmental Science,25-1113.00,0.89
+Music,25-1121.00,0.98
+Art,25-1121.00,0.88
+Applied Geology,25-1121.00,0.77
+Public Relations,25-1122.00,0.98
+Broadcast Journalism,25-1122.00,0.85
+Communication Design,25-1122.00,0.83
+Applied Geology,25-1123.00,0.89
+Biochemistry,25-1123.00,0.89
+Biology,25-1123.00,0.89
+Chemistry,25-1123.00,0.89
+Data Science and Machine Learning,25-1123.00,0.89
+Environmental Science,25-1123.00,0.89
+Applied Geology,25-1124.00,0.89
+Biochemistry,25-1124.00,0.89
+Biology,25-1124.00,0.89
+Chemistry,25-1124.00,0.89
+Data Science and Machine Learning,25-1124.00,0.89
+Environmental Science,25-1124.00,0.89
+Applied Geology,25-1125.00,0.89
+Biochemistry,25-1125.00,0.89
+Biology,25-1125.00,0.89
+Chemistry,25-1125.00,0.89
+Data Science and Machine Learning,25-1125.00,0.89
+Environmental Science,25-1125.00,0.89
+Applied Geology,25-1126.00,0.89
+Biochemistry,25-1126.00,0.89
+Biology,25-1126.00,0.89
+Chemistry,25-1126.00,0.89
+Data Science and Machine Learning,25-1126.00,0.89
+Environmental Science,25-1126.00,0.89
+Human Development and Family Studies,25-1192.00,0.98
+Finance,25-1192.00,0.88
+Nutrition and Dietetics,25-1192.00,0.88
+Nutrition Science,25-1192.00,0.88
+Sport Nutrition,25-1192.00,0.88
+Sport Management,25-1193.00,0.98
+Business Administration,25-1193.00,0.83
+Event and Meeting Management,25-1193.00,0.83
+Management,25-1193.00,0.83
+Art Education,25-1194.00,0.98
+Early Childhood Education,25-1194.00,0.98
+Elementary Education,25-1194.00,0.98
+K-12 Physical Education,25-1194.00,0.92
+Music Education,25-1194.00,0.92
+Special Education,25-1194.00,0.92
+Art Education,25-1199.00,0.90
+Early Childhood Education,25-1199.00,0.90
+Elementary Education,25-1199.00,0.90
+K-12 Physical Education,25-1199.00,0.90
+Music Education,25-1199.00,0.90
+Special Education,25-1199.00,0.90
+Early Childhood Education,25-2011.00,0.98
+Human Development and Family Studies,25-2011.00,0.82
+Special Education,25-2011.00,0.70
+Early Childhood Education,25-2012.00,0.98
+Human Development and Family Studies,25-2012.00,0.82
+Special Education,25-2012.00,0.70
+Elementary Education,25-2021.00,0.98
+Special Education,25-2021.00,0.74
+Special Education,25-2022.00,0.98
+Art Education,25-2022.00,0.91
+Early Childhood Education,25-2022.00,0.91
+Elementary Education,25-2022.00,0.91
+K-12 Physical Education,25-2022.00,0.87
+Music Education,25-2022.00,0.87
+Art Education,25-2023.00,0.98
+Early Childhood Education,25-2023.00,0.98
+Elementary Education,25-2023.00,0.98
+K-12 Physical Education,25-2023.00,0.92
+Music Education,25-2023.00,0.92
+Special Education,25-2023.00,0.92
+Special Education,25-2031.00,0.98
+Art Education,25-2031.00,0.91
+Early Childhood Education,25-2031.00,0.91
+Elementary Education,25-2031.00,0.91
+K-12 Physical Education,25-2031.00,0.87
+Music Education,25-2031.00,0.87
+Art Education,25-2032.00,0.98
+Early Childhood Education,25-2032.00,0.98
+Elementary Education,25-2032.00,0.98
+K-12 Physical Education,25-2032.00,0.92
+Music Education,25-2032.00,0.92
+Special Education,25-2032.00,0.92
+Special Education,25-2051.00,0.98
+Elementary Education,25-2051.00,0.72
+Special Education,25-2055.00,0.98
+Elementary Education,25-2055.00,0.72
+Special Education,25-2056.00,0.98
+Elementary Education,25-2056.00,0.72
+Special Education,25-2057.00,0.98
+Elementary Education,25-2057.00,0.72
+Special Education,25-2058.00,0.98
+Elementary Education,25-2058.00,0.72
+Special Education,25-2059.00,0.98
+Elementary Education,25-2059.00,0.72
+K-12 Physical Education,25-2059.01,0.98
+Special Education,25-2059.01,0.85
+Art Education,25-2059.01,0.83
+Early Childhood Education,25-2059.01,0.83
+Elementary Education,25-2059.01,0.83
+Art Education,25-3011.00,0.98
+Early Childhood Education,25-3011.00,0.98
+Elementary Education,25-3011.00,0.98
+English,25-3011.00,0.98
+K-12 Physical Education,25-3011.00,0.91
+Music Education,25-3011.00,0.91
+K-12 Physical Education,25-3021.00,0.95
+Sport Management,25-3021.00,0.95
+Art Education,25-3021.00,0.75
+Early Childhood Education,25-3021.00,0.75
+Elementary Education,25-3021.00,0.75
+Event and Meeting Management,25-3021.00,0.75
+Art Education,25-3031.00,0.94
+Early Childhood Education,25-3031.00,0.94
+Elementary Education,25-3031.00,0.94
+K-12 Physical Education,25-3031.00,0.94
+Music Education,25-3031.00,0.94
+Special Education,25-3031.00,0.94
+Business Administration,25-3041.00,0.90
+Management,25-3041.00,0.90
+Communication Studies,25-3041.00,0.90
+Art Education,25-3099.00,0.90
+Early Childhood Education,25-3099.00,0.90
+Elementary Education,25-3099.00,0.90
+K-12 Physical Education,25-3099.00,0.90
+Music Education,25-3099.00,0.90
+Special Education,25-3099.00,0.90
+Physics,25-4011.00,0.94
+Applied Geology,25-4011.00,0.72
+Biochemistry,25-4011.00,0.72
+Elementary Education,25-4012.00,0.94
+Instructional Design and Technology,25-4012.00,0.94
+Special Education,25-4012.00,0.94
+Applied Geology,25-4013.00,0.89
+Biochemistry,25-4013.00,0.89
+Biology,25-4013.00,0.89
+Chemistry,25-4013.00,0.89
+Data Science and Machine Learning,25-4013.00,0.89
+Environmental Science,25-4013.00,0.89
+Media Production and Leadership,25-4022.00,0.98
+Film Studies and Production,25-4022.00,0.88
+"Art History, Theory, and Criticism",25-4022.00,0.77
+Broadcast Journalism,25-4031.00,0.94
+Media Production and Leadership,25-4031.00,0.94
+"Art History, Theory, and Criticism",25-4031.00,0.72
+Business Administration,25-9021.00,0.98
+Management,25-9021.00,0.98
+Nutrition and Dietetics,25-9021.00,0.93
+Nutrition Science,25-9021.00,0.93
+Sport Nutrition,25-9021.00,0.93
+Operations Management,25-9021.00,0.87
+Instructional Design and Technology,25-9031.00,0.98
+Elementary Education,25-9031.00,0.82
+K-12 Physical Education,25-9031.00,0.82
+Special Education,25-9031.00,0.82
+Special Education,25-9042.00,0.98
+Elementary Education,25-9042.00,0.93
+Early Childhood Education,25-9042.00,0.86
+Art Education,25-9042.00,0.83
+Special Education,25-9043.00,0.98
+Early Childhood Education,25-9043.00,0.88
+Elementary Education,25-9043.00,0.88
+Art Education,25-9043.00,0.85
+K-12 Physical Education,25-9043.00,0.85
+Elementary Education,25-9044.00,0.94
+Instructional Design and Technology,25-9044.00,0.94
+Special Education,25-9044.00,0.94
+Business Administration,25-9049.00,0.90
+Management,25-9049.00,0.90
+Communication Studies,25-9049.00,0.90
+Art Education,25-9099.00,0.93
+Early Childhood Education,25-9099.00,0.93
+Elementary Education,25-9099.00,0.93
+K-12 Physical Education,25-9099.00,0.93
+Music Education,25-9099.00,0.93
+Social Work,25-9099.00,0.93
+Film Studies and Production,27-1011.00,0.98
+Media Production and Leadership,27-1011.00,0.98
+Video Production,27-1011.00,0.98
+Art,27-1012.00,0.95
+Art,27-1013.00,0.98
+Broadcast Journalism,27-1013.00,0.71
+Media Production and Leadership,27-1013.00,0.71
+Film Studies and Production,27-1014.00,0.98
+Media Production and Leadership,27-1014.00,0.98
+Video Production,27-1014.00,0.98
+Music,27-1014.00,0.90
+Art,27-1014.00,0.78
+Broadcast Journalism,27-1014.00,0.78
+Social Work,27-1019.00,0.93
+Art,27-1019.00,0.80
+Industrial Design,27-1021.00,0.98
+Advanced Manufacturing Sciences,27-1021.00,0.79
+Marketing,27-1021.00,0.79
+Art,27-1022.00,0.94
+Communication Design,27-1022.00,0.94
+Industrial Design,27-1022.00,0.94
+Art,27-1023.00,0.94
+Communication Design,27-1023.00,0.94
+Industrial Design,27-1023.00,0.94
+Communication Design,27-1024.00,0.98
+Art,27-1024.00,0.76
+Industrial Design,27-1024.00,0.76
+Art,27-1025.00,0.94
+Communication Design,27-1025.00,0.94
+Industrial Design,27-1025.00,0.94
+International Business,27-1026.00,0.90
+Film Studies and Production,27-1027.00,0.98
+Media Production and Leadership,27-1027.00,0.98
+Video Production,27-1027.00,0.98
+Art,27-1029.00,0.90
+Communication Design,27-1029.00,0.90
+Video Production,27-2011.00,0.98
+Film Studies and Production,27-2011.00,0.93
+Media Production and Leadership,27-2011.00,0.93
+Broadcast Journalism,27-2011.00,0.82
+Dance,27-2011.00,0.82
+Theatre,27-2011.00,0.82
+Film Studies and Production,27-2012.00,0.98
+Media Production and Leadership,27-2012.00,0.98
+Video Production,27-2012.00,0.94
+Media Production and Leadership,27-2012.03,0.98
+Broadcast Journalism,27-2012.03,0.90
+Film Studies and Production,27-2012.03,0.74
+Film Studies and Production,27-2012.04,0.98
+Media Production and Leadership,27-2012.04,0.87
+Broadcast Journalism,27-2012.04,0.78
+Media Production and Leadership,27-2012.05,0.98
+Technical Writing and Editing,27-2012.05,0.92
+Broadcast Journalism,27-2012.05,0.90
+Sport Management,27-2021.00,0.98
+Sport Nutrition,27-2021.00,0.91
+Event and Meeting Management,27-2021.00,0.78
+Sport Management,27-2022.00,0.98
+Sport Nutrition,27-2022.00,0.85
+K-12 Physical Education,27-2022.00,0.70
+Sport Management,27-2023.00,0.98
+Sport Nutrition,27-2023.00,0.84
+Event and Meeting Management,27-2023.00,0.78
+Dance,27-2031.00,0.98
+Video Production,27-2031.00,0.84
+Film Studies and Production,27-2031.00,0.74
+Dance,27-2032.00,0.98
+Theatre,27-2032.00,0.78
+"Art History, Theory, and Criticism",27-2032.00,0.65
+Music,27-2041.00,0.98
+Art,27-2041.00,0.74
+Film Studies and Production,27-2041.00,0.74
+Music,27-2042.00,0.98
+Video Production,27-2042.00,0.84
+Film Studies and Production,27-2042.00,0.74
+Music,27-2091.00,0.98
+Broadcast Journalism,27-2091.00,0.83
+"Art History, Theory, and Criticism",27-2091.00,0.68
+Sport Management,27-2099.00,0.98
+Sport Nutrition,27-2099.00,0.89
+Social Work,27-2099.00,0.75
+Broadcast Journalism,27-3011.00,0.98
+Media Production and Leadership,27-3011.00,0.84
+Journalism,27-3011.00,0.80
+Broadcast Journalism,27-3023.00,0.98
+Journalism,27-3023.00,0.82
+Media Production and Leadership,27-3023.00,0.79
+Public Relations,27-3031.00,0.98
+Broadcast Journalism,27-3031.00,0.70
+Communication Design,27-3031.00,0.70
+English,27-3041.00,0.90
+Film Studies and Production,27-3041.00,0.90
+Journalism,27-3041.00,0.90
+Technical Writing and Editing,27-3041.00,0.90
+Video Production,27-3041.00,0.90
+Technical Writing and Editing,27-3042.00,0.98
+English,27-3042.00,0.86
+Advanced Manufacturing Sciences,27-3042.00,0.65
+English,27-3043.00,0.95
+Communication Studies,27-3043.00,0.75
+Journalism,27-3043.00,0.75
+Philosophy,27-3043.00,0.75
+Technical Writing and Editing,27-3043.00,0.75
+Communication Studies,27-3043.05,0.90
+English,27-3043.05,0.90
+Journalism,27-3043.05,0.90
+Philosophy,27-3043.05,0.90
+Social Work,27-3043.05,0.90
+Technical Writing and Editing,27-3043.05,0.90
+Linguistics,27-3091.00,0.98
+"Speech, Language, Hearing Sciences",27-3091.00,0.85
+World Languages,27-3091.00,0.85
+"Speech, Language, Hearing Sciences",27-3092.00,0.98
+Health Care Information Systems Major,27-3092.00,0.83
+Aging Services Leadership,27-3092.00,0.68
+Communication Design,27-3099.00,0.98
+Media Production and Leadership,27-3099.00,0.98
+Broadcast Journalism,27-3099.00,0.80
+Video Production,27-4011.00,0.98
+Music,27-4011.00,0.84
+Film Studies and Production,27-4011.00,0.74
+Broadcast Journalism,27-4012.00,0.98
+Media Production and Leadership,27-4012.00,0.86
+Music,27-4012.00,0.81
+Civil Engineering Technology,27-4014.00,0.98
+Video Production,27-4014.00,0.93
+Advanced Manufacturing Sciences,27-4014.00,0.92
+Film Studies and Production,27-4014.00,0.88
+Media Production and Leadership,27-4014.00,0.88
+Electrical Engineering,27-4014.00,0.86
+Video Production,27-4015.00,0.98
+Film Studies and Production,27-4015.00,0.93
+Media Production and Leadership,27-4015.00,0.93
+Electrical Engineering,27-4015.00,0.88
+Advanced Manufacturing Operations,27-4015.00,0.82
+Advanced Manufacturing Sciences,27-4015.00,0.82
+Computer Engineering,27-4021.00,0.98
+Advanced Manufacturing Operations,27-4021.00,0.85
+Advanced Manufacturing Sciences,27-4021.00,0.85
+Computer Information Systems,27-4021.00,0.85
+Computer Science,27-4021.00,0.85
+Industrial Design,27-4021.00,0.85
+Film Studies and Production,27-4031.00,0.98
+Video Production,27-4031.00,0.95
+Media Production and Leadership,27-4031.00,0.84
+Film Studies and Production,27-4032.00,0.98
+Video Production,27-4032.00,0.95
+Media Production and Leadership,27-4032.00,0.90
+Communication Design,27-4099.00,0.98
+Media Production and Leadership,27-4099.00,0.98
+Broadcast Journalism,27-4099.00,0.80
+Health Care Professional Services,29-1011.00,0.95
+Integrative Health Care,29-1011.00,0.95
+Health Care Information Systems Major,29-1011.00,0.75
+Health Care Management,29-1011.00,0.75
+Health Care Professional Services,29-1021.00,0.98
+Health Care Information Systems Major,29-1021.00,0.83
+Health Care Management,29-1021.00,0.83
+Integrative Health Care,29-1021.00,0.83
+Public Health,29-1021.00,0.83
+Public Health,29-1022.00,0.90
+Health Care Professional Services,29-1023.00,0.94
+Industrial Design,29-1023.00,0.94
+Aging Services Leadership,29-1023.00,0.72
+Health Care Professional Services,29-1024.00,0.98
+Integrative Health Care,29-1024.00,0.90
+Health Care Information Systems Major,29-1024.00,0.78
+Health Care Management,29-1024.00,0.78
+Industrial Design,29-1024.00,0.78
+Nursing,29-1024.00,0.78
+Special Education,29-1029.00,0.93
+Nutrition and Dietetics,29-1031.00,0.98
+Nutrition Science,29-1031.00,0.90
+Public Health,29-1031.00,0.76
+Sport Nutrition,29-1031.00,0.74
+Human Development and Family Studies,29-1041.00,0.90
+Human Resource Management,29-1041.00,0.90
+Human Services,29-1041.00,0.90
+Public Health,29-1041.00,0.90
+Health Care Professional Services,29-1051.00,0.95
+Biochemistry,29-1051.00,0.82
+Chemistry,29-1051.00,0.80
+Biology,29-1051.00,0.72
+Health Care Management,29-1051.00,0.70
+Health Care Professional Services,29-1071.00,0.95
+Integrative Health Care,29-1071.00,0.95
+K-12 Physical Education,29-1071.00,0.75
+Nursing,29-1071.00,0.75
+Nursing,29-1071.01,0.98
+Health Care Professional Services,29-1071.01,0.91
+Integrative Health Care,29-1071.01,0.91
+Health Care Information Systems Major,29-1071.01,0.79
+Health Care Management,29-1071.01,0.79
+Human Development and Family Studies,29-1081.00,0.90
+Human Resource Management,29-1081.00,0.90
+Human Services,29-1081.00,0.90
+Public Health,29-1081.00,0.90
+Business Administration,29-1122.00,0.90
+Management,29-1122.00,0.90
+Communication Studies,29-1122.00,0.90
+Business Administration,29-1122.01,0.94
+Computer Engineering,29-1122.01,0.94
+Computer Information Systems,29-1122.01,0.94
+Computer Science,29-1122.01,0.94
+Computer Security,29-1122.01,0.94
+Management,29-1122.01,0.94
+K-12 Physical Education,29-1123.00,0.98
+Public Health,29-1123.00,0.72
+Health Care Professional Services,29-1124.00,0.95
+Integrative Health Care,29-1124.00,0.95
+Health Care Information Systems Major,29-1124.00,0.75
+Health Care Management,29-1124.00,0.75
+History,29-1124.00,0.75
+Nursing,29-1125.00,0.98
+Health Care Professional Services,29-1125.00,0.83
+Integrative Health Care,29-1125.00,0.83
+Social Work,29-1125.00,0.83
+Sport Nutrition,29-1125.00,0.83
+Health Care Professional Services,29-1126.00,0.98
+Integrative Health Care,29-1126.00,0.98
+Health Care Information Systems Major,29-1126.00,0.83
+Health Care Management,29-1126.00,0.83
+"Speech, Language, Hearing Sciences",29-1127.00,0.98
+Health Care Professional Services,29-1127.00,0.78
+Special Education,29-1127.00,0.70
+Exercise Science,29-1128.00,0.98
+K-12 Physical Education,29-1128.00,0.78
+Lifestyle Medicine,29-1128.00,0.67
+Business Administration,29-1129.00,0.90
+Management,29-1129.00,0.90
+Communication Studies,29-1129.00,0.90
+Art Education,29-1129.01,0.90
+"Art History, Theory, and Criticism",29-1129.01,0.90
+Art,29-1129.01,0.90
+K-12 Physical Education,29-1129.01,0.90
+Music,29-1129.02,0.98
+Health Care Professional Services,29-1129.02,0.77
+Nursing,29-1129.02,0.77
+Applied Geology,29-1131.00,0.89
+Biochemistry,29-1131.00,0.89
+Biology,29-1131.00,0.89
+Chemistry,29-1131.00,0.89
+Data Science and Machine Learning,29-1131.00,0.89
+Environmental Science,29-1131.00,0.89
+Nursing,29-1141.00,0.98
+Health Care Professional Services,29-1141.00,0.85
+Public Health,29-1141.00,0.80
+Health Care Management,29-1141.00,0.72
+Nursing,29-1141.01,0.98
+Health Care Professional Services,29-1141.01,0.85
+Public Health,29-1141.01,0.80
+Health Care Management,29-1141.01,0.72
+Nursing,29-1141.02,0.98
+Health Care Professional Services,29-1141.02,0.85
+Public Health,29-1141.02,0.80
+Health Care Management,29-1141.02,0.72
+Nursing,29-1141.03,0.98
+Health Care Professional Services,29-1141.03,0.85
+Public Health,29-1141.03,0.80
+Health Care Management,29-1141.03,0.72
+Nursing,29-1141.04,0.98
+Health Care Professional Services,29-1141.04,0.85
+Public Health,29-1141.04,0.80
+Health Care Management,29-1141.04,0.72
+Nursing,29-1151.00,0.98
+Health Care Professional Services,29-1151.00,0.85
+Public Health,29-1151.00,0.80
+Health Care Management,29-1151.00,0.72
+Nursing,29-1161.00,0.98
+Health Care Professional Services,29-1161.00,0.85
+Public Health,29-1161.00,0.80
+Health Care Management,29-1161.00,0.72
+Nursing,29-1171.00,0.98
+Health Care Professional Services,29-1171.00,0.85
+Public Health,29-1171.00,0.80
+Health Care Management,29-1171.00,0.72
+"Speech, Language, Hearing Sciences",29-1181.00,0.98
+Health Care Professional Services,29-1181.00,0.78
+Special Education,29-1181.00,0.70
+Business Administration,29-1211.00,0.94
+Management,29-1211.00,0.94
+Accounting,29-1211.00,0.72
+Public Health,29-1212.00,0.90
+Health Care Professional Services,29-1213.00,0.94
+Integrative Health Care,29-1213.00,0.94
+Public Health,29-1213.00,0.94
+Health Care Professional Services,29-1214.00,0.98
+Integrative Health Care,29-1214.00,0.98
+Fire and Emergency Response Administration,29-1214.00,0.94
+Lifestyle Medicine,29-1214.00,0.94
+Health Care Information Systems Major,29-1214.00,0.78
+Health Care Management,29-1214.00,0.78
+Human Development and Family Studies,29-1215.00,0.98
+Africana Studies,29-1215.00,0.65
+Aging Services Leadership,29-1215.00,0.65
+Nursing,29-1216.00,0.98
+Lifestyle Medicine,29-1216.00,0.94
+Health Care Information Systems Major,29-1216.00,0.71
+Public Health,29-1217.00,0.90
+Health Care Professional Services,29-1218.00,0.98
+Integrative Health Care,29-1218.00,0.98
+Health Care Information Systems Major,29-1218.00,0.83
+Health Care Management,29-1218.00,0.83
+Public Health,29-1218.00,0.83
+Health Care Professional Services,29-1221.00,0.90
+Integrative Health Care,29-1221.00,0.90
+Public Health,29-1221.00,0.90
+Health Care Professional Services,29-1222.00,0.94
+Integrative Health Care,29-1222.00,0.94
+Public Health,29-1222.00,0.94
+"Speech, Language, Hearing Sciences",29-1222.00,0.94
+Business Administration,29-1223.00,0.90
+Management,29-1223.00,0.90
+Communication Studies,29-1223.00,0.90
+Health Care Professional Services,29-1224.00,0.94
+Integrative Health Care,29-1224.00,0.94
+Lifestyle Medicine,29-1224.00,0.94
+Public Health,29-1224.00,0.94
+Business Administration,29-1229.00,0.90
+Management,29-1229.00,0.90
+Communication Studies,29-1229.00,0.90
+Public Health,29-1229.01,0.90
+Health Care Professional Services,29-1229.02,0.98
+Integrative Health Care,29-1229.02,0.98
+Nursing,29-1229.02,0.96
+Exercise Science,29-1229.02,0.78
+Fire and Emergency Response Administration,29-1229.02,0.78
+Health Care Information Systems Major,29-1229.02,0.78
+Health Care Professional Services,29-1229.03,0.94
+Integrative Health Care,29-1229.03,0.94
+Aging Services Leadership,29-1229.03,0.72
+K-12 Physical Education,29-1229.04,0.98
+Lifestyle Medicine,29-1229.04,0.98
+Exercise Science,29-1229.04,0.72
+Public Health,29-1229.05,0.98
+Health Care Professional Services,29-1229.05,0.90
+Integrative Health Care,29-1229.05,0.85
+Lifestyle Medicine,29-1229.05,0.83
+Sport Management,29-1229.06,0.98
+Exercise Science,29-1229.06,0.87
+Lifestyle Medicine,29-1229.06,0.84
+Sport Nutrition,29-1229.06,0.84
+Public Health,29-1241.00,0.90
+Public Health,29-1242.00,0.90
+Public Health,29-1243.00,0.94
+Aging Services Leadership,29-1243.00,0.72
+Biochemistry,29-1243.00,0.72
+Business Administration,29-1249.00,0.90
+Management,29-1249.00,0.90
+Communication Studies,29-1249.00,0.90
+Health Care Information Systems Major,29-1291.00,0.94
+Health Care Management,29-1291.00,0.94
+Health Care Professional Services,29-1291.00,0.94
+Integrative Health Care,29-1291.00,0.94
+Nutrition Science,29-1291.00,0.94
+Public Health,29-1291.00,0.94
+Health Care Professional Services,29-1292.00,0.98
+Integrative Health Care,29-1292.00,0.92
+Health Care Information Systems Major,29-1292.00,0.86
+Health Care Management,29-1292.00,0.86
+Public Health,29-1292.00,0.86
+Health Care Professional Services,29-1299.00,0.98
+Integrative Health Care,29-1299.00,0.98
+Health Care Information Systems Major,29-1299.00,0.80
+Health Care Management,29-1299.00,0.80
+Public Health,29-1299.00,0.80
+Mechanical Engineering Technology,29-1299.01,0.98
+Advanced Manufacturing Operations,29-1299.01,0.68
+Advanced Manufacturing Sciences,29-1299.01,0.68
+Business Administration,29-1299.02,0.90
+Management,29-1299.02,0.90
+Communication Studies,29-1299.02,0.90
+Biology,29-2011.00,0.98
+Biochemistry,29-2011.00,0.91
+Health Care Professional Services,29-2011.00,0.86
+Biochemistry,29-2011.01,0.90
+Biology,29-2011.01,0.90
+Public Health,29-2011.01,0.90
+Business Administration,29-2011.02,0.90
+Management,29-2011.02,0.90
+Communication Studies,29-2011.02,0.90
+Nutrition Science,29-2011.04,0.98
+Public Health,29-2011.04,0.98
+Biology,29-2011.04,0.96
+Chemistry,29-2011.04,0.96
+Health Care Information Systems Major,29-2011.04,0.83
+Health Care Management,29-2011.04,0.83
+Biology,29-2012.00,0.98
+Biochemistry,29-2012.00,0.91
+Health Care Professional Services,29-2012.00,0.86
+Applied Geology,29-2012.01,0.89
+Biochemistry,29-2012.01,0.89
+Biology,29-2012.01,0.89
+Chemistry,29-2012.01,0.89
+Data Science and Machine Learning,29-2012.01,0.89
+Environmental Science,29-2012.01,0.89
+Health Care Professional Services,29-2031.00,0.94
+Integrative Health Care,29-2031.00,0.94
+Biochemistry,29-2031.00,0.90
+Biology,29-2031.00,0.90
+Chemistry,29-2031.00,0.90
+Health Care Professional Services,29-2032.00,0.94
+Integrative Health Care,29-2032.00,0.94
+Aging Services Leadership,29-2032.00,0.72
+Lifestyle Medicine,29-2033.00,0.98
+Biology,29-2033.00,0.80
+Chemistry,29-2033.00,0.80
+Health Care Professional Services,29-2033.00,0.80
+Integrative Health Care,29-2033.00,0.80
+Nutrition Science,29-2033.00,0.80
+Health Care Professional Services,29-2034.00,0.98
+Integrative Health Care,29-2034.00,0.83
+Physics,29-2034.00,0.83
+Biochemistry,29-2034.00,0.80
+Biology,29-2034.00,0.80
+Chemistry,29-2034.00,0.80
+Business Intelligence,29-2035.00,0.94
+Computer Engineering,29-2035.00,0.94
+Computer Information Systems,29-2035.00,0.94
+Computer Science,29-2035.00,0.94
+Computer Security,29-2035.00,0.94
+Health Care Professional Services,29-2035.00,0.94
+Health Care Professional Services,29-2036.00,0.94
+Integrative Health Care,29-2036.00,0.94
+Aging Services Leadership,29-2036.00,0.72
+Fire and Emergency Response Administration,29-2042.00,0.98
+Health Care Professional Services,29-2042.00,0.93
+Integrative Health Care,29-2042.00,0.93
+Health Care Information Systems Major,29-2042.00,0.80
+Health Care Management,29-2042.00,0.80
+Human Services,29-2042.00,0.78
+Fire and Emergency Response Administration,29-2043.00,0.98
+Health Care Professional Services,29-2043.00,0.98
+Integrative Health Care,29-2043.00,0.98
+Health Care Information Systems Major,29-2043.00,0.83
+Health Care Management,29-2043.00,0.83
+Human Services,29-2043.00,0.80
+Nutrition and Dietetics,29-2051.00,0.98
+Nutrition Science,29-2051.00,0.83
+Sport Nutrition,29-2051.00,0.83
+Hospitality Leadership,29-2051.00,0.82
+Health Care Professional Services,29-2052.00,0.95
+Integrative Health Care,29-2052.00,0.88
+Public Health,29-2052.00,0.82
+Biochemistry,29-2052.00,0.78
+Chemistry,29-2052.00,0.75
+Biology,29-2052.00,0.72
+Health Care Management,29-2052.00,0.70
+Health Care Professional Services,29-2053.00,0.98
+Integrative Health Care,29-2053.00,0.98
+Health Care Information Systems Major,29-2053.00,0.86
+Health Care Management,29-2053.00,0.86
+Nursing,29-2055.00,0.98
+Business Administration,29-2055.00,0.76
+Health Care Professional Services,29-2055.00,0.76
+Biology,29-2056.00,0.94
+Chemistry,29-2056.00,0.94
+Health Care Professional Services,29-2056.00,0.94
+Integrative Health Care,29-2056.00,0.94
+Nutrition Science,29-2056.00,0.94
+Public Health,29-2056.00,0.94
+Health Care Professional Services,29-2057.00,0.98
+Integrative Health Care,29-2057.00,0.92
+Health Care Information Systems Major,29-2057.00,0.75
+Nursing,29-2061.00,0.98
+Health Care Professional Services,29-2061.00,0.85
+Public Health,29-2061.00,0.80
+Health Care Management,29-2061.00,0.72
+Health Care Professional Services,29-2072.00,0.98
+Integrative Health Care,29-2072.00,0.98
+Health Care Information Systems Major,29-2072.00,0.96
+Nursing,29-2072.00,0.78
+Biology,29-2081.00,0.94
+Chemistry,29-2081.00,0.94
+Industrial Design,29-2081.00,0.94
+Nutrition Science,29-2081.00,0.94
+Social Work,29-2081.00,0.94
+Industrial Design,29-2091.00,0.94
+"Art History, Theory, and Criticism",29-2091.00,0.72
+Art,29-2091.00,0.72
+"Speech, Language, Hearing Sciences",29-2092.00,0.98
+Industrial Design,29-2092.00,0.77
+Aging Services Leadership,29-2092.00,0.65
+Health Care Professional Services,29-2099.00,0.98
+Health Care Information Systems Major,29-2099.00,0.84
+Health Care Management,29-2099.00,0.84
+Integrative Health Care,29-2099.00,0.84
+Public Health,29-2099.00,0.84
+Business Administration,29-2099.01,0.90
+Management,29-2099.01,0.90
+Communication Studies,29-2099.01,0.90
+Health Care Professional Services,29-2099.05,0.98
+Integrative Health Care,29-2099.05,0.92
+Health Care Information Systems Major,29-2099.05,0.75
+Health Care Professional Services,29-2099.08,0.98
+Integrative Health Care,29-2099.08,0.98
+Health Care Information Systems Major,29-2099.08,0.90
+Health Care Management,29-2099.08,0.90
+Nutrition Science,29-2099.08,0.78
+Public Health,29-2099.08,0.78
+Health Care Information Systems Major,29-9021.00,0.98
+Health Care Professional Services,29-9021.00,0.80
+Integrative Health Care,29-9021.00,0.80
+Fire and Emergency Response Administration,29-9091.00,0.94
+Criminal Justice and Criminology,29-9091.00,0.72
+History,29-9091.00,0.72
+Human Development and Family Studies,29-9092.00,0.98
+Human Services,29-9092.00,0.78
+Psychology Major,29-9092.00,0.78
+Business Administration,29-9093.00,0.94
+Operations Management,29-9093.00,0.94
+Accounting,29-9093.00,0.72
+Health Care Professional Services,29-9099.00,0.98
+Integrative Health Care,29-9099.00,0.98
+Technical Writing and Editing,29-9099.00,0.98
+Health Care Information Systems Major,29-9099.00,0.80
+Health Care Management,29-9099.00,0.80
+Public Health,29-9099.00,0.80
+Health Care Information Systems Major,29-9099.01,0.90
+Health Care Management,29-9099.01,0.90
+Health Care Professional Services,29-9099.01,0.90
+Integrative Health Care,29-9099.01,0.90
+Health Care Professional Services,31-1121.00,0.98
+Integrative Health Care,31-1121.00,0.98
+Nursing,31-1121.00,0.90
+Health Care Information Systems Major,31-1121.00,0.87
+Health Care Management,31-1121.00,0.87
+Public Health,31-1121.00,0.87
+Africana Studies,31-1122.00,0.94
+Chicano Studies,31-1122.00,0.94
+Human Services,31-1122.00,0.94
+Social Work,31-1122.00,0.94
+Sociology,31-1122.00,0.94
+Nursing,31-1131.00,0.98
+Health Care Professional Services,31-1131.00,0.85
+Public Health,31-1131.00,0.80
+Health Care Management,31-1131.00,0.72
+Health Care Professional Services,31-1132.00,0.90
+Integrative Health Care,31-1132.00,0.90
+Health Care Professional Services,31-1133.00,0.98
+Integrative Health Care,31-1133.00,0.98
+Nursing,31-1133.00,0.98
+Communication Studies,31-2011.00,0.90
+Human Development and Family Studies,31-2011.00,0.90
+Instructional Design and Technology,31-2011.00,0.90
+Political Science,31-2011.00,0.90
+Health Care Professional Services,31-2012.00,0.94
+Integrative Health Care,31-2012.00,0.94
+Aging Services Leadership,31-2012.00,0.72
+Exercise Science,31-2021.00,0.98
+Health Care Professional Services,31-2021.00,0.79
+Integrative Health Care,31-2021.00,0.79
+Exercise Science,31-2022.00,0.98
+Health Care Professional Services,31-2022.00,0.79
+Integrative Health Care,31-2022.00,0.79
+Business Administration,31-9011.00,0.90
+Management,31-9011.00,0.90
+Communication Studies,31-9011.00,0.90
+Health Care Professional Services,31-9091.00,0.98
+Health Care Information Systems Major,31-9091.00,0.92
+Integrative Health Care,31-9091.00,0.88
+Nursing,31-9091.00,0.82
+Health Care Professional Services,31-9092.00,0.98
+Health Care Information Systems Major,31-9092.00,0.89
+Integrative Health Care,31-9092.00,0.81
+Health Care Professional Services,31-9093.00,0.98
+Integrative Health Care,31-9093.00,0.98
+Biology,31-9093.00,0.83
+Chemistry,31-9093.00,0.83
+Nursing,31-9093.00,0.83
+Nutrition Science,31-9093.00,0.83
+Health Care Professional Services,31-9094.00,0.98
+Integrative Health Care,31-9094.00,0.98
+Business Administration,31-9094.00,0.83
+Fire and Emergency Response Administration,31-9094.00,0.83
+Nursing,31-9094.00,0.83
+Operations Management,31-9094.00,0.83
+Health Care Professional Services,31-9095.00,0.98
+Biochemistry,31-9095.00,0.81
+Biology,31-9095.00,0.81
+Chemistry,31-9095.00,0.81
+Health Care Management,31-9095.00,0.81
+Integrative Health Care,31-9095.00,0.81
+Health Care Information Systems Major,31-9096.00,0.98
+Health Care Management,31-9096.00,0.98
+Health Care Professional Services,31-9096.00,0.98
+Integrative Health Care,31-9096.00,0.98
+Biology,31-9096.00,0.92
+Chemistry,31-9096.00,0.92
+Applied Geology,31-9097.00,0.89
+Biochemistry,31-9097.00,0.89
+Biology,31-9097.00,0.89
+Chemistry,31-9097.00,0.89
+Data Science and Machine Learning,31-9097.00,0.89
+Environmental Science,31-9097.00,0.89
+Health Care Professional Services,31-9099.00,0.98
+Integrative Health Care,31-9099.00,0.98
+Health Care Information Systems Major,31-9099.00,0.80
+Health Care Management,31-9099.00,0.80
+Public Health,31-9099.00,0.80
+Social Work,31-9099.00,0.80
+"Speech, Language, Hearing Sciences",31-9099.01,0.98
+Health Care Professional Services,31-9099.01,0.78
+Special Education,31-9099.01,0.70
+Nursing,31-9099.02,0.90
+Criminal Justice and Criminology,33-1011.00,0.96
+Psychology Major,33-1011.00,0.70
+Political Science,33-1011.00,0.68
+Criminal Justice and Criminology,33-1012.00,0.96
+Psychology Major,33-1012.00,0.70
+Political Science,33-1012.00,0.68
+Fire and Emergency Response Administration,33-1021.00,0.98
+Social Work,33-1021.00,0.83
+Criminal Justice and Criminology,33-1021.00,0.65
+Computer Security,33-1091.00,0.98
+Social Work,33-1091.00,0.80
+Criminal Justice and Criminology,33-1091.00,0.72
+Social Work,33-1099.00,0.93
+Management,33-1099.00,0.80
+Fire and Emergency Response Administration,33-2011.00,0.96
+Public Health,33-2011.00,0.70
+Criminal Justice and Criminology,33-2011.00,0.68
+Fire and Emergency Response Administration,33-2021.00,0.98
+Political Science,33-2021.00,0.77
+Criminal Justice and Criminology,33-2021.00,0.65
+Fire and Emergency Response Administration,33-2022.00,0.98
+Criminal Justice and Criminology,33-2022.00,0.65
+History,33-2022.00,0.65
+Political Science,33-3011.00,0.94
+Criminal Justice and Criminology,33-3011.00,0.72
+Fire and Emergency Response Administration,33-3011.00,0.72
+Criminal Justice and Criminology,33-3012.00,0.96
+Psychology Major,33-3012.00,0.70
+Political Science,33-3012.00,0.68
+Criminal Justice and Criminology,33-3021.00,0.96
+Psychology Major,33-3021.00,0.70
+Political Science,33-3021.00,0.68
+Criminal Justice and Criminology,33-3021.02,0.96
+Psychology Major,33-3021.02,0.70
+Political Science,33-3021.02,0.68
+Criminal Justice and Criminology,33-3021.06,0.98
+Political Science,33-3021.06,0.79
+Fire and Emergency Response Administration,33-3021.06,0.66
+Biology,33-3031.00,0.98
+Environmental Science,33-3031.00,0.83
+Political Science,33-3031.00,0.83
+Public Health,33-3031.00,0.80
+Social Work,33-3041.00,0.93
+Public Health,33-3041.00,0.80
+Public Relations,33-3041.00,0.80
+Criminal Justice and Criminology,33-3051.00,0.96
+Psychology Major,33-3051.00,0.70
+Political Science,33-3051.00,0.68
+Political Science,33-3051.04,0.90
+Criminal Justice and Criminology,33-3052.00,0.96
+Psychology Major,33-3052.00,0.70
+Political Science,33-3052.00,0.68
+Social Work,33-9011.00,0.93
+Criminal Justice and Criminology,33-9021.00,0.96
+Psychology Major,33-9021.00,0.70
+Political Science,33-9021.00,0.68
+Business Administration,33-9031.00,0.94
+Management,33-9031.00,0.94
+Accounting,33-9031.00,0.72
+Computer Security,33-9032.00,0.98
+Criminal Justice and Criminology,33-9032.00,0.72
+Construction Project Management,33-9091.00,0.98
+Civil Engineering Technology,33-9091.00,0.83
+Advanced Manufacturing Operations,33-9091.00,0.68
+Social Work,33-9092.00,0.93
+Computer Security,33-9093.00,0.98
+Criminal Justice and Criminology,33-9093.00,0.72
+Data Science and Machine Learning,33-9093.00,0.72
+Fire and Emergency Response Administration,33-9094.00,0.94
+Psychology Major,33-9094.00,0.94
+Art Education,33-9094.00,0.72
+Social Work,33-9099.00,0.93
+Special Education,33-9099.02,0.93
+Accounting,33-9099.02,0.80
+History,35-1011.00,0.90
+Social Work,35-1012.00,0.93
+Management,35-1012.00,0.80
+Hospitality Leadership,35-2011.00,0.94
+Brewery Operations,35-2011.00,0.72
+Business Administration,35-2011.00,0.72
+Business Administration,35-2012.00,0.90
+Management,35-2012.00,0.90
+Communication Studies,35-2012.00,0.90
+Business Administration,35-2013.00,0.90
+Management,35-2013.00,0.90
+Communication Studies,35-2013.00,0.90
+Hospitality Leadership,35-2014.00,0.94
+Brewery Operations,35-2014.00,0.72
+Business Administration,35-2014.00,0.72
+Business Administration,35-2015.00,0.90
+Management,35-2015.00,0.90
+Communication Studies,35-2015.00,0.90
+Business Administration,35-2019.00,0.90
+Management,35-2019.00,0.90
+Communication Studies,35-2019.00,0.90
+Social Work,35-2021.00,0.93
+Business Administration,35-3011.00,0.90
+Management,35-3011.00,0.90
+Communication Studies,35-3011.00,0.90
+Social Work,35-3023.00,0.93
+Brewery Operations,35-3023.00,0.80
+Brewery Operations,35-3023.01,0.90
+Brewery Operations,35-3031.00,0.90
+Hospitality Leadership,35-3041.00,0.98
+Hotel Management,35-3041.00,0.98
+Brewery Operations,35-3041.00,0.68
+Hospitality Leadership,35-9011.00,0.98
+Environmental Engineering,35-9011.00,0.79
+Applied Geology,35-9011.00,0.66
+Business Administration,35-9021.00,0.90
+Management,35-9021.00,0.90
+Communication Studies,35-9021.00,0.90
+Hospitality Leadership,35-9031.00,0.94
+Brewery Operations,35-9031.00,0.72
+Business Administration,35-9031.00,0.72
+Social Work,35-9099.00,0.93
+Social Work,37-1011.00,0.98
+Hotel Management,37-1011.00,0.89
+Hospitality Leadership,37-1011.00,0.72
+Social Work,37-1012.00,0.98
+Data Science and Machine Learning,37-1012.00,0.72
+Management,37-1012.00,0.72
+Business Administration,37-2011.00,0.94
+Management,37-2011.00,0.94
+Accounting,37-2011.00,0.72
+Hotel Management,37-2012.00,0.95
+Hospitality Leadership,37-2012.00,0.75
+Social Work,37-2019.00,0.93
+Construction Project Management,37-2019.00,0.80
+Social Work,37-2021.00,0.93
+Chemistry,37-2021.00,0.80
+Construction Project Management,37-2021.00,0.80
+Social Work,37-3011.00,0.93
+Electrical Engineering,37-3011.00,0.80
+Real Estate,37-3011.00,0.80
+Chemistry,37-3012.00,0.90
+Communication Studies,37-3012.00,0.90
+Computer Science,37-3012.00,0.90
+Instructional Design and Technology,37-3012.00,0.90
+Health Care Information Systems Major,37-3013.00,0.94
+Health Care Management,37-3013.00,0.94
+Health Care Professional Services,37-3013.00,0.94
+Integrative Health Care,37-3013.00,0.94
+Nutrition Science,37-3013.00,0.94
+Public Health,37-3013.00,0.94
+Social Work,37-3019.00,0.93
+Hospitality Leadership,39-1013.00,0.98
+Hotel Management,39-1013.00,0.98
+Business Administration,39-1013.00,0.83
+Management,39-1013.00,0.83
+Operations Management,39-1013.00,0.83
+Social Work,39-1014.00,0.93
+Event and Meeting Management,39-1014.00,0.80
+Management,39-1014.00,0.80
+Sport Management,39-1014.00,0.80
+Social Work,39-1022.00,0.93
+Management,39-1022.00,0.80
+Computer Security,39-2011.00,0.90
+Criminal Justice and Criminology,39-2011.00,0.90
+Human Development and Family Studies,39-2011.00,0.90
+Human Resource Management,39-2011.00,0.90
+Human Services,39-2011.00,0.90
+Social Work,39-2011.00,0.90
+Environmental Engineering,39-2021.00,0.94
+Applied Geology,39-2021.00,0.72
+Biology,39-2021.00,0.72
+Business Administration,39-3011.00,0.90
+Management,39-3011.00,0.90
+Communication Studies,39-3011.00,0.90
+Sport Management,39-3012.00,0.98
+Sport Nutrition,39-3012.00,0.89
+Event and Meeting Management,39-3012.00,0.82
+Social Work,39-3019.00,0.93
+Film Studies and Production,39-3021.00,0.98
+Music,39-3021.00,0.71
+Event and Meeting Management,39-3031.00,0.95
+Event and Meeting Management,39-3091.00,0.98
+Sport Management,39-3091.00,0.70
+Health Care Information Systems Major,39-3092.00,0.90
+Health Care Management,39-3092.00,0.90
+Health Care Professional Services,39-3092.00,0.90
+Integrative Health Care,39-3092.00,0.90
+Business Administration,39-3093.00,0.90
+Management,39-3093.00,0.90
+Communication Studies,39-3093.00,0.90
+Social Work,39-3099.00,0.93
+Philosophy,39-4011.00,0.90
+Human Development and Family Studies,39-4012.00,0.90
+Human Resource Management,39-4012.00,0.90
+Human Services,39-4012.00,0.90
+Business Administration,39-4021.00,0.90
+Management,39-4021.00,0.90
+Communication Studies,39-4021.00,0.90
+Human Development and Family Studies,39-4031.00,0.98
+Africana Studies,39-4031.00,0.68
+Aging Services Leadership,39-4031.00,0.68
+Business Administration,39-5011.00,0.90
+Management,39-5011.00,0.90
+Communication Studies,39-5011.00,0.90
+Business Administration,39-5012.00,0.90
+Management,39-5012.00,0.90
+Communication Studies,39-5012.00,0.90
+Art,39-5091.00,0.90
+Business Administration,39-5092.00,0.90
+Management,39-5092.00,0.90
+Communication Studies,39-5092.00,0.90
+Business Administration,39-5093.00,0.90
+Management,39-5093.00,0.90
+Communication Studies,39-5093.00,0.90
+Special Education,39-5094.00,0.93
+Hotel Management,39-6011.00,0.95
+Hospitality Leadership,39-6011.00,0.75
+Business Administration,39-6012.00,0.98
+Hotel Management,39-6012.00,0.98
+International Business,39-6012.00,0.91
+Hospitality Leadership,39-6012.00,0.90
+Business Intelligence,39-6012.00,0.79
+Advanced Manufacturing Operations,39-7011.00,0.94
+Advanced Manufacturing Sciences,39-7011.00,0.94
+Construction Project Management,39-7011.00,0.94
+Industrial Design,39-7011.00,0.94
+Brewery Operations,39-7012.00,0.89
+Business Administration,39-7012.00,0.89
+Event and Meeting Management,39-7012.00,0.89
+Hospitality Leadership,39-7012.00,0.89
+Hotel Management,39-7012.00,0.89
+Management,39-7012.00,0.89
+Early Childhood Education,39-9011.00,0.98
+Human Development and Family Studies,39-9011.00,0.82
+Special Education,39-9011.00,0.70
+"Speech, Language, Hearing Sciences",39-9011.01,0.95
+Health Care Information Systems Major,39-9011.01,0.75
+Health Care Management,39-9011.01,0.75
+Health Care Professional Services,39-9011.01,0.75
+Integrative Health Care,39-9011.01,0.75
+K-12 Physical Education,39-9011.01,0.75
+Exercise Science,39-9031.00,0.98
+K-12 Physical Education,39-9031.00,0.78
+Sport Management,39-9031.00,0.78
+Sport Management,39-9032.00,0.98
+Art,39-9032.00,0.90
+Music,39-9032.00,0.90
+"Art History, Theory, and Criticism",39-9032.00,0.78
+Event and Meeting Management,39-9032.00,0.78
+Public Relations,39-9032.00,0.78
+Art Education,39-9041.00,0.89
+Communication Studies,39-9041.00,0.89
+Early Childhood Education,39-9041.00,0.89
+Elementary Education,39-9041.00,0.89
+English,39-9041.00,0.89
+Instructional Design and Technology,39-9041.00,0.89
+Health Care Information Systems Major,39-9099.00,0.98
+Health Care Management,39-9099.00,0.98
+Health Care Professional Services,39-9099.00,0.98
+Integrative Health Care,39-9099.00,0.98
+Social Work,39-9099.00,0.80
+Accounting,41-1011.00,0.98
+Management,41-1011.00,0.98
+Business Administration,41-1011.00,0.83
+Marketing,41-1011.00,0.83
+Professional Selling,41-1011.00,0.83
+Accounting,41-1012.00,0.98
+Management,41-1012.00,0.83
+Marketing,41-1012.00,0.83
+Professional Selling,41-1012.00,0.83
+Finance,41-2011.00,0.98
+Accounting,41-2011.00,0.68
+Aviation and Aerospace Management,41-2011.00,0.68
+Accounting,41-2012.00,0.90
+Data Science and Machine Learning,41-2012.00,0.90
+Business Administration,41-2021.00,0.90
+Management,41-2021.00,0.90
+Communication Studies,41-2021.00,0.90
+Business Administration,41-2022.00,0.90
+Management,41-2022.00,0.90
+Communication Studies,41-2022.00,0.90
+Business Administration,41-2031.00,0.90
+Management,41-2031.00,0.90
+Communication Studies,41-2031.00,0.90
+Marketing,41-3011.00,0.96
+Business Intelligence,41-3011.00,0.80
+Business Administration,41-3011.00,0.72
+Communication Studies,41-3011.00,0.70
+Professional Selling,41-3021.00,0.98
+Real Estate,41-3021.00,0.86
+Finance,41-3021.00,0.76
+Finance,41-3031.00,0.98
+Marketing,41-3031.00,0.78
+Professional Selling,41-3031.00,0.78
+Brewery Operations,41-3041.00,0.89
+Business Administration,41-3041.00,0.89
+Event and Meeting Management,41-3041.00,0.89
+Hospitality Leadership,41-3041.00,0.89
+Hotel Management,41-3041.00,0.89
+Management,41-3041.00,0.89
+Marketing,41-3091.00,0.96
+Business Intelligence,41-3091.00,0.80
+Business Administration,41-3091.00,0.72
+Communication Studies,41-3091.00,0.70
+Professional Selling,41-4011.00,0.98
+Advanced Manufacturing Operations,41-4011.00,0.91
+Advanced Manufacturing Sciences,41-4011.00,0.91
+Art Education,41-4011.00,0.83
+Computer Engineering,41-4011.00,0.83
+Early Childhood Education,41-4011.00,0.83
+Professional Selling,41-4011.07,0.98
+Marketing,41-4011.07,0.76
+Accounting,41-4011.07,0.64
+Professional Selling,41-4012.00,0.98
+Advanced Manufacturing Operations,41-4012.00,0.91
+Advanced Manufacturing Sciences,41-4012.00,0.91
+Public Health,41-9011.00,0.90
+Public Relations,41-9011.00,0.90
+Business Administration,41-9012.00,0.90
+Management,41-9012.00,0.90
+Communication Studies,41-9012.00,0.90
+Real Estate,41-9021.00,0.98
+Finance,41-9021.00,0.70
+Professional Selling,41-9021.00,0.70
+Real Estate,41-9022.00,0.98
+Professional Selling,41-9022.00,0.84
+Marketing,41-9022.00,0.70
+Business Administration,41-9031.00,0.98
+International Business,41-9031.00,0.98
+Professional Selling,41-9031.00,0.98
+Business Intelligence,41-9031.00,0.83
+Civil Engineering Technology,41-9031.00,0.83
+Computer Engineering,41-9031.00,0.83
+Business Administration,41-9041.00,0.90
+Management,41-9041.00,0.90
+Communication Studies,41-9041.00,0.90
+Marketing,41-9091.00,0.94
+Professional Selling,41-9091.00,0.94
+Accounting,41-9091.00,0.72
+Marketing,41-9099.00,0.94
+Professional Selling,41-9099.00,0.94
+Accounting,41-9099.00,0.72
+Social Work,43-1011.00,0.93
+Business Administration,43-1011.00,0.80
+Management,43-1011.00,0.80
+Business Administration,43-2011.00,0.98
+International Business,43-2011.00,0.98
+Business Intelligence,43-2011.00,0.83
+Fire and Emergency Response Administration,43-2021.00,0.94
+Criminal Justice and Criminology,43-2021.00,0.72
+History,43-2021.00,0.72
+Communication Studies,43-2099.00,0.98
+Communication Design,43-2099.00,0.89
+Journalism,43-2099.00,0.69
+Finance,43-3011.00,0.94
+Accounting,43-3011.00,0.72
+Aviation and Aerospace Management,43-3011.00,0.72
+Accounting,43-3021.00,0.95
+Business Intelligence,43-3021.00,0.75
+Statistical Science,43-3021.00,0.75
+Accounting,43-3031.00,0.98
+Business Administration,43-3031.00,0.78
+Business Intelligence,43-3031.00,0.78
+Computer Science,43-3041.00,0.98
+Finance,43-3041.00,0.98
+Computer Engineering,43-3041.00,0.83
+Computer Information Systems,43-3041.00,0.83
+Computer Security,43-3041.00,0.83
+Business Intelligence,43-3041.00,0.80
+Video Production,43-3051.00,0.95
+Accounting,43-3051.00,0.75
+Advanced Manufacturing Operations,43-3051.00,0.75
+Advanced Manufacturing Sciences,43-3051.00,0.75
+Business Intelligence,43-3051.00,0.75
+Film Studies and Production,43-3051.00,0.75
+Advanced Manufacturing Sciences,43-3061.00,0.90
+Computer Information Systems,43-3061.00,0.90
+Health Care Information Systems Major,43-3061.00,0.90
+History,43-3061.00,0.90
+Physics,43-3061.00,0.90
+Finance,43-3071.00,0.94
+Accounting,43-3071.00,0.72
+Aviation and Aerospace Management,43-3071.00,0.72
+Finance,43-3099.00,0.94
+Accounting,43-3099.00,0.72
+Aviation and Aerospace Management,43-3099.00,0.72
+Finance,43-4011.00,0.94
+Marketing,43-4011.00,0.94
+Professional Selling,43-4011.00,0.94
+Business Intelligence,43-4021.00,0.90
+Computer Information Systems,43-4021.00,0.90
+Finance,43-4021.00,0.90
+Health Care Information Systems Major,43-4021.00,0.90
+History,43-4031.00,0.94
+Political Science,43-4031.00,0.94
+Criminal Justice and Criminology,43-4031.00,0.72
+Business Administration,43-4041.00,0.98
+Business Intelligence,43-4041.00,0.98
+Finance,43-4041.00,0.98
+International Business,43-4041.00,0.98
+Marketing,43-4051.00,0.94
+Professional Selling,43-4051.00,0.94
+Accounting,43-4051.00,0.72
+Criminal Justice and Criminology,43-4061.00,0.94
+Political Science,43-4061.00,0.94
+Public Health,43-4061.00,0.94
+Social Work,43-4061.00,0.94
+History,43-4071.00,0.90
+Hotel Management,43-4081.00,0.98
+Hospitality Leadership,43-4081.00,0.74
+Brewery Operations,43-4081.00,0.64
+Computer Science,43-4111.00,0.90
+Finance,43-4111.00,0.90
+Broadcast Journalism,43-4121.00,0.94
+Media Production and Leadership,43-4121.00,0.94
+"Art History, Theory, and Criticism",43-4121.00,0.72
+Computer Information Systems,43-4131.00,0.90
+Finance,43-4131.00,0.90
+Health Care Information Systems Major,43-4131.00,0.90
+Finance,43-4141.00,0.94
+Accounting,43-4141.00,0.72
+Aviation and Aerospace Management,43-4141.00,0.72
+Advanced Manufacturing Sciences,43-4151.00,0.95
+Physics,43-4151.00,0.75
+Human Resource Management,43-4161.00,0.98
+Accounting,43-4161.00,0.70
+Business Intelligence,43-4161.00,0.70
+Computer Information Systems,43-4171.00,0.98
+Health Care Information Systems Major,43-4171.00,0.98
+Public Health,43-4171.00,0.72
+Hospitality Leadership,43-4181.00,0.94
+Hotel Management,43-4181.00,0.94
+Brewery Operations,43-4181.00,0.72
+Computer Information Systems,43-4199.00,0.98
+Health Care Information Systems Major,43-4199.00,0.98
+Aviation and Aerospace Management,43-5011.00,0.94
+Aviation and Aerospace Science,43-5011.00,0.94
+Aerospace Systems and Mission Design,43-5011.00,0.72
+Applied Geology,43-5011.01,0.89
+Biochemistry,43-5011.01,0.89
+Biology,43-5011.01,0.89
+Chemistry,43-5011.01,0.89
+Data Science and Machine Learning,43-5011.01,0.89
+Environmental Science,43-5011.01,0.89
+Business Administration,43-5021.00,0.98
+International Business,43-5021.00,0.98
+Business Intelligence,43-5021.00,0.83
+Fire and Emergency Response Administration,43-5031.00,0.98
+Public Health,43-5031.00,0.80
+Criminal Justice and Criminology,43-5031.00,0.78
+Criminal Justice and Criminology,43-5032.00,0.96
+Psychology Major,43-5032.00,0.70
+Political Science,43-5032.00,0.68
+Environmental Engineering,43-5041.00,0.94
+Applied Geology,43-5041.00,0.72
+Biology,43-5041.00,0.72
+Construction Project Management,43-5051.00,0.90
+Construction Project Management,43-5052.00,0.90
+Data Science and Machine Learning,43-5053.00,0.98
+Construction Project Management,43-5053.00,0.72
+History,43-5053.00,0.72
+Video Production,43-5061.00,0.98
+Film Studies and Production,43-5061.00,0.89
+Media Production and Leadership,43-5061.00,0.89
+Advanced Manufacturing Sciences,43-5061.00,0.82
+History,43-5071.00,0.90
+Advanced Manufacturing Sciences,43-5111.00,0.90
+History,43-5111.00,0.90
+Physics,43-5111.00,0.90
+Statistical Science,43-6011.00,0.94
+Applied Geology,43-6011.00,0.72
+Biochemistry,43-6011.00,0.72
+Applied Geology,43-6012.00,0.89
+Biochemistry,43-6012.00,0.89
+Biology,43-6012.00,0.89
+Chemistry,43-6012.00,0.89
+Data Science and Machine Learning,43-6012.00,0.89
+Environmental Science,43-6012.00,0.89
+Health Care Professional Services,43-6013.00,0.98
+Integrative Health Care,43-6013.00,0.98
+Biology,43-6013.00,0.83
+Chemistry,43-6013.00,0.83
+Nutrition Science,43-6013.00,0.83
+Health Care Information Systems Major,43-6014.00,0.94
+Health Care Professional Services,43-6014.00,0.94
+Integrative Health Care,43-6014.00,0.94
+Advanced Manufacturing Sciences,43-9021.00,0.90
+Business Intelligence,43-9021.00,0.90
+Physics,43-9021.00,0.90
+Computer Engineering,43-9022.00,0.94
+Computer Information Systems,43-9022.00,0.94
+Computer Science,43-9022.00,0.94
+Computer Security,43-9022.00,0.94
+Computer Engineering,43-9031.00,0.98
+Computer Information Systems,43-9031.00,0.98
+Computer Science,43-9031.00,0.98
+Computer Security,43-9031.00,0.83
+Finance,43-9041.00,0.94
+Accounting,43-9041.00,0.72
+Aviation and Aerospace Management,43-9041.00,0.72
+Data Science and Machine Learning,43-9051.00,0.98
+History,43-9051.00,0.72
+Accounting,43-9061.00,0.90
+Data Science and Machine Learning,43-9061.00,0.90
+Computer Engineering,43-9071.00,0.98
+Computer Information Systems,43-9071.00,0.98
+Computer Science,43-9071.00,0.98
+Computer Security,43-9071.00,0.98
+Data Science and Machine Learning,43-9071.00,0.98
+Technical Writing and Editing,43-9081.00,0.95
+English,43-9081.00,0.75
+Statistical Science,43-9111.00,0.98
+Business Intelligence,43-9111.00,0.72
+Social Work,43-9199.00,0.93
+Business Administration,43-9199.00,0.80
+Social Work,45-1011.00,0.93
+Management,45-1011.00,0.80
+Operations Management,45-2011.00,0.98
+Business Administration,45-2011.00,0.83
+Health Care Information Systems Major,45-2011.00,0.83
+Health Care Management,45-2011.00,0.83
+Health Care Professional Services,45-2011.00,0.83
+Integrative Health Care,45-2011.00,0.83
+History,45-2021.00,0.90
+Business Administration,45-2041.00,0.90
+Management,45-2041.00,0.90
+Communication Studies,45-2041.00,0.90
+Environmental Engineering,45-2091.00,0.94
+Applied Geology,45-2091.00,0.72
+Biology,45-2091.00,0.72
+Nursing,45-2092.00,0.98
+Health Care Professional Services,45-2092.00,0.85
+Public Health,45-2092.00,0.80
+Health Care Management,45-2092.00,0.72
+History,45-2093.00,0.90
+Public Health,45-2093.00,0.90
+Social Work,45-2099.00,0.93
+Social Work,45-3031.00,0.93
+Environmental Science,45-4011.00,0.98
+Environmental Sustainability,45-4011.00,0.90
+Environmental Engineering,45-4011.00,0.79
+Public Health,45-4011.00,0.79
+Business Administration,45-4021.00,0.90
+Management,45-4021.00,0.90
+Communication Studies,45-4021.00,0.90
+Data Science and Machine Learning,45-4022.00,0.90
+English,45-4023.00,0.90
+Social Work,45-4029.00,0.93
+Construction Project Management,47-1011.00,0.98
+Civil Engineering Technology,47-1011.00,0.77
+Advanced Manufacturing Operations,47-1011.00,0.65
+Business Administration,47-1011.03,0.98
+Management,47-1011.03,0.98
+Operations Management,47-1011.03,0.80
+Environmental Engineering,47-2011.00,0.94
+Applied Geology,47-2011.00,0.72
+Biology,47-2011.00,0.72
+Advanced Manufacturing Sciences,47-2021.00,0.90
+Civil Engineering Technology,47-2021.00,0.90
+Construction Project Management,47-2021.00,0.90
+Physics,47-2021.00,0.90
+Special Education,47-2022.00,0.90
+Advanced Manufacturing Sciences,47-2031.00,0.90
+Construction Project Management,47-2031.00,0.90
+Physics,47-2031.00,0.90
+Advanced Manufacturing Sciences,47-2041.00,0.90
+Physics,47-2041.00,0.90
+Music,47-2042.00,0.90
+Data Science and Machine Learning,47-2043.00,0.90
+Advanced Manufacturing Sciences,47-2044.00,0.90
+Physics,47-2044.00,0.90
+Electrical Engineering,47-2051.00,0.90
+Social Work,47-2053.00,0.93
+Construction Project Management,47-2061.00,0.98
+Civil Engineering Technology,47-2061.00,0.88
+Mechanical Engineering Technology,47-2061.00,0.88
+Applied Geology,47-2061.00,0.86
+Environmental Engineering,47-2061.00,0.86
+Advanced Manufacturing Sciences,47-2071.00,0.90
+Aviation and Aerospace Management,47-2071.00,0.90
+Data Science and Machine Learning,47-2071.00,0.90
+Physics,47-2071.00,0.90
+Construction Project Management,47-2072.00,0.90
+Construction Project Management,47-2073.00,0.98
+Applied Geology,47-2073.00,0.77
+Civil Engineering Technology,47-2073.00,0.77
+Advanced Manufacturing Sciences,47-2081.00,0.95
+Construction Project Management,47-2081.00,0.75
+Music,47-2081.00,0.75
+Operations Management,47-2081.00,0.75
+Physics,47-2081.00,0.75
+Business Administration,47-2082.00,0.90
+Management,47-2082.00,0.90
+Communication Studies,47-2082.00,0.90
+Electrical Engineering,47-2111.00,0.98
+Advanced Manufacturing Operations,47-2111.00,0.63
+Advanced Manufacturing Sciences,47-2111.00,0.63
+Construction Project Management,47-2121.00,0.90
+Social Work,47-2131.00,0.98
+Advanced Manufacturing Sciences,47-2131.00,0.72
+Physics,47-2131.00,0.72
+Mechanical Engineering Technology,47-2132.00,0.98
+Advanced Manufacturing Sciences,47-2132.00,0.77
+Physics,47-2132.00,0.77
+Construction Project Management,47-2141.00,0.98
+Civil Engineering Technology,47-2141.00,0.84
+Advanced Manufacturing Operations,47-2141.00,0.64
+Advanced Manufacturing Sciences,47-2142.00,0.90
+Communication Design,47-2142.00,0.90
+Marketing,47-2142.00,0.90
+Physics,47-2142.00,0.90
+Environmental Engineering,47-2151.00,0.94
+Applied Geology,47-2151.00,0.72
+Biology,47-2151.00,0.72
+Electrical Engineering,47-2152.00,0.98
+Mechanical Engineering Technology,47-2152.00,0.91
+Environmental Engineering,47-2152.00,0.90
+Advanced Manufacturing Operations,47-2152.04,0.98
+Advanced Manufacturing Sciences,47-2152.04,0.98
+Environmental Engineering,47-2152.04,0.96
+Aerospace Systems and Mission Design,47-2152.04,0.83
+Civil Engineering Technology,47-2152.04,0.83
+Electrical Engineering,47-2152.04,0.83
+Advanced Manufacturing Sciences,47-2161.00,0.90
+Physics,47-2161.00,0.90
+Social Work,47-2171.00,0.93
+Data Science and Machine Learning,47-2171.00,0.80
+Advanced Manufacturing Sciences,47-2181.00,0.90
+Physics,47-2181.00,0.90
+Social Work,47-2211.00,0.98
+Data Science and Machine Learning,47-2211.00,0.72
+Social Work,47-2221.00,0.93
+Civil Engineering Technology,47-2221.00,0.80
+Construction Project Management,47-2221.00,0.80
+Electrical Engineering,47-2231.00,0.98
+Civil Engineering Technology,47-2231.00,0.83
+Advanced Manufacturing Operations,47-2231.00,0.68
+Advanced Manufacturing Sciences,47-3011.00,0.90
+Physics,47-3011.00,0.90
+Social Work,47-3011.00,0.90
+Advanced Manufacturing Sciences,47-3012.00,0.90
+Physics,47-3012.00,0.90
+Social Work,47-3012.00,0.90
+Advanced Manufacturing Sciences,47-3013.00,0.90
+Physics,47-3013.00,0.90
+Social Work,47-3013.00,0.90
+Advanced Manufacturing Sciences,47-3014.00,0.90
+Art,47-3014.00,0.90
+Physics,47-3014.00,0.90
+Social Work,47-3014.00,0.90
+Advanced Manufacturing Sciences,47-3015.00,0.90
+Physics,47-3015.00,0.90
+Social Work,47-3015.00,0.90
+Advanced Manufacturing Sciences,47-3016.00,0.90
+Physics,47-3016.00,0.90
+Social Work,47-3016.00,0.90
+Construction Project Management,47-3019.00,0.98
+Civil Engineering Technology,47-3019.00,0.77
+Advanced Manufacturing Operations,47-3019.00,0.65
+Construction Project Management,47-4011.00,0.98
+Civil Engineering Technology,47-4011.00,0.90
+Electrical Engineering,47-4011.00,0.90
+Accounting,47-4011.01,0.98
+Finance,47-4011.01,0.75
+Business Administration,47-4011.01,0.70
+Business Administration,47-4021.00,0.90
+Management,47-4021.00,0.90
+Communication Studies,47-4021.00,0.90
+Electrical Engineering,47-4031.00,0.90
+Applied Geology,47-4041.00,0.94
+Environmental Engineering,47-4041.00,0.94
+Biology,47-4041.00,0.72
+Social Work,47-4051.00,0.93
+Aviation and Aerospace Management,47-4051.00,0.80
+Data Science and Machine Learning,47-4061.00,0.90
+Business Administration,47-4071.00,0.90
+Management,47-4071.00,0.90
+Communication Studies,47-4071.00,0.90
+Advanced Manufacturing Sciences,47-4091.00,0.90
+Physics,47-4091.00,0.90
+Construction Project Management,47-4099.00,0.98
+Civil Engineering Technology,47-4099.00,0.77
+Advanced Manufacturing Operations,47-4099.00,0.65
+Environmental Science,47-4099.03,0.94
+Environmental Sustainability,47-4099.03,0.94
+Applied Geology,47-4099.03,0.72
+Business Administration,47-5011.00,0.90
+Management,47-5011.00,0.90
+Communication Studies,47-5011.00,0.90
+Business Administration,47-5012.00,0.90
+Management,47-5012.00,0.90
+Communication Studies,47-5012.00,0.90
+Business Administration,47-5013.00,0.90
+Management,47-5013.00,0.90
+Communication Studies,47-5013.00,0.90
+Data Science and Machine Learning,47-5022.00,0.98
+Advanced Manufacturing Sciences,47-5022.00,0.72
+Applied Geology,47-5022.00,0.72
+Applied Geology,47-5023.00,0.98
+Construction Project Management,47-5023.00,0.91
+Environmental Engineering,47-5023.00,0.90
+Civil Engineering Technology,47-5023.00,0.79
+Accounting,47-5032.00,0.95
+Social Work,47-5032.00,0.85
+Advanced Manufacturing Sciences,47-5032.00,0.75
+Applied Geology,47-5032.00,0.75
+Physics,47-5032.00,0.75
+Data Science and Machine Learning,47-5041.00,0.98
+Applied Geology,47-5041.00,0.72
+Computer Information Systems,47-5041.00,0.72
+Applied Geology,47-5043.00,0.90
+Mechanical Engineering Technology,47-5043.00,0.90
+Data Science and Machine Learning,47-5044.00,0.98
+Applied Geology,47-5044.00,0.72
+Electrical Engineering,47-5044.00,0.72
+Data Science and Machine Learning,47-5049.00,0.98
+Applied Geology,47-5049.00,0.72
+Business Administration,47-5051.00,0.90
+Management,47-5051.00,0.90
+Communication Studies,47-5051.00,0.90
+Electrical Engineering,47-5071.00,0.90
+Social Work,47-5081.00,0.98
+Applied Geology,47-5081.00,0.89
+Art,47-5081.00,0.72
+Social Work,47-5099.00,0.93
+Management,49-1011.00,0.90
+Social Work,49-1011.00,0.90
+Computer Engineering,49-2011.00,0.98
+Computer Information Systems,49-2011.00,0.98
+Computer Science,49-2011.00,0.98
+Computer Security,49-2011.00,0.98
+Data Science and Machine Learning,49-2011.00,0.98
+Aerospace Systems and Mission Design,49-2021.00,0.94
+Aviation and Aerospace Science,49-2021.00,0.94
+Computer Engineering,49-2021.00,0.94
+Computer Information Systems,49-2021.00,0.94
+Electrical Engineering,49-2021.00,0.94
+Fire and Emergency Response Administration,49-2021.00,0.94
+Communication Studies,49-2022.00,0.95
+Broadcast Journalism,49-2022.00,0.75
+Communication Design,49-2022.00,0.75
+Construction Project Management,49-2022.00,0.75
+Electrical Engineering,49-2022.00,0.75
+Journalism,49-2022.00,0.75
+Aerospace Systems and Mission Design,49-2091.00,0.98
+Electrical Engineering,49-2091.00,0.97
+Aviation and Aerospace Science,49-2091.00,0.86
+Electrical Engineering,49-2092.00,0.90
+Electrical Engineering,49-2093.00,0.98
+Computer Engineering,49-2093.00,0.77
+Advanced Manufacturing Operations,49-2093.00,0.65
+Electrical Engineering,49-2094.00,0.98
+Industrial Design,49-2094.00,0.91
+Advanced Manufacturing Operations,49-2094.00,0.77
+Electrical Engineering,49-2095.00,0.98
+Computer Engineering,49-2095.00,0.77
+Advanced Manufacturing Operations,49-2095.00,0.65
+Communication Studies,49-2096.00,0.95
+Communication Design,49-2096.00,0.75
+Computer Security,49-2096.00,0.75
+Criminal Justice and Criminology,49-2096.00,0.75
+Journalism,49-2096.00,0.75
+Music,49-2096.00,0.75
+Media Production and Leadership,49-2097.00,0.98
+Video Production,49-2097.00,0.98
+Broadcast Journalism,49-2097.00,0.83
+Film Studies and Production,49-2097.00,0.83
+Music,49-2097.00,0.83
+Fire and Emergency Response Administration,49-2098.00,0.98
+Criminal Justice and Criminology,49-2098.00,0.77
+Social Work,49-2098.00,0.77
+Aerospace Systems and Mission Design,49-3011.00,0.94
+Aviation and Aerospace Science,49-3011.00,0.94
+Aviation and Aerospace Management,49-3011.00,0.72
+Business Administration,49-3021.00,0.90
+Management,49-3021.00,0.90
+Communication Studies,49-3021.00,0.90
+Business Administration,49-3022.00,0.90
+Management,49-3022.00,0.90
+Communication Studies,49-3022.00,0.90
+Business Administration,49-3023.00,0.90
+Management,49-3023.00,0.90
+Communication Studies,49-3023.00,0.90
+Special Education,49-3031.00,0.93
+Mechanical Engineering Technology,49-3041.00,0.90
+Construction Project Management,49-3042.00,0.98
+Mechanical Engineering Technology,49-3042.00,0.98
+Applied Geology,49-3042.00,0.83
+Civil Engineering Technology,49-3042.00,0.83
+Business Administration,49-3043.00,0.90
+Management,49-3043.00,0.90
+Communication Studies,49-3043.00,0.90
+Electrical Engineering,49-3051.00,0.98
+Mechanical Engineering Technology,49-3051.00,0.98
+Advanced Manufacturing Operations,49-3051.00,0.78
+Advanced Manufacturing Sciences,49-3051.00,0.78
+Aerospace Systems and Mission Design,49-3051.00,0.78
+Civil Engineering Technology,49-3051.00,0.78
+Business Administration,49-3052.00,0.90
+Management,49-3052.00,0.90
+Communication Studies,49-3052.00,0.90
+Electrical Engineering,49-3053.00,0.90
+Business Administration,49-3091.00,0.90
+Management,49-3091.00,0.90
+Communication Studies,49-3091.00,0.90
+Electrical Engineering,49-3092.00,0.98
+Advanced Manufacturing Operations,49-3092.00,0.78
+Advanced Manufacturing Sciences,49-3092.00,0.78
+Aerospace Systems and Mission Design,49-3092.00,0.78
+Civil Engineering Technology,49-3092.00,0.78
+Mechanical Engineering Technology,49-3092.00,0.78
+Business Administration,49-3093.00,0.90
+Management,49-3093.00,0.90
+Communication Studies,49-3093.00,0.90
+Mechanical Engineering Technology,49-9011.00,0.98
+Advanced Manufacturing Operations,49-9011.00,0.65
+Advanced Manufacturing Sciences,49-9011.00,0.65
+Mechanical Engineering Technology,49-9012.00,0.98
+Advanced Manufacturing Operations,49-9012.00,0.65
+Advanced Manufacturing Sciences,49-9012.00,0.65
+Mechanical Engineering Technology,49-9021.00,0.90
+Business Administration,49-9031.00,0.90
+Management,49-9031.00,0.90
+Communication Studies,49-9031.00,0.90
+Mechanical Engineering Technology,49-9041.00,0.98
+Industrial Design,49-9041.00,0.90
+Advanced Manufacturing Operations,49-9041.00,0.86
+Advanced Manufacturing Sciences,49-9041.00,0.86
+Data Science and Machine Learning,49-9043.00,0.93
+Social Work,49-9043.00,0.93
+Mechanical Engineering Technology,49-9043.00,0.80
+Mechanical Engineering Technology,49-9044.00,0.90
+Advanced Manufacturing Sciences,49-9045.00,0.90
+Physics,49-9045.00,0.90
+Electrical Engineering,49-9051.00,0.98
+Advanced Manufacturing Operations,49-9051.00,0.64
+Advanced Manufacturing Sciences,49-9051.00,0.64
+Electrical Engineering,49-9052.00,0.90
+Physics,49-9052.00,0.90
+Film Studies and Production,49-9061.00,0.98
+Video Production,49-9061.00,0.93
+Media Production and Leadership,49-9061.00,0.76
+Health Care Professional Services,49-9062.00,0.94
+Integrative Health Care,49-9062.00,0.94
+Aging Services Leadership,49-9062.00,0.72
+Music Education,49-9063.00,0.93
+Music,49-9063.00,0.93
+Mechanical Engineering Technology,49-9064.00,0.98
+Advanced Manufacturing Operations,49-9064.00,0.68
+Advanced Manufacturing Sciences,49-9064.00,0.68
+Business Administration,49-9069.00,0.90
+Management,49-9069.00,0.90
+Communication Studies,49-9069.00,0.90
+Mechanical Engineering Technology,49-9071.00,0.98
+Electrical Engineering,49-9071.00,0.90
+Construction Project Management,49-9071.00,0.78
+Electrical Engineering,49-9081.00,0.98
+Mechanical Engineering Technology,49-9081.00,0.98
+Advanced Manufacturing Operations,49-9081.00,0.78
+Advanced Manufacturing Sciences,49-9081.00,0.78
+Aerospace Systems and Mission Design,49-9081.00,0.78
+Civil Engineering Technology,49-9081.00,0.78
+Video Production,49-9091.00,0.98
+Film Studies and Production,49-9091.00,0.83
+Media Production and Leadership,49-9091.00,0.83
+Environmental Engineering,49-9092.00,0.94
+Applied Geology,49-9092.00,0.72
+Biology,49-9092.00,0.72
+Business Administration,49-9094.00,0.90
+Management,49-9094.00,0.90
+Communication Studies,49-9094.00,0.90
+Construction Project Management,49-9095.00,0.90
+Advanced Manufacturing Operations,49-9096.00,0.98
+Advanced Manufacturing Sciences,49-9096.00,0.98
+Construction Project Management,49-9096.00,0.98
+Civil Engineering Technology,49-9096.00,0.83
+Mechanical Engineering Technology,49-9096.00,0.83
+Business Administration,49-9097.00,0.90
+Management,49-9097.00,0.90
+Communication Studies,49-9097.00,0.90
+Mechanical Engineering Technology,49-9098.00,0.98
+Advanced Manufacturing Sciences,49-9098.00,0.86
+Electrical Engineering,49-9098.00,0.86
+Social Work,49-9099.00,0.93
+Electrical Engineering,49-9099.01,0.90
+Technical Writing and Editing,49-9099.01,0.90
+Video Production,51-1011.00,0.98
+Film Studies and Production,51-1011.00,0.89
+Media Production and Leadership,51-1011.00,0.89
+Social Work,51-1011.00,0.89
+Advanced Manufacturing Operations,51-1011.00,0.82
+Aerospace Systems and Mission Design,51-2011.00,0.98
+Aviation and Aerospace Science,51-2011.00,0.83
+Aviation and Aerospace Management,51-2011.00,0.68
+Electrical Engineering,51-2021.00,0.98
+Advanced Manufacturing Operations,51-2021.00,0.68
+Advanced Manufacturing Sciences,51-2021.00,0.68
+Electrical Engineering,51-2022.00,0.98
+Advanced Manufacturing Operations,51-2022.00,0.77
+Computer Engineering,51-2022.00,0.77
+Advanced Manufacturing Operations,51-2023.00,0.90
+Advanced Manufacturing Operations,51-2031.00,0.98
+Advanced Manufacturing Sciences,51-2031.00,0.90
+Construction Project Management,51-2031.00,0.90
+Civil Engineering Technology,51-2031.00,0.78
+Mechanical Engineering Technology,51-2031.00,0.78
+Civil Engineering Technology,51-2041.00,0.90
+Business Administration,51-2051.00,0.90
+Management,51-2051.00,0.90
+Communication Studies,51-2051.00,0.90
+Electrical Engineering,51-2061.00,0.98
+Advanced Manufacturing Operations,51-2061.00,0.83
+Advanced Manufacturing Sciences,51-2061.00,0.68
+Business Administration,51-2092.00,0.94
+Management,51-2092.00,0.94
+Accounting,51-2092.00,0.72
+Advanced Manufacturing Operations,51-2099.00,0.90
+Business Administration,51-3011.00,0.90
+Management,51-3011.00,0.90
+Communication Studies,51-3011.00,0.90
+Business Administration,51-3021.00,0.90
+Management,51-3021.00,0.90
+Communication Studies,51-3021.00,0.90
+Business Administration,51-3022.00,0.90
+Management,51-3022.00,0.90
+Communication Studies,51-3022.00,0.90
+Marketing,51-3023.00,0.98
+Professional Selling,51-3023.00,0.83
+Accounting,51-3023.00,0.68
+Data Science and Machine Learning,51-3091.00,0.98
+Advanced Manufacturing Operations,51-3092.00,0.98
+Advanced Manufacturing Sciences,51-3092.00,0.98
+Mechanical Engineering Technology,51-3092.00,0.83
+Data Science and Machine Learning,51-3093.00,0.98
+Social Work,51-3099.00,0.93
+Data Science and Machine Learning,51-4021.00,0.98
+Advanced Manufacturing Sciences,51-4021.00,0.72
+Civil Engineering Technology,51-4021.00,0.72
+Data Science and Machine Learning,51-4022.00,0.98
+Data Science and Machine Learning,51-4023.00,0.98
+Data Science and Machine Learning,51-4031.00,0.98
+Data Science and Machine Learning,51-4032.00,0.98
+Social Work,51-4032.00,0.72
+Data Science and Machine Learning,51-4033.00,0.98
+Social Work,51-4033.00,0.72
+Data Science and Machine Learning,51-4034.00,0.98
+Advanced Manufacturing Sciences,51-4034.00,0.72
+Physics,51-4034.00,0.72
+Data Science and Machine Learning,51-4035.00,0.98
+Social Work,51-4035.00,0.72
+Advanced Manufacturing Operations,51-4041.00,0.98
+Mechanical Engineering Technology,51-4041.00,0.98
+Advanced Manufacturing Sciences,51-4041.00,0.83
+Industrial Design,51-4041.00,0.83
+Mathematics,51-4041.00,0.83
+Business Administration,51-4051.00,0.90
+Management,51-4051.00,0.90
+Communication Studies,51-4051.00,0.90
+Business Administration,51-4052.00,0.90
+Management,51-4052.00,0.90
+Communication Studies,51-4052.00,0.90
+Industrial Design,51-4061.00,0.98
+Data Science and Machine Learning,51-4061.00,0.71
+Data Science and Machine Learning,51-4062.00,0.90
+Video Production,51-4071.00,0.95
+Advanced Manufacturing Operations,51-4071.00,0.75
+Advanced Manufacturing Sciences,51-4071.00,0.75
+Film Studies and Production,51-4071.00,0.75
+Media Production and Leadership,51-4071.00,0.75
+Data Science and Machine Learning,51-4072.00,0.98
+Data Science and Machine Learning,51-4081.00,0.98
+Advanced Manufacturing Operations,51-4111.00,0.90
+Data Science and Machine Learning,51-4111.00,0.90
+Business Administration,51-4121.00,0.90
+Management,51-4121.00,0.90
+Communication Studies,51-4121.00,0.90
+Data Science and Machine Learning,51-4122.00,0.98
+Data Science and Machine Learning,51-4191.00,0.90
+Social Work,51-4192.00,0.93
+Civil Engineering Technology,51-4192.00,0.80
+Data Science and Machine Learning,51-4192.00,0.80
+Data Science and Machine Learning,51-4193.00,0.98
+Business Administration,51-4194.00,0.90
+Management,51-4194.00,0.90
+Communication Studies,51-4194.00,0.90
+Social Work,51-4199.00,0.93
+Social Work,51-5111.00,0.93
+Art,51-5111.00,0.80
+Communication Design,51-5111.00,0.80
+Data Science and Machine Learning,51-5112.00,0.90
+Social Work,51-5113.00,0.93
+Data Science and Machine Learning,51-5113.00,0.80
+Advanced Manufacturing Operations,51-6011.00,0.94
+Advanced Manufacturing Sciences,51-6011.00,0.94
+Industrial Design,51-6011.00,0.94
+Advanced Manufacturing Sciences,51-6021.00,0.90
+Data Science and Machine Learning,51-6021.00,0.90
+Physics,51-6021.00,0.90
+Business Administration,51-6031.00,0.94
+Operations Management,51-6031.00,0.94
+Accounting,51-6031.00,0.72
+Social Work,51-6041.00,0.93
+Data Science and Machine Learning,51-6042.00,0.98
+Business Administration,51-6051.00,0.90
+Management,51-6051.00,0.90
+Communication Studies,51-6051.00,0.90
+Industrial Design,51-6052.00,0.94
+"Art History, Theory, and Criticism",51-6052.00,0.72
+Art,51-6052.00,0.72
+Data Science and Machine Learning,51-6061.00,0.98
+Data Science and Machine Learning,51-6062.00,0.98
+Data Science and Machine Learning,51-6063.00,0.98
+Data Science and Machine Learning,51-6064.00,0.98
+Data Science and Machine Learning,51-6091.00,0.98
+Advanced Manufacturing Sciences,51-6091.00,0.72
+Physics,51-6091.00,0.72
+Business Administration,51-6092.00,0.90
+Management,51-6092.00,0.90
+Communication Studies,51-6092.00,0.90
+Business Administration,51-6093.00,0.90
+Management,51-6093.00,0.90
+Communication Studies,51-6093.00,0.90
+Social Work,51-6099.00,0.93
+Data Science and Machine Learning,51-7011.00,0.90
+Electrical Engineering,51-7011.00,0.90
+Business Administration,51-7021.00,0.90
+Management,51-7021.00,0.90
+Communication Studies,51-7021.00,0.90
+Industrial Design,51-7031.00,0.98
+Business Administration,51-7032.00,0.90
+Management,51-7032.00,0.90
+Communication Studies,51-7032.00,0.90
+Data Science and Machine Learning,51-7041.00,0.98
+Computer Engineering,51-7041.00,0.80
+Computer Information Systems,51-7041.00,0.80
+Computer Science,51-7041.00,0.80
+Computer Security,51-7041.00,0.80
+Data Science and Machine Learning,51-7042.00,0.98
+Computer Engineering,51-7042.00,0.80
+Computer Information Systems,51-7042.00,0.80
+Computer Science,51-7042.00,0.80
+Computer Security,51-7042.00,0.80
+Business Administration,51-7099.00,0.90
+Management,51-7099.00,0.90
+Communication Studies,51-7099.00,0.90
+Fire and Emergency Response Administration,51-8011.00,0.94
+Criminal Justice and Criminology,51-8011.00,0.72
+History,51-8011.00,0.72
+Electrical Engineering,51-8012.00,0.90
+Electrical Engineering,51-8013.00,0.90
+Mechanical Engineering Technology,51-8013.00,0.90
+Business Administration,51-8013.03,0.90
+Management,51-8013.03,0.90
+Communication Studies,51-8013.03,0.90
+Business Administration,51-8013.04,0.90
+Management,51-8013.04,0.90
+Communication Studies,51-8013.04,0.90
+Mechanical Engineering Technology,51-8021.00,0.98
+Advanced Manufacturing Operations,51-8021.00,0.83
+Advanced Manufacturing Sciences,51-8021.00,0.83
+Construction Project Management,51-8021.00,0.83
+Industrial Design,51-8021.00,0.83
+Environmental Engineering,51-8031.00,0.94
+Applied Geology,51-8031.00,0.72
+Biology,51-8031.00,0.72
+Chemistry,51-8091.00,0.90
+Data Science and Machine Learning,51-8091.00,0.90
+Advanced Manufacturing Sciences,51-8092.00,0.90
+Applied Geology,51-8093.00,0.90
+Business Administration,51-8099.00,0.90
+Management,51-8099.00,0.90
+Communication Studies,51-8099.00,0.90
+Advanced Manufacturing Sciences,51-8099.01,0.95
+Video Production,51-8099.01,0.95
+Advanced Manufacturing Operations,51-8099.01,0.75
+Brewery Operations,51-8099.01,0.75
+Film Studies and Production,51-8099.01,0.75
+History,51-8099.01,0.75
+Advanced Manufacturing Operations,51-9011.00,0.94
+Advanced Manufacturing Sciences,51-9011.00,0.94
+Industrial Design,51-9011.00,0.94
+Data Science and Machine Learning,51-9012.00,0.98
+Advanced Manufacturing Sciences,51-9012.00,0.72
+Physics,51-9012.00,0.72
+Data Science and Machine Learning,51-9021.00,0.98
+Advanced Manufacturing Sciences,51-9021.00,0.72
+Physics,51-9021.00,0.72
+Social Work,51-9022.00,0.93
+Electrical Engineering,51-9022.00,0.80
+Data Science and Machine Learning,51-9023.00,0.98
+Advanced Manufacturing Sciences,51-9023.00,0.72
+Chemistry,51-9023.00,0.72
+Electrical Engineering,51-9031.00,0.90
+Data Science and Machine Learning,51-9032.00,0.98
+Advanced Manufacturing Sciences,51-9032.00,0.72
+Physics,51-9032.00,0.72
+Data Science and Machine Learning,51-9041.00,0.98
+Advanced Manufacturing Sciences,51-9051.00,0.90
+Physics,51-9051.00,0.90
+Advanced Manufacturing Sciences,51-9061.00,0.90
+Physics,51-9061.00,0.90
+Industrial Design,51-9071.00,0.94
+"Art History, Theory, and Criticism",51-9071.00,0.72
+Art,51-9071.00,0.72
+Advanced Manufacturing Sciences,51-9071.06,0.98
+Advanced Manufacturing Operations,51-9071.06,0.83
+Industrial Design,51-9071.06,0.83
+Biology,51-9081.00,0.94
+Chemistry,51-9081.00,0.94
+Health Care Professional Services,51-9081.00,0.94
+Nutrition Science,51-9081.00,0.94
+Health Care Professional Services,51-9082.00,0.94
+Integrative Health Care,51-9082.00,0.94
+Aging Services Leadership,51-9082.00,0.72
+Biology,51-9083.00,0.94
+Chemistry,51-9083.00,0.94
+Nutrition Science,51-9083.00,0.94
+Advanced Manufacturing Operations,51-9111.00,0.94
+Advanced Manufacturing Sciences,51-9111.00,0.94
+Industrial Design,51-9111.00,0.94
+Social Work,51-9123.00,0.93
+Data Science and Machine Learning,51-9124.00,0.98
+Advanced Manufacturing Sciences,51-9124.00,0.72
+Art,51-9124.00,0.72
+Chemistry,51-9141.00,0.90
+Special Education,51-9141.00,0.90
+Film Studies and Production,51-9151.00,0.98
+Media Production and Leadership,51-9151.00,0.98
+Broadcast Journalism,51-9151.00,0.83
+Technical Writing and Editing,51-9151.00,0.83
+Video Production,51-9151.00,0.83
+Computer Engineering,51-9161.00,0.98
+Computer Information Systems,51-9161.00,0.98
+Computer Science,51-9161.00,0.98
+Computer Security,51-9161.00,0.98
+Data Science and Machine Learning,51-9161.00,0.80
+Computer Science,51-9162.00,0.98
+Computer Engineering,51-9162.00,0.91
+Computer Information Systems,51-9162.00,0.91
+Computer Security,51-9162.00,0.91
+Data Science and Machine Learning,51-9191.00,0.98
+Advanced Manufacturing Sciences,51-9191.00,0.72
+Physics,51-9191.00,0.72
+Data Science and Machine Learning,51-9192.00,0.90
+Chemistry,51-9193.00,0.90
+Advanced Manufacturing Sciences,51-9194.00,0.90
+Physics,51-9194.00,0.90
+Advanced Manufacturing Sciences,51-9195.00,0.90
+Physics,51-9195.00,0.90
+Advanced Manufacturing Operations,51-9195.03,0.98
+Advanced Manufacturing Sciences,51-9195.03,0.98
+Mechanical Engineering Technology,51-9195.03,0.77
+Business Administration,51-9195.04,0.90
+Management,51-9195.04,0.90
+Communication Studies,51-9195.04,0.90
+Advanced Manufacturing Sciences,51-9195.05,0.98
+Advanced Manufacturing Operations,51-9195.05,0.93
+Mechanical Engineering Technology,51-9195.05,0.73
+Data Science and Machine Learning,51-9196.00,0.98
+Data Science and Machine Learning,51-9197.00,0.90
+Video Production,51-9198.00,0.98
+Film Studies and Production,51-9198.00,0.89
+Media Production and Leadership,51-9198.00,0.89
+Social Work,51-9198.00,0.89
+Advanced Manufacturing Sciences,51-9198.00,0.82
+Video Production,51-9199.00,0.98
+Film Studies and Production,51-9199.00,0.89
+Media Production and Leadership,51-9199.00,0.89
+Aerospace Systems and Mission Design,53-1041.00,0.98
+Aviation and Aerospace Science,53-1041.00,0.98
+Fire and Emergency Response Administration,53-1041.00,0.83
+Management,53-1042.00,0.90
+Political Science,53-1042.01,0.90
+Data Science and Machine Learning,53-1043.00,0.98
+Management,53-1043.00,0.72
+Management,53-1044.00,0.90
+Social Work,53-1049.00,0.93
+Management,53-1049.00,0.80
+Aviation and Aerospace Science,53-2011.00,0.98
+Aerospace Systems and Mission Design,53-2011.00,0.86
+Aviation and Aerospace Management,53-2011.00,0.75
+Aviation and Aerospace Science,53-2012.00,0.98
+Aerospace Systems and Mission Design,53-2012.00,0.86
+Aviation and Aerospace Management,53-2012.00,0.75
+Aviation and Aerospace Management,53-2021.00,0.98
+Aviation and Aerospace Science,53-2021.00,0.98
+Aerospace Systems and Mission Design,53-2021.00,0.74
+Aerospace Systems and Mission Design,53-2022.00,0.98
+Aviation and Aerospace Science,53-2022.00,0.98
+Business Administration,53-2022.00,0.96
+Operations Management,53-2022.00,0.83
+Aviation and Aerospace Management,53-2022.00,0.80
+Aviation and Aerospace Science,53-2031.00,0.98
+Aerospace Systems and Mission Design,53-2031.00,0.90
+Aviation and Aerospace Management,53-2031.00,0.78
+Fire and Emergency Response Administration,53-2031.00,0.78
+Fire and Emergency Response Administration,53-3011.00,0.98
+Health Care Professional Services,53-3011.00,0.93
+Integrative Health Care,53-3011.00,0.93
+Human Services,53-3011.00,0.78
+Psychology Major,53-3011.00,0.78
+Public Health,53-3011.00,0.78
+Hospitality Leadership,53-3031.00,0.98
+Marketing,53-3031.00,0.98
+Professional Selling,53-3031.00,0.85
+Business Administration,53-3031.00,0.81
+Event and Meeting Management,53-3031.00,0.81
+Hotel Management,53-3031.00,0.81
+Business Administration,53-3032.00,0.90
+Management,53-3032.00,0.90
+Communication Studies,53-3032.00,0.90
+Business Administration,53-3033.00,0.90
+Management,53-3033.00,0.90
+Communication Studies,53-3033.00,0.90
+Art Education,53-3051.00,0.89
+Communication Studies,53-3051.00,0.89
+Early Childhood Education,53-3051.00,0.89
+Elementary Education,53-3051.00,0.89
+English,53-3051.00,0.89
+Instructional Design and Technology,53-3051.00,0.89
+Business Administration,53-3052.00,0.94
+Operations Management,53-3052.00,0.94
+Sport Management,53-3052.00,0.94
+Health Care Professional Services,53-3053.00,0.94
+Integrative Health Care,53-3053.00,0.94
+Aging Services Leadership,53-3053.00,0.72
+Accounting,53-3054.00,0.98
+Finance,53-3054.00,0.75
+Business Administration,53-3054.00,0.70
+Business Administration,53-3099.00,0.90
+Management,53-3099.00,0.90
+Communication Studies,53-3099.00,0.90
+Business Administration,53-4011.00,0.90
+Management,53-4011.00,0.90
+Communication Studies,53-4011.00,0.90
+Construction Project Management,53-4013.00,0.98
+Advanced Manufacturing Operations,53-4013.00,0.83
+Advanced Manufacturing Sciences,53-4013.00,0.83
+Civil Engineering Technology,53-4013.00,0.83
+Industrial Design,53-4013.00,0.83
+Fire and Emergency Response Administration,53-4022.00,0.93
+Advanced Manufacturing Operations,53-4031.00,0.98
+Advanced Manufacturing Sciences,53-4031.00,0.83
+Business Administration,53-4031.00,0.83
+Industrial Design,53-4031.00,0.83
+Operations Management,53-4031.00,0.83
+Business Administration,53-4041.00,0.90
+Management,53-4041.00,0.90
+Communication Studies,53-4041.00,0.90
+Social Work,53-4099.00,0.93
+Aviation and Aerospace Science,53-5011.00,0.94
+Environmental Engineering,53-5011.00,0.94
+Fire and Emergency Response Administration,53-5011.00,0.94
+Political Science,53-5011.00,0.94
+Public Health,53-5011.00,0.90
+Business Administration,53-5021.00,0.94
+Environmental Engineering,53-5021.00,0.94
+Operations Management,53-5021.00,0.94
+Business Administration,53-5022.00,0.90
+Management,53-5022.00,0.90
+Communication Studies,53-5022.00,0.90
+Electrical Engineering,53-5031.00,0.98
+Mechanical Engineering Technology,53-5031.00,0.83
+Advanced Manufacturing Operations,53-5031.00,0.68
+Business Administration,53-6011.00,0.94
+Operations Management,53-6011.00,0.94
+Accounting,53-6011.00,0.72
+Business Administration,53-6021.00,0.90
+Management,53-6021.00,0.90
+Communication Studies,53-6021.00,0.90
+Business Administration,53-6031.00,0.90
+Management,53-6031.00,0.90
+Communication Studies,53-6031.00,0.90
+Aerospace Systems and Mission Design,53-6032.00,0.94
+Aviation and Aerospace Science,53-6032.00,0.94
+Environmental Engineering,53-6032.00,0.94
+Advanced Manufacturing Operations,53-6041.00,0.89
+Advanced Manufacturing Sciences,53-6041.00,0.89
+Aerospace Systems and Mission Design,53-6041.00,0.89
+Applied Geology,53-6041.00,0.89
+Civil Engineering Technology,53-6041.00,0.89
+Computer Engineering,53-6041.00,0.89
+Business Administration,53-6051.00,0.90
+Management,53-6051.00,0.90
+Communication Studies,53-6051.00,0.90
+Aviation and Aerospace Science,53-6051.01,0.98
+Aviation and Aerospace Management,53-6051.01,0.91
+Aerospace Systems and Mission Design,53-6051.01,0.71
+Aviation and Aerospace Science,53-6051.07,0.98
+Aviation and Aerospace Management,53-6051.07,0.91
+Aerospace Systems and Mission Design,53-6051.07,0.65
+Brewery Operations,53-6061.00,0.94
+Business Administration,53-6061.00,0.72
+Event and Meeting Management,53-6061.00,0.72
+Social Work,53-6099.00,0.93
+Advanced Manufacturing Sciences,53-7011.00,0.90
+Physics,53-7011.00,0.90
+Mechanical Engineering Technology,53-7021.00,0.98
+Advanced Manufacturing Sciences,53-7021.00,0.83
+Physics,53-7021.00,0.83
+Advanced Manufacturing Sciences,53-7031.00,0.90
+Physics,53-7031.00,0.90
+Electrical Engineering,53-7041.00,0.90
+Industrial Design,53-7051.00,0.98
+Advanced Manufacturing Operations,53-7051.00,0.93
+Advanced Manufacturing Sciences,53-7051.00,0.93
+Construction Project Management,53-7051.00,0.93
+Civil Engineering Technology,53-7051.00,0.80
+Physics,53-7051.00,0.80
+Environmental Engineering,53-7061.00,0.94
+Applied Geology,53-7061.00,0.72
+Biology,53-7061.00,0.72
+Advanced Manufacturing Sciences,53-7062.00,0.90
+Physics,53-7062.00,0.90
+Social Work,53-7062.04,0.93
+Advanced Manufacturing Sciences,53-7062.04,0.80
+Physics,53-7062.04,0.80
+Data Science and Machine Learning,53-7063.00,0.98
+Advanced Manufacturing Sciences,53-7063.00,0.72
+Physics,53-7063.00,0.72
+Advanced Manufacturing Sciences,53-7064.00,0.90
+Physics,53-7064.00,0.90
+Marketing,53-7065.00,0.94
+Professional Selling,53-7065.00,0.94
+Accounting,53-7065.00,0.72
+Business Administration,53-7071.00,0.90
+Management,53-7071.00,0.90
+Communication Studies,53-7071.00,0.90
+Advanced Manufacturing Sciences,53-7072.00,0.90
+Electrical Engineering,53-7072.00,0.90
+Physics,53-7072.00,0.90
+Electrical Engineering,53-7073.00,0.90
+Advanced Manufacturing Sciences,53-7081.00,0.90
+Physics,53-7081.00,0.90
+Chemistry,53-7121.00,0.90
+Social Work,53-7199.00,0.93
+Aerospace Systems and Mission Design,55-1011.00,0.98
+Aviation and Aerospace Science,55-1011.00,0.82
+Aviation and Aerospace Management,55-1011.00,0.63
+Electrical Engineering,55-1012.00,0.98
+Mechanical Engineering Technology,55-1012.00,0.93
+Aerospace Systems and Mission Design,55-1012.00,0.86
+Business Administration,55-1012.00,0.86
+Industrial Design,55-1012.00,0.86
+Communication Studies,55-1013.00,0.95
+Advanced Manufacturing Operations,55-1013.00,0.75
+Advanced Manufacturing Sciences,55-1013.00,0.75
+Communication Design,55-1013.00,0.75
+Journalism,55-1013.00,0.75
+Public Relations,55-1013.00,0.75
+Fire and Emergency Response Administration,55-1014.00,0.98
+Business Administration,55-1014.00,0.96
+Aerospace Systems and Mission Design,55-1014.00,0.83
+Aviation and Aerospace Science,55-1014.00,0.83
+Criminal Justice and Criminology,55-1014.00,0.83
+Operations Management,55-1014.00,0.83
+Fire and Emergency Response Administration,55-1015.00,0.98
+Computer Information Systems,55-1015.00,0.81
+Business Administration,55-1015.00,0.72
+Construction Project Management,55-1016.00,0.98
+Advanced Manufacturing Operations,55-1016.00,0.83
+Business Administration,55-1016.00,0.83
+Civil Engineering Technology,55-1016.00,0.83
+Operations Management,55-1016.00,0.83
+Business Administration,55-1017.00,0.94
+Business Intelligence,55-1017.00,0.94
+Fire and Emergency Response Administration,55-1017.00,0.94
+International Business,55-1017.00,0.94
+Operations Management,55-1017.00,0.94
+Business Administration,55-1019.00,0.94
+Operations Management,55-1019.00,0.94
+Accounting,55-1019.00,0.72
+Management,55-2011.00,0.90
+Special Education,55-2012.00,0.93
+Management,55-2012.00,0.80
+Business Administration,55-2013.00,0.94
+Management,55-2013.00,0.94
+Operations Management,55-2013.00,0.94
+Aerospace Systems and Mission Design,55-3011.00,0.98
+Aviation and Aerospace Science,55-3011.00,0.82
+Fire and Emergency Response Administration,55-3011.00,0.73
+Electrical Engineering,55-3012.00,0.98
+Mechanical Engineering Technology,55-3012.00,0.93
+Aerospace Systems and Mission Design,55-3012.00,0.86
+Business Administration,55-3012.00,0.86
+Communication Studies,55-3013.00,0.98
+Advanced Manufacturing Operations,55-3013.00,0.70
+Advanced Manufacturing Sciences,55-3013.00,0.70
+Fire and Emergency Response Administration,55-3014.00,0.98
+Business Administration,55-3014.00,0.96
+Aerospace Systems and Mission Design,55-3014.00,0.83
+Aviation and Aerospace Science,55-3014.00,0.83
+Computer Engineering,55-3014.00,0.83
+Computer Information Systems,55-3014.00,0.83
+Computer Information Systems,55-3015.00,0.98
+Fire and Emergency Response Administration,55-3015.00,0.98
+Business Administration,55-3015.00,0.83
+Computer Engineering,55-3015.00,0.83
+Computer Science,55-3015.00,0.83
+Computer Security,55-3015.00,0.83
+Fire and Emergency Response Administration,55-3016.00,0.98
+Business Administration,55-3016.00,0.83
+Operations Management,55-3016.00,0.83
+Business Administration,55-3018.00,0.94
+Business Intelligence,55-3018.00,0.94
+Fire and Emergency Response Administration,55-3018.00,0.94
+International Business,55-3018.00,0.94
+Operations Management,55-3018.00,0.94
+Business Administration,55-3019.00,0.94
+Operations Management,55-3019.00,0.94
+Accounting,55-3019.00,0.72
