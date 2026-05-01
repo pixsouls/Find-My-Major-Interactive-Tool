@@ -334,6 +334,11 @@
   font-style: italic;
 }
 
+.ai-sparkle {
+  margin-right: 4px;
+  font-size: 11px;
+}
+
 /* ALLOW SCROLL ON SMALLER SCREENS */
 @media (max-height: 720px), (max-width: 720px) {
   .results-page {
