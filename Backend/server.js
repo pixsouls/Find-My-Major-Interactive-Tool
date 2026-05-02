@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import emailRouter from './utils/email.js';
 import dotenv from 'dotenv';
+import * as ort from 'onnxruntime-node';
 
 dotenv.config();
 
@@ -120,6 +121,27 @@ app.post('/api/careers', async (req, res) => {
   }
 });
 
+app.post('/api/ml-careers', async (req, res) => {
+  const scores = req.body;
+  try {
+    const raw = [scores.R, scores.I, scores.A, scores.S, scores.E, scores.C];
+    const min = Math.min(...raw);
+    const max = Math.max(...raw);
+    const normalized = raw.map(v => (v - min) / (max - min || 1));
+
+    const session = await ort.InferenceSession.create(
+      path.join(__dirname, 'ml/riasec_model.onnx')
+    );
+    const inputTensor = new ort.Tensor('float32', Float32Array.from(normalized), [1, 6]);
+    const results = await session.run({ float_input: inputTensor }, ['output_label']);
+    const predictedCategory = results['output_label'].data[0];
+
+    console.log('ML predicted category:', predictedCategory);
+    res.json({ predictedCategory, normalized });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 app.get('/api/collected', async (req, res) => {
   console.log('/api/collected called');

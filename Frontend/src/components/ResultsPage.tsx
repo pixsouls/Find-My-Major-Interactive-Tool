@@ -131,21 +131,42 @@ export default function ResultsPage({
       sessionStorage.setItem('sessionId', sessionId);
     }
 
-    Promise.all([
-      getCareers(scores, sessionId),
-      getMLCareers(scores)
-    ])
-      .then(([dbData, mlData]) => {
+    // load DB careers
+    getCareers(scores, sessionId)
+      .then((dbData) => {
+        console.log('DB careers loaded:', dbData.length);
         setAllDbCareers(dbData);
-        setAllMlCareers(mlData);
 
-        const initial = mergeAlternating(dbData, mlData);
-        initial.forEach(c => usedIds.current.add(c.id));
-        dbIndexRef.current = Math.ceil(DISPLAY_COUNT / 2);
-        mlIndexRef.current = Math.floor(DISPLAY_COUNT / 2);
-        setVisibleCareers(initial);
+        // load ML careers separately after DB succeeds
+        getMLCareers(scores)
+          .then((mlData) => {
+            console.log('ML careers loaded:', mlData.length);
+            setAllMlCareers(mlData);
+
+            const initial = mergeAlternating(dbData, mlData);
+            initial.forEach(c => usedIds.current.add(c.id));
+            dbIndexRef.current = Math.ceil(DISPLAY_COUNT / 2);
+            mlIndexRef.current = Math.floor(DISPLAY_COUNT / 2);
+            setVisibleCareers(initial);
+          })
+          .catch((err) => {
+            console.error('ML careers error full:', err);
+            console.error('ML error message:', err.message);
+            console.error('ML error stack:', err.stack);
+            console.error('ML error type:', typeof err);
+            // fall back to just DB careers if ML fails
+            const initial = dbData.slice(0, DISPLAY_COUNT).map(c => ({
+              id: c.onetsoc_code,
+              title: c.title,
+              description: c.description,
+              source: 'db' as const
+            }));
+            initial.forEach(c => usedIds.current.add(c.id));
+            setVisibleCareers(initial);
+          });
       })
       .catch((err) => {
+        console.error('DB careers error:', err);
         setCareersError(err.message);
       })
       .finally(() => {

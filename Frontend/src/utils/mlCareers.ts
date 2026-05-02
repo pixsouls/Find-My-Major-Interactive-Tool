@@ -1,8 +1,4 @@
-import * as ort from 'onnxruntime-web/wasm';
-
-const session = await ort.InferenceSession.create('/ml/riasec_model.onnx', {
-  executionProviders: ['wasm']
-});
+const API_URL = import.meta.env.VITE_API_URL;
 
 export interface MLCareer {
   'O*NET-SOC Code': string;
@@ -31,40 +27,29 @@ export async function getMLCareers(scores: {
   R: number; I: number; A: number; S: number; E: number; C: number;
 }): Promise<MLCareer[]> {
 
-  // normalize scores to 0-1
-  const raw = [scores.R, scores.I, scores.A, scores.S, scores.E, scores.C];
-  const min = Math.min(...raw);
-  const max = Math.max(...raw);
-  const normalized = raw.map(v => (v - min) / (max - min || 1));
+  const response = await fetch(`${API_URL}/api/ml-careers`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(scores)
+  });
 
-  // load and run model
-  const session = await ort.InferenceSession.create('/ml/riasec_model.onnx');
-  const inputTensor = new ort.Tensor('float32', Float32Array.from(normalized), [1, 6]);
-  const results = await session.run(
-    { float_input: inputTensor },
-    ['output_label']
-  );
+  if (!response.ok) throw new Error('Failed to get ML predictions');
 
-  const predictedCategory = (results['output_label'].data as string[])[0];
+  const { predictedCategory, normalized } = await response.json();
   console.log('ML predicted category:', predictedCategory);
 
-  // load jobs database
-  const response = await fetch('/ml/riasec_jobs_db.json');
-  const jobsDatabase: MLCareer[] = await response.json();
+  const jobsResponse = await fetch('/ml/riasec_jobs_db.json');
+  const jobsDatabase: MLCareer[] = await jobsResponse.json();
 
-  // score ALL jobs by cosine similarity, but boost jobs in the predicted category
   const ranked = jobsDatabase.map(job => {
     const jobScores = [
       job.Realistic, job.Investigative, job.Artistic,
       job.Social, job.Enterprising, job.Conventional
     ];
     let score = calculateCosineSimilarity(normalized, jobScores);
-
-    // boost predicted category by 20%
     if (job['Career Category'] === predictedCategory) {
       score *= 1.2;
     }
-
     return { ...job, Match_Score: score };
   });
 
