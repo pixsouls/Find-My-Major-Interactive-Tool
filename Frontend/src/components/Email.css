@@ -2,28 +2,13 @@
 .email-section {
   margin-top: 15px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 10px;
   align-items: center;
 }
 
 /* Input field */
 .email-input {
-<<<<<<< HEAD
-  padding: 10px;
-  border-radius: 8px;
-
-  width: 100%;
-  max-width: 320px;
-
-  background: var(--msu-blue-dark);
-  border: 1px solid var(--msu-blue-dark);
-  color: white;
-
-  font-size: 0.9rem;
-
-  transition: border-color 0.2s ease, background 0.2s ease;
-=======
   padding: 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
@@ -42,7 +27,6 @@
   color: white;
   width: 25%;
   transition: opacity 0.2s ease;
->>>>>>> SpringBreakMerge
 }
 
 .email-input:focus {
@@ -53,10 +37,9 @@
 /* Shared button style (matches quiz options) */
 .email-button,
 .save-results-button {
-<<<<<<< HEAD
   padding: 0.75rem;
-  width: 100%;
-  max-width: 320px;
+  width: auto;
+  max-width: none;
 
   border-radius: 8px;
 
@@ -93,16 +76,4 @@
 .save-results-button:focus-visible {
   outline: 2px solid var(--quiz-button-blue);
   outline-offset: 2px;
-=======
-  border: none;
-  padding: 10px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 13px;
-  background: var(--msu-blue);
-  color: white;
-  width: 25%;
-  transition: opacity 0.2s ease;
->>>>>>> SpringBreakMerge
 }
