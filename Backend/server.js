@@ -10,7 +10,7 @@ dotenv.config();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
@@ -80,14 +80,25 @@ app.post('/api/careers', async (req, res) => {
 
   console.log(`Top RIASEC: ${first}, ${second}`);
 
+  const elementIds = [toElementId(first), toElementId(second)];
+
+  //test
+  console.log("ELEMENT IDS USED:", elementIds);
+
   const selectQuery = `
-  SELECT 
-    o.onetsoc_code,
-    o.title,
-    o.description
-  FROM occupation_data o
-  LIMIT 50
-`;
+    SELECT 
+      o.onetsoc_code,
+      o.title,
+      o.description,
+      AVG(i.data_value) AS match_score
+    FROM occupation_data o
+    JOIN interests i 
+      ON o.onetsoc_code = i.onetsoc_code
+    WHERE i.element_id = ANY($1)
+    GROUP BY o.onetsoc_code, o.title, o.description
+    ORDER BY match_score DESC
+    LIMIT 50
+  `;
 
   const insertQuery = `
     INSERT INTO "user_scores" (session_id, user_R, user_I, user_A, user_S, user_E, user_C)
@@ -112,7 +123,7 @@ app.post('/api/careers', async (req, res) => {
       scores.E ?? 0,
       scores.C ?? 0
     ]);
-    const result = await db.query(selectQuery);
+    const result = await db.query(selectQuery, [elementIds]);
     if (result.rows.length === 0) return res.status(404).json({ error: 'No careers found' });
     console.log(result.rows);
     res.json(result.rows);

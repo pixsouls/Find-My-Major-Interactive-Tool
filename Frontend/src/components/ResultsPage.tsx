@@ -94,7 +94,7 @@ export default function ResultsPage({
       .finally(() => {
         setCareersLoading(false);
       });
-  }, []);
+  }, [hollandCode]);
 
   useEffect(() => {
   if (!selectedCareer) {
