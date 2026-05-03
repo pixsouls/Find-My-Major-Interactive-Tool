@@ -32,9 +32,7 @@ export default function HollandQuiz() {
   const [questionCount, setQuestionCount] = useState(0);
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
 
-  // Email state
-  const [emailSent, setEmailSent] = useState(false);
-  const [email, setEmail] = useState('');
+
 
   const questionsUntilCheckpoint = 12;
 
@@ -167,26 +165,121 @@ export default function HollandQuiz() {
     setShowExploreMajors(false);
   };
 
-  const sendEmail = async (topTrait: string) => {
+  const sendEmail = async (email: string, topTraits: string[], careers: { title: string; description: string; code: string }[]) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/send-email`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const careerCodes = careers.map((career) => career.code);
+
+      const majorsResponse = await fetch("http://localhost:4000/api/recommended-majors", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ careerCodes }),
+      });
+
+      if (!majorsResponse.ok) {
+        throw new Error("Failed to load majors for email");
+      }
+
+      const majors = await majorsResponse.json();
+
+      const majorsByCareer: Record<string, string[]> = {};
+
+      majors.forEach((major: any) => {
+        if (!majorsByCareer[major.onetsoc_code]) {
+          majorsByCareer[major.onetsoc_code] = [];
+        }
+
+        if (!majorsByCareer[major.onetsoc_code].includes(major.major_name)) {
+          majorsByCareer[major.onetsoc_code].push(major.major_name);
+        }
+      });
+
+      const html = `
+        <div style="font-family: Arial, sans-serif; line-height: 1.5; color: #222;">
+          <h1 style="color: #2d3748;">Find My Major Results</h1>
+
+          <h2>Your Top Traits</h2>
+          <ol>
+            ${topTraits.map((trait) => `<li>${trait}</li>`).join("")}
+          </ol>
+
+          <h2>Recommended Careers</h2>
+
+          ${careers
+            .slice(0, 10)
+            .map((career, index) => {
+              const relatedMajors = majorsByCareer[career.code] || [];
+
+              return `
+                <div style="margin-bottom: 24px; padding: 16px; border: 1px solid #ddd; border-radius: 8px;">
+                  <h3>${index + 1}. ${career.title}</h3>
+                  <p><strong>ONET Code:</strong> ${career.code}</p>
+                  <p>${career.description}</p>
+
+                  <h4>Related Majors</h4>
+                  ${
+                    relatedMajors.length > 0
+                      ? `<ul>${relatedMajors
+                          .slice(0, 5)
+                          .map((major) => `<li>${major}</li>`)
+                          .join("")}</ul>`
+                      : `<p>No related majors found.</p>`
+                  }
+                </div>
+              `;
+            })
+            .join("")}
+        </div>
+      `;
+
+      const text = `
+Find My Major Results
+
+Your Top Traits
+${topTraits.map((t, i) => `${i + 1}. ${t}`).join("\n")}
+
+Recommended Careers
+${careers
+  .slice(0, 10)
+  .map((career, i) => {
+    const relatedMajors = majorsByCareer[career.code] || [];
+
+    return `
+${i + 1}. ${career.title}
+ONET Code: ${career.code}
+${career.description}
+
+Related Majors:
+${
+  relatedMajors.length > 0
+    ? relatedMajors.slice(0, 10).map((m) => `- ${m}`).join("\n")
+    : "- No related majors found"
+}
+`;
+  })
+  .join("\n")}
+`;
+
+      const response = await fetch("http://localhost:4000/api/email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           to: email,
-          subject: 'Find My Major Result',
-          text: `Your top trait is ${topTrait}.`
-        })
+          subject: "Find My Major Results",
+          text,
+          html,
+        }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to send email');
+        throw new Error("Failed to send email");
       }
-      alert('Email sent successfully!');
-      setEmailSent(false);
-      setEmail('');
+
+      alert("Email sent successfully!");
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error("Error sending email:", error);
+      alert("Email failed. Check console.");
     }
   };
 
@@ -199,10 +292,6 @@ export default function HollandQuiz() {
         onBack={handleBack}
         onContinue={handleContinueFromResults}
         canGoBack={canGoBack}
-        email={email}
-        setEmail={setEmail}
-        emailSent={emailSent}
-        setEmailSent={setEmailSent}
         sendEmail={sendEmail}
       />
     );
@@ -260,37 +349,6 @@ export default function HollandQuiz() {
                 onViewResults={() => setShowResults(true)}
                 isFinalCheckpoint={isFinalCheckpoint}
               />
-
-              {!emailSent && (
-                <button
-                  className="save-results-button"
-                  onClick={() => setEmailSent(true)}
-                  aria-label="Save your current results by email"
-                >
-                  Save Results
-                </button>
-              )}
-
-              {emailSent && (
-                <div className="email-section" role="form" aria-label="Email results form">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="email-input"
-                    aria-label="Email address"
-                    aria-required="true"
-                  />
-                  <button
-                    className="email-button"
-                    onClick={() => sendEmail(Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0])}
-                    aria-label="Send results to your email"
-                  >
-                    Send Results
-                  </button>
-                </div>
-              )}
             </>
           ) : (
             <QuizQuestion

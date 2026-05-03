@@ -81,15 +81,16 @@ app.post('/api/careers', async (req, res) => {
   console.log(`Top RIASEC: ${first}, ${second}`);
 
   const selectQuery = `
-    SELECT a.onetsoc_code, a.title, a."${first}", a."${second}", o.description
-    FROM "AdaptedCareers" a
-    JOIN occupation_data o ON a.onetsoc_code = o.onetsoc_code
-    ORDER BY a."${first}" DESC, a."${second}" DESC
-    LIMIT 50
-  `;
+  SELECT 
+    o.onetsoc_code,
+    o.title,
+    o.description
+  FROM occupation_data o
+  LIMIT 50
+`;
 
   const insertQuery = `
-    INSERT INTO "F2Collected" (session_id, user_R, user_I, user_A, user_S, user_E, user_C)
+    INSERT INTO "user_scores" (session_id, user_R, user_I, user_A, user_S, user_E, user_C)
     VALUES ($1, $2, $3, $4, $5, $6, $7)
     ON CONFLICT (session_id) DO UPDATE SET
       user_R = EXCLUDED.user_R,
@@ -120,13 +121,43 @@ app.post('/api/careers', async (req, res) => {
   }
 });
 
+app.post('/api/recommended-majors', async (req, res) => {
+  const { careerCodes } = req.body;
+
+  if (!Array.isArray(careerCodes) || careerCodes.length === 0) {
+    return res.status(400).json({ error: 'careerCodes must be a non-empty array' });
+  }
+
+  try {
+    const result = await db.query(
+      `
+      SELECT
+        o.onetsoc_code,
+        o.title AS career,
+        maj.major_name,
+        map.match_strength
+      FROM mapping map
+      JOIN majors maj ON maj.id = map.major_id
+      JOIN occupation_data o ON o.onetsoc_code = map.onetsoc_code
+      WHERE o.onetsoc_code = ANY($1)
+      ORDER BY map.match_strength DESC;
+      `,
+      [careerCodes]
+    );
+
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Error fetching recommended majors:', err.message);
+    res.status(500).json({ error: err.message });
+  }
+});
 
 app.get('/api/collected', async (req, res) => {
   console.log('/api/collected called');
   try {
     const result = await db.query(`
       SELECT session_id, user_R, user_I, user_A, user_S, user_E, user_C, questions_answered, created_at
-      FROM "F2Collected"
+      FROM "user_scores"
       ORDER BY created_at DESC
     `);
     if (result.rows.length === 0) return res.status(404).json({ error: 'No data collected yet' });
@@ -148,17 +179,17 @@ app.post('/api/scores', async (req, res) => {
 
   try {
     await db.query(`
-      INSERT INTO "F2Collected" (session_id, user_R, user_I, user_A, user_S, user_E, user_C, questions_answered)
+      INSERT INTO "user_scores" (session_id, user_R, user_I, user_A, user_S, user_E, user_C, questions_answered)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
       ON CONFLICT (session_id) DO UPDATE SET
-        user_R = CASE WHEN EXCLUDED.questions_answered > "F2Collected".questions_answered THEN EXCLUDED.user_R ELSE "F2Collected".user_R END,
-        user_I = CASE WHEN EXCLUDED.questions_answered > "F2Collected".questions_answered THEN EXCLUDED.user_I ELSE "F2Collected".user_I END,
-        user_A = CASE WHEN EXCLUDED.questions_answered > "F2Collected".questions_answered THEN EXCLUDED.user_A ELSE "F2Collected".user_A END,
-        user_S = CASE WHEN EXCLUDED.questions_answered > "F2Collected".questions_answered THEN EXCLUDED.user_S ELSE "F2Collected".user_S END,
-        user_E = CASE WHEN EXCLUDED.questions_answered > "F2Collected".questions_answered THEN EXCLUDED.user_E ELSE "F2Collected".user_E END,
-        user_C = CASE WHEN EXCLUDED.questions_answered > "F2Collected".questions_answered THEN EXCLUDED.user_C ELSE "F2Collected".user_C END,
-        questions_answered = GREATEST("F2Collected".questions_answered, EXCLUDED.questions_answered),
-        created_at = CASE WHEN EXCLUDED.questions_answered > "F2Collected".questions_answered THEN NOW() ELSE "F2Collected".created_at END
+        user_R = CASE WHEN EXCLUDED.questions_answered > "user_scores".questions_answered THEN EXCLUDED.user_R ELSE "user_scores".user_R END,
+        user_I = CASE WHEN EXCLUDED.questions_answered > "user_scores".questions_answered THEN EXCLUDED.user_I ELSE "user_scores".user_I END,
+        user_A = CASE WHEN EXCLUDED.questions_answered > "user_scores".questions_answered THEN EXCLUDED.user_A ELSE "user_scores".user_A END,
+        user_S = CASE WHEN EXCLUDED.questions_answered > "user_scores".questions_answered THEN EXCLUDED.user_S ELSE "user_scores".user_S END,
+        user_E = CASE WHEN EXCLUDED.questions_answered > "user_scores".questions_answered THEN EXCLUDED.user_E ELSE "user_scores".user_E END,
+        user_C = CASE WHEN EXCLUDED.questions_answered > "user_scores".questions_answered THEN EXCLUDED.user_C ELSE "user_scores".user_C END,
+        questions_answered = GREATEST("user_scores".questions_answered, EXCLUDED.questions_answered),
+        created_at = CASE WHEN EXCLUDED.questions_answered > "user_scores".questions_answered THEN NOW() ELSE "user_scores".created_at END
     `, [
       sessionId,
       scores.R ?? 0,

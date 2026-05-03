@@ -6,6 +6,13 @@ import "./Email.css";
 
 type RiasecType = "R" | "I" | "A" | "S" | "E" | "C";
 
+type RecommendedMajor = {
+  onetsoc_code: string;
+  career: string;
+  major_name: string;
+  match_strength: number;
+};
+
 interface ResultsPageProps {
   scores: Record<RiasecType, number>;
   questionCount: number;
@@ -13,11 +20,15 @@ interface ResultsPageProps {
   onBack: () => void;
   onContinue: () => void;
   canGoBack: boolean;
+<<<<<<< HEAD
   email: string;
   setEmail: (email: string) => void;
   emailSent: boolean;
   setEmailSent: (value: boolean) => void;
   sendEmail: (topTrait: string) => void;
+=======
+  sendEmail: (email: string, topTraits: string[], careers: { title: string; description: string; code: string }[]) => Promise<void>;
+>>>>>>> SpringBreakMerge
 }
 
 const DISPLAY_COUNT = 10;
@@ -27,6 +38,7 @@ export default function ResultsPage({
   questionCount,
   onRestart,
   onBack,
+<<<<<<< HEAD
   canGoBack,
   email,
   setEmail,
@@ -34,6 +46,11 @@ export default function ResultsPage({
   setEmailSent,
   sendEmail,
   onContinue
+=======
+  onContinue,
+  canGoBack,
+  sendEmail
+>>>>>>> SpringBreakMerge
 }: ResultsPageProps) {
 
   const sortedTraits = Object.entries(scores)
@@ -53,11 +70,18 @@ export default function ResultsPage({
     C: "Conventional",
   };
 
+  //email
+  const [emailSent, setEmailSent] = useState(false);
+  const [email, setEmail] = useState('');
+
   const [allCareers, setAllCareers] = useState<Career[]>([]);
   const [visibleCareers, setVisibleCareers] = useState<Career[]>([]);
   const [careersLoading, setCareersLoading] = useState(true);
   const [careersError, setCareersError] = useState<string | null>(null);
   const [selectedCareer, setSelectedCareer] = useState<Career | null>(null);
+  const [recommendedMajors, setRecommendedMajors] = useState<RecommendedMajor[]>([]);
+  const [majorsLoading, setMajorsLoading] = useState(false);
+  const [majorsError, setMajorsError] = useState<string | null>(null);
   const [lastRemoved, setLastRemoved] = useState<{
     career: Career;
     index: number;
@@ -89,6 +113,45 @@ export default function ResultsPage({
         setCareersLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+  if (!selectedCareer) {
+    setRecommendedMajors([]);
+    return;
+  }
+
+  const career = selectedCareer;
+
+  async function fetchRecommendedMajors() {
+    setMajorsLoading(true);
+    setMajorsError(null);
+
+    try {
+      const careerCodes = [career.onetsoc_code];
+
+      const response = await fetch("http://localhost:4000/api/recommended-majors", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ careerCodes }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to load recommended majors");
+      }
+
+      const data = await response.json();
+      setRecommendedMajors(data);
+    } catch (err: any) {
+      setMajorsError(err.message);
+    } finally {
+      setMajorsLoading(false);
+    }
+  }
+
+  fetchRecommendedMajors();
+}, [selectedCareer]);
 
   const removeCareer = (index: number) => {
     setVisibleCareers((prev) => {
@@ -133,6 +196,56 @@ export default function ResultsPage({
 
     setLastRemoved(null);
   };
+
+  //email handler
+  const handleEmail = async () => {
+    if (!email){
+      alert('Please enter a valid email address.');
+      return;
+    }
+      //del
+    if (!sendEmail) {
+      console.error("sendEmail function is not provided");
+      return;
+    }
+
+    const traitList = topTraits.map(
+      ([t]) => `${traitLabels[t]} (${t})`
+    );
+
+    const careerData = visibleCareers
+    .filter(c => c.title && c.description && c.onetsoc_code)
+    .slice(0, 10)
+    .map(c => ({
+      title: c.title,
+      description: c.description,
+      code: c.onetsoc_code
+    }));
+
+    console.log("sending email with data:", email, traitList, careerData);
+
+    try {
+    await sendEmail(email, traitList, careerData);
+
+    setEmail("");
+    setEmailSent(false);
+
+    alert("Email sent successfully!");
+    } catch (err) {
+      console.error("EMAIL FAILED:", err);
+      alert("Email failed. Check console.");
+    }
+  };
+
+  const majorsByCareer: Record<string, string[]> = {};
+
+  recommendedMajors.forEach((item) => {
+    if (!majorsByCareer[item.career]) {
+      majorsByCareer[item.career] = [];
+    }
+
+    majorsByCareer[item.career].push(item.major_name);
+  });
 
   return (
     <div className="results-page">
@@ -301,6 +414,71 @@ export default function ResultsPage({
                     onRemove={() => removeCareer(i)}
                   />
                 ))}
+              </div>
+            )}
+          </div>
+
+          <div className="results-card">
+            <h2>Recommended Majors</h2>
+
+            {majorsLoading && (
+              <p className="careers-status">Loading majors...</p>
+            )}
+
+            {majorsError && (
+              <p className="careers-status careers-error">
+                Failed to load majors: {majorsError}
+              </p>
+            )}
+
+            {!majorsLoading && !majorsError && recommendedMajors.length === 0 && (
+              <p className="careers-status">
+                Select a career to see related majors.
+              </p>
+            )}
+
+            {!majorsLoading && !majorsError && recommendedMajors.length > 0 && (
+              <div>
+                
+                {Object.entries(majorsByCareer).map(([career, majors]) => (
+                  <div key={career}>
+                    <span>{career}</span>
+                    <ul style={{ paddingLeft: "20px" }}>
+                      {majors.map((major, index) => (
+                        <li key={index}>{major}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+
+          {/* EMAIL */}
+          <div className="email-container">
+            {!emailSent ? (
+              <button
+                className="email-button"
+                onClick={() => setEmailSent(true)}
+              >
+                Save results
+              </button>
+            ) : (
+              <div className="email-section">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="email-input"
+                />
+                <button
+                  className="email-button"
+                  onClick={handleEmail}
+                >
+                  Send Results
+                </button>
               </div>
             )}
           </div>
