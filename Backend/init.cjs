@@ -47,7 +47,7 @@ async function initDatabase() {
 
   const db = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false }
+    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
   });
 
   try {
@@ -87,16 +87,16 @@ async function initDatabase() {
     console.log('Now loading F2Collected table...');
     await db.query(`
       CREATE TABLE IF NOT EXISTS "F2Collected" (
-        onetsoc_code VARCHAR(10) NOT NULL,
-        title VARCHAR(150) NOT NULL,
-        "R" DECIMAL(5,2) NOT NULL DEFAULT 0,
-        "I" DECIMAL(5,2) NOT NULL DEFAULT 0,
-        "A" DECIMAL(5,2) NOT NULL DEFAULT 0,
-        "S" DECIMAL(5,2) NOT NULL DEFAULT 0,
-        "E" DECIMAL(5,2) NOT NULL DEFAULT 0,
-        "C" DECIMAL(5,2) NOT NULL DEFAULT 0,
-        PRIMARY KEY (onetsoc_code),
-        FOREIGN KEY (onetsoc_code) REFERENCES occupation_data(onetsoc_code)
+        id SERIAL PRIMARY KEY,
+        session_id VARCHAR(64) UNIQUE,
+        user_R DECIMAL(5,2),
+        user_I DECIMAL(5,2),
+        user_A DECIMAL(5,2),
+        user_S DECIMAL(5,2),
+        user_E DECIMAL(5,2),
+        user_C DECIMAL(5,2),
+        questions_answered INTEGER DEFAULT 0,
+        created_at TIMESTAMP DEFAULT NOW()
       )
     `);
 

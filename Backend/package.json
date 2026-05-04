@@ -17,6 +17,7 @@
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
     "next.js": "^1.0.3",
+    "onnxruntime-node": "^1.25.1",
     "pg": "^8.20.0"
   }
 }

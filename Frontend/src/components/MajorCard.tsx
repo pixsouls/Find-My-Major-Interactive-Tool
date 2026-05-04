@@ -3,6 +3,7 @@ interface MajorCardProps {
   description: string;
   onClick: () => void;
   onRemove: () => void;
+  isAI?: boolean;
 }
 
 export default function MajorCard({
@@ -10,11 +11,15 @@ export default function MajorCard({
   description,
   onClick,
   onRemove,
+  isAI = false,
 }: MajorCardProps) {
   return (
     <div className="major-card" onClick={onClick}>
       <div className="major-card-text">
-        <span className="major-card-title">{title}</span>
+        <span className="major-card-title">
+          {isAI && <span className="ai-sparkle" title="AI Recommended">✨</span>}
+          {title}
+        </span>
         <span className="major-card-description">{description}</span>
       </div>
       <button

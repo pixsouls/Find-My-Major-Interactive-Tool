@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "./ResultsPage.css";
 import MajorCard from "./MajorCard";
 import { getCareers, type Career } from "../utils/api";
+import { getMLCareers, type MLCareer } from "../utils/mlCareers";
 import "./Email.css";
 
 type RiasecType = "R" | "I" | "A" | "S" | "E" | "C";
@@ -23,7 +24,60 @@ interface ResultsPageProps {
   sendEmail: (email: string, topTraits: string[], careers: { title: string; description: string; code: string }[]) => Promise<void>;
 }
 
+// unified career type that works for both sources
+interface DisplayCareer {
+  id: string;
+  title: string;
+  description: string;
+  source: 'db' | 'ml';
+}
+
 const DISPLAY_COUNT = 10;
+
+function mergeAlternating(dbCareers: Career[], mlCareers: MLCareer[]): DisplayCareer[] {
+  const merged: DisplayCareer[] = [];
+  const usedTitles = new Set<string>();
+  let dbIndex = 0;
+  let mlIndex = 0;
+  let count = 0;
+
+  while (count < DISPLAY_COUNT) {
+    // even indices (0, 2, 4...) → db career
+    // odd indices (1, 3, 5...) → ml career
+    if (count % 2 === 0) {
+      while (dbIndex < dbCareers.length) {
+        const career = dbCareers[dbIndex++];
+        if (!usedTitles.has(career.title)) {
+          usedTitles.add(career.title);
+          merged.push({
+            id: career.onetsoc_code,
+            title: career.title,
+            description: career.description,
+            source: 'db'
+          });
+          break;
+        }
+      }
+    } else {
+      while (mlIndex < mlCareers.length) {
+        const career = mlCareers[mlIndex++];
+        if (!usedTitles.has(career.Title)) {
+          usedTitles.add(career.Title);
+          merged.push({
+            id: career['O*NET-SOC Code'],
+            title: career.Title,
+            description: career['Career Category'],
+            source: 'ml'
+          });
+          break;
+        }
+      }
+    }
+    count++;
+  }
+
+  return merged;
+}
 
 export default function ResultsPage({
   scores,
@@ -64,31 +118,62 @@ export default function ResultsPage({
   const [recommendedMajors, setRecommendedMajors] = useState<RecommendedMajor[]>([]);
   const [majorsLoading, setMajorsLoading] = useState(false);
   const [majorsError, setMajorsError] = useState<string | null>(null);
+  const [allDbCareers, setAllDbCareers] = useState<Career[]>([]);
+  const [allMlCareers, setAllMlCareers] = useState<MLCareer[]>([]);
   const [lastRemoved, setLastRemoved] = useState<{
-    career: Career;
+    career: DisplayCareer;
     index: number;
     hadReplacement: boolean;
-    replacementCode: string | null;
+    replacementId: string | null;
   } | null>(null);
 
-  const usedCodes = useRef<Set<string>>(new Set());
+  const usedIds = useRef<Set<string>>(new Set());
+  const dbIndexRef = useRef(0);
+  const mlIndexRef = useRef(0);
 
   useEffect(() => {
-    // generate or retrieve session ID
     let sessionId = sessionStorage.getItem('sessionId');
     if (!sessionId) {
       sessionId = crypto.randomUUID();
       sessionStorage.setItem('sessionId', sessionId);
     }
 
+    // load DB careers
     getCareers(scores, sessionId)
-      .then((data) => {
-        setAllCareers(data);
-        const initial = data.slice(0, DISPLAY_COUNT);
-        initial.forEach(c => usedCodes.current.add(c.onetsoc_code));
-        setVisibleCareers(initial);
+      .then((dbData) => {
+        console.log('DB careers loaded:', dbData.length);
+        setAllDbCareers(dbData);
+
+        // load ML careers separately after DB succeeds
+        getMLCareers(scores)
+          .then((mlData) => {
+            console.log('ML careers loaded:', mlData.length);
+            setAllMlCareers(mlData);
+
+            const initial = mergeAlternating(dbData, mlData);
+            initial.forEach(c => usedIds.current.add(c.id));
+            dbIndexRef.current = Math.ceil(DISPLAY_COUNT / 2);
+            mlIndexRef.current = Math.floor(DISPLAY_COUNT / 2);
+            setVisibleCareers(initial);
+          })
+          .catch((err) => {
+            console.error('ML careers error full:', err);
+            console.error('ML error message:', err.message);
+            console.error('ML error stack:', err.stack);
+            console.error('ML error type:', typeof err);
+            // fall back to just DB careers if ML fails
+            const initial = dbData.slice(0, DISPLAY_COUNT).map(c => ({
+              id: c.onetsoc_code,
+              title: c.title,
+              description: c.description,
+              source: 'db' as const
+            }));
+            initial.forEach(c => usedIds.current.add(c.id));
+            setVisibleCareers(initial);
+          });
       })
       .catch((err) => {
+        console.error('DB careers error:', err);
         setCareersError(err.message);
       })
       .finally(() => {
@@ -135,19 +220,48 @@ export default function ResultsPage({
   fetchRecommendedMajors();
 }, [selectedCareer]);
 
+  const getNextCareer = (removedIndex: number): DisplayCareer | null => {
+    // alternate replacement based on whether removed was db or ml
+    const removedSource = visibleCareers[removedIndex]?.source;
+    
+    if (removedSource === 'db') {
+      while (dbIndexRef.current < allDbCareers.length) {
+        const career = allDbCareers[dbIndexRef.current++];
+        if (!usedIds.current.has(career.onetsoc_code)) {
+          return {
+            id: career.onetsoc_code,
+            title: career.title,
+            description: career.description,
+            source: 'db'
+          };
+        }
+      }
+    } else {
+      while (mlIndexRef.current < allMlCareers.length) {
+        const career = allMlCareers[mlIndexRef.current++];
+        if (!usedIds.current.has(career['O*NET-SOC Code'])) {
+          return {
+            id: career['O*NET-SOC Code'],
+            title: career.Title,
+            description: career['Career Category'],
+            source: 'ml'
+          };
+        }
+      }
+    }
+    return null;
+  };
+
   const removeCareer = (index: number) => {
     setVisibleCareers((prev) => {
       const removed = prev[index];
-
-      const nextCareer = allCareers.find(
-        (c) => !usedCodes.current.has(c.onetsoc_code)
-      );
+      const nextCareer = getNextCareer(index);
 
       if (nextCareer) {
-        usedCodes.current.add(nextCareer.onetsoc_code);
+        usedIds.current.add(nextCareer.id);
       }
 
-      if (selectedCareer?.onetsoc_code === removed.onetsoc_code) {
+      if (selectedCareer?.id === removed.id) {
         setSelectedCareer(null);
       }
 
@@ -155,7 +269,7 @@ export default function ResultsPage({
         career: removed,
         index,
         hadReplacement: !!nextCareer,
-        replacementCode: nextCareer?.onetsoc_code ?? null
+        replacementId: nextCareer?.id ?? null
       });
 
       const updated = prev.filter((_, i) => i !== index);
@@ -166,8 +280,8 @@ export default function ResultsPage({
   const undoRemove = () => {
     if (!lastRemoved) return;
 
-    if (lastRemoved.replacementCode) {
-      usedCodes.current.delete(lastRemoved.replacementCode);
+    if (lastRemoved.replacementId) {
+      usedIds.current.delete(lastRemoved.replacementId);
     }
 
     setVisibleCareers((prev) => {
@@ -241,7 +355,6 @@ export default function ResultsPage({
         >
           Back
         </button>
-
         <button
           className="results-restart-btn"
           onClick={onRestart}
@@ -257,7 +370,6 @@ export default function ResultsPage({
           <h1 className="headline">Your Career Profile</h1>
           <p className="subtext">Based on {questionCount} questions</p>
         </div>
-
         <div className="holland-reveal-card">
           <p className="label">Your Holland Code</p>
           <h2 className="holland-code">{hollandCode}</h2>
@@ -300,7 +412,11 @@ export default function ResultsPage({
                 </li>
                 <li>
                   <strong>ONET Code</strong>
-                  <p className="career-info-code">{selectedCareer.onetsoc_code}</p>
+                  <p className="career-info-code">{selectedCareer.id}</p>
+                </li>
+                <li>
+                  <strong>Source</strong>
+                  <p className="career-info-code">{selectedCareer.source === 'ml' ? '🤖 AI Recommended' : '📊 Database Match'}</p>
                 </li>
               </ul>
             ) : (
@@ -346,11 +462,12 @@ export default function ResultsPage({
               <div className="majors-grid">
                 {visibleCareers.map((career, i) => (
                   <MajorCard
-                    key={career.onetsoc_code}
+                    key={career.id}
                     title={career.title}
                     description={career.description}
                     onClick={() => setSelectedCareer(career)}
                     onRemove={() => removeCareer(i)}
+                    isAI={career.source === 'ml'}
                   />
                 ))}
               </div>
