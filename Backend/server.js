@@ -82,9 +82,6 @@ app.post('/api/careers', async (req, res) => {
 
   const elementIds = [toElementId(first), toElementId(second)];
 
-  //test
-  console.log("ELEMENT IDS USED:", elementIds);
-
   const selectQuery = `
     SELECT 
       o.onetsoc_code,
