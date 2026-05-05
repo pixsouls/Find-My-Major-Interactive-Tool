@@ -169,12 +169,12 @@ export default function HollandQuiz() {
     try {
       const careerCodes = careers.map((career) => career.code);
 
-      const majorsResponse = await fetch("http://localhost:4000/api/recommended-majors", {
+      const majorsResponse = await fetch("http://localhost:4000/api/majors-by-careers", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ careerCodes }),
+        body: JSON.stringify({ onetCodes: careerCodes }),
       });
 
       if (!majorsResponse.ok) {

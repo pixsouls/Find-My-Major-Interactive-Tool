@@ -4,7 +4,7 @@ import sgMail from '@sendgrid/mail';
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-  const { to, subject, text, html } = req.body;
+  const { to, subject, text, html } = req.body;  
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   const msg = {
