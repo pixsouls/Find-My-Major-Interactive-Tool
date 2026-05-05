@@ -26,6 +26,7 @@
 .welcome-title {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: var(--msu-blue-dark);
 }
 
 /* Intro Subtitle */
@@ -63,14 +64,14 @@
   font-size: 1rem;
   border: none;
   border-radius: 8px;
-  background-color: #2563eb;
+  background-color: var(--msu-blue-dark);
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .welcome-button:hover {
-  background-color: #2e59d9;
+  background-color: var(--quiz-button-blue);
   transform: translateY(-2px);
 }
 
@@ -118,7 +119,7 @@
 
 .holland-list li {
   margin-bottom: 0.5rem;
-  color: #ddd;
+  color: var(--text-main);
 }
 
 /* Fade animation */
