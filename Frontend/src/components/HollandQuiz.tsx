@@ -167,29 +167,6 @@ export default function HollandQuiz() {
     setShowExploreMajors(false);
   };
 
-  const sendEmail = async (topTrait: string) => {
-    try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/send-email`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          to: email,
-          subject: 'Find My Major Result',
-          text: `Your top trait is ${topTrait}.`
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to send email');
-      }
-      alert('Email sent successfully!');
-      setEmailSent(false);
-      setEmail('');
-    } catch (error) {
-      console.error('Error sending email:', error);
-    }
-  };
-
   if (showResults) {
     return (
       <ResultsPage
@@ -199,11 +176,6 @@ export default function HollandQuiz() {
         onBack={handleBack}
         onContinue={handleContinueFromResults}
         canGoBack={canGoBack}
-        email={email}
-        setEmail={setEmail}
-        emailSent={emailSent}
-        setEmailSent={setEmailSent}
-        sendEmail={sendEmail}
       />
     );
   }

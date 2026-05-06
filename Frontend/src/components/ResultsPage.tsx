@@ -14,11 +14,6 @@ interface ResultsPageProps {
   onBack: () => void;
   onContinue: () => void;
   canGoBack: boolean;
-  email: string;
-  setEmail: (email: string) => void;
-  emailSent: boolean;
-  setEmailSent: (value: boolean) => void;
-  sendEmail: (topTrait: string) => void;
 }
 
 // unified career type that works for both sources
@@ -82,11 +77,6 @@ export default function ResultsPage({
   onRestart,
   onBack,
   canGoBack,
-  email,
-  setEmail,
-  emailSent,
-  setEmailSent,
-  sendEmail,
   onContinue
 }: ResultsPageProps) {
 
@@ -372,14 +362,7 @@ export default function ResultsPage({
             </div>
           )}
 
-          <EmailSection
-            scores={scores}
-            email={email}
-            setEmail={setEmail}
-            emailSent={emailSent}
-            setEmailSent={setEmailSent}
-            sendEmail={sendEmail}
-          />
+          <EmailSection scores={scores} />
 
         </div>
 

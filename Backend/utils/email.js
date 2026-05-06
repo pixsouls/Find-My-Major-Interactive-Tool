@@ -1,19 +1,21 @@
 import express from 'express';
 import sgMail from '@sendgrid/mail';
+import dotenv from 'dotenv';
+
+dotenv.config();
+console.log('SENDGRID KEY:', process.env.SENDGRID_API_KEY?.substring(0, 10));
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);  // move here, outside the route
 
 const router = express.Router();
 
 router.post('/send-email', async (req, res) => {
   const { to, subject, text } = req.body;
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-  const msg = {
-    to,
-    from: process.env.FROM_EMAIL,
-    subject,
-    text,
-  };
-
+  console.log('Attempting to send email to:', to);
+  console.log('From:', process.env.FROM_EMAIL);
+  console.log('Key starts with:', process.env.SENDGRID_API_KEY?.substring(0, 6));
+  
+  const msg = { to, from: process.env.FROM_EMAIL, subject, text };
   try {
     await sgMail.send(msg);
     res.status(200).json({ message: 'Email sent successfully' });
