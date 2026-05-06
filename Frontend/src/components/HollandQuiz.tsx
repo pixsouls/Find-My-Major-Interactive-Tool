@@ -260,37 +260,6 @@ export default function HollandQuiz() {
                 onViewResults={() => setShowResults(true)}
                 isFinalCheckpoint={isFinalCheckpoint}
               />
-
-              {!emailSent && (
-                <button
-                  className="save-results-button"
-                  onClick={() => setEmailSent(true)}
-                  aria-label="Save your current results by email"
-                >
-                  Save Results
-                </button>
-              )}
-
-              {emailSent && (
-                <div className="email-section" role="form" aria-label="Email results form">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="email-input"
-                    aria-label="Email address"
-                    aria-required="true"
-                  />
-                  <button
-                    className="email-button"
-                    onClick={() => sendEmail(Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0])}
-                    aria-label="Send results to your email"
-                  >
-                    Send Results
-                  </button>
-                </div>
-              )}
             </>
           ) : (
             <QuizQuestion

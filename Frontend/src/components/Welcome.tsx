@@ -18,8 +18,8 @@ const Welcome: React.FC = () => {
         <h1 className="welcome-title">Discover Your Path</h1>
 
         <p className="welcome-subtitle">
-          Not sure what to study? Our assessment uses the Holland Code theory
-          to help you discover majors that align with your interests.
+          Not sure what to study? This assessment uses the Holland Code theory
+          to help you discover careers that align with your interests.
         </p>
 
         <div className="divider" />
@@ -36,6 +36,17 @@ const Welcome: React.FC = () => {
         >
           {showMore ? "Hide Details" : "Learn More"}
         </button>
+        </p>
+
+        <h1 className="welcome-title">Using This Quiz</h1>
+
+        <p className="welcome-subtitle">
+          During this quiz, you will be presented with a question statement and asked how much you
+          agree or disagree with that statement. By clicking an option, the test will be adjusted automatically
+          avoid or perfer certain careers based on the answers you gave. After 12 question you will reach a
+          checkpoint, where you can either look at careers (and their related majors) that correllate with your
+          interests, or you can continue taking the quiz. You can return to the quiz even after selecting the
+          "Explore Majors" option. Once you finish the quiz you can email yourself the results.
         </p>
 
         {showMore && (
