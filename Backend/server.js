@@ -197,6 +197,23 @@ app.post('/api/scores', async (req, res) => {
   }
 });
 
+app.get('/api/majors/:onetsoc_code', async (req, res) => {
+  const { onetsoc_code } = req.params;
+  try {
+    const result = await db.query(
+      `SELECT major_name, match_strength, msu_url
+       FROM career_majors
+       WHERE onetsoc_code = $1
+       ORDER BY match_strength DESC`,
+      [onetsoc_code]
+    );
+    if (result.rows.length === 0) return res.status(404).json({ error: 'No majors found for this career' });
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.use('/api/email', emailRouter);
 
 app.listen(PORT, () => {

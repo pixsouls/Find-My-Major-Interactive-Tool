@@ -43,7 +43,7 @@ rl.question('[WARNING] This will drop and recreate all tables. Continue? [Y/N] '
 });
 
 async function initDatabase() {
-  const progress = new Progress(5);
+  const progress = new Progress(6);
 
   const db = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
@@ -51,7 +51,7 @@ async function initDatabase() {
   });
 
   try {
-    await db.query(`DROP TABLE IF EXISTS "F2Collected", "AdaptedCareers", interests, occupation_data CASCADE`);
+    await db.query(`DROP TABLE IF EXISTS career_majors, "F2Collected", "AdaptedCareers", interests, occupation_data CASCADE`);
     console.log('Old tables dropped.');
 
     // occupation_data
@@ -137,6 +137,57 @@ async function initDatabase() {
     `);
     progress.done('AdaptedCareers populated');
 
+    // career_majors (from csv file)
+    // load MSU programs for URL matching
+    const msuPrograms = JSON.parse(fs.readFileSync(path.join(__dirname, 'raw/msu_programs.json'), 'utf8'));
+
+    function findMsuUrl(majorName) {
+      const normalize = str => str.toLowerCase().replace(/[^a-z0-9 ]/g, '').split(' ').filter(Boolean);
+      const majorWords = new Set(normalize(majorName));
+
+      let bestMatch = null;
+      let bestScore = 0;
+
+      for (const program of msuPrograms) {
+        const programWords = normalize(program.title);
+        const overlap = programWords.filter(w => majorWords.has(w)).length;
+        const score = overlap / Math.max(majorWords.size, programWords.length);
+
+        if (score > bestScore) {
+          bestScore = score;
+          bestMatch = program;
+        }
+      }
+
+      // only return a URL if the match is strong enough
+      return bestScore >= 0.5 ? bestMatch.url : null;
+    }
+
+    // career_majors table
+    await db.query(`
+      CREATE TABLE career_majors (
+        id SERIAL PRIMARY KEY,
+        major_name VARCHAR(200) NOT NULL,
+        onetsoc_code VARCHAR(10) NOT NULL,
+        match_strength DECIMAL(4,2) NOT NULL,
+        msu_url VARCHAR(500)
+      )
+    `);
+
+    for (let i = 1; i < lines.length; i++) {
+      const cols = lines[i].split(',');
+      if (cols.length < 3) continue;
+      const [major_name, onetsoc_code, match_strength] = cols.map(c => c.trim());
+      const msu_url = findMsuUrl(major_name);
+      try {
+        await db.query(
+          `INSERT INTO career_majors (major_name, onetsoc_code, match_strength, msu_url) VALUES ($1, $2, $3, $4)`,
+          [major_name, onetsoc_code, parseFloat(match_strength), msu_url]
+        );
+      } catch (err) {
+        console.warn(`Skipped row ${i}: ${err.message}`);
+      }
+    }
   } catch (err) {
     console.error('Database initialization error:', err.message);
   } finally {

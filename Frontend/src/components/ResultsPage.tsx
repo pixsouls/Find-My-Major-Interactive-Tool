@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import "./ResultsPage.css";
 import MajorCard from "./MajorCard";
+import EmailSection from "./EmailSection";
 import { getCareers, type Career } from "../utils/api";
 import { getMLCareers, type MLCareer } from "../utils/mlCareers";
-import "./Email.css";
 
 type RiasecType = "R" | "I" | "A" | "S" | "E" | "C";
 
@@ -107,6 +107,7 @@ export default function ResultsPage({
     C: "Conventional",
   };
 
+  const [careerMajors, setCareerMajors] = useState<{ major_name: string; match_strength: number }[]>([]);
   const [allDbCareers, setAllDbCareers] = useState<Career[]>([]);
   const [allMlCareers, setAllMlCareers] = useState<MLCareer[]>([]);
   const [visibleCareers, setVisibleCareers] = useState<DisplayCareer[]>([]);
@@ -123,6 +124,17 @@ export default function ResultsPage({
   const usedIds = useRef<Set<string>>(new Set());
   const dbIndexRef = useRef(0);
   const mlIndexRef = useRef(0);
+
+  useEffect(() => {
+    if (!selectedCareer) {
+      setCareerMajors([]);
+      return;
+    }
+    fetch(`${import.meta.env.VITE_API_URL}/api/majors/${selectedCareer.id}`)
+      .then(res => res.ok ? res.json() : [])
+      .then(data => setCareerMajors(data.slice(0, 3)))
+      .catch(() => setCareerMajors([]));
+  }, [selectedCareer]);
 
   useEffect(() => {
     let sessionId = sessionStorage.getItem('sessionId');
@@ -315,8 +327,18 @@ export default function ResultsPage({
                   <p className="career-info-description">{selectedCareer.description}</p>
                 </li>
                 <li>
-                  <strong>ONET Code</strong>
-                  <p className="career-info-code">{selectedCareer.id}</p>
+                  <strong>Related Majors</strong>
+                  {careerMajors.length > 0 ? (
+                    <ul className="career-majors-list">
+                      {careerMajors.map((m) => (
+                        <li key={m.major_name} className="career-major-item">
+                          {m.major_name}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="career-info-code">No majors found</p>
+                  )}
                 </li>
                 <li>
                   <strong>Source</strong>
@@ -324,9 +346,7 @@ export default function ResultsPage({
                 </li>
               </ul>
             ) : (
-              <p className="career-info-empty">
-                Select a career to see more information.
-              </p>
+              <p className="career-info-empty">Select a career to see more information.</p>
             )}
           </div>
 
@@ -342,48 +362,14 @@ export default function ResultsPage({
             </div>
           )}
 
-          <div
-            className="email-save-card"
-            role="region"
-            aria-label="Save your quiz results by email"
-          >
-            {!emailSent ? (
-              <button
-                className="email-button"
-                onClick={() => setEmailSent(true)}
-                aria-label="Save your results by entering your email"
-              >
-                Save Results
-              </button>
-            ) : (
-              <div
-                className="email-section"
-                role="form"
-                aria-label="Enter email to receive your results"
-              >
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="email-input"
-                  aria-label="Email address"
-                  aria-required="true"
-                />
-                <button
-                  className="email-button"
-                  onClick={() =>
-                    sendEmail(
-                      Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0]
-                    )
-                  }
-                  aria-label="Send your quiz results to your email"
-                >
-                  Send Results
-                </button>
-              </div>
-            )}
-          </div>
+          <EmailSection
+            scores={scores}
+            email={email}
+            setEmail={setEmail}
+            emailSent={emailSent}
+            setEmailSent={setEmailSent}
+            sendEmail={sendEmail}
+          />
 
         </div>
 
