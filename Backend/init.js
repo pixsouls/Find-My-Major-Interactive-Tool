@@ -138,33 +138,10 @@ async function initDatabase() {
     progress.done('AdaptedCareers populated');
 
     // career_majors (from csv file)
-    // load MSU programs for URL matching
-    const msuPrograms = JSON.parse(fs.readFileSync(path.join(__dirname, 'raw/msu_programs.json'), 'utf8'));
-
-    function findMsuUrl(majorName) {
-      const normalize = str => str.toLowerCase().replace(/[^a-z0-9 ]/g, '').split(' ').filter(Boolean);
-      const majorWords = new Set(normalize(majorName));
-
-      let bestMatch = null;
-      let bestScore = 0;
-
-      for (const program of msuPrograms) {
-        const programWords = normalize(program.title);
-        const overlap = programWords.filter(w => majorWords.has(w)).length;
-        const score = overlap / Math.max(majorWords.size, programWords.length);
-
-        if (score > bestScore) {
-          bestScore = score;
-          bestMatch = program;
-        }
-      }
-
-      // only return a URL if the match is strong enough
-      return bestScore >= 0.5 ? bestMatch.url : null;
-    }
-
-    // career_majors table
+    // career_majors
+    console.log('Now loading career_majors table...');
     await db.query(`
+      DROP TABLE IF EXISTS career_majors;
       CREATE TABLE career_majors (
         id SERIAL PRIMARY KEY,
         major_name VARCHAR(200) NOT NULL,
@@ -173,6 +150,29 @@ async function initDatabase() {
         msu_url VARCHAR(500)
       )
     `);
+
+    const msuPrograms = JSON.parse(fs.readFileSync(path.join(__dirname, 'raw/msu_programs.json'), 'utf8'));
+
+    function findMsuUrl(majorName) {
+      const normalize = str => str.toLowerCase().replace(/[^a-z0-9 ]/g, '').split(' ').filter(Boolean);
+      const majorWords = new Set(normalize(majorName));
+      let bestMatch = null;
+      let bestScore = 0;
+
+      for (const program of msuPrograms) {
+        const programWords = normalize(program.title);
+        const overlap = programWords.filter(w => majorWords.has(w)).length;
+        const score = overlap / Math.max(majorWords.size, programWords.length);
+        if (score > bestScore) {
+          bestScore = score;
+          bestMatch = program;
+        }
+      }
+      return bestScore >= 0.5 ? bestMatch.url : null;
+    }
+
+    const csvFile = fs.readFileSync(path.join(__dirname, 'raw/career_to_major_mapping.csv'), 'utf8');
+    const lines = csvFile.split('\n').filter(line => line.trim());
 
     for (let i = 1; i < lines.length; i++) {
       const cols = lines[i].split(',');
@@ -188,6 +188,9 @@ async function initDatabase() {
         console.warn(`Skipped row ${i}: ${err.message}`);
       }
     }
+
+  progress.done('Career majors loaded');
+
   } catch (err) {
     console.error('Database initialization error:', err.message);
   } finally {

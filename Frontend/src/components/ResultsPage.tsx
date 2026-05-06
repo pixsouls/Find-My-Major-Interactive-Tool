@@ -107,8 +107,7 @@ export default function ResultsPage({
     C: "Conventional",
   };
 
-  const [careerMajors, setCareerMajors] = useState<{ major_name: string; match_strength: number }[]>([]);
-  const [allDbCareers, setAllDbCareers] = useState<Career[]>([]);
+  const [careerMajors, setCareerMajors] = useState<{ major_name: string; match_strength: number; msu_url: string | null }[]>([]);  const [allDbCareers, setAllDbCareers] = useState<Career[]>([]);
   const [allMlCareers, setAllMlCareers] = useState<MLCareer[]>([]);
   const [visibleCareers, setVisibleCareers] = useState<DisplayCareer[]>([]);
   const [careersLoading, setCareersLoading] = useState(true);
@@ -327,22 +326,33 @@ export default function ResultsPage({
                   <p className="career-info-description">{selectedCareer.description}</p>
                 </li>
                 <li>
-                  <strong>Related Majors</strong>
-                  {careerMajors.length > 0 ? (
-                    <ul className="career-majors-list">
-                      {careerMajors.map((m) => (
-                        <li key={m.major_name} className="career-major-item">
-                          {m.major_name}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="career-info-code">No majors found</p>
-                  )}
-                </li>
+                <strong>Related Majors</strong>
+                {careerMajors.length > 0 ? (
+                  <ul className="career-majors-list">
+                    {careerMajors.map((m) => (
+                      <li key={m.major_name} className="career-major-item">
+                        {m.msu_url ? (
+                          <a
+                            href={m.msu_url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="career-major-link"
+                          >
+                            {m.major_name}
+                          </a>
+                        ) : (
+                          m.major_name
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="career-info-code">No majors found</p>
+                )}
+              </li>
                 <li>
                   <strong>Source</strong>
-                  <p className="career-info-code">{selectedCareer.source === 'ml' ? '🤖 AI Recommended' : '📊 Database Match'}</p>
+                  <p className="career-info-code">{selectedCareer.source === 'ml' ? 'AI Recommended' : 'Database Match'}</p>
                 </li>
               </ul>
             ) : (
