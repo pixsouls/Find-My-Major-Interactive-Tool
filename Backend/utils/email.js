@@ -11,10 +11,7 @@ const router = express.Router();
 
 router.post('/send-email', async (req, res) => {
   const { to, subject, text } = req.body;
-  console.log('Attempting to send email to:', to);
-  console.log('From:', process.env.FROM_EMAIL);
-  console.log('Key starts with:', process.env.SENDGRID_API_KEY?.substring(0, 6));
-  
+
   const msg = { to, from: process.env.FROM_EMAIL, subject, text };
   try {
     await sgMail.send(msg);
