@@ -1,0 +1,105 @@
+.career-info-card {
+  overflow-y: auto;
+}
+
+.career-info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.career-info-list li {
+  padding: 8px 10px;
+  background: var(--bg-input);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.career-info-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.career-info-description {
+  font-size: 12px;
+  color: var(--text-dim);
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.career-info-code {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.career-info-empty {
+  font-size: 13px;
+  color: var(--text-dim);
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* RELATED MAJORS */
+.career-majors-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.career-major-item {
+  font-size: 12px;
+  font-weight: normal;
+  color: var(--text-dim);
+  padding: 4px 8px;
+  background: var(--bg-card);
+  border-radius: 6px;
+  border: 2px solid var(--msu-blue);
+  transform: translateX(0px);
+  transition-duration: 300ms;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.career-major-item:hover {
+  color: var(--bg-card);
+  font-weight: bold;
+  background: var(--msu-blue);
+  transform: translateX(4px);
+}
+
+.arrow-icon {
+  filter: invert(100%) blur(4px);
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+  flex-shrink: 0;
+  transition: opacity 300ms;
+}
+
+.career-major-item:hover .arrow-icon {
+  filter: invert(100%) blur(0px);
+  opacity: 1;
+}
+
+.career-major-link {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}

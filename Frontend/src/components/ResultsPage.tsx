@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "./ResultsPage.css";
+import Tooltip from "./ToolTip";
 import MajorCard from "./MajorCard";
 import EmailSection from "./EmailSection";
 import CareerInfoPanel from "./CareerInfoPanel";
@@ -179,7 +180,7 @@ export default function ResultsPage({
   const getNextCareer = (removedIndex: number): DisplayCareer | null => {
     // alternate replacement based on whether removed was db or ml
     const removedSource = visibleCareers[removedIndex]?.source;
-    
+
     if (removedSource === 'db') {
       while (dbIndexRef.current < allDbCareers.length) {
         const career = allDbCareers[dbIndexRef.current++];
@@ -290,7 +291,10 @@ export default function ResultsPage({
         <div className="left-panel">
 
           <div className="results-card">
-            <h2>Your Top Traits</h2>
+            <h2>
+              Your Top Traits
+              <Tooltip text="Your RIASEC score (Holland score) based on your answers in the test. This peronality type score."></Tooltip>
+            </h2>
             {topTraits.map(([trait, score]) => (
               <div key={trait} className="trait-row">
                 <span>{traitLabels[trait]}</span>
@@ -327,7 +331,10 @@ export default function ResultsPage({
 
         <div className="right-panel">
           <div className="results-card">
-            <h2>Recommended Careers</h2>
+            <h2>
+              Recommended Careers
+              <Tooltip text="Click to select. Recommended careers based on your answers in the test. "></Tooltip>
+            </h2>
 
             {careersLoading && (
               <p className="careers-status">Loading careers...</p>

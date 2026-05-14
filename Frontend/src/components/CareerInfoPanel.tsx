@@ -1,3 +1,5 @@
+import './CareerInfoPanel.css';
+
 interface CareerMajor {
   major_name: string;
   match_strength: number;
@@ -18,7 +20,7 @@ interface CareerInfoPanelProps {
 
 export default function CareerInfoPanel({ selectedCareer, careerMajors }: CareerInfoPanelProps) {
   return (
-    <div className="results-card">
+    <div className="results-card career-info-card">
       <h2>Career Information</h2>
       {selectedCareer ? (
         <ul className="career-info-list">
@@ -48,6 +50,7 @@ export default function CareerInfoPanel({ selectedCareer, careerMajors }: Career
                     ) : (
                       m.major_name
                     )}
+                    <img src="../../public/arrow_right.svg" className="arrow-icon" />
                   </li>
                 ))}
               </ul>
