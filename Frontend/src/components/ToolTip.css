@@ -3,11 +3,19 @@
   display: inline-flex;
   align-items: center;
   cursor: help;
+  margin-left: 6px;
+  vertical-align: middle;
+  margin-bottom: 2px;
 }
 
 .tooltip-icon {
-  width: 16px;
-  height: 16px;
+  width: 12px !important;
+  height: 12px !important;
+  min-width: 12px;
+  min-height: 12px;
+  max-width: 12px;
+  max-height: 12px;
+  flex-shrink: 0;
   opacity: 0.6;
   transition: opacity 0.2s ease;
 }

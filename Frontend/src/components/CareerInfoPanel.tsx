@@ -59,19 +59,7 @@ export default function CareerInfoPanel({ selectedCareer, careerMajors }: Career
             )}
           </li>
           <li>
-            <strong>Salary (Upper Quartile)</strong>
-            <p className="career-info-code">
-              -
-            </p>
-          </li>
-          <li>
             <strong>Salary (Median)</strong>
-            <p className="career-info-code">
-              -
-            </p>
-          </li>
-          <li>
-            <strong>Salary (Lower Quartile)</strong>
             <p className="career-info-code">
               -
             </p>
