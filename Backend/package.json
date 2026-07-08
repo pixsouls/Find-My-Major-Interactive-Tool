@@ -2,9 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "node test/run.js"
   },
   "keywords": [],
   "author": "",
@@ -15,8 +16,6 @@
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
-    "next.js": "^1.0.3",
-    "onnxruntime-node": "^1.25.1",
-    "pg": "^8.20.0"
+    "onnxruntime-node": "^1.25.1"
   }
 }
