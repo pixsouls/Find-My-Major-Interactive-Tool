@@ -39,11 +39,11 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 1.75rem;
   font-weight: 800;
-  padding: 1.5rem;
-  margin: 1rem 0;
+  padding: 1.2rem;
+  margin: 0.8rem 0;
   background: rgba(0, 255, 204, 0.05);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
