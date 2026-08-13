@@ -13,10 +13,11 @@
 }
 
 .app-title {
-  font-size: 1.8rem;         
+  font-size: 1.4rem;
   font-weight: 600;
-  color: var(--msu-blue-dark); 
-  margin: 0;       
+  color: var(--msu-blue-dark);
+  line-height: 1.2;
+  margin: 0;
 }
 
 .app-main {
@@ -74,24 +75,33 @@
   transform: translateY(-1px);
 }
 
+/* Fills whatever height is left under the header stripe — never 100vh, or the
+   stripe's height would push the document past the viewport on every page. */
 .app-shell {
-  min-height: 100vh;
-  padding-bottom: var(--footer-height);
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
   flex-direction: column;
 }
 
+/* The single scroll container in the app. `safe center` keeps short pages
+   vertically centred while making sure tall pages stay scrollable from the top
+   rather than overflowing past the edge unreachably. */
 .app-content {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
   display: flex;
+  flex-direction: column;
+  justify-content: safe center;
   align-items: center;
-  justify-content: center;
 }
 
 .header-stripe {
+  flex: 0 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.75rem 0;
+  padding: 0.4rem 0;
   background-color: transparent;
 }

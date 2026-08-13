@@ -6,7 +6,7 @@
   width: 80vw;
   max-width: 600px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 0.75rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -18,7 +18,7 @@
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-bottom: none;
-  padding: 1rem 1.5rem;
+  padding: 0.6rem 1rem;
   border-radius: 12px 12px 0 0;
 }
 
@@ -108,16 +108,16 @@
 }
 
 /* Main Quiz Card */
+/* No max-height/overflow here: .app-content is the one scroll container, and a
+   second one nested inside it produced two stacked scrollbars. */
 .mod-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  padding: 1.5rem 1rem;
+  padding: 1rem;
   text-align: center;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  max-height: calc(100vh - 7rem); /* More flexible using rem units */
-  overflow-y: auto;
 }
 
 /* Card inner content wrapper */

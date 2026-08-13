@@ -1,16 +1,17 @@
-/* Centered full page */
+/* Centered page. No min-height here — .app-content already owns the available
+   height and centres this; a viewport-based height would re-introduce overflow. */
 .welcome-container {
   display: flex;
   justify-content: center;
-  align-items: start;
-  min-height: calc(100vh - 110px);
-  padding: 2rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
 }
 
 /* Single Card */
 .welcome-card {
   background: rgb(253, 253, 253);
-  padding: 2.5rem;
+  padding: 1.35rem 1.75rem;
   border-radius: 14px;
   text-align: center;
   color: var(--text-main);
@@ -24,44 +25,45 @@
 
 /* Title */
 .welcome-title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
   color: var(--msu-blue-dark);
 }
 
 /* Intro Subtitle */
 .welcome-subtitle {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  margin-bottom: 0.85rem;
   color: var(--text-main);
-  line-height: 1.6;
+  line-height: 1.45;
 }
 
 /* Divider line */
 .divider {
   height: 1px;
   background: rgba(255, 255, 255, 0.15);
-  margin: 2rem 0;
+  margin: 0.9rem 0;
 }
 
 /* Section Title */
 .info-title {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
 }
 
 /* Description */
 .info-text {
   color: var(--text-main);
-  line-height: 1.7;
-  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  margin-bottom: 0.5rem;
 }
 
 /* Button */
 .welcome-button {
-  margin-top: 2rem;
-  padding: 0.8rem 2rem;
-  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 0.65rem 1.75rem;
+  font-size: 0.95rem;
   border: none;
   border-radius: 8px;
   background-color: var(--msu-blue-dark);
@@ -82,7 +84,7 @@
   color: #4e73df;
   cursor: pointer;
   font-weight: 600;
-  margin-bottom: 1rem;
+  font-size: inherit;
   padding: 0;
 }
 
@@ -107,18 +109,19 @@
 
 /* Expanded Section */
 .expanded-section {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Holland List */
 .holland-list {
   list-style: none;
   padding: 0;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
 }
 
 .holland-list li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
   color: var(--text-main);
 }
 

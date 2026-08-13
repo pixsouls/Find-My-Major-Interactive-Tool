@@ -16,8 +16,6 @@
 
   --page-photo-opacity: 0.18;
   --page-photo: url('/msu.jpeg');
-
-  --footer-height: 56px;
 }
 
 * {
@@ -31,7 +29,20 @@ html, body, #root {
   width: 100%;
   margin: 0;
   padding: 0;
-  /* overflow: hidden; removes scroll bar  */
+}
+
+/* The app is embedded in an iframe, so the document itself must never scroll —
+   it owns exactly the height it is given. Any page too tall for that height
+   scrolls inside .app-content instead (see App.css). */
+html, body {
+  overflow: hidden;
+}
+
+/* #root is the flex column: header stripe (fixed) + app shell (flexes). */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 body {
