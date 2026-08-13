@@ -9,7 +9,8 @@ import * as ort from 'onnxruntime-node';
 
 dotenv.config();
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const __dirname = path.dirname(fileURLToPath(import.meta.url)); // Backend/src
+const ROOT_DIR = path.join(__dirname, '..'); // Backend/
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -19,7 +20,7 @@ app.use(express.json());
 // ---- LOAD SEED DATA INTO RAM AT BOOT ----
 // read-only data produced by sqlToJson.js; resets only on restart, which is
 // fine since it's only refreshed every few months from O*NET / the school
-const DATA_DIR = path.join(__dirname, 'src');
+const DATA_DIR = path.join(ROOT_DIR, 'data');
 const adaptedCareers = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'adaptedCareers.json'), 'utf8'));
 const interests = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'interests.json'), 'utf8'));
 const careerMajorsRaw = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'careerMajors.json'), 'utf8'));
@@ -57,14 +58,14 @@ console.log(
 // Option (b): an in-memory Map keyed by session_id holds one logical record per
 // session (upsert semantics, keeps the run with the most questions_answered)
 // for the current server run. On every update we ALSO append the record to
-// raw/collected.csv. The CSV is append-only, so a restart never wipes it; the
+// data/collected.csv. The CSV is append-only, so a restart never wipes it; the
 // file is the persistent record the DSML team reads, and it gets cleared by the
 // (not-yet-implemented) post-handoff wipe.
-const COLLECTED_PATH = path.join(__dirname, 'raw', 'collected.csv');
+const COLLECTED_PATH = path.join(DATA_DIR, 'collected.csv');
 const COLLECTED_HEADER = 'session_id,user_R,user_I,user_A,user_S,user_E,user_C,questions_answered,created_at\n';
 if (!fs.existsSync(COLLECTED_PATH)) {
   fs.writeFileSync(COLLECTED_PATH, COLLECTED_HEADER);
-  console.log('Created raw/collected.csv');
+  console.log('Created data/collected.csv');
 }
 
 const collected = new Map(); // session_id -> record
@@ -137,7 +138,7 @@ app.post('/api/ml-careers', async (req, res) => {
     const max = Math.max(...raw);
     const normalized = raw.map(v => (v - min) / (max - min || 1));
 
-    const session = await ort.InferenceSession.create(path.join(__dirname, 'ml/riasec_model.onnx'));
+    const session = await ort.InferenceSession.create(path.join(ROOT_DIR, 'ml/riasec_model.onnx'));
     const inputTensor = new ort.Tensor('float32', Float32Array.from(normalized), [1, 6]);
     const results = await session.run({ float_input: inputTensor }, ['output_label']);
     const predictedCategory = results['output_label'].data[0];

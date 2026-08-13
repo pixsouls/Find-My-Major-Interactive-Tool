@@ -65,7 +65,7 @@ async function initDatabase() {
       )
     `);
 
-    const occupationFile = fs.readFileSync(path.join(__dirname, 'raw/03_occupation_data.sql'), 'utf8');
+    const occupationFile = fs.readFileSync(path.join(__dirname, 'data/03_occupation_data.sql'), 'utf8');
     await db.query(occupationFile);
     progress.done('Occupation data loaded');
 
@@ -100,7 +100,7 @@ async function initDatabase() {
       )
     `);
 
-    const interestsFile = fs.readFileSync(path.join(__dirname, 'raw/13_interests.sql'), 'utf8');
+    const interestsFile = fs.readFileSync(path.join(__dirname, 'data/13_interests.sql'), 'utf8');
     await db.query(interestsFile);
     progress.done('Interests data loaded');
 
@@ -151,7 +151,7 @@ async function initDatabase() {
       )
     `);
 
-    const msuPrograms = JSON.parse(fs.readFileSync(path.join(__dirname, 'raw/msu_programs.json'), 'utf8'));
+    const msuPrograms = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/msu_programs.json'), 'utf8'));
 
     function findMsuUrl(majorName) {
       const normalize = str => str.toLowerCase().replace(/[^a-z0-9 ]/g, '').split(' ').filter(Boolean);
@@ -171,7 +171,7 @@ async function initDatabase() {
       return bestScore >= 0.5 ? bestMatch.url : null;
     }
 
-    const csvFile = fs.readFileSync(path.join(__dirname, 'raw/career_to_major_mapping.csv'), 'utf8');
+    const csvFile = fs.readFileSync(path.join(__dirname, 'data/career_to_major_mapping.csv'), 'utf8');
     const lines = csvFile.split('\n').filter(line => line.trim());
 
     for (let i = 1; i < lines.length; i++) {

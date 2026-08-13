@@ -6,8 +6,9 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const RAW_DIR = path.join(__dirname, 'raw');
-const OUT_DIR = path.join(__dirname, 'src');
+// sources and generated JSON both live in Backend/data/
+const RAW_DIR = path.join(__dirname, 'data');
+const OUT_DIR = RAW_DIR;
 
 // maps O*NET interest element_ids to RIASEC letters
 const RIASEC_MAP = {
@@ -144,7 +145,7 @@ function main() {
   fs.writeFileSync(path.join(OUT_DIR, 'careerMajors.json'), JSON.stringify(careerMajors));
   console.log(`Built ${careerMajors.length} career-major links (${skipped} skipped)`);
 
-  console.log('Done. JSON written to Backend/src/');
+  console.log('Done. JSON written to Backend/data/');
 }
 
 main();

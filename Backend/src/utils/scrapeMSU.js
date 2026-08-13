@@ -18,5 +18,5 @@ while ((match = linkRegex.exec(html)) !== null) {
 }
 
 console.log(`Found ${programs.length} programs`);
-writeFileSync('./raw/msu_programs.json', JSON.stringify(programs, null, 2));
-console.log('Saved to raw/msu_programs.json');
+writeFileSync('./data/msu_programs.json', JSON.stringify(programs, null, 2));
+console.log('Saved to data/msu_programs.json');
