@@ -30,6 +30,16 @@
   color: var(--text-main);
 }
 
+/* Consistent focus indicator across every control on this page. */
+.results-back-btn:focus-visible,
+.results-restart-btn:focus-visible,
+.remove-btn:focus-visible,
+.undo-btn:focus-visible,
+.results-continue-btn:focus-visible {
+  outline: 2px solid var(--msu-red);
+  outline-offset: 2px;
+}
+
 /* HERO */
 .results-hero {
   display: grid;
@@ -39,7 +49,7 @@
 }
 
 .small-text {
-  opacity: 0.6;
+  color: var(--text-subtle);
   letter-spacing: 2px;
   font-size: 11px;
 }
@@ -51,9 +61,8 @@
 }
 
 .subtext {
-  opacity: 0.7;
   font-size: 13px;
-  color: var(--text-dim);
+  color: var(--text-subtle);
 }
 
 /* HOLLAND CARD */
@@ -67,12 +76,13 @@
   min-width: 150px;
 }
 
-.label {
+/* Renamed from the global `.label`, which collided with HollandQuiz's progress
+   counter and silently restyled it (10px at 60% opacity => 2.93:1). */
+.results-label {
   font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  opacity: 0.6;
-  color: var(--text-dim);
+  color: var(--text-subtle);
 }
 
 .holland-code {
@@ -119,9 +129,16 @@
 }
 
 .results-card h2 {
-  margin-bottom: 10px;
   font-size: 15px;
   color: var(--text-main);
+}
+
+/* Keeps the tooltip trigger a sibling of the heading rather than inside it,
+   so it stays out of the heading's accessible name. */
+.results-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 /* TRAIT BARS */
@@ -168,7 +185,6 @@
   padding: 10px 14px;
   border: 1px solid var(--border-color);
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   font-size: 13px;
   color: var(--text-main);
@@ -184,12 +200,28 @@
   box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
 
-.major-card-text {
+/* The select-career button fills the card; button reset keeps it looking
+   identical to the old clickable div. */
+.major-card-main {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
   gap: 2px;
   flex: 1;
   min-width: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.major-card-main:focus-visible {
+  outline: 2px solid var(--msu-red);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
 .major-card-title {
@@ -296,4 +328,23 @@
 }
 
 /* Small screens scroll via .app-content, the app's single scroll container —
-   an `overflow: auto` here as well produced a scrollbar nested inside it. */
+   an `overflow: auto` here as well produced a scrollbar nested inside it.
+
+   The document cannot scroll horizontally (html/body are overflow:hidden for
+   the iframe embed), so these fixed multi-column grids must collapse to one
+   column before they can overflow sideways and strand content off-screen.
+   Also covers 200% zoom, where the effective viewport is halved. */
+@media (max-width: 720px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .results-hero {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .results-page {
+    padding: 14px 16px;
+  }
+}

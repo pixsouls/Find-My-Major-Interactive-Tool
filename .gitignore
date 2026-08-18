@@ -212,3 +212,6 @@ Backend/test.db-journal
 
 # DO NOT UPLOAD NODE MODULES - OWEN
 node_modules
+
+# Claude Code
+.claude/

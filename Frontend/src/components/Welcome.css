@@ -77,19 +77,29 @@
   transform: translateY(-2px);
 }
 
+.welcome-button:focus-visible,
+.learn-more-button:focus-visible {
+  outline: 2px solid var(--msu-red);
+  outline-offset: 2px;
+}
+
 /* Learn More Button */
+/* Underlined at rest, not only on hover: sitting mid-paragraph, colour alone
+   was the only thing distinguishing it from body text. #4e73df was also just
+   4.26:1 against the card. */
 .learn-more-button {
   background: none;
   border: none;
-  color: #4e73df;
+  color: var(--msu-blue);
   cursor: pointer;
   font-weight: 600;
   font-size: inherit;
   padding: 0;
+  text-decoration: underline;
 }
 
 .learn-more-button:hover {
-  text-decoration: underline;
+  color: var(--msu-blue-dark);
 }
 
 .learn-more-button-inline {

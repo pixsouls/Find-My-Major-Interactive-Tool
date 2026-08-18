@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { type RiasecType } from '../data/types';
 import { saveScores } from '../utils/api';
 import './QuizCheckpoint.css';
@@ -25,20 +25,25 @@ export default function QuizCheckpoint({ scores, questionCount, onContinue, onEx
     C: 'Conventional'
   };
 
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
   useEffect(() => {
     saveScores(scores, questionCount);
   }, []);
 
+  // The answer button that triggered this checkpoint has unmounted, so take
+  // focus here rather than letting it fall back to <body>.
+  useEffect(() => {
+    headingRef.current?.focus();
+  }, []);
 
   return (
-    <section
-      className="checkpoint-card"
-      aria-labelledby="checkpoint-title"
-      aria-live="polite"
-    >
+    <section className="checkpoint-card" aria-labelledby="checkpoint-title">
       <div className="checkpoint-header">
         <span className="type-tag" aria-hidden="true">CHECKPOINT</span>
-        <h2 id="checkpoint-title">{isFinalCheckpoint ? "Assessment Complete" : "Progress Report"}</h2>
+        <h2 id="checkpoint-title" ref={headingRef} tabIndex={-1}>
+          {isFinalCheckpoint ? "Assessment Complete" : "Progress Report"}
+        </h2>
       </div>
       <div className="results-preview">
         {isFinalCheckpoint ? (

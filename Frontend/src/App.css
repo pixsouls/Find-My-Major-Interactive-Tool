@@ -1,82 +1,5 @@
-.app-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: #f8fafc;
-  color: #1e293b;
-  font-family: system-ui, -apple-system, sans-serif;
-}
-
-.app-header {
-  padding: 3rem 1rem;
-  text-align: center;
-}
-
-.app-title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--msu-blue-dark);
-  line-height: 1.2;
-  margin: 0;
-}
-
-.app-main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  padding: 0.8rem;
-}
-
-/* Quiz Card Styling */
-.quiz-card {
-  background: white;
-  width: 100%;
-  max-width: 400px;
-  padding: 1.6rem;
-  border-radius: 13px;
-  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
-}
-
-.progress-container {
-  width: 100%;
-  background-color: #e2e8f0;
-  height: 6px;
-  border-radius: 3px;
-  margin-bottom: 1.6rem;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  background-color: #16c943;
-  transition: width 0.4s ease;
-}
-
-.options-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  margin-top: 1.2rem;
-}
-
-.option-btn {
-  padding: 0.8rem;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.1s;
-}
-
-.option-btn:hover {
-  filter: brightness(1.1);
-  transform: translateY(-1px);
-}
-
-/* Fills whatever height is left under the header stripe — never 100vh, or the
-   stripe's height would push the document past the viewport on every page. */
+/* Fills whatever height is available — never 100vh, or any element above the
+   shell would push the document past the viewport on every page. */
 .app-shell {
   flex: 1 1 auto;
   min-height: 0;
@@ -95,13 +18,4 @@
   flex-direction: column;
   justify-content: safe center;
   align-items: center;
-}
-
-.header-stripe {
-  flex: 0 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.4rem 0;
-  background-color: transparent;
 }

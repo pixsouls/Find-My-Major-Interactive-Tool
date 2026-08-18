@@ -58,7 +58,9 @@ export default function CareerInfoPanel({ selectedCareer, careerMajors }: Career
                     ) : (
                       m.major_name
                     )}
-                    <img src="../../public/arrow_right.svg" className="arrow-icon" />
+                    {/* public/ assets are served from the root once bundled;
+                        the old "../../public/..." path 404s in a build. */}
+                    <img src="/arrow_right.svg" className="arrow-icon" alt="" aria-hidden="true" />
                   </li>
                 ))}
               </ul>

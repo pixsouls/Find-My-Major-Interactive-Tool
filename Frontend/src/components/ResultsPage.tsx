@@ -115,6 +115,14 @@ export default function ResultsPage({
   const usedIds = useRef<Set<string>>(new Set());
   const dbIndexRef = useRef(0);
   const mlIndexRef = useRef(0);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  // Arriving here replaces the whole view, so move focus to the new page
+  // heading — otherwise focus is dropped to <body> and keyboard users restart
+  // from the top of the document.
+  useEffect(() => {
+    headingRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     if (!selectedCareer) {
@@ -274,12 +282,19 @@ export default function ResultsPage({
       <div className="results-hero">
         <div>
           <p className="small-text highlight">Assessment Complete</p>
-          <h1 className="headline">Your Career Profile</h1>
+          <h1 className="headline" ref={headingRef} tabIndex={-1}>Your Career Profile</h1>
           <p className="subtext">Based on {questionCount} questions</p>
         </div>
         <div className="holland-reveal-card">
-          <p className="label">Your Holland Code</p>
-          <h2 className="holland-code">{hollandCode}</h2>
+          <p className="results-label">Your Holland Code</p>
+          <h2 className="holland-code">
+            {/* Spelled out for screen readers so "AEI" is not read as a word;
+                the visible text is unchanged. */}
+            <span className="visually-hidden">
+              Your Holland code is {hollandCode.split("").join(" ")}
+            </span>
+            <span aria-hidden="true">{hollandCode}</span>
+          </h2>
           <p className="primary">
             {traitLabels[topTrait]} ({topTrait})
           </p>
@@ -291,21 +306,35 @@ export default function ResultsPage({
         <div className="left-panel">
 
           <div className="results-card">
-            <h2>
-              Your Top Traits
-              <Tooltip text="Your RIASEC score (Holland score) based on your answers in the test. This peronality type score."></Tooltip>
-            </h2>
-            {topTraits.map(([trait, score]) => (
-              <div key={trait} className="trait-row">
-                <span>{traitLabels[trait]}</span>
-                <div className="bar">
+            <div className="results-card-header">
+              <h2>Your Top Traits</h2>
+              <Tooltip
+                label="About your top traits"
+                text="Your RIASEC score (Holland score) based on your answers in the test. This peronality type score."
+              />
+            </div>
+            {topTraits.map(([trait, score]) => {
+              // Answer weights run -2..+2, so a raw score can be negative (and
+              // in principle exceed 20). One clamped percentage drives both the
+              // bar width and the announced value so the two cannot diverge.
+              const percent = Math.round(Math.min(100, Math.max(0, (score / 20) * 100)));
+              return (
+                <div key={trait} className="trait-row">
+                  <span>{traitLabels[trait]}</span>
                   <div
-                    className="fill"
-                    style={{ width: `${(score / 20) * 100}%` }}
-                  />
+                    className="bar"
+                    role="progressbar"
+                    aria-valuenow={percent}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-valuetext={`${percent}%`}
+                    aria-label={`${traitLabels[trait]} score`}
+                  >
+                    <div className="fill" style={{ width: `${percent}%` }} />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <CareerInfoPanel
@@ -331,10 +360,13 @@ export default function ResultsPage({
 
         <div className="right-panel">
           <div className="results-card">
-            <h2>
-              Recommended Careers
-              <Tooltip text="Click to select. Recommended careers based on your answers in the test. "></Tooltip>
-            </h2>
+            <div className="results-card-header">
+              <h2>Recommended Careers</h2>
+              <Tooltip
+                label="About recommended careers"
+                text="Click to select. Recommended careers based on your answers in the test. "
+              />
+            </div>
 
             {careersLoading && (
               <p className="careers-status">Loading careers...</p>
@@ -369,7 +401,7 @@ export default function ResultsPage({
       </div>
 
       {lastRemoved && (
-        <div className="undo-toast">
+        <div className="undo-toast" role="status">
           <div className="undo-text">
             {lastRemoved.career.title} removed
           </div>

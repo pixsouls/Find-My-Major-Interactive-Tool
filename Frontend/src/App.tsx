@@ -7,11 +7,6 @@ function App() {
   return (
     <Router>
 
-      {/* Header Stripe */}
-      <div className="header-stripe">
-        <h1 className="app-title">FIND MY MAJOR</h1>
-      </div>
-
       <div className="app-shell">
         <main className="app-content">
           <Routes>

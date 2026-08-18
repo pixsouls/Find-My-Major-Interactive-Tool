@@ -7,6 +7,10 @@
   --accent-secondary: #0088ff;
   --text-main: #30416d;
   --text-dim: #4f4f4f;
+  /* Dimmest text token that still clears WCAG AA (5.24:1 on --bg-card).
+     Use this instead of `opacity` for de-emphasised text — opacity blends
+     toward the background and silently drops contrast below 4.5:1. */
+  --text-subtle: #5f6b7a;
 
   --msu-blue: #0054a6;
   --msu-blue-dark: #003a70;
@@ -38,7 +42,7 @@ html, body {
   overflow: hidden;
 }
 
-/* #root is the flex column: header stripe (fixed) + app shell (flexes). */
+/* #root is the flex column the app shell stretches inside. */
 #root {
   display: flex;
   flex-direction: column;
@@ -81,6 +85,25 @@ body::after {
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
   padding: 0;
+}
+
+/* Available to screen readers, invisible on screen. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Elements focused programmatically (question text, page headings) carry
+   tabindex="-1" and should not show a focus ring on click. */
+[tabindex="-1"]:focus {
+  outline: none;
 }
 
 /* index.css — add these alongside your existing :root and * rules */

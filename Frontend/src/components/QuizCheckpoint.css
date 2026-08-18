@@ -14,8 +14,9 @@
   font-size: 0.7rem;
   font-weight: 900;
   letter-spacing: 2px;
-  color: var(--accent-secondary);
-  border: 1px solid var(--accent-secondary);
+  /* was --accent-secondary (#0088ff), only 3.40:1 on the card background */
+  color: var(--msu-blue);
+  border: 1px solid var(--msu-blue);
   padding: 2px 8px;
   border-radius: 4px;
   margin-bottom: 0.5rem;
@@ -29,7 +30,8 @@
 
 /* Preview text */
 .results-preview p {
-  color: var(--text-muted);
+  /* --text-muted is not a defined token; the declaration was being dropped */
+  color: var(--text-dim);
   font-size: 0.875rem;
   line-height: 1.4;
 }

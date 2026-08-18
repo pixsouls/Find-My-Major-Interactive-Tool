@@ -2,10 +2,26 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  cursor: help;
   margin-left: 6px;
   vertical-align: middle;
   margin-bottom: 2px;
+}
+
+/* Button reset — the trigger must be a real button to be keyboard reachable. */
+.tooltip-trigger {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: help;
+  line-height: 0;
+}
+
+.tooltip-trigger:focus-visible {
+  outline: 2px solid var(--msu-red);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .tooltip-icon {
@@ -20,12 +36,15 @@
   transition: opacity 0.2s ease;
 }
 
-.tooltip-wrapper:hover .tooltip-icon {
+.tooltip-wrapper:hover .tooltip-icon,
+.tooltip-trigger:focus-visible .tooltip-icon {
   opacity: 1;
 }
 
+/* Hidden with opacity rather than `visibility: hidden` on purpose: visibility
+   removes the node from the accessibility tree, which would break the
+   aria-describedby link and leave the text unreadable by screen readers. */
 .tooltip-box {
-  visibility: hidden;
   opacity: 0;
   width: 200px;
   background: var(--text-main);
@@ -40,7 +59,7 @@
   bottom: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
-  transition: opacity 0.2s ease, visibility 0.2s ease;
+  transition: opacity 0.2s ease;
   pointer-events: none;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
@@ -56,7 +75,8 @@
   border-color: var(--text-main) transparent transparent transparent;
 }
 
-.tooltip-wrapper:hover .tooltip-box {
-  visibility: visible;
+/* Shown on hover for mouse users and on focus for keyboard users. */
+.tooltip-wrapper:hover .tooltip-box,
+.tooltip-wrapper:focus-within .tooltip-box {
   opacity: 1;
 }

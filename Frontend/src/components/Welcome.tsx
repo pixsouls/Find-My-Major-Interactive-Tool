@@ -38,7 +38,9 @@ const Welcome: React.FC = () => {
         </button>
         </p>
 
-        <h1 className="welcome-title">Using This Quiz</h1>
+        {/* h2, not h1: a second h1 here broke the heading hierarchy by jumping
+            back up a level after the h2 above. */}
+        <h2 className="welcome-title">Using This Quiz</h2>
 
         <p className="welcome-subtitle">
           During this quiz, you will be presented with a question statement and asked how much you

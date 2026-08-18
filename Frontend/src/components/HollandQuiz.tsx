@@ -177,7 +177,9 @@ export default function HollandQuiz() {
   }
 
   return (
-    <main className="holland-quiz-container" aria-label="Holland RIASEC Quiz">
+    // <section>, not <main>: App.tsx already renders the page's single <main>
+    // landmark and this component is nested inside it.
+    <section className="holland-quiz-container" aria-label="Holland RIASEC Quiz">
       <nav className="canvas-header" aria-label="Quiz progress">
         <div className="stat">
           <button
@@ -215,7 +217,10 @@ export default function HollandQuiz() {
       </nav>
 
       <div className="mod-card">
-        <div className="card-main" aria-live="polite" aria-atomic="false">
+        {/* No aria-live here: it wrapped the whole card, so every answer
+            re-announced the question and all five options. Focus is moved to
+            the new question instead (see QuizQuestion). */}
+        <div className="card-main">
           {showExploreMajors ? (
             <ExploreMajors scores={scores} onBack={handleBackFromExplore} />
           ) : isCheckpoint ? (
@@ -238,6 +243,6 @@ export default function HollandQuiz() {
           )}
         </div>
       </div>
-    </main>
+    </section>
   );
 }

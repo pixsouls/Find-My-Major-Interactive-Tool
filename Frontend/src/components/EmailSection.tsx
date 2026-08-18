@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./Email.css";
 
 interface EmailSectionProps {
@@ -8,6 +8,13 @@ interface EmailSectionProps {
 export default function EmailSection({ scores }: EmailSectionProps) {
   const [email, setEmail] = useState('');
   const [emailSent, setEmailSent] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // "Save Results" replaces itself with this input, so the button that had
+  // focus disappears. Hand focus to the field the user now needs.
+  useEffect(() => {
+    if (emailSent) inputRef.current?.focus();
+  }, [emailSent]);
 
   const topTrait = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
 
@@ -57,6 +64,7 @@ export default function EmailSection({ scores }: EmailSectionProps) {
           aria-label="Enter email to receive your results"
         >
           <input
+            ref={inputRef}
             type="email"
             placeholder="Enter your email"
             value={email}

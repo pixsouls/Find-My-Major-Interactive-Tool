@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import './CareerDetailModal.css';
 
 interface CareerMajor {
@@ -20,14 +21,69 @@ interface CareerDetailModalProps {
 }
 
 export default function CareerDetailModal({ career, careerMajors, onClose }: CareerDetailModalProps) {
+  const boxRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    // Remember what opened the dialog so focus can be handed back on close.
+    const opener = document.activeElement as HTMLElement | null;
+    closeRef.current?.focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.stopPropagation();
+        onClose();
+        return;
+      }
+
+      if (e.key !== 'Tab') return;
+
+      // Trap Tab inside the dialog; without this, focus walks through the
+      // page behind the overlay.
+      const focusable = boxRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable || focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      opener?.focus();
+    };
+  }, [onClose]);
+
   return (
     <div className="career-modal-overlay" onClick={onClose}>
-      <div className="career-modal-box" onClick={(e) => e.stopPropagation()}>
-        <button className="career-modal-close" onClick={onClose} aria-label="Close">
-          ×
+      <div
+        className="career-modal-box"
+        ref={boxRef}
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="career-modal-title"
+      >
+        <button
+          className="career-modal-close"
+          onClick={onClose}
+          aria-label="Close"
+          ref={closeRef}
+        >
+          <span aria-hidden="true">×</span>
         </button>
 
-        <h2 className="career-modal-title">{career.title}</h2>
+        <h2 className="career-modal-title" id="career-modal-title">{career.title}</h2>
 
         <ul className="career-modal-fields">
           <li>
