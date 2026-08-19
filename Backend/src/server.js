@@ -21,9 +21,12 @@ app.use(express.json());
 // read-only data produced by sqlToJson.js; resets only on restart, which is
 // fine since it's only refreshed every few months from O*NET / the school
 const DATA_DIR = path.join(ROOT_DIR, 'data');
+const GENERATED_DIR = path.join(DATA_DIR, 'generated');
 const adaptedCareers = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'adaptedCareers.json'), 'utf8'));
 const interests = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'interests.json'), 'utf8'));
-const careerMajorsRaw = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'careerMajors.json'), 'utf8'));
+// career->major links are rebuilt from the official MSU catalog exports by
+// `npm run catalog:import`; see data/DataConversionPipeline.md
+const careerMajorsRaw = JSON.parse(fs.readFileSync(path.join(GENERATED_DIR, 'careerMajors.json'), 'utf8'));
 
 // pre-index for O(1) lookups
 const interestsByCode = new Map();
@@ -199,7 +202,16 @@ app.post('/api/scores', (req, res) => {
 app.get('/api/majors/:onetsoc_code', (req, res) => {
   const rows = majorsByCode.get(req.params.onetsoc_code);
   if (!rows || rows.length === 0) return res.status(404).json({ error: 'No majors found for this career' });
-  res.json(rows.map(({ major_name, match_strength, msu_url }) => ({ major_name, match_strength, msu_url })));
+  // major_name / match_strength / msu_url are the original three fields the
+  // frontend already renders; the rest are additive from the catalog import.
+  res.json(rows.map(({
+    major_name, match_strength, msu_url,
+    program_name, degree_type, department, cip_code, courses,
+  }) => ({
+    major_name, match_strength, msu_url,
+    program_name, degree_type, department, cip_code,
+    courses: courses ?? [],
+  })));
 });
 
 app.use('/api/email', emailRouter);

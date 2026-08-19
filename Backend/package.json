@@ -5,7 +5,10 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "node test/run.js"
+    "test": "node test/run.js",
+    "catalog:seed": "node data/seedMapping.js",
+    "catalog:import": "node data/importCatalog.js",
+    "catalog:resolve": "node data/resolveMajors.js"
   },
   "keywords": [],
   "author": "",
