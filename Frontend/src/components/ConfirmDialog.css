@@ -1,0 +1,49 @@
+.confirm-message {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.confirm-cancel,
+.confirm-accept {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Cancel is visually the primary action - it is the safe one. */
+.confirm-cancel {
+  background: var(--msu-blue);
+  color: white;
+}
+
+.confirm-accept {
+  background: var(--bg-input);
+  color: var(--text-main);
+}
+
+.confirm-accept:hover {
+  background: var(--msu-red);
+  color: white;
+}
+
+.confirm-cancel:hover {
+  opacity: 0.85;
+}
+
+.confirm-cancel:focus-visible,
+.confirm-accept:focus-visible {
+  outline: 2px solid var(--msu-red);
+  outline-offset: 2px;
+}

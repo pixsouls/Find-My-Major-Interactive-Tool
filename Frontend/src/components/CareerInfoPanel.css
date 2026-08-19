@@ -1,5 +1,10 @@
+/* Every row renders in every state, and each variable-length field reserves the
+   height of its fullest form. Without these min-heights the panel collapsed to
+   one line with nothing selected and jumped to four populated rows on click,
+   which grew the entire results page. */
 .career-info-card {
   overflow-y: auto;
+  min-height: 320px;
 }
 
 .career-info-list {
@@ -9,6 +14,7 @@
   gap: 8px;
   font-size: 13px;
   color: var(--text-dim);
+  flex: 1;
 }
 
 .career-info-list li {
@@ -23,20 +29,22 @@
   font-weight: 600;
   color: var(--text-main);
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  min-height: 36px;
 }
 
 .career-info-description {
   font-size: 12px;
   color: var(--text-dim);
   display: -webkit-box;
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   word-break: break-word;
   max-width: 100%;
+  min-height: 68px;
 }
 
 .career-info-code {
@@ -51,12 +59,22 @@
 }
 
 /* RELATED MAJORS */
+
+/* Holds three rows' worth of height whatever the current state is.
+   Measured, not guessed: a .career-major-item is 34px (12px text + 4px padding
+   each side + 2px border each side) and the list gaps are 4px, so three rows
+   come to 3*34 + 2*4 = 110. */
+.career-majors-slot {
+  min-height: 110px;
+}
+
+/* No margin-top: it only existed once the list was populated, which was the
+   last 4px of layout growth on selecting a career. */
 .career-majors-list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-top: 4px;
 }
 
 .career-major-item {
@@ -96,17 +114,37 @@
   opacity: 1;
 }
 
-/* Underlined so a linked major is distinguishable from an unlinked one by
-   something other than colour (both carry the same border and background). */
+/* Underlined so an interactive major stays distinguishable by something other
+   than colour. Button reset keeps it looking identical to the old anchor. */
 .career-major-link {
   color: inherit;
+  font: inherit;
+  text-align: left;
   text-decoration: underline;
   display: block;
   width: 100%;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .career-major-link:focus-visible {
   outline: 2px solid var(--msu-red);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* Always present so the card does not grow when a career is picked. */
+.career-info-more-btn {
+  margin-top: 12px;
+}
+
+.career-info-more-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.career-info-more-btn:disabled:hover {
+  opacity: 0.5;
 }

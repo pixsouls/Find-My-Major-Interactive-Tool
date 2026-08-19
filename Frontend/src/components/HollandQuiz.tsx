@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { questions, options, type RiasecType } from '../data/types';
 import ExploreMajors from './ExploreMajors';
 import QuizCheckpoint from './QuizCheckpoint';
+import ConfirmDialog from './ConfirmDialog';
 import { QuizQuestion } from './QuizQuestion';
 import { selectNextQuestion } from '../algorithms/questionSelector';
 import './HollandQuiz.css';
@@ -31,6 +32,7 @@ export default function HollandQuiz() {
   const [showExploreMajors, setShowExploreMajors] = useState(false);
   const [questionCount, setQuestionCount] = useState(0);
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
+  const [confirmRestart, setConfirmRestart] = useState(false);
 
   const questionsUntilCheckpoint = 12;
 
@@ -207,7 +209,7 @@ export default function HollandQuiz() {
           <button
             type="button"
             className="quiz-restart-btn"
-            onClick={handleRestart}
+            onClick={() => setConfirmRestart(true)}
             aria-label="Restart the quiz"
             title="Restart"
           >
@@ -243,6 +245,17 @@ export default function HollandQuiz() {
           )}
         </div>
       </div>
+
+      {confirmRestart && (
+        <ConfirmDialog
+          title="Restart the quiz?"
+          message="Your answers so far will be cleared and you will start from the first question."
+          confirmLabel="Yes, I'm sure"
+          cancelLabel="No"
+          onConfirm={() => { setConfirmRestart(false); handleRestart(); }}
+          onCancel={() => setConfirmRestart(false)}
+        />
+      )}
     </section>
   );
 }

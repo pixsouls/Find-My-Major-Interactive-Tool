@@ -348,3 +348,122 @@
     padding: 14px 16px;
   }
 }
+/* ---- LOADING SKELETONS ----
+   A skeleton occupies the exact height of a real card (.major-card fixes it at
+   62px), so a slot filling in swaps content without moving anything. */
+.major-card-skeleton {
+  animation: none;
+  cursor: default;
+  pointer-events: none;
+}
+
+.major-card-skeleton:hover {
+  transform: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.skeleton-line {
+  display: block;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--bg-input) 25%,
+    var(--border-color) 37%,
+    var(--bg-input) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeletonShimmer 1.4s ease infinite;
+}
+
+.skeleton-title {
+  width: 55%;
+  height: 12px;
+  margin-bottom: 6px;
+}
+
+.skeleton-description {
+  width: 80%;
+  height: 10px;
+}
+
+/* ---- UNDO TOAST ----
+   Previously the toast had no timer and stayed until Undo was pressed. */
+.undo-toast {
+  align-items: stretch;
+  gap: 6px;
+}
+
+.undo-toast-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.undo-text {
+  flex: 1;
+  text-align: left;
+}
+
+.undo-dismiss {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--bg-card);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.undo-dismiss:hover {
+  background: var(--msu-red);
+  color: white;
+}
+
+.undo-dismiss:focus-visible {
+  outline: 2px solid var(--bg-card);
+  outline-offset: 2px;
+}
+
+/* Countdown to auto-dismiss. Decorative - the row above carries the meaning. */
+.undo-progress {
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.undo-progress-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--bg-card);
+  transform-origin: left center;
+  animation: undoCountdown 6s linear forwards;
+}
+
+/* ---- REDUCED MOTION ----
+   Trait bars, skeleton shimmer and the countdown are all decorative motion. */
+@media (prefers-reduced-motion: reduce) {
+  .fill {
+    transition: none;
+  }
+
+  .skeleton-line {
+    animation: none;
+  }
+
+  .undo-progress-fill {
+    animation: none;
+  }
+
+  .major-card {
+    animation: none;
+  }
+
+  .results-page {
+    animation: none;
+  }
+}

@@ -1,10 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import "./ResultsPage.css";
 import Tooltip from "./ToolTip";
-import MajorCard from "./MajorCard";
+import MajorCard, { MajorCardSkeleton } from "./MajorCard";
 import EmailSection from "./EmailSection";
-import CareerInfoPanel from "./CareerInfoPanel";
-import { getCareers, type Career } from "../utils/api";
+import CareerInfoPanel, { type MajorsStatus } from "./CareerInfoPanel";
+import ConfirmDialog from "./ConfirmDialog";
+import { getCareers, getMajors, type Career, type CareerMajor } from "../utils/api";
 import { getMLCareers, type MLCareer } from "../utils/mlCareers";
 
 type RiasecType = "R" | "I" | "A" | "S" | "E" | "C";
@@ -26,51 +27,90 @@ interface DisplayCareer {
   source: 'db' | 'ml';
 }
 
+type LoadStatus = 'loading' | 'ready' | 'error';
+
+/**
+ * A fixed position in the recommendation list. Even positions prefer the
+ * database, odd positions the AI model, which preserves the alternating order
+ * the page has always had. Slots exist from first paint so the list occupies
+ * its final height immediately and nothing shifts as results arrive.
+ */
+interface Slot {
+  source: 'db' | 'ml';
+  career: DisplayCareer | null;
+}
+
 const DISPLAY_COUNT = 10;
+const UNDO_MS = 6000;
 
-function mergeAlternating(dbCareers: Career[], mlCareers: MLCareer[]): DisplayCareer[] {
-  const merged: DisplayCareer[] = [];
+const makeSlots = (): Slot[] =>
+  Array.from({ length: DISPLAY_COUNT }, (_, i) => ({
+    source: i % 2 === 0 ? 'db' : 'ml',
+    career: null,
+  }));
+
+const toDisplay = (c: Career): DisplayCareer => ({
+  id: c.onetsoc_code,
+  title: c.title,
+  description: c.description,
+  source: 'db',
+});
+
+const mlToDisplay = (c: MLCareer): DisplayCareer => ({
+  id: c['O*NET-SOC Code'],
+  title: c.Title,
+  description: c['Career Category'],
+  source: 'ml',
+});
+
+/** First career from `list` not already on screen and not removed by the user. */
+function firstUnused(
+  list: DisplayCareer[],
+  usedIds: Set<string>,
+  usedTitles: Set<string>,
+  removed: Set<string>
+): DisplayCareer | null {
+  for (const c of list) {
+    if (removed.has(c.id)) continue;
+    if (!usedIds.has(c.id) && !usedTitles.has(c.title)) return c;
+  }
+  return null;
+}
+
+/**
+ * Build the whole list from scratch: what is loaded, minus what the user
+ * removed. Preferring the slot's own source and falling back to the other is
+ * what makes a failed AI request degrade to a database-only list rather than
+ * blanking the section.
+ *
+ * Pure and fully derived, which buys two things: StrictMode's double-invoked
+ * renders cannot double-consume a cursor, and undo is just "stop excluding this
+ * id" - the career deterministically returns to the position it came from.
+ */
+function fillSlots(
+  db: DisplayCareer[],
+  ml: DisplayCareer[],
+  dbStatus: LoadStatus,
+  mlStatus: LoadStatus,
+  removed: Set<string>
+): Slot[] {
+  const usedIds = new Set<string>();
   const usedTitles = new Set<string>();
-  let dbIndex = 0;
-  let mlIndex = 0;
-  let count = 0;
 
-  while (count < DISPLAY_COUNT) {
-    // even indices (0, 2, 4...) → db career
-    // odd indices (1, 3, 5...) → ml career
-    if (count % 2 === 0) {
-      while (dbIndex < dbCareers.length) {
-        const career = dbCareers[dbIndex++];
-        if (!usedTitles.has(career.title)) {
-          usedTitles.add(career.title);
-          merged.push({
-            id: career.onetsoc_code,
-            title: career.title,
-            description: career.description,
-            source: 'db'
-          });
-          break;
-        }
-      }
-    } else {
-      while (mlIndex < mlCareers.length) {
-        const career = mlCareers[mlIndex++];
-        if (!usedTitles.has(career.Title)) {
-          usedTitles.add(career.Title);
-          merged.push({
-            id: career['O*NET-SOC Code'],
-            title: career.Title,
-            description: career['Career Category'],
-            source: 'ml'
-          });
-          break;
-        }
+  return makeSlots().map((slot) => {
+    const order: Array<'db' | 'ml'> = slot.source === 'db' ? ['db', 'ml'] : ['ml', 'db'];
+    for (const src of order) {
+      const ready = src === 'db' ? dbStatus === 'ready' : mlStatus === 'ready';
+      if (!ready) continue;
+      const pick = firstUnused(src === 'db' ? db : ml, usedIds, usedTitles, removed);
+      if (pick) {
+        usedIds.add(pick.id);
+        usedTitles.add(pick.title);
+        return { ...slot, career: pick };
       }
     }
-    count++;
-  }
-
-  return merged;
+    return slot;
+  });
 }
 
 export default function ResultsPage({
@@ -99,42 +139,85 @@ export default function ResultsPage({
     C: "Conventional",
   };
 
-  const [careerMajors, setCareerMajors] = useState<{ major_name: string; match_strength: number; msu_url: string | null }[]>([]);  const [allDbCareers, setAllDbCareers] = useState<Career[]>([]);
-  const [allMlCareers, setAllMlCareers] = useState<MLCareer[]>([]);
-  const [visibleCareers, setVisibleCareers] = useState<DisplayCareer[]>([]);
-  const [careersLoading, setCareersLoading] = useState(true);
-  const [careersError, setCareersError] = useState<string | null>(null);
-  const [selectedCareer, setSelectedCareer] = useState<DisplayCareer | null>(null);
-  const [lastRemoved, setLastRemoved] = useState<{
-    career: DisplayCareer;
-    index: number;
-    hadReplacement: boolean;
-    replacementId: string | null;
+  // Tagged with the career it belongs to, so "still loading" is derived from a
+  // mismatch rather than written by an effect on every selection change.
+  const [majorsResult, setMajorsResult] = useState<{
+    careerId: string;
+    majors: CareerMajor[];
+    status: 'ready' | 'error';
   } | null>(null);
 
-  const usedIds = useRef<Set<string>>(new Set());
-  const dbIndexRef = useRef(0);
-  const mlIndexRef = useRef(0);
+  const [dbCareers, setDbCareers] = useState<DisplayCareer[]>([]);
+  const [mlCareers, setMlCareers] = useState<DisplayCareer[]>([]);
+  const [dbStatus, setDbStatus] = useState<LoadStatus>('loading');
+  const [mlStatus, setMlStatus] = useState<LoadStatus>('loading');
+  const [removedIds, setRemovedIds] = useState<Set<string>>(() => new Set());
+  const [selectedCareer, setSelectedCareer] = useState<DisplayCareer | null>(null);
+  const [confirmRestart, setConfirmRestart] = useState(false);
+  const [barsAnimated, setBarsAnimated] = useState(false);
+  const [lastRemoved, setLastRemoved] = useState<{
+    id: number;
+    career: DisplayCareer;
+  } | null>(null);
+
+  const removalCounter = useRef(0);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
+  // The visible list is derived, never stored: loaded results minus removals.
+  const slots = useMemo(
+    () => fillSlots(dbCareers, mlCareers, dbStatus, mlStatus, removedIds),
+    [dbCareers, mlCareers, dbStatus, mlStatus, removedIds]
+  );
+
+  const majorsStatus: MajorsStatus = !selectedCareer
+    ? 'idle'
+    : majorsResult?.careerId === selectedCareer.id
+      ? majorsResult.status
+      : 'loading';
+
+  const careerMajors =
+    selectedCareer && majorsResult?.careerId === selectedCareer.id ? majorsResult.majors : [];
+
   // Arriving here replaces the whole view, so move focus to the new page
-  // heading — otherwise focus is dropped to <body> and keyboard users restart
+  // heading - otherwise focus is dropped to <body> and keyboard users restart
   // from the top of the document.
   useEffect(() => {
     headingRef.current?.focus();
   }, []);
 
+  // Trait bars grow from zero on mount. One frame at 0% gives the browser a
+  // starting value to transition from; .fill already carries the transition.
   useEffect(() => {
-    if (!selectedCareer) {
-      setCareerMajors([]);
-      return;
-    }
-    fetch(`${import.meta.env.VITE_API_URL}/api/majors/${selectedCareer.id}`)
-      .then(res => res.ok ? res.json() : [])
-      .then(data => setCareerMajors(data.slice(0, 3)))
-      .catch(() => setCareerMajors([]));
+    const raf = requestAnimationFrame(() => setBarsAnimated(true));
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  // Majors for the selected career. Nothing is set synchronously here - the
+  // "loading" state falls out of majorsResult not yet matching this career.
+  useEffect(() => {
+    if (!selectedCareer) return;
+
+    let cancelled = false;
+    const careerId = selectedCareer.id;
+
+    getMajors(careerId)
+      .then((data) => {
+        if (!cancelled) setMajorsResult({ careerId, majors: data.slice(0, 3), status: 'ready' });
+      })
+      .catch(() => {
+        if (!cancelled) setMajorsResult({ careerId, majors: [], status: 'error' });
+      });
+
+    // Clicking through careers quickly must not let a slow earlier response
+    // overwrite the current selection's majors.
+    return () => { cancelled = true; };
   }, [selectedCareer]);
 
+  // Both career sources load in PARALLEL. They used to be chained, so a slow
+  // model request held up database results that had already arrived - and the
+  // loading flag cleared when the database call settled, leaving a window where
+  // the list was empty but no longer "loading", which rendered "No careers
+  // found."
   useEffect(() => {
     let sessionId = sessionStorage.getItem('sessionId');
     if (!sessionId) {
@@ -142,119 +225,60 @@ export default function ResultsPage({
       sessionStorage.setItem('sessionId', sessionId);
     }
 
-    // load DB careers
     getCareers(scores, sessionId)
-      .then((dbData) => {
-        console.log('DB careers loaded:', dbData.length);
-        setAllDbCareers(dbData);
-
-        // load ML careers separately after DB succeeds
-        getMLCareers(scores)
-          .then((mlData) => {
-            console.log('ML careers loaded:', mlData.length);
-            setAllMlCareers(mlData);
-
-            const initial = mergeAlternating(dbData, mlData);
-            initial.forEach(c => usedIds.current.add(c.id));
-            dbIndexRef.current = Math.ceil(DISPLAY_COUNT / 2);
-            mlIndexRef.current = Math.floor(DISPLAY_COUNT / 2);
-            setVisibleCareers(initial);
-          })
-          .catch((err) => {
-            console.error('ML careers error full:', err);
-            console.error('ML error message:', err.message);
-            console.error('ML error stack:', err.stack);
-            console.error('ML error type:', typeof err);
-            // fall back to just DB careers if ML fails
-            const initial = dbData.slice(0, DISPLAY_COUNT).map(c => ({
-              id: c.onetsoc_code,
-              title: c.title,
-              description: c.description,
-              source: 'db' as const
-            }));
-            initial.forEach(c => usedIds.current.add(c.id));
-            setVisibleCareers(initial);
-          });
+      .then((data) => {
+        setDbCareers(data.map(toDisplay));
+        setDbStatus('ready');
       })
       .catch((err) => {
         console.error('DB careers error:', err);
-        setCareersError(err.message);
-      })
-      .finally(() => {
-        setCareersLoading(false);
+        setDbStatus('error');
       });
+
+    getMLCareers(scores)
+      .then((data) => {
+        setMlCareers(data.map(mlToDisplay));
+        setMlStatus('ready');
+      })
+      .catch((err) => {
+        console.error('ML careers error:', err);
+        setMlStatus('error');
+      });
+    // Fires once on mount by design. `scores` is fixed for the lifetime of this
+    // page - re-running on it would re-request both sources and reshuffle the
+    // list under the user.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const getNextCareer = (removedIndex: number): DisplayCareer | null => {
-    // alternate replacement based on whether removed was db or ml
-    const removedSource = visibleCareers[removedIndex]?.source;
+  // The undo toast dismisses itself. Keyed on the removal object, so a second
+  // removal restarts the countdown rather than inheriting the first deadline.
+  useEffect(() => {
+    if (!lastRemoved) return;
+    const timer = setTimeout(() => setLastRemoved(null), UNDO_MS);
+    return () => clearTimeout(timer);
+  }, [lastRemoved]);
 
-    if (removedSource === 'db') {
-      while (dbIndexRef.current < allDbCareers.length) {
-        const career = allDbCareers[dbIndexRef.current++];
-        if (!usedIds.current.has(career.onetsoc_code)) {
-          return {
-            id: career.onetsoc_code,
-            title: career.title,
-            description: career.description,
-            source: 'db'
-          };
-        }
-      }
-    } else {
-      while (mlIndexRef.current < allMlCareers.length) {
-        const career = allMlCareers[mlIndexRef.current++];
-        if (!usedIds.current.has(career['O*NET-SOC Code'])) {
-          return {
-            id: career['O*NET-SOC Code'],
-            title: career.Title,
-            description: career['Career Category'],
-            source: 'ml'
-          };
-        }
-      }
-    }
-    return null;
-  };
+  const bothFailed = dbStatus === 'error' && mlStatus === 'error';
+  const anyLoading = dbStatus === 'loading' || mlStatus === 'loading';
+  const filledCount = slots.filter((s) => s.career).length;
 
-  const removeCareer = (index: number) => {
-    setVisibleCareers((prev) => {
-      const removed = prev[index];
-      const nextCareer = getNextCareer(index);
-
-      if (nextCareer) {
-        usedIds.current.add(nextCareer.id);
-      }
-
-      if (selectedCareer?.id === removed.id) {
-        setSelectedCareer(null);
-      }
-
-      setLastRemoved({
-        career: removed,
-        index,
-        hadReplacement: !!nextCareer,
-        replacementId: nextCareer?.id ?? null
-      });
-
-      const updated = prev.filter((_, i) => i !== index);
-      return nextCareer ? [...updated, nextCareer] : updated;
-    });
+  // Removing excludes an id; the derived list refills that position from the
+  // same source. Undo drops the exclusion, and because the fill is
+  // deterministic the career reappears exactly where it was.
+  const removeCareer = (career: DisplayCareer) => {
+    if (selectedCareer?.id === career.id) setSelectedCareer(null);
+    setRemovedIds((prev) => new Set(prev).add(career.id));
+    removalCounter.current += 1;
+    setLastRemoved({ id: removalCounter.current, career });
   };
 
   const undoRemove = () => {
     if (!lastRemoved) return;
-
-    if (lastRemoved.replacementId) {
-      usedIds.current.delete(lastRemoved.replacementId);
-    }
-
-    setVisibleCareers((prev) => {
-      const updated = lastRemoved.hadReplacement ? prev.slice(0, -1) : [...prev];
-      updated.splice(lastRemoved.index, 0, lastRemoved.career);
-      return updated;
+    setRemovedIds((prev) => {
+      const next = new Set(prev);
+      next.delete(lastRemoved.career.id);
+      return next;
     });
-
     setLastRemoved(null);
   };
 
@@ -272,7 +296,7 @@ export default function ResultsPage({
         </button>
         <button
           className="results-restart-btn"
-          onClick={onRestart}
+          onClick={() => setConfirmRestart(true)}
           aria-label="Restart the quiz"
         >
           ↺
@@ -330,7 +354,10 @@ export default function ResultsPage({
                     aria-valuetext={`${percent}%`}
                     aria-label={`${traitLabels[trait]} score`}
                   >
-                    <div className="fill" style={{ width: `${percent}%` }} />
+                    <div
+                      className="fill"
+                      style={{ width: barsAnimated ? `${percent}%` : '0%' }}
+                    />
                   </div>
                 </div>
               );
@@ -340,6 +367,7 @@ export default function ResultsPage({
           <CareerInfoPanel
             selectedCareer={selectedCareer}
             careerMajors={careerMajors}
+            majorsStatus={majorsStatus}
           />
 
           {isFromCheckpoint && (
@@ -368,32 +396,37 @@ export default function ResultsPage({
               />
             </div>
 
-            {careersLoading && (
-              <p className="careers-status">Loading careers...</p>
-            )}
+            {/* Announced once rather than per card, so a screen reader is not
+                read ten identical "loading" messages. */}
+            <p className="visually-hidden" role="status">
+              {anyLoading
+                ? 'Loading recommended careers'
+                : `${filledCount} recommended careers loaded`}
+            </p>
 
-            {careersError && (
+            {bothFailed ? (
               <p className="careers-status careers-error">
-                Failed to load careers: {careersError}
+                Failed to load careers. Please try again later.
               </p>
-            )}
-
-            {!careersLoading && !careersError && visibleCareers.length === 0 && (
+            ) : !anyLoading && filledCount === 0 ? (
               <p className="careers-status">No careers found.</p>
-            )}
-
-            {!careersLoading && !careersError && visibleCareers.length > 0 && (
+            ) : (
               <div className="majors-grid">
-                {visibleCareers.map((career, i) => (
-                  <MajorCard
-                    key={career.id}
-                    title={career.title}
-                    description={career.description}
-                    onClick={() => setSelectedCareer(career)}
-                    onRemove={() => removeCareer(i)}
-                    isAI={career.source === 'ml'}
-                  />
-                ))}
+                {slots.map((slot, i) => {
+                  const career = slot.career;
+                  return career ? (
+                    <MajorCard
+                      key={career.id}
+                      title={career.title}
+                      description={career.description}
+                      onClick={() => setSelectedCareer(career)}
+                      onRemove={() => removeCareer(career)}
+                      isAI={career.source === 'ml'}
+                    />
+                  ) : (
+                    <MajorCardSkeleton key={`skeleton-${i}`} />
+                  );
+                })}
               </div>
             )}
           </div>
@@ -402,13 +435,36 @@ export default function ResultsPage({
 
       {lastRemoved && (
         <div className="undo-toast" role="status">
-          <div className="undo-text">
-            {lastRemoved.career.title} removed
+          <div className="undo-toast-row">
+            <span className="undo-text">{lastRemoved.career.title} removed</span>
+            <button onClick={undoRemove} className="undo-btn">
+              Undo
+            </button>
+            <button
+              onClick={() => setLastRemoved(null)}
+              className="undo-dismiss"
+              aria-label="Dismiss"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
           </div>
-          <button onClick={undoRemove} className="undo-btn">
-            Undo
-          </button>
+          {/* Decorative countdown. Re-keyed per removal so the animation
+              restarts instead of continuing the previous one. */}
+          <div className="undo-progress" aria-hidden="true">
+            <div className="undo-progress-fill" key={lastRemoved.id} />
+          </div>
         </div>
+      )}
+
+      {confirmRestart && (
+        <ConfirmDialog
+          title="Restart the quiz?"
+          message="Your answers and results so far will be cleared."
+          confirmLabel="Yes, I'm sure"
+          cancelLabel="No"
+          onConfirm={() => { setConfirmRestart(false); onRestart(); }}
+          onCancel={() => setConfirmRestart(false)}
+        />
       )}
 
     </div>

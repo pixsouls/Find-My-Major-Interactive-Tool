@@ -1,60 +1,4 @@
-.career-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-  animation: modalFadeIn 0.2s ease forwards;
-  padding: 16px;
-}
-
-.career-modal-box {
-  background: var(--bg-card);
-  border-radius: 16px;
-  padding: 24px;
-  max-width: 480px;
-  width: 100%;
-  max-height: 80vh;
-  overflow-y: auto;
-  position: relative;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-}
-
-.career-modal-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 28px;
-  height: 28px;
-  border: none;
-  border-radius: 50%;
-  background: var(--bg-input);
-  color: var(--text-main);
-  font-size: 16px;
-  cursor: pointer;
-  line-height: 1;
-  transition: 0.2s ease;
-}
-
-.career-modal-close:hover {
-  background: var(--msu-red);
-  color: white;
-}
-
-.career-modal-close:focus-visible,
-.career-modal-major-btn:focus-visible {
-  outline: 2px solid var(--msu-red);
-  outline-offset: 2px;
-}
-
-.career-modal-title {
-  font-size: 18px;
-  margin-bottom: 16px;
-  padding-right: 24px;
-  color: var(--text-main);
-}
+/* Career-specific modal content. Shell chrome lives in Modal.css. */
 
 .career-modal-fields {
   list-style: none;
@@ -86,16 +30,21 @@
   margin-top: 20px;
 }
 
+/* Was an <a> to msu_url. The catalog export carries no program URL, so these
+   are now buttons that swap the dialog's content to the major's detail. */
 .career-modal-major-btn {
   display: block;
+  width: 100%;
   text-align: center;
   background: var(--msu-blue);
   color: white;
+  border: none;
   padding: 10px 14px;
   border-radius: 8px;
   font-weight: 600;
   font-size: 13px;
-  text-decoration: none;
+  font-family: inherit;
+  cursor: pointer;
   transition: opacity 0.2s ease;
 }
 
@@ -103,7 +52,7 @@
   opacity: 0.85;
 }
 
-@keyframes modalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.career-modal-major-btn:focus-visible {
+  outline: 2px solid var(--msu-red);
+  outline-offset: 2px;
 }

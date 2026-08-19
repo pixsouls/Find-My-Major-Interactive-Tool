@@ -215,3 +215,13 @@ node_modules
 
 # Claude Code
 .claude/
+
+# The `lib/` rule near the top of this file comes from the Python template and
+# targets build artifacts. It also matches Backend/data/lib/, which is pipeline
+# SOURCE CODE - without this exception the catalog importer silently fails to
+# commit. Do not remove.
+!Backend/data/lib/
+
+# Generated catalog data IS committed on purpose, so Render can deploy without
+# running the importer. Rebuild it with `npm run catalog:import`.
+!Backend/data/generated/
